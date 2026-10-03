@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>JAG brand palette options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
+<style>
+:root{--page:#EEF1F1;--ink:#1C2528;--muted:#5B676B;--line:rgba(0,0,0,.12);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--page:#14191B;--ink:#E8EEEF;--muted:#9BA7AA;--line:rgba(255,255,255,.16)}}
+:root[data-theme="dark"]{--page:#14191B;--ink:#E8EEEF;--muted:#9BA7AA;--line:rgba(255,255,255,.16)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;line-height:1.55}
+.wrap{max-width:1040px;margin:0 auto;padding:32px 20px 56px}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:500;margin:0}
+h1{font-size:clamp(30px,5vw,44px);line-height:1.1}
+.lead{color:var(--muted);max-width:640px;margin:10px 0 28px}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.nav a{color:var(--ink);text-decoration:none;border:1px solid var(--line);padding:7px 14px;border-radius:999px;font-size:14px}
+.pal{background:var(--b);color:var(--t);border:1px solid var(--line);border-radius:16px;padding:28px;margin-bottom:28px}
+.tag{font-size:13px;letter-spacing:.4px;text-transform:uppercase;color:var(--p);opacity:.8;margin:0 0 4px}
+.pal h2{font-size:clamp(24px,4vw,34px);color:var(--p)}
+.mood{max-width:620px;margin:8px 0 22px}
+.sw{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.chip{border:1px solid rgba(0,0,0,.12);border-radius:12px;overflow:hidden;background:var(--b)}
+.fill{height:96px}
+.meta{padding:10px 12px;font-size:13px;color:var(--t)}
+.meta b{display:block;font-weight:500;font-size:14px}
+.meta code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.bar{display:flex;height:16px;border-radius:8px;overflow:hidden;border:1px solid rgba(0,0,0,.12);margin:22px 0 6px}
+.cap{font-size:12px;opacity:.75;margin:0 0 24px}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:6px}
+.box{border:1px solid rgba(0,0,0,.12);border-radius:12px;padding:18px}
+.lab{font-size:12px;letter-spacing:.4px;text-transform:uppercase;opacity:.7;margin:0 0 10px}
+.spec h3{font-size:26px;color:var(--p);line-height:1.2}
+.spec p{margin:8px 0 0;font-size:15px}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 14px}
+.b1{background:var(--a);color:var(--t);border:0;height:48px;padding:0 28px;border-radius:999px;font:500 14px 'DM Sans',sans-serif}
+.b2{background:transparent;color:var(--p);border:1.5px solid var(--p);height:48px;padding:0 28px;border-radius:999px;font:500 14px 'DM Sans',sans-serif}
+.card{background:var(--s);border-radius:24px;padding:20px 24px}
+.card h4{margin:0 0 4px;font:500 18px 'Fraunces',Georgia,serif;color:var(--p)}
+.card p{margin:0;font-size:14px}
+.inp{margin-top:12px;border:1.5px solid var(--p);border-radius:999px;height:48px;display:flex;align-items:center;padding:0 24px;font-size:14px;background:var(--b);color:var(--t);opacity:.85}
+.logos{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:16px}
+.lt{border-radius:12px;padding:22px 16px;border:1px solid rgba(0,0,0,.12)}
+.jag{font:500 44px/1 'Fraunces',Georgia,serif;letter-spacing:1px;margin:0}
+.sub{font-size:11px;letter-spacing:.4px;margin:6px 0 0}
+.note{color:var(--muted);font-size:13px;margin-top:8px}
+
+:root{--card:#FFFFFF}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--card:#1D2427}}
+:root[data-theme="dark"]{--card:#1D2427}
+.sys{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px;margin-bottom:28px}
+.sys h2{font-size:clamp(24px,4vw,34px)}
+.sys h3{font-size:20px;margin:30px 0 4px}
+.sys .d{color:var(--muted);font-size:14px;margin:0 0 14px;max-width:660px}
+.rg{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
+.rt{border:1px solid var(--line);border-radius:12px;padding:14px;font-size:13px;min-height:112px;background:var(--page)}
+.rt b{display:block;font-weight:500;font-size:14px}
+.rt .sh{height:36px;background:#12403A;margin-bottom:10px}
+.no .sh{background:var(--muted)}
+.tagline{display:inline-block;font-size:12px;padding:2px 8px;border-radius:999px;border:1px solid var(--line);margin-bottom:8px}
+.sp{display:flex;align-items:center;gap:12px;font-size:13px;margin:6px 0}
+.sp i{display:block;height:14px;background:#12403A;border-radius:2px}
+.sp span{width:110px;color:var(--muted)}
+.ty{border-top:1px solid var(--line);padding:12px 0;display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:baseline}
+.ty .m{font-size:12px;color:var(--muted)}
+.ty .s{overflow-wrap:anywhere}
+@media (max-width:560px){.ty{grid-template-columns:1fr;gap:4px}}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.rules div{border:1px solid var(--line);border-radius:12px;padding:14px;font-size:14px;background:var(--page)}
+.rules b{display:block;font-weight:500;margin-bottom:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>JAG brand palette options</h1>
+<p class="lead">Three directions for JAG Cleaning &amp; Snow Removal. Each uses the same type system, Fraunces for headlines and DM Sans for text, so the comparison is about color and tone only. The wordmark is a placeholder until the logo is designed.</p>
+<div class="nav"><a href="#a">A. Evergreen and sunrise</a><a href="#b">B. Deep lake and ember</a><a href="#c">C. Slate, mint and citrus</a><a href="#system">Shared design rules</a></div>
+<div id="out"></div>
+<section class="sys" id="system">
+<p class="tag" style="font-size:13px;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);margin:0 0 4px">Applies to all three palettes</p>
+<h2>Shape, spacing and type rules</h2>
+<p class="d">These rules stay the same whichever palette the client chooses, so the brand looks consistent on the website, quotes, and print. Values are in pixels for the website.</p>
+
+<h3>Border radius</h3>
+<p class="d">JAG uses a pill language: every button and every single-line input is fully rounded. That gives a soft, friendly, approachable feel. To keep the system consistent, cards and panels use large radii, so the pill shapes look like part of the same family. We avoid small 4 to 8px corners on interactive elements.</p>
+<div class="rg">
+<div class="rt"><div class="sh" style="border-radius:999px"></div><b>Pill (999px)</b>Buttons, text inputs, selects, search, tags, chips, toggles</div>
+<div class="rt"><div class="sh" style="border-radius:16px"></div><b>16px, small</b>Dropdown menus, tooltips, small popovers</div>
+<div class="rt"><div class="sh" style="border-radius:24px"></div><b>24px, cards</b>Service cards, quote form box, alerts, textarea</div>
+<div class="rt"><div class="sh" style="border-radius:32px"></div><b>32px, large</b>Hero image frames, big panels, modals</div>
+</div>
+<p class="d" style="margin-top:16px"><b style="font-weight:500">Where not to use a pill:</b> anything that holds more than one line of text. Textareas, alerts, and cards use 24px instead, because a long pill with wrapped text looks awkward and breaks.</p>
+<p class="d"><b style="font-weight:500">Where not to use border radius (0px):</b></p>
+<div class="rg no">
+<div class="rt"><div class="sh"></div><b>Logo</b>Never round or crop the mark</div>
+<div class="rt"><div class="sh"></div><b>Full-width sections</b>Hero, footer, and banner edges</div>
+<div class="rt"><div class="sh"></div><b>Edge-to-edge images</b>Photos that bleed to the screen edge</div>
+<div class="rt"><div class="sh"></div><b>Dividers and tables</b>Lines, table cells, accent bars</div>
+<div class="rt"><div class="sh"></div><b>Vehicle and print</b>Van wraps and signs use square, clean edges</div>
+</div>
+<p class="d" style="margin-top:16px">Nested shapes: the inner radius equals the outer radius minus the padding between them. A photo inside a 24px card with 16px padding gets an 8px radius. Pills inside a card stay fully round.</p>
+
+<h3>Spacing</h3>
+<p class="d">Everything sits on a 4px grid. Pill shapes need extra side padding, because the curved ends cut into the space, so text never sits against the curve. Use bigger gaps between sections than inside components, which keeps the layout calm and clean.</p>
+<div class="sp"><span>4, tight</span><i style="width:4px"></i>Icon to label</div>
+<div class="sp"><span>8, small</span><i style="width:8px"></i>Between related items</div>
+<div class="sp"><span>16, base</span><i style="width:16px"></i>Gap between stacked form fields</div>
+<div class="sp"><span>24, medium</span><i style="width:24px"></i>Between cards, form fields</div>
+<div class="sp"><span>28, pill button</span><i style="width:28px"></i>Left and right padding inside buttons</div><div class="sp"><span>32, large</span><i style="width:32px"></i>Card padding on desktop (24 on mobile)</div>
+<div class="sp"><span>48, section (mobile)</span><i style="width:48px"></i>Space above and below sections</div>
+<div class="sp"><span>64, section</span><i style="width:64px"></i>Space above and below sections</div>
+<div class="sp"><span>96, hero</span><i style="width:96px"></i>Top and bottom of the hero</div>
+<p class="d" style="margin-top:12px">Page container: 1120px wide at most, with 24px side margins on desktop and 16px on mobile.</p>
+<div class="rules">
+<div><b>Pill button</b>48px tall, 28px side padding, 8px between icon and label, 12px between side-by-side buttons. Small version: 40px tall with 20px padding. Minimum width 120px.</div>
+<div><b>Pill input</b>48px tall, 24px side padding so text sits clear of the curve, 1.5px border. Label 8px above, 16px between fields. Error text sits 24px from the left to line up with the input text.</div>
+<div><b>Textarea</b>24px radius, not a pill. Padding 16px top and bottom and 24px sides, minimum height 120px.</div>
+<div><b>Cards</b>24px radius with 32px padding on desktop and 24px on mobile. 24px gap between cards.</div>
+</div>
+
+<h3>Type scale</h3>
+<p class="d">Headlines in Fraunces weight 500. Text and interface in DM Sans weights 400 and 500 only. Mobile sizes are shown in brackets. Keep body copy at 60 to 70 characters per line.</p>
+<div class="ty"><div class="m">H1 hero<br>48/56 (36/42)</div><div class="s" style="font:500 48px/56px 'Fraunces',Georgia,serif">Clean spaces</div></div>
+<div class="ty"><div class="m">H2 section<br>36/44 (28/34)</div><div class="s" style="font:500 36px/44px 'Fraunces',Georgia,serif">Our services</div></div>
+<div class="ty"><div class="m">H3 card title<br>24/32 (22/30)</div><div class="s" style="font:500 24px/32px 'Fraunces',Georgia,serif">Residential cleaning</div></div>
+<div class="ty"><div class="m">H4 subheading<br>20/28</div><div class="s" style="font:500 20px/28px 'Fraunces',Georgia,serif">Move-out cleaning</div></div>
+<div class="ty"><div class="m">Body large, DM Sans<br>18/28</div><div class="s" style="font:400 18px/28px 'DM Sans',sans-serif">Intro text and key paragraphs under headlines.</div></div>
+<div class="ty"><div class="m">Body, DM Sans<br>16/26</div><div class="s" style="font:400 16px/26px 'DM Sans',sans-serif">Standard paragraph text across the website. Never smaller than 16px on mobile.</div></div>
+<div class="ty"><div class="m">Small, DM Sans<br>14/22</div><div class="s" style="font:400 14px/22px 'DM Sans',sans-serif">Helper text, form labels, and footer links.</div></div>
+<div class="ty"><div class="m">Button, DM Sans 500<br>16/24</div><div class="s" style="font:500 16px/24px 'DM Sans',sans-serif">Get a quote</div></div>
+<div class="ty"><div class="m">Caption, DM Sans<br>12/18</div><div class="s" style="font:400 12px/18px 'DM Sans',sans-serif">Legal text and image credits only.</div></div>
+
+<h3>Other rules</h3>
+<div class="rules">
+<div><b>Borders</b>1px hairline for cards, 1.5px for outlined buttons and inputs. Use the primary color or a light tint.</div>
+<div><b>Focus state</b>2px ring in the primary color, 2px away from the edge, following the pill shape. Never remove it.</div>
+<div><b>Shadows</b>Flat by default. At most one very soft shadow on floating items like menus and modals.</div>
+<div><b>Icons</b>Outline style, 24px, 1.5px stroke, rounded line ends. Never mix filled and outline icons.</div>
+<div><b>Text alignment</b>Left-align body text. Center only short headlines and button labels.</div>
+<div><b>Color use</b>Accent only on call-to-action buttons and small highlights. Never use it for body text.</div>
+<div><b>Images</b>Use 24 to 32px corners on framed photos, 0px on full-width banners. Bright, natural light and real teams.</div>
+</div>
+</section>
+<p class="note">Colors apply roughly 60% base, 30% primary, and 10% accent. Check text contrast on the accent buttons before final build.</p>
+</div>
+<script>
+var P=[
+{id:"a",n:"A. Evergreen and sunrise",tag:"Calm, trustworthy, natural",mood:"A deep green with a warm amber accent. It connects to Alberta winters and eco-friendly cleaning, and stands apart from the navy and blue used across the category.",
+c:[["Snow White","F7F9FA","Base background","60%"],["Deep Spruce","12403A","Primary: logo, headlines, key sections","30%"],["Frost","D8ECEE","Soft background: cards, sections","Support"],["Sunrise Amber","F2A93B","Accent: call-to-action buttons","10%"],["Charcoal","1F2B2E","Body text","Text"]]},
+{id:"b",n:"B. Deep lake and ember",tag:"Bold, hardworking, dependable",mood:"A deep teal that reads as clean water, paired with a safety orange that nods to snow-plow visibility. The most energetic option and the best fit if snow removal grows.",
+c:[["Snow White","F7F9FA","Base background","60%"],["Deep Lake","0F4C5C","Primary: logo, headlines, key sections","30%"],["Mist","E0EDF1","Soft background: cards, sections","Support"],["Ember","E8693A","Accent: call-to-action buttons","10%"],["Charcoal","1B2A30","Body text","Text"]]},
+{id:"c",n:"C. Slate, mint and citrus",tag:"Fresh, modern, friendly",mood:"A charcoal slate with fresh mint and a lemon accent. The most obviously clean-feeling palette, with a modern, younger tone that leans toward home cleaning.",
+c:[["Snow White","F8F9F7","Base background","60%"],["Slate","2E3B43","Primary: logo, headlines, key sections","30%"],["Mint","D3F0E6","Soft background: cards, sections","Support"],["Citrus","F2D14B","Accent: call-to-action buttons","10%"],["Charcoal","1A2327","Body text","Text"]]}
+];
+function lum(h){var r=parseInt(h.substr(0,2),16),g=parseInt(h.substr(2,2),16),b=parseInt(h.substr(4,2),16);return(.299*r+.587*g+.114*b)}
+function logo(bg,fg,l){return '<div class="lt" style="background:#'+bg+';color:#'+fg+'"><p class="jag">JAG</p><p class="sub">Cleaning &amp; Snow Removal</p></div>'}
+var h="";
+P.forEach(function(p){
+var k=p.c,b=k[0][1],pr=k[1][1],s=k[2][1],a=k[3][1],t=k[4][1];
+h+='<section class="pal" id="'+p.id+'" style="--b:#'+b+';--p:#'+pr+';--s:#'+s+';--a:#'+a+';--t:#'+t+'">';
+h+='<p class="tag">'+p.tag+'</p><h2>'+p.n+'</h2><p class="mood">'+p.mood+'</p><div class="sw">';
+k.forEach(function(c){h+='<div class="chip"><div class="fill" style="background:#'+c[1]+'"></div><div class="meta"><b>'+c[0]+'</b><code>#'+c[1]+'</code><br>'+c[2]+' &middot; '+c[3]+'</div></div>'});
+h+='</div><div class="bar"><div style="flex:60;background:#'+b+'"></div><div style="flex:30;background:#'+pr+'"></div><div style="flex:10;background:#'+a+'"></div></div><p class="cap">Usage balance: 60% base, 30% primary, 10% accent</p>';
+h+='<div class="row"><div class="box spec"><p class="lab">Typography</p><h3>Clean spaces, clear driveways</h3><p>Fraunces headline with DM Sans body text. Reliable residential and commercial cleaning, plus winter snow removal, across Edmonton and area.</p></div>';
+h+='<div class="box"><p class="lab">Interface sample</p><div class="btns"><button class="b1">Get a quote</button><button class="b2">Call us</button></div><div class="card"><h4>Residential cleaning</h4><p>Recurring, deep, and move-out cleans.</p></div><div class="inp">Your email address</div></div></div>';
+h+='<div class="logos">'+logo(b,pr)+logo(pr,b)+logo(s,pr)+'</div></section>';
+});
+document.getElementById("out").innerHTML=h;
+</script>
+</body>
+</html>
