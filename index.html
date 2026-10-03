@@ -73,6 +73,55 @@ h1{font-size:clamp(30px,5vw,44px);line-height:1.1}
 .rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
 .rules div{border:1px solid var(--line);border-radius:12px;padding:14px;font-size:14px;background:var(--page)}
 .rules b{display:block;font-weight:500;margin-bottom:4px}
+
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+button{touch-action:manipulation;cursor:pointer}
+.sp i{flex:none}.sp span{flex:none}
+.t1,.t2,.t3,.t4{font-family:'Fraunces',Georgia,serif;font-weight:500}
+.t1{font-size:48px;line-height:56px}.t2{font-size:36px;line-height:44px}.t3{font-size:24px;line-height:32px}.t4{font-size:20px;line-height:28px}
+.t5,.t6,.t7,.t8,.t9{font-family:'DM Sans',sans-serif}
+.t5{font-size:18px;line-height:28px}.t6{font-size:16px;line-height:26px}.t7{font-size:14px;line-height:22px}.t8{font-size:16px;line-height:24px;font-weight:500}.t9{font-size:12px;line-height:18px}
+.nav{position:sticky;top:0;z-index:5;background:var(--page);margin:0 -20px 20px;padding:10px 20px;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none;scroll-snap-type:x proximity}
+.nav::-webkit-scrollbar{display:none}
+.nav a{white-space:nowrap;display:flex;align-items:center;min-height:44px;padding:0 18px;scroll-snap-align:start;background:var(--card,transparent)}
+.chip{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.chip:active{transform:scale(.98)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#1C2528;color:#fff;font-size:14px;padding:10px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:10}
+.toast.on{opacity:1}
+.hint{font-size:13px;color:var(--muted);margin:-8px 0 14px}
+@media (max-width:640px){
+.wrap{padding:20px 16px 48px}
+.nav{margin:0 -16px 16px;padding:8px 16px}
+h1{font-size:32px}
+.lead{font-size:15px;margin:8px 0 18px}
+.pal,.sys{padding:20px 16px;border-radius:20px;margin-bottom:20px}
+.pal h2,.sys h2{font-size:26px}
+.mood{font-size:15px;margin-bottom:18px}
+.sw{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.chip:last-child{grid-column:1/-1}
+.fill{height:84px}
+.chip:last-child .fill{height:56px}
+.meta{padding:10px}
+.row,.logos,.rules{grid-template-columns:minmax(0,1fr);gap:12px}
+.box{padding:16px;border-radius:20px}
+.spec h3{font-size:24px}
+.btns{flex-direction:column}
+.btns button{width:100%}
+.lt{padding:20px 16px}
+.jag{font-size:40px}
+.rg{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.rt{padding:12px;min-height:0}
+.sys h3{font-size:20px;margin-top:26px}
+.sys .d{font-size:14px}
+.sp{font-size:13px;align-items:flex-start;margin:10px 0}
+.sp span{width:96px}
+.sp i{margin-top:3px}
+.ty{grid-template-columns:minmax(0,1fr);gap:4px;padding:14px 0}
+.t1{font-size:36px;line-height:42px}.t2{font-size:28px;line-height:34px}.t3{font-size:22px;line-height:30px}
+.rules div{padding:14px}
+.note{font-size:13px}
+}
+@media (max-width:360px){.sw{grid-template-columns:minmax(0,1fr)}.rg{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
@@ -125,15 +174,15 @@ h1{font-size:clamp(30px,5vw,44px);line-height:1.1}
 
 <h3>Type scale</h3>
 <p class="d">Headlines in Fraunces weight 500. Text and interface in DM Sans weights 400 and 500 only. Mobile sizes are shown in brackets. Keep body copy at 60 to 70 characters per line.</p>
-<div class="ty"><div class="m">H1 hero<br>48/56 (36/42)</div><div class="s" style="font:500 48px/56px 'Fraunces',Georgia,serif">Clean spaces</div></div>
-<div class="ty"><div class="m">H2 section<br>36/44 (28/34)</div><div class="s" style="font:500 36px/44px 'Fraunces',Georgia,serif">Our services</div></div>
-<div class="ty"><div class="m">H3 card title<br>24/32 (22/30)</div><div class="s" style="font:500 24px/32px 'Fraunces',Georgia,serif">Residential cleaning</div></div>
-<div class="ty"><div class="m">H4 subheading<br>20/28</div><div class="s" style="font:500 20px/28px 'Fraunces',Georgia,serif">Move-out cleaning</div></div>
-<div class="ty"><div class="m">Body large, DM Sans<br>18/28</div><div class="s" style="font:400 18px/28px 'DM Sans',sans-serif">Intro text and key paragraphs under headlines.</div></div>
-<div class="ty"><div class="m">Body, DM Sans<br>16/26</div><div class="s" style="font:400 16px/26px 'DM Sans',sans-serif">Standard paragraph text across the website. Never smaller than 16px on mobile.</div></div>
-<div class="ty"><div class="m">Small, DM Sans<br>14/22</div><div class="s" style="font:400 14px/22px 'DM Sans',sans-serif">Helper text, form labels, and footer links.</div></div>
-<div class="ty"><div class="m">Button, DM Sans 500<br>16/24</div><div class="s" style="font:500 16px/24px 'DM Sans',sans-serif">Get a quote</div></div>
-<div class="ty"><div class="m">Caption, DM Sans<br>12/18</div><div class="s" style="font:400 12px/18px 'DM Sans',sans-serif">Legal text and image credits only.</div></div>
+<div class="ty"><div class="m">H1 hero<br>48/56 (36/42)</div><div class="s t1">Clean spaces</div></div>
+<div class="ty"><div class="m">H2 section<br>36/44 (28/34)</div><div class="s t2">Our services</div></div>
+<div class="ty"><div class="m">H3 card title<br>24/32 (22/30)</div><div class="s t3">Residential cleaning</div></div>
+<div class="ty"><div class="m">H4 subheading<br>20/28</div><div class="s t4">Move-out cleaning</div></div>
+<div class="ty"><div class="m">Body large, DM Sans<br>18/28</div><div class="s t5">Intro text and key paragraphs under headlines.</div></div>
+<div class="ty"><div class="m">Body, DM Sans<br>16/26</div><div class="s t6">Standard paragraph text across the website. Never smaller than 16px on mobile.</div></div>
+<div class="ty"><div class="m">Small, DM Sans<br>14/22</div><div class="s t7">Helper text, form labels, and footer links.</div></div>
+<div class="ty"><div class="m">Button, DM Sans 500<br>16/24</div><div class="s t8">Get a quote</div></div>
+<div class="ty"><div class="m">Caption, DM Sans<br>12/18</div><div class="s t9">Legal text and image credits only.</div></div>
 
 <h3>Other rules</h3>
 <div class="rules">
@@ -163,14 +212,18 @@ var h="";
 P.forEach(function(p){
 var k=p.c,b=k[0][1],pr=k[1][1],s=k[2][1],a=k[3][1],t=k[4][1];
 h+='<section class="pal" id="'+p.id+'" style="--b:#'+b+';--p:#'+pr+';--s:#'+s+';--a:#'+a+';--t:#'+t+'">';
-h+='<p class="tag">'+p.tag+'</p><h2>'+p.n+'</h2><p class="mood">'+p.mood+'</p><div class="sw">';
-k.forEach(function(c){h+='<div class="chip"><div class="fill" style="background:#'+c[1]+'"></div><div class="meta"><b>'+c[0]+'</b><code>#'+c[1]+'</code><br>'+c[2]+' &middot; '+c[3]+'</div></div>'});
+h+='<p class="tag">'+p.tag+'</p><h2>'+p.n+'</h2><p class="mood">'+p.mood+'</p><p class="cap" style="margin:-10px 0 12px">Tap a swatch to copy its hex code</p><div class="sw">';
+k.forEach(function(c){h+='<div class="chip" role="button" tabindex="0" data-hex="#'+c[1]+'"><div class="fill" style="background:#'+c[1]+'"></div><div class="meta"><b>'+c[0]+'</b><code>#'+c[1]+'</code><br>'+c[2]+' &middot; '+c[3]+'</div></div>'});
 h+='</div><div class="bar"><div style="flex:60;background:#'+b+'"></div><div style="flex:30;background:#'+pr+'"></div><div style="flex:10;background:#'+a+'"></div></div><p class="cap">Usage balance: 60% base, 30% primary, 10% accent</p>';
 h+='<div class="row"><div class="box spec"><p class="lab">Typography</p><h3>Clean spaces, clear driveways</h3><p>Fraunces headline with DM Sans body text. Reliable residential and commercial cleaning, plus winter snow removal, across Edmonton and area.</p></div>';
 h+='<div class="box"><p class="lab">Interface sample</p><div class="btns"><button class="b1">Get a quote</button><button class="b2">Call us</button></div><div class="card"><h4>Residential cleaning</h4><p>Recurring, deep, and move-out cleans.</p></div><div class="inp">Your email address</div></div></div>';
 h+='<div class="logos">'+logo(b,pr)+logo(pr,b)+logo(s,pr)+'</div></section>';
 });
 document.getElementById("out").innerHTML=h;
+var tt=document.createElement("div");tt.className="toast";document.body.appendChild(tt);var tm;
+function say(x){tt.textContent=x;tt.classList.add("on");clearTimeout(tm);tm=setTimeout(function(){tt.classList.remove("on")},1600)}
+function cp(el){var v=el.getAttribute("data-hex");try{navigator.clipboard.writeText(v).then(function(){say("Copied "+v)}).catch(function(){say(v)})}catch(e){say(v)}}
+document.querySelectorAll(".chip").forEach(function(el){el.addEventListener("click",function(){cp(el)});el.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();cp(el)}})});
 </script>
 </body>
 </html>
