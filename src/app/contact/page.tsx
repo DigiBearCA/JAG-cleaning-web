@@ -41,7 +41,7 @@ export default function ContactPage() {
           referrerPolicy="no-referrer-when-downgrade"
           className="block aspect-square md:aspect-21/9 w-full border-t border-line bg-alt"
         />
-        <div className="absolute bottom-4 right-4 md:bottom-8 md:right-8">
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 md:bottom-12">
           <a
             href={mapOpenUrl()}
             target="_blank"
