@@ -39,7 +39,7 @@ export function WhoWeServe({
             <p className="type-body text-ink">{card.text}</p>
             <Link
               href={card.href}
-              className="mt-auto inline-flex min-h-11 items-center gap-2 self-start type-button text-primary after:absolute after:inset-0 after:rounded-card focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-2 focus-visible:after:outline-primary focus-visible:after:outline-solid"
+              className="mt-auto inline-flex min-h-11 items-center gap-2 self-start type-button text-primary after:absolute after:inset-0 after:rounded-card"
             >
               {card.linkLabel}
               <span className="sr-only"> {card.linkHiddenText}</span>
