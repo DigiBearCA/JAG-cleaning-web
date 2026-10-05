@@ -39,7 +39,7 @@ export function Accordion({ items, headingLevel = "h3", className }: AccordionPr
         const buttonId = `${baseId}-${item.id}-button`;
         const panelId = `${baseId}-${item.id}-panel`;
         return (
-          <div key={item.id} className="rounded-card border border-line bg-snow text-ink">
+          <div key={item.id} className="rounded-card border border-line bg-alt text-ink">
             <Heading className="m-0">
               <button
                 type="button"
