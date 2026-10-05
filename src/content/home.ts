@@ -1,9 +1,9 @@
 import type { FeatureCard, LinkedFeatureCard, SectionCopy, Step } from "./types";
 
 export const HOME_META = {
-  title: "Cleaning & Snow Removal in Edmonton, AB | JAG",
+  title: "Contracting & Constructions in Edmonton, AB | JAAG",
   description:
-    "JAG offers residential and commercial cleaning and snow removal in Edmonton, Alberta. Free quotes from an insured local team. Request yours today.",
+    "JAAG offers residential and commercial cleaning and snow removal in Edmonton, Alberta. Free quotes from an insured local team. Request yours today.",
 } as const;
 
 export const HERO = {
@@ -58,8 +58,8 @@ export const HOW_IT_WORKS: SectionCopy & { readonly steps: ReadonlyArray<Step> }
   ],
 };
 
-export const WHY_JAG: SectionCopy & { readonly cards: ReadonlyArray<FeatureCard> } = {
-  title: "Why JAG",
+export const WHY_JAAG: SectionCopy & { readonly cards: ReadonlyArray<FeatureCard> } = {
+  title: "Why JAAG",
   cards: [
     {
       title: "Reliable schedule",

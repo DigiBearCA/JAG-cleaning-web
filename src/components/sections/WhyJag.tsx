@@ -2,15 +2,15 @@ import { Icon } from "@/components/icons";
 import { FeatureIcon } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { WHY_JAG } from "@/content/home";
+import { WHY_JAAG } from "@/content/home";
 
 /** Dark section with a 2x2 grid of dark cards and accent icons. */
 export function WhyJag() {
   return (
     <Section tone="dark" id="why-jag" labelledBy="why-jag-title">
-      <SectionHeading id="why-jag-title" title={WHY_JAG.title} align="center" tone="dark" />
+      <SectionHeading id="why-jag-title" title={WHY_JAAG.title} align="center" tone="dark" />
       <ul className="mt-10 grid gap-6 md:grid-cols-2">
-        {WHY_JAG.cards.map((card) => (
+        {WHY_JAAG.cards.map((card) => (
           <li key={card.title} className="flex flex-col gap-4 rounded-card bg-dark-card p-6 md:p-8">
             <FeatureIcon surface="dark">
               <Icon name={card.icon} size={32} />

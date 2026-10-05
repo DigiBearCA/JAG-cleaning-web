@@ -46,7 +46,7 @@ export interface SiteConfig {
 export const SITE: SiteConfig = {
   name: "JAAG CONTRACTING & CONSTRUCTIONS",
   shortName: "JAAG",
-  descriptor: "Cleaning & Snow Removal",
+  descriptor: "Contracting & Constructions",
   url: "https://www.example.com", // TODO(client): real domain, no trailing slash
   palette: "a", // Switch to "b" here only.
   indexable: false, // TODO(client): set to true at launch, after every placeholder is replaced

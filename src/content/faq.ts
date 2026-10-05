@@ -14,7 +14,7 @@ export const HOME_FAQ: ReadonlyArray<FaqItem> = [
   {
     id: "insured",
     question: "Are you insured?",
-    answer: "Yes, JAG is insured. If you need details for your property or building, ask when you request your quote.",
+    answer: "Yes, JAAG is insured. If you need details for your property or building, ask when you request your quote.",
   },
   {
     id: "areas",

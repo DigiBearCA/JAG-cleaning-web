@@ -24,10 +24,10 @@ export const PRIVACY_POLICY: LegalDocument = {
   title: "Privacy Policy",
   path: "/privacy-policy",
   metaDescription:
-    "How JAG Cleaning & Snow Removal collects, uses, and protects the information you share through our quote form, and how to ask us to remove it.",
+    "How JAAG Contracting & Constructions collects, uses, and protects the information you share through our quote form, and how to ask us to remove it.",
   lastUpdated: "2026-10-05",
   intro:
-    "JAG Cleaning & Snow Removal (\"JAG\", \"we\", \"us\") provides cleaning and snow removal in Edmonton, Alberta. This policy explains, in plain language, what information we collect through this website and what we do with it.",
+    "JAAG Contracting & Constructions (\"JAAG\", \"we\", \"us\") provides cleaning and snow removal in Edmonton, Alberta. This policy explains, in plain language, what information we collect through this website and what we do with it.",
   sections: [
     {
       heading: "What we collect",
@@ -75,10 +75,10 @@ export const TERMS: LegalDocument = {
   title: "Terms of Service",
   path: "/terms",
   metaDescription:
-    "The terms that apply when you request a quote or book cleaning or snow removal with JAG Cleaning & Snow Removal in Edmonton, Alberta.",
+    "The terms that apply when you request a quote or book cleaning or snow removal with JAAG Contracting & Constructions in Edmonton, Alberta.",
   lastUpdated: "2026-10-05",
   intro:
-    "These terms apply when you use this website or request a quote or service from JAG Cleaning & Snow Removal (\"JAG\", \"we\", \"us\") in Edmonton, Alberta. By booking a service, you agree to them.",
+    "These terms apply when you use this website or request a quote or service from JAAG Contracting & Constructions (\"JAAG\", \"we\", \"us\") in Edmonton, Alberta. By booking a service, you agree to them.",
   sections: [
     {
       heading: "Quotes",
