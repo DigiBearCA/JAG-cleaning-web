@@ -20,19 +20,21 @@ export type SelectFieldProps = {
 /** Native select styled as a pill, with a custom chevron inside on the right. */
 export function SelectField({ id, label, options, placeholder, error, ...rest }: SelectFieldProps) {
   const hasError = typeof error === "string" && error.length > 0;
+  const labelBorder = hasError ? "border-danger peer-focus:border-danger" : "border-input-border peer-focus:border-primary";
+  
   return (
-    <FieldShell id={id} label={label} error={error}>
-      <div className="relative">
+    <FieldShell id={id} error={error}>
+      <div className="relative flex">
         <select
           id={id}
           aria-invalid={hasError || undefined}
           aria-describedby={hasError ? fieldErrorId(id) : undefined}
-          className={cx(CONTROL_BASE, "h-12 cursor-pointer appearance-none rounded-pill pr-12 pl-6", controlBorderClass(hasError))}
+          className={cx(CONTROL_BASE, "peer h-12 cursor-pointer appearance-none rounded-pill pr-12 pl-6", controlBorderClass(hasError))}
           {...rest}
         >
           {placeholder ? (
             <option value="" disabled>
-              {placeholder}
+              {/* Note: don't show text in the option if we are floating a label */}
             </option>
           ) : null}
           {options.map((option) => (
@@ -41,6 +43,18 @@ export function SelectField({ id, label, options, placeholder, error, ...rest }:
             </option>
           ))}
         </select>
+        <label
+          htmlFor={id}
+          className={cx(
+            "pointer-events-none absolute left-4 top-0 -translate-y-1/2 bg-white px-2 type-small font-medium text-ink-muted transition-all duration-150 ease-brand border-[1.5px] rounded-pill",
+            labelBorder,
+            "peer-invalid:top-1/2 peer-invalid:-translate-y-1/2 peer-invalid:border-transparent peer-invalid:bg-transparent peer-invalid:text-base peer-invalid:font-normal",
+            "peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:bg-white peer-focus:type-small peer-focus:font-medium peer-focus:text-primary",
+            hasError && "peer-focus:text-danger"
+          )}
+        >
+          {label}
+        </label>
         <ChevronDownIcon
           size={20}
           className="pointer-events-none absolute top-1/2 right-5 -translate-y-1/2 text-primary"

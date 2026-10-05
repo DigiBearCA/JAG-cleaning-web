@@ -16,6 +16,7 @@ export const QUOTE_LIMITS = {
   nameMax: 80,
   phoneMinDigits: 10,
   phoneMax: 30,
+  emailMax: 200,
   messageMax: 1000,
   /** Hard cap for the honeypot value we bother reading. */
   honeypotMax: 200,
@@ -25,6 +26,7 @@ export const QUOTE_LIMITS = {
 export interface QuoteInput {
   readonly name: string;
   readonly phone: string;
+  readonly email: string;
   readonly service: string;
   readonly message: string;
   /** Honeypot. Real visitors never see or fill this. */
@@ -35,14 +37,15 @@ export interface QuoteInput {
 export interface QuoteData {
   readonly name: string;
   readonly phone: string;
+  readonly email: string;
   readonly service: ServiceValue;
   readonly message: string;
 }
 
-export type QuoteField = "name" | "phone" | "service" | "message";
+export type QuoteField = "name" | "phone" | "email" | "service" | "message";
 
 /** Field order, used to focus the first invalid field. */
-export const QUOTE_FIELDS: ReadonlyArray<QuoteField> = ["name", "phone", "service", "message"];
+export const QUOTE_FIELDS: ReadonlyArray<QuoteField> = ["name", "phone", "email", "service", "message"];
 
 export type QuoteErrors = Partial<Record<QuoteField, string>>;
 
@@ -58,6 +61,7 @@ export type QuoteApiResponse =
 export const EMPTY_QUOTE_INPUT: QuoteInput = {
   name: "",
   phone: "",
+  email: "",
   service: "",
   message: "",
   company: "",
@@ -65,6 +69,7 @@ export const EMPTY_QUOTE_INPUT: QuoteInput = {
 
 const PHONE_STRIP = /[\s\-()]/g;
 const DIGITS_ONLY = /^\d+$/;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function isServiceValue(value: string): value is ServiceValue {
   return SERVICE_OPTIONS.some((option) => option.value === value);
@@ -106,6 +111,13 @@ export function validateQuoteField(field: QuoteField, rawValue: string): string 
       }
       return undefined;
     }
+    case "email": {
+      const value = cleanLine(rawValue);
+      if (value.length === 0) return undefined; // Optional
+      if (value.length > QUOTE_LIMITS.emailMax) return `Keep your email to ${QUOTE_LIMITS.emailMax} characters or fewer.`;
+      if (!EMAIL_REGEX.test(value)) return "Enter a valid email address.";
+      return undefined;
+    }
     case "service": {
       if (rawValue.length === 0) return "Choose the service you need.";
       if (!isServiceValue(rawValue)) return "Choose one of the listed services.";
@@ -138,6 +150,7 @@ export function validateQuote(input: QuoteInput): QuoteValidationResult {
     data: {
       name: cleanLine(input.name),
       phone: input.phone.trim(),
+      email: cleanLine(input.email),
       service,
       message: input.message.trim(),
     },
@@ -170,13 +183,14 @@ export function parseQuoteBody(body: unknown): QuoteInput | null {
   if (!isRecord(body)) return null;
   const name = readString(body, "name", QUOTE_LIMITS.nameMax * 2);
   const phone = readString(body, "phone", QUOTE_LIMITS.phoneMax);
+  const email = readString(body, "email", QUOTE_LIMITS.emailMax * 2);
   const service = readString(body, "service", 20);
   const message = readString(body, "message", QUOTE_LIMITS.messageMax * 2);
   const company = readString(body, "company", QUOTE_LIMITS.honeypotMax);
-  if (name === null || phone === null || service === null || message === null || company === null) {
+  if (name === null || phone === null || email === null || service === null || message === null || company === null) {
     return null;
   }
-  return { name, phone, service, message, company };
+  return { name, phone, email, service, message, company };
 }
 
 /** Type guard for the API response, used by the client. */

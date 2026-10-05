@@ -32,7 +32,7 @@ export const PRIVACY_POLICY: LegalDocument = {
     {
       heading: "What we collect",
       paragraphs: ["When you use our quote form, we collect:"],
-      list: ["Your name", "Your phone number", "The service you need", "Any message you choose to add"],
+      list: ["Your name", "Your phone number", "Your email address (if provided)", "The service you need", "Any message you choose to add"],
       after: [
         "If you call, email, or message us on WhatsApp, we receive the details you share in that conversation.",
         "This website does not use advertising or analytics cookies. The map on our Contact page is provided by Google Maps, which may collect information under Google's own privacy policy.",
