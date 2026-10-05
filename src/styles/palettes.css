@@ -1,0 +1,70 @@
+/* Runtime palette variables. Switch palettes with <html data-palette="a"> or "b". */
+:root {
+  --snow: #F7F9FA;
+  --danger: #B3261E;
+}
+
+/* Palette A: Evergreen and sunrise (default) */
+:root,
+[data-palette="a"] {
+  --bg: #F7F9FA;
+  --primary: #12403A;
+  --primary-hover: #0D2F2A;
+  --on-primary: #F7F9FA;
+  --accent: #F2A93B;
+  --accent-hover: #E39A2B;
+  --on-accent: #1F2B2E;
+  --ink: #1F2B2E;
+  --ink-muted: #4A5A5D;
+
+  --alt-bg: #D8ECEE;        /* alternating section background */
+  --alt-heading: #12403A;
+  --alt-text: #1F2B2E;
+  --alt-outline: #12403A;   /* outline button colour on alt sections */
+
+  --dark-bg: #12403A;       /* "Why JAG" section and footer */
+  --dark-card: #1A5249;
+  --on-dark: #F7F9FA;
+  --on-dark-muted: rgba(247, 249, 250, 0.78);
+
+  --illus-sky: #D8ECEE;
+  --illus-body: #12403A;
+  --illus-detail: #F7F9FA;
+  --illus-ground: #F7F9FA;
+}
+
+/* Palette B: Moss and lagoon */
+[data-palette="b"] {
+  --bg: #F7F9FA;
+  --primary: #2B3A1F;
+  --primary-hover: #212D18;
+  --on-primary: #F7F9FA;
+  --accent: #F2A93B;
+  --accent-hover: #E39A2B;
+  --on-accent: #0F1F1A;
+  --ink: #0F1F1A;
+  --ink-muted: #3F4F4A;
+
+  --alt-bg: #0A4E68;
+  --alt-heading: #F7F9FA;
+  --alt-text: #F7F9FA;
+  --alt-outline: #F7F9FA;
+
+  --dark-bg: #2B3A1F;
+  --dark-card: #364A28;
+  --on-dark: #F7F9FA;
+  --on-dark-muted: rgba(247, 249, 250, 0.78);
+
+  --illus-sky: #0A4E68;
+  --illus-body: #F7F9FA;
+  --illus-detail: #2B3A1F;
+  --illus-ground: #F7F9FA;
+}
+
+/* Derived (put after both palette blocks; they resolve per palette) */
+:root {
+  --line: color-mix(in srgb, var(--ink) 14%, transparent);
+  --input-border: color-mix(in srgb, var(--primary) 35%, white);
+  --chip-bg: var(--alt-bg);
+  --chip-fg: var(--alt-heading);
+}
