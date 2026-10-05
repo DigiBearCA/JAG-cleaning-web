@@ -243,7 +243,7 @@ export function QuoteForm({ defaultService, id, labelledBy, className }: QuoteFo
               onChange={(event) => handleChange("email", event.target.value)}
               onBlur={() => handleBlur("email")}
             />
-            <div className="flex flex-col md:row-span-2 md:min-h-0 md:[&>*]:h-full md:[&_textarea]:h-full md:[&_textarea]:min-h-0 md:[&_textarea]:resize-none [&_textarea]:min-h-28">
+            <div className="flex flex-col md:row-span-2 md:min-h-0 md:*:h-full md:[&_textarea]:h-full md:[&_textarea]:min-h-0 md:[&_textarea]:resize-none [&_textarea]:min-h-28">
               <TextAreaField
                 id={fieldId("message")}
                 name="message"

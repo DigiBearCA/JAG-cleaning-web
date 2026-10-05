@@ -19,10 +19,10 @@ export default function ContactPage() {
       <Section
         labelledBy="contact-details-title"
         bordered
-        containerClassName="grid items-start gap-12 md:grid-cols-2"
+        containerClassName="grid items-start gap-10 lg:grid-cols-[35fr_65fr] lg:gap-12"
       >
         <ContactDetails />
-        <div id="quote" className="order-first flex flex-col gap-4 md:order-none">
+        <div id="quote" className="order-first flex flex-col gap-4 md:order-0">
           <div className="flex flex-col gap-2">
             <h2 id="quote-form-title" className="type-h2 text-primary">
               {FORM_CARD_COPY.title}
@@ -39,7 +39,7 @@ export default function ContactPage() {
           title={CONTACT_DETAILS.mapTitle}
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          className="block aspect-square md:aspect-[21/9] w-full border-t border-line bg-alt"
+          className="block aspect-square md:aspect-21/9 w-full border-t border-line bg-alt"
         />
         <div className="absolute bottom-4 right-4 md:bottom-8 md:right-8">
           <a
