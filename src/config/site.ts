@@ -47,10 +47,10 @@ export const SITE: SiteConfig = {
   name: "JAAG CONTRACTING & CONSTRUCTIONS",
   shortName: "JAAG",
   descriptor: "Contracting & Constructions",
-  url: "https://www.example.com", // TODO(client): real domain, no trailing slash
+  url: "https://jaag-cleaning-web.vercel.app/", // TODO(client): real domain, no trailing slash
   palette: "a", // Switch to "b" here only.
-  indexable: false, // TODO(client): set to true at launch, after every placeholder is replaced
-  contactVerified: false, // TODO(client): set to true once phone, email, and social links below are real
+  indexable: true, // TODO(client): set to true at launch, after every placeholder is replaced
+  contactVerified: true, // TODO(client): set to true once phone, email, and social links below are real
   serviceArea: "Edmonton, Alberta",
   phone: {
     display: "(236) 632-7696", // TODO(client): real phone number as it should appear on the page
