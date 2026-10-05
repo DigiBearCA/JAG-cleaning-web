@@ -8,7 +8,7 @@ export const HOME_META = {
 
 export const HERO = {
   eyebrow: "Serving Edmonton",
-  title: "Clean spaces, clear driveways.",
+  title: "Clean homes & businesses, Clear driveways all winter.",
   lead: "Reliable cleaning for homes and businesses, and snow removal when winter hits.",
   primaryCta: "Get a Free Quote",
   secondaryCta: "Call us",
