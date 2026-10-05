@@ -8,5 +8,5 @@ export interface ContainerProps {
 
 /** 1120px max width, 16px side padding on mobile and 24px from 768px. */
 export function Container({ className, children }: ContainerProps) {
-  return <div className={cx("mx-auto w-full max-w-[1600px] px-4 md:px-6", className)}>{children}</div>;
+  return <div className={cx(" w-full max-w-[1600px] px-4 md:px-6", className)}>{children}</div>;
 }

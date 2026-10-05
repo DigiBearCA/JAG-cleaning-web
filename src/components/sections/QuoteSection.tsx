@@ -24,7 +24,7 @@ export function QuoteSection({ defaultService }: QuoteSectionProps) {
       labelledBy="quote-title"
       containerClassName="grid items-start gap-10 md:grid-cols-2 md:gap-12"
     >
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-4">
         <SectionHeading id="quote-title" title={QUOTE_COPY.title} lead={QUOTE_COPY.lead} />
         <p className="max-w-prose type-body text-ink-muted">{QUOTE_COPY.reassurance}</p>
         <div className="flex flex-col items-start gap-4">

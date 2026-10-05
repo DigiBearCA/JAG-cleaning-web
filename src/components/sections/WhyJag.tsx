@@ -9,7 +9,7 @@ export function WhyJag() {
   return (
     <Section tone="dark" id="why-jag" labelledBy="why-jag-title">
       <SectionHeading id="why-jag-title" title={WHY_JAAG.title} align="center" tone="dark" />
-      <ul className="mt-10 grid gap-6 md:grid-cols-2">
+      <ul className="mt-10 grid gap-4 md:grid-cols-2">
         {WHY_JAAG.cards.map((card) => (
           <li key={card.title} className="flex flex-col gap-4 rounded-card bg-dark-card p-6 md:p-8">
             <FeatureIcon surface="dark">

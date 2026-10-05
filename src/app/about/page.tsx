@@ -34,7 +34,7 @@ export default function AboutPage() {
 
       <Section tone="alt" id="values" labelledBy="values-title">
         <SectionHeading id="values-title" title={VALUES.title} align="center" tone="alt" />
-        <ul className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {VALUES.cards.map((card) => (
             <Card key={card.title} as="li" className="flex flex-col gap-4">
               <FeatureIcon>

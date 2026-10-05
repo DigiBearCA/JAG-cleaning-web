@@ -41,7 +41,7 @@ export function Section({
       aria-labelledby={labelledBy}
       className={cx(
         TONE_CLASSES[tone],
-        spacing === "hero" ? "py-12 md:py-24" : "py-12 md:py-16",
+        spacing === "hero" ? "py-12 md:py-24 pt-4 md:pt-6 " : "py-12 md:py-16",
         bordered && "border-t border-line",
         className,
       )}

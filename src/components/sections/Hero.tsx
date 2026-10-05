@@ -16,8 +16,8 @@ export interface HeroProps {
 /** Home hero: text left, illustration right on desktop; stacked on mobile. */
 export function Hero({ image }: HeroProps) {
   return (
-    <Section spacing="hero" labelledBy="hero-title" containerClassName="grid items-center gap-10 md:grid-cols-2 md:gap-12">
-      <div className="flex animate-fade-up flex-col items-start gap-6">
+    <Section spacing="hero" labelledBy="hero-title" containerClassName="grid items-center gap-4 md:grid-cols-2 md:gap-12">
+      <div className="flex animate-fade-up flex-col items-start gap-4">
         <Chip icon="mapPin">{HERO.eyebrow}</Chip>
         <div className="flex flex-col gap-4">
           <h1 id="hero-title" className="type-h1 text-primary">

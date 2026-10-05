@@ -40,7 +40,7 @@ export function PageHero({ eyebrow, title, lead, scene, sceneLabel, image, showA
       labelledBy="page-title"
       containerClassName={cx("grid items-center gap-10", hasVisual && "md:grid-cols-2 md:gap-12")}
     >
-      <div className="flex animate-fade-up flex-col items-start gap-6">
+      <div className="flex animate-fade-up flex-col items-start gap-4">
         <Chip>{eyebrow}</Chip>
         <div className="flex flex-col gap-4">
           <h1 id="page-title" className="type-h1 text-primary">

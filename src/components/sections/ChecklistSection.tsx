@@ -44,7 +44,7 @@ export function ChecklistSection({ id = "included", eyebrow, title, lead, groups
   return (
     <Section tone="alt" id={id} labelledBy={headingId}>
       <SectionHeading id={headingId} eyebrow={eyebrow} title={title} lead={lead} tone="alt" />
-      <div className={cx("mt-10 grid gap-6", !single && "md:grid-cols-2")}>
+      <div className={cx("mt-10 grid gap-4", !single && "md:grid-cols-2")}>
         {groups.map((group, index) => (
           <Card key={group.title ?? `group-${index}`} className="flex flex-col gap-5">
             {group.title ? <h3 className="type-h3 text-primary">{group.title}</h3> : null}

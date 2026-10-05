@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <Section spacing="hero" labelledBy="not-found-title">
-      <div className=" flex  flex-col items-center gap-6 text-center">
+      <div className=" flex  flex-col items-center gap-4 text-center">
         <h1 id="not-found-title" className="type-h1 text-primary">
           {NOT_FOUND_COPY.title}
         </h1>
