@@ -15,13 +15,13 @@ export const SERVICES_LINK: NavLink = { label: "Services", href: "/services" };
 
 /** Header links after the Services link, in order. */
 export const NAV_AFTER_SERVICES: ReadonlyArray<NavLink> = [
-  { label: "About", href: "/about" },
+  // { label: "About", href: "/about" },
   { label: "Contact Us", href: "/contact" },
 ];
 
 export const FOOTER_COMPANY: ReadonlyArray<NavLink> = [
   HOME_LINK,
-  { label: "About", href: "/about" },
+  // { label: "About", href: "/about" },
   { label: "Contact Us", href: "/contact" },
 ];
 
