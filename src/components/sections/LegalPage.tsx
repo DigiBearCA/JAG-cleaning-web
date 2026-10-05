@@ -15,7 +15,7 @@ const LINK_CLASSES = "font-medium text-primary underline underline-offset-4 tran
 export function LegalPage({ document }: { readonly document: LegalDocument }) {
   return (
     <Container className="py-12 md:py-16">
-      <article className="mx-auto flex max-w-180 flex-col gap-10">
+      <article className=" flex  flex-col gap-10">
         <header className="flex flex-col gap-3">
           <h1 className="type-h1 text-primary">{document.title}</h1>
           <p className="type-small text-ink-muted">

@@ -14,7 +14,7 @@ export function FaqSection({ title, lead, items }: FaqSectionProps) {
   return (
     <Section id="faq" labelledBy="faq-title">
       <SectionHeading id="faq-title" title={title} lead={lead} align="center" />
-      <Accordion items={items} className="mx-auto mt-10 max-w-3xl" />
+      <Accordion items={items} className=" mt-10 " />
     </Section>
   );
 }

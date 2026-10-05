@@ -17,7 +17,7 @@ export function HowItWorks({ tone = "base" }: HowItWorksProps) {
   return (
     <Section tone={tone} id="how-it-works" labelledBy="how-it-works-title">
       <SectionHeading id="how-it-works-title" title={HOW_IT_WORKS.title} align="center" tone={tone} />
-      <ol className="mx-auto mt-10 grid max-w-sm gap-8 md:max-w-none md:grid-cols-3 md:gap-6">
+      <ol className="mt-10 grid gap-8 md:grid-cols-3 md:gap-6">
         {HOW_IT_WORKS.steps.map((step, index) => {
           const last = index === HOW_IT_WORKS.steps.length - 1;
           return (
