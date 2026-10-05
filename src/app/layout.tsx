@@ -58,7 +58,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en-CA" data-palette={SITE.palette} className={`${fraunces.variable} ${dmSans.variable}`}>
-      <body className="flex min-h-dvh flex-col pb-[calc(4.5rem+env(safe-area-inset-bottom))] antialiased md:pb-0">
+      <body className="mx-auto flex min-h-dvh max-w-[1600px] flex-col pb-[calc(4.5rem+env(safe-area-inset-bottom))] antialiased md:pb-0">
         <SkipLink />
         <Header />
         <main id="main" className="flex-1">
