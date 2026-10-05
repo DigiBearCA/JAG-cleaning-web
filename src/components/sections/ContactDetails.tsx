@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
-import { ArrowUpRightIcon, FacebookIcon, Icon, InstagramIcon, type IconName } from "@/components/icons";
+import { Icon, type IconName } from "@/components/icons";
 import { SITE } from "@/config/site";
 import { CONTACT_DETAILS } from "@/content/contact";
-import { mailtoHref, mapEmbedUrl, mapOpenUrl, telHref, whatsappHref } from "@/lib/contact-links";
+import { mailtoHref, telHref, whatsappHref } from "@/lib/contact-links";
 
 const LINK_CLASSES =
   "font-medium text-primary underline-offset-4 transition duration-150 ease-brand hover:underline break-words";
@@ -21,10 +21,7 @@ function DetailRow({ icon, label, children }: { readonly icon: IconName; readonl
   );
 }
 
-const SOCIAL_CLASSES =
-  "inline-flex size-11 items-center justify-center rounded-pill border-[1.5px] border-primary text-primary transition duration-150 ease-brand hover:bg-primary/8";
-
-/** Contact details list, social links, and the Google Maps embed. */
+/** Contact details list. */
 export function ContactDetails() {
   const { labels } = CONTACT_DETAILS;
   return (
@@ -67,40 +64,22 @@ export function ContactDetails() {
         ) : null}
       </ul>
 
-      <div className="flex flex-col gap-3">
+      {/* <div className="flex flex-col gap-3">
         <h3 className="type-small font-medium text-ink">{labels.social}</h3>
         <ul className="flex gap-3">
           <li>
             <a href={SITE.social.instagram} target="_blank" rel="noopener noreferrer" aria-label={`${SITE.shortName} on Instagram`} className={SOCIAL_CLASSES}>
-              <InstagramIcon size={20} />
+              <size={20} />
             </a>
           </li>
           <li>
             <a href={SITE.social.facebook} target="_blank" rel="noopener noreferrer" aria-label={`${SITE.shortName} on Facebook`} className={SOCIAL_CLASSES}>
-              <FacebookIcon size={20} />
+              <size={20} />
             </a>
           </li>
         </ul>
-      </div>
+      </div> */}
 
-      <div className="flex flex-col gap-3">
-        <iframe
-          src={mapEmbedUrl()}
-          title={CONTACT_DETAILS.mapTitle}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          className="block aspect-[4/3] w-full rounded-card border border-line bg-alt"
-        />
-        <a
-          href={mapOpenUrl()}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex min-h-11 items-center gap-1.5 self-start type-button text-primary underline-offset-4 transition duration-150 ease-brand hover:underline"
-        >
-          {CONTACT_DETAILS.mapLink}
-          <ArrowUpRightIcon size={18} />
-        </a>
-      </div>
     </div>
   );
 }
