@@ -1,14 +1,12 @@
 import Link from "next/link";
 import { Icon } from "@/components/icons";
 import { getEnabledServices, getServiceNumber } from "@/content/services";
-import { QuoteStamp } from "./QuoteStamp";
 
 export function JobIndex() {
   const services = getEnabledServices();
 
   return (
     <div className="relative rounded-panel bg-alt p-6 md:p-8 flex flex-col">
-      <QuoteStamp />
       <h2 className="type-eyebrow text-alt-heading mb-6">Service Index</h2>
       <div className="flex flex-col gap-2">
         {services.map((service) => (
