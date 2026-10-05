@@ -62,7 +62,7 @@ export function Header() {
       <Container className="flex h-16 items-center justify-between gap-4 md:h-18">
         <Logo onClick={closeMenu} />
 
-        <nav aria-label="Main" className="hidden lg:block">
+        <nav aria-label="Main" className="hidden lg:block absolute left-1/2 -translate-x-1/2">
           <ul className="flex items-center gap-1">
             <li>
               <DesktopNavLink link={HOME_LINK} pathname={pathname} />
