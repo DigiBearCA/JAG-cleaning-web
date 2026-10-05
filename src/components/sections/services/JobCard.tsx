@@ -47,8 +47,8 @@ export function JobCard({ service, number, illustration, isEven }: JobCardProps)
           <p className="type-lead text-ink font-medium mb-4">{service.tagline}</p>
           <p className="type-body text-ink-muted mb-8">{service.description}</p>
           
-          <div>
-            <h4 className="type-eyebrow text-ink mb-4">Included</h4>
+          <div className="bg-alt p-6 rounded-card mt-auto">
+            <h4 className="type-eyebrow text-alt-heading mb-4">Included</h4>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {service.included.map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
@@ -73,7 +73,7 @@ export function JobCard({ service, number, illustration, isEven }: JobCardProps)
           <div className="flex flex-col md:flex-row gap-8 md:gap-4 justify-between relative">
             {service.flow.map((step, i) => (
               <div key={i} className="flex flex-row md:flex-col items-start md:items-center gap-4 md:text-center md:flex-1">
-                <div className="w-12 h-12 rounded-full bg-white border-2 border-line flex items-center justify-center text-ink font-medium type-small shrink-0 relative z-10">
+                <div className="w-12 h-12 rounded-full bg-alt flex items-center justify-center text-alt-heading font-medium type-small shrink-0 relative z-10">
                   {i + 1}
                 </div>
                 <div>
