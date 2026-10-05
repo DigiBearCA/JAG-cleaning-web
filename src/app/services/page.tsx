@@ -53,7 +53,7 @@ export default function ServicesPage() {
   const orderedChapters: ChapterId[] = ["cleaning", "site", "build"];
 
   return (
-    <main id="main">
+    <main id="main" className="overflow-x-hidden">
       <Hero />
       
       {orderedChapters.map((chapterId) => {

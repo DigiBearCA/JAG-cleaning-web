@@ -17,8 +17,8 @@ export function ChapterBand({ id, range }: ChapterBandProps) {
           <h2 className="type-h2 text-alt-heading mb-4">{chapter.title}</h2>
           <p className="type-lead text-alt-text max-w-xl">{chapter.description}</p>
         </div>
-        <div className="flex-shrink-0">
-          <div className="type-wordmark text-8xl md:text-9xl text-alt-heading opacity-20">
+        <div className="flex-shrink-0 max-w-full overflow-hidden">
+          <div className="type-wordmark text-7xl md:text-9xl text-alt-heading opacity-20 whitespace-nowrap overflow-hidden text-ellipsis">
             {range}
           </div>
         </div>
