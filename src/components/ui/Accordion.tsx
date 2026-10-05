@@ -25,21 +25,21 @@ export interface AccordionProps {
 export function Accordion({ items, headingLevel = "h3", className }: AccordionProps) {
   const baseId = useId();
   const firstId = items[0]?.id;
-  const [openIds, setOpenIds] = useState<ReadonlyArray<string>>(firstId ? [firstId] : []);
+  const [openId, setOpenId] = useState<string | null>(firstId ?? null);
   const Heading = headingLevel;
 
   function toggle(id: string) {
-    setOpenIds((current) => (current.includes(id) ? current.filter((entry) => entry !== id) : [...current, id]));
+    setOpenId((current) => (current === id ? null : id));
   }
 
   return (
     <div className={cx("flex flex-col gap-4", className)}>
       {items.map((item) => {
-        const open = openIds.includes(item.id);
+        const open = openId === item.id;
         const buttonId = `${baseId}-${item.id}-button`;
         const panelId = `${baseId}-${item.id}-panel`;
         return (
-          <div key={item.id} className="rounded-card border border-line bg-white text-ink">
+          <div key={item.id} className="rounded-card border border-line bg-snow text-ink">
             <Heading className="m-0">
               <button
                 type="button"

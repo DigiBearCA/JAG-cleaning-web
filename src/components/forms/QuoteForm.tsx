@@ -141,7 +141,7 @@ export function QuoteForm({ defaultService, id, labelledBy, className }: QuoteFo
   const submitting = status === "submitting";
 
   return (
-    <div id={id} className={cx("rounded-card border border-line bg-white p-6 text-ink md:p-8", className)}>
+    <div id={id} className={cx("rounded-card border border-line bg-snow p-6 text-ink md:p-8", className)}>
       {status === "success" ? (
         <div className="flex flex-col gap-4">
           <h3 ref={successHeadingRef} tabIndex={-1} className="type-h3 text-primary">

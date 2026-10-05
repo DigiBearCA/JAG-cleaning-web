@@ -31,15 +31,17 @@ export function WhoWeServe({
       <SectionHeading id={headingId} title={title} lead={lead} align="center" tone={tone} />
       <ul className="mt-10 grid gap-4 lg:grid-cols-3">
         {cards.map((card) => (
-          <Card key={card.href} as="li" interactive className="flex flex-col gap-4">
-            <FeatureIcon>
-              <Icon name={card.icon} />
-            </FeatureIcon>
-            <h3 className="type-h3 text-primary">{card.title}</h3>
+          <Card key={card.href} as="li" interactive className="flex flex-col items-center text-center gap-4">
+            <div className="flex items-center gap-3">
+              <FeatureIcon>
+                <Icon name={card.icon} />
+              </FeatureIcon>
+              <h3 className="type-h3 text-primary">{card.title}</h3>
+            </div>
             <p className="type-body text-ink">{card.text}</p>
             <Link
               href={card.href}
-              className="mt-auto inline-flex min-h-11 items-center gap-2 self-start type-button text-primary after:absolute after:inset-0 after:rounded-card focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-2 focus-visible:after:outline-primary focus-visible:after:outline-solid"
+              className="mt-auto inline-flex min-h-11 items-center justify-center gap-2 rounded-pill bg-primary px-6 type-button text-on-primary transition duration-150 ease-brand hover:bg-primary-hover active:scale-98 after:absolute after:inset-0 after:rounded-card focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-2 focus-visible:after:outline-primary focus-visible:after:outline-solid"
             >
               {card.linkLabel}
               <span className="sr-only"> {card.linkHiddenText}</span>

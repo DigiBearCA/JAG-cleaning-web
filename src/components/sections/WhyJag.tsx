@@ -1,23 +1,23 @@
 import { Icon } from "@/components/icons";
-import { FeatureIcon } from "@/components/ui/Card";
+import { Card, FeatureIcon } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { WHY_JAAG } from "@/content/home";
 
-/** Dark section with a 2x2 grid of dark cards and accent icons. */
+/** Alt section with a 2x2 grid of white cards. */
 export function WhyJag() {
   return (
-    <Section tone="dark" id="why-jag" labelledBy="why-jag-title">
-      <SectionHeading id="why-jag-title" title={WHY_JAAG.title} align="center" tone="dark" />
+    <Section tone="alt" id="why-jag" labelledBy="why-jag-title">
+      <SectionHeading id="why-jag-title" title={WHY_JAAG.title} align="center" tone="alt" />
       <ul className="mt-10 grid gap-4 md:grid-cols-2">
         {WHY_JAAG.cards.map((card) => (
-          <li key={card.title} className="flex flex-col gap-4 rounded-card bg-dark-card p-6 md:p-8">
-            <FeatureIcon surface="dark">
-              <Icon name={card.icon} size={32} />
+          <Card as="li" key={card.title} className="flex flex-col gap-4">
+            <FeatureIcon surface="light">
+              <Icon name={card.icon} />
             </FeatureIcon>
-            <h3 className="type-h3 text-on-dark">{card.title}</h3>
-            <p className="type-body text-on-dark-muted">{card.text}</p>
-          </li>
+            <h3 className="type-h3 text-primary">{card.title}</h3>
+            <p className="type-body text-ink">{card.text}</p>
+          </Card>
         ))}
       </ul>
     </Section>
