@@ -37,7 +37,8 @@ const BASE =
 const SIZE: Record<ButtonSize, string> = {
   md: "h-12 min-w-30 gap-2 px-7 type-button",
   sm: "h-10 min-w-30 gap-2 px-5 type-button",
-  bar: "h-12 min-w-0 flex-1 gap-1.5 px-2.5 type-small font-medium",
+  // flex-auto (not flex-1): at 360px equal thirds are ~103px, too narrow for icon + "WhatsApp"; a content basis lets all three labels fit.
+  bar: "h-12 min-w-0 flex-auto gap-1.5 px-2.5 type-small font-medium",
 };
 
 const SOLID: Record<"accent" | "primary", string> = {
