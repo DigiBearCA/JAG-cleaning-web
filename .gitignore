@@ -44,3 +44,4 @@ next-env.d.ts
 SKILLS.md
 AGENT_PROMPT.md
 DESIGN.md
+!.env.example
