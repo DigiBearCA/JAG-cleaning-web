@@ -75,7 +75,7 @@ export const TERMS: LegalDocument = {
   title: "Terms of Service",
   path: "/terms",
   metaDescription:
-    "These are the terms that apply when you request a free quote or book cleaning or snow removal with JAG Cleaning & Snow Removal in Edmonton, Alberta.",
+    "The terms that apply when you request a quote or book cleaning or snow removal with JAG Cleaning & Snow Removal in Edmonton, Alberta.",
   lastUpdated: "2026-10-05",
   intro:
     "These terms apply when you use this website or request a quote or service from JAG Cleaning & Snow Removal (\"JAG\", \"we\", \"us\") in Edmonton, Alberta. By booking a service, you agree to them.",

@@ -33,7 +33,6 @@ export function buildPageMetadata({ title, description, path, absoluteTitle = fa
       url: path,
       title: fullTitle,
       description,
-      images: [{ url: "/opengraph-image" }],
     },
     twitter: {
       card: "summary_large_image",

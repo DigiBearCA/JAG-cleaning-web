@@ -101,7 +101,7 @@
 
   /* Why: the mobile menu (client) and the sticky bar (server) are separate components; :has() hides the bar and locks page scroll while the menu is open without extra JS. */
   body:has([data-mobile-menu-open]) { overflow: hidden; }
-  body:has([data-mobile-menu-open]) [data-sticky-bar] { display: none !important; }
+  body:has([data-mobile-menu-open]) [data-sticky-bar] { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
