@@ -218,3 +218,74 @@ export function KeyIcon(props: IconProps) {
     </IconBase>
   );
 }
+
+export function BriefcaseIcon(props: IconProps) {
+  return (
+    <IconBase {...props}>
+      <rect x="3" y="7" width="18" height="13" rx="2" />
+      <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M12 12v.01" />
+    </IconBase>
+  );
+}
+
+export function RugIcon(props: IconProps) {
+  return (
+    <IconBase {...props}>
+      <rect x="4" y="6" width="16" height="12" rx="1" />
+      <path d="M3 8h1M3 12h1M3 16h1M20 8h1M20 12h1M20 16h1" />
+    </IconBase>
+  );
+}
+
+export function TilesIcon(props: IconProps) {
+  return (
+    <IconBase {...props}>
+      <path d="M4 4h16v16H4zM12 4v16M4 12h16" />
+    </IconBase>
+  );
+}
+
+export function ScrubberIcon(props: IconProps) {
+  return (
+    <IconBase {...props}>
+      <path d="M12 18H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3M18 18H14a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3" />
+      <circle cx="16" cy="16" r="4" />
+      <path d="M7 6v12M10 6v12" />
+    </IconBase>
+  );
+}
+
+export function DebrisIcon(props: IconProps) {
+  return (
+    <IconBase {...props}>
+      <path d="M4 12v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6M8 8l2-2 4 4" />
+      <path d="M12 10l-2 3M16 12l-2 4M8 15l2 2" />
+    </IconBase>
+  );
+}
+
+export function LeafIcon(props: IconProps) {
+  return (
+    <IconBase {...props}>
+      <path d="M11 20c-5.5-2.5-8-7.5-8-12 5 0 9 2 13 6-3.5-3-8.5-4.5-13-4.5C6.5 13 9 17.5 11 20z" />
+      <path d="M11 20C11 12 15 7 21 4" />
+    </IconBase>
+  );
+}
+
+export function HammerIcon(props: IconProps) {
+  return (
+    <IconBase {...props}>
+      <path d="M14 13.5l-6 6a2 2 0 1 1-2.8-2.8l6-6M15 8l4.5 4.5M16.5 6.5l-3 3M19.5 9.5l-3 3" />
+      <path d="M12 6a2 2 0 0 1 2.8-2.8l4.5 4.5A2 2 0 0 1 16.5 10.5Z" />
+    </IconBase>
+  );
+}
+
+export function WallIcon(props: IconProps) {
+  return (
+    <IconBase {...props}>
+      <path d="M4 4h16v16H4zM4 10h16M4 16h16M10 4v6M14 10v6M9 16v4" />
+    </IconBase>
+  );
+}

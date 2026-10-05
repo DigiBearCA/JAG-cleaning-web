@@ -7,12 +7,11 @@ import { CloseIcon, MenuIcon, PhoneIcon } from "@/components/icons";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SITE } from "@/config/site";
-import { HOME_LINK, NAV_AFTER_SERVICES, QUOTE_HREF, type NavLink } from "@/content/navigation";
+import { HOME_LINK, SERVICES_LINK, NAV_AFTER_SERVICES, QUOTE_HREF, type NavLink } from "@/content/navigation";
 import { telHref } from "@/lib/contact-links";
 import { cx } from "@/lib/cx";
 import { Logo } from "./Logo";
 import { MobileMenu } from "./MobileMenu";
-import { ServicesDropdown } from "./ServicesDropdown";
 
 const MOBILE_MENU_ID = "mobile-menu";
 
@@ -33,7 +32,7 @@ function DesktopNavLink({ link, pathname }: { readonly link: NavLink; readonly p
 }
 
 /**
- * Sticky site header. Desktop (1024px+): logo, centred nav with the Services dropdown,
+ * Sticky site header. Desktop (1024px+): logo, centred nav with the Services link,
  * phone link, and a small Get a Quote button. Below 1024px: logo, round phone button,
  * and the menu toggle.
  */
@@ -69,7 +68,7 @@ export function Header() {
               <DesktopNavLink link={HOME_LINK} pathname={pathname} />
             </li>
             <li>
-              <ServicesDropdown />
+              <DesktopNavLink link={SERVICES_LINK} pathname={pathname} />
             </li>
             {NAV_AFTER_SERVICES.map((link) => (
               <li key={link.href}>

@@ -3,7 +3,8 @@ import type { ReactNode } from "react";
 import { FacebookIcon, Icon, InstagramIcon, type IconName } from "@/components/icons";
 import { Container } from "@/components/ui/Container";
 import { SITE } from "@/config/site";
-import { FOOTER_COMPANY, FOOTER_LEGAL, SERVICES_NAV } from "@/content/navigation";
+import { FOOTER_COMPANY, FOOTER_LEGAL } from "@/content/navigation";
+import { getEnabledServices } from "@/content/services";
 import { mailtoHref, telHref, whatsappHref } from "@/lib/contact-links";
 import { Logo } from "./Logo";
 
@@ -51,10 +52,10 @@ export function Footer() {
           </div>
 
           <FooterColumn title="Services">
-            {SERVICES_NAV.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className={LINK_CLASSES}>
-                  {item.label}
+            {getEnabledServices().map((item) => (
+              <li key={item.slug}>
+                <Link href={`/services#${item.slug}`} className={LINK_CLASSES}>
+                  {item.name}
                 </Link>
               </li>
             ))}

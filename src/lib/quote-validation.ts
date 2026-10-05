@@ -3,13 +3,15 @@
  * Written by hand on purpose (no validation library).
  */
 
-export const SERVICE_OPTIONS = [
-  { value: "home", label: "Home Cleaning" },
-  { value: "business", label: "Business Cleaning" },
-  { value: "snow", label: "Snow Removal" },
-] as const;
+import { getEnabledServices } from "@/content/services";
 
-export type ServiceValue = (typeof SERVICE_OPTIONS)[number]["value"];
+export function getServiceOptions() {
+  const enabled = getEnabledServices();
+  const options = enabled.map((s) => ({ value: s.slug, label: s.name }));
+  return [...options, { value: "other", label: "Other or not sure" }];
+}
+
+export type ServiceValue = string;
 
 export const QUOTE_LIMITS = {
   nameMin: 2,
@@ -72,11 +74,11 @@ const DIGITS_ONLY = /^\d+$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function isServiceValue(value: string): value is ServiceValue {
-  return SERVICE_OPTIONS.some((option) => option.value === value);
+  return getServiceOptions().some((option) => option.value === value);
 }
 
 export function serviceLabel(value: ServiceValue): string {
-  const match = SERVICE_OPTIONS.find((option) => option.value === value);
+  const match = getServiceOptions().find((option) => option.value === value);
   return match ? match.label : value;
 }
 

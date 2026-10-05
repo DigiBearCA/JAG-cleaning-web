@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { ChevronDownIcon } from "@/components/icons";
+import { useEffect, useRef } from "react";
+import { } from "@/components/icons";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { HOME_LINK, NAV_AFTER_SERVICES, QUOTE_HREF, SERVICES_LABEL, SERVICES_NAV } from "@/content/navigation";
+import { HOME_LINK, NAV_AFTER_SERVICES, QUOTE_HREF, SERVICES_LINK } from "@/content/navigation";
 import { telHref, whatsappHref } from "@/lib/contact-links";
 import { cx } from "@/lib/cx";
 
@@ -27,7 +27,7 @@ const LINK_CLASSES =
  * through the [data-mobile-menu-open] hook.
  */
 export function MobileMenu({ id, pathname, onNavigate, onDismiss }: MobileMenuProps) {
-  const [servicesOpen, setServicesOpen] = useState(() => pathname.startsWith("/services/"));
+  
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
@@ -60,39 +60,9 @@ export function MobileMenu({ id, pathname, onNavigate, onDismiss }: MobileMenuPr
               </Link>
             </li>
             <li>
-              <button
-                type="button"
-                aria-expanded={servicesOpen}
-                aria-controls={`${id}-services`}
-                onClick={() => setServicesOpen((value) => !value)}
-                className={cx(LINK_CLASSES, "cursor-pointer", pathname.startsWith("/services/") ? "text-primary" : "text-ink")}
-              >
-                {SERVICES_LABEL}
-                <ChevronDownIcon
-                  size={24}
-                  className={cx("shrink-0 text-primary transition-transform duration-150 ease-brand", servicesOpen && "rotate-180")}
-                />
-              </button>
-              <ul id={`${id}-services`} hidden={!servicesOpen} className="flex flex-col border-b border-line py-2">
-                {SERVICES_NAV.map((item) => {
-                  const active = pathname === item.href;
-                  return (
-                    <li key={item.href}>
-                      <Link
-                        href={item.href}
-                        onClick={onNavigate}
-                        aria-current={active ? "page" : undefined}
-                        className={cx(
-                          "flex min-h-12 items-center pl-4 type-lead font-medium transition duration-150 ease-brand hover:text-primary",
-                          active ? "text-primary" : "text-ink",
-                        )}
-                      >
-                        {item.label}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
+              <Link href={SERVICES_LINK.href} onClick={onNavigate} {...linkState(SERVICES_LINK.href)}>
+                {SERVICES_LINK.label}
+              </Link>
             </li>
             {NAV_AFTER_SERVICES.map((item) => (
               <li key={item.href}>

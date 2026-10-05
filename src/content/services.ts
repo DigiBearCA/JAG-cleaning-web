@@ -1,241 +1,315 @@
-import { COMMERCIAL_FAQ, RESIDENTIAL_FAQ, SNOW_FAQ } from "./faq";
-import type { ServicePageContent } from "./types";
+export type ServiceSlug =
+  | "residential-cleaning"
+  | "office-cleaning"
+  | "carpet-cleaning"
+  | "floor-cleaning"
+  | "maintenance-floor-cleaning"
+  | "cleanup"
+  | "landscaping"
+  | "renovation"
+  | "demolition"
+  | "snow-removal";
 
-export const RESIDENTIAL: ServicePageContent = {
-  slug: "residential-cleaning",
-  path: "/services/residential-cleaning",
-  meta: {
-    title: "House Cleaning in Edmonton, AB",
-    description:
-      "Regular, deep, and move-in or move-out cleaning for Edmonton homes, condos, and apartments. Insured local team with free quotes. Get your quote today.",
+export type ChapterId = "cleaning" | "site" | "build";
+export type Audience = "Homes" | "Businesses" | "Property managers";
+
+export interface FlowStep {
+  readonly title: string;
+  readonly text: string;
+}
+
+export type ServiceIconName =
+  | "home"
+  | "briefcase"
+  | "rug"
+  | "tiles"
+  | "scrubber"
+  | "debris"
+  | "leaf"
+  | "hammer"
+  | "wall"
+  | "snowflake";
+
+export interface Service {
+  readonly slug: ServiceSlug;
+  readonly chapter: ChapterId;
+  readonly name: string;
+  readonly tagline: string;
+  readonly description: string;
+  readonly audience: readonly Audience[];
+  readonly included: readonly string[];
+  readonly flow: readonly [FlowStep, FlowStep, FlowStep, FlowStep];
+  readonly icon: ServiceIconName;
+  readonly enabled: boolean;
+}
+
+export const CHAPTERS: Record<ChapterId, { title: string; description: string }> = {
+  cleaning: {
+    title: "Cleaning",
+    description: "Homes and workplaces, kept fresh.",
   },
-  schema: {
-    name: "Residential Cleaning",
-    serviceType: "Residential cleaning",
+  site: {
+    title: "Site and outdoors",
+    description: "Messes cleared and outdoor areas looked after.",
   },
-  hero: {
-    eyebrow: "Residential cleaning",
-    title: "Home cleaning in Edmonton",
-    lead: "Regular or one-time cleaning for houses, condos, and apartments, done by a reliable local team. We work in homes across Edmonton, Alberta.",
-    scene: "home",
-    sceneLabel: "Illustration of a house with a clean, bright window",
+  build: {
+    title: "Build",
+    description: "Renovation and demolition, with a clean finish.",
   },
-  included: {
-    title: "What's included",
-    lead: "Our standard clean covers the rooms you use every day.",
-    // TODO(review): scope drafted from competitor research, client may adjust
-    groups: [
-      {
-        title: "Kitchen",
-        items: [
-          { label: "Counters and sink" },
-          { label: "Stovetop" },
-          { label: "Outside of appliances" },
-          { label: "Cabinet fronts" },
-          { label: "Floors" },
-        ],
-      },
-      {
-        title: "Bathrooms",
-        items: [
-          { label: "Toilets" },
-          { label: "Tubs and showers" },
-          { label: "Sinks" },
-          { label: "Mirrors" },
-          { label: "Floors" },
-        ],
-      },
-      {
-        title: "Bedrooms and living areas",
-        items: [
-          { label: "Dusting" },
-          { label: "Surfaces wiped" },
-          { label: "Vacuuming" },
-          { label: "Mopping" },
-          { label: "Bins emptied" },
-        ],
-      },
-      {
-        title: "Throughout",
-        items: [
-          { label: "Doors and light switches wiped" },
-          { label: "Entryways" },
-          { label: "A final walk-through" },
-        ],
-      },
-    ],
-  },
-  types: {
-    title: "Ways we help",
-    lead: "Choose the kind of clean that suits your home and your schedule.",
-    // TODO(review): scope drafted from competitor research, client may adjust
-    cards: [
-      {
-        title: "Recurring cleaning",
-        text: "Weekly, every two weeks, or monthly visits that keep your home on track.",
-        icon: "calendar",
-      },
-      {
-        title: "One-time clean",
-        text: "A single visit when you need a hand, before guests arrive or after a busy stretch.",
-        icon: "sparkle",
-      },
-      {
-        title: "Deep clean",
-        text: "Extra time on built-up grime, baseboards, door frames, and hard-to-reach spots.",
-        icon: "broom",
-      },
-      {
-        title: "Move-in and move-out",
-        text: "An empty-home clean, including inside cabinets and drawers.",
-        icon: "key",
-      },
-      {
-        title: "Apartments and condos",
-        text: "The same careful clean, suited to smaller spaces and shared buildings.",
-        icon: "building",
-      },
-    ],
-    extras: {
-      title: "Add-ons on request",
-      // TODO(review): scope drafted from competitor research, client may adjust
-      chips: ["Inside oven", "Inside fridge", "Inside cabinets", "Interior windows", "Baseboards"],
-    },
-  },
-  faq: {
-    title: "Questions about home cleaning",
-    items: RESIDENTIAL_FAQ,
-  },
-  quoteService: "home",
 };
 
-export const COMMERCIAL: ServicePageContent = {
-  slug: "commercial-cleaning",
-  path: "/services/commercial-cleaning",
-  meta: {
-    title: "Commercial Cleaning in Edmonton, AB",
+// TODO(review): scope and flows drafted from research, client to confirm
+export const SERVICES: readonly Service[] = [
+  {
+    slug: "residential-cleaning",
+    chapter: "cleaning",
+    name: "Residential cleaning",
+    tagline: "Fresh homes, on your schedule.",
     description:
-      "Office, apartment building, and post-construction cleaning in Edmonton. Flexible schedules, an insured team, and free quotes. Request your quote today.",
-  },
-  schema: {
-    name: "Commercial Cleaning",
-    serviceType: "Commercial cleaning",
-  },
-  hero: {
-    eyebrow: "Commercial cleaning",
-    title: "Commercial cleaning in Edmonton",
-    lead: "Clean offices and shared spaces, on a schedule that fits your business. We serve offices and buildings across Edmonton, Alberta.",
-    scene: "office",
-    sceneLabel: "Illustration of two office buildings with lit windows",
-  },
-  included: {
-    title: "What's included",
-    lead: "A regular clean covers the areas your team and visitors use most.",
-    // TODO(review): scope drafted from competitor research, client may adjust
-    groups: [
-      {
-        items: [
-          { label: "Workstations and offices", detail: "Desks wiped and surfaces dusted." },
-          { label: "Common areas and lobbies", detail: "Surfaces dusted and floors cleaned." },
-          { label: "Kitchens and break rooms", detail: "Counters, sinks, and the outside of appliances wiped." },
-          { label: "Washrooms", detail: "Toilets, sinks, mirrors, and floors cleaned." },
-          { label: "Floors", detail: "Vacuuming and mopping." },
-          { label: "Entrances and glass doors", detail: "Glass and handles wiped." },
-          { label: "Garbage and recycling", detail: "Bins emptied and liners replaced." },
-        ],
-      },
+      "Regular or one-time cleaning for houses, condos, and apartments. Tell us what you need and we take care of it, with our own supplies and equipment.",
+    audience: ["Homes"],
+    included: [
+      "Kitchen and bathrooms",
+      "Bedrooms and living areas",
+      "Floors vacuumed and mopped",
+      "Dusting and surfaces",
+      "Move-in and move-out cleans",
+      "Add-ons like inside oven or fridge on request",
     ],
-  },
-  types: {
-    title: "Spaces we clean",
-    lead: "Regular cleaning or a one-time visit, planned around how your space is used.",
-    // TODO(review): scope drafted from competitor research, client may adjust
-    cards: [
-      {
-        title: "Offices",
-        text: "Daily, weekly, or after-hours schedules.",
-        icon: "building",
-      },
-      {
-        title: "Apartment buildings and shared spaces",
-        text: "Lobbies, hallways, stairwells, elevators, and laundry rooms.",
-        icon: "key",
-      },
-      {
-        title: "Post-construction cleaning",
-        text: "Dust and debris removal, surfaces, fixtures, floors, and a final detail before move-in.",
-        icon: "broom",
-      },
+    flow: [
+      { title: "Tell us about your home", text: "Size, rooms, and how often." },
+      { title: "Get your free quote", text: "A clear price before work starts." },
+      { title: "We clean", text: "Our team brings the supplies and equipment." },
+      { title: "Final walk-through", text: "We check the details with you." },
     ],
-    note: "We arrange cleaning around your hours, including evenings and weekends.",
+    icon: "home",
+    enabled: true,
   },
-  faq: {
-    title: "Questions about commercial cleaning",
-    items: COMMERCIAL_FAQ,
+  {
+    slug: "office-cleaning",
+    chapter: "cleaning",
+    name: "Office cleaning",
+    tagline: "A clean workplace, every day it matters.",
+    description:
+      "Cleaning for offices and shared spaces, planned around your hours, including evenings and weekends.",
+    audience: ["Businesses", "Property managers"],
+    included: [
+      "Desks and workstations",
+      "Washrooms",
+      "Kitchens and break rooms",
+      "Lobbies and entrances",
+      "Floors",
+      "Garbage and recycling",
+    ],
+    flow: [
+      { title: "Walkthrough", text: "We look at your space and needs." },
+      { title: "Plan and quote", text: "Frequency, scope, and price." },
+      { title: "Scheduled cleaning", text: "Daily, weekly, or after hours." },
+      { title: "Ongoing check-ins", text: "We adjust the plan as needs change." },
+    ],
+    icon: "briefcase",
+    enabled: true,
   },
-  quoteService: "business",
-};
+  {
+    slug: "carpet-cleaning",
+    chapter: "cleaning",
+    name: "Carpet cleaning",
+    tagline: "Deep-cleaned carpets, ready to use.",
+    description:
+      "Deep carpet cleaning for homes and businesses, focused on high-traffic areas, spots, and stains.",
+    audience: ["Homes", "Businesses"],
+    included: [
+      "Rooms, stairs, and hallways",
+      "Spot and stain treatment",
+      "High-traffic areas",
+      "Office and commercial carpets",
+      "Move-out carpet cleans",
+    ],
+    flow: [
+      { title: "Tell us the areas", text: "Rooms, carpet type, and any stains." },
+      { title: "Get your free quote", text: "A clear price before we start." },
+      { title: "Treat and deep clean", text: "Extra attention on stains and traffic lanes." },
+      { title: "Final check", text: "We review the result with you." },
+    ],
+    icon: "rug",
+    enabled: true,
+  },
+  {
+    slug: "floor-cleaning",
+    chapter: "cleaning",
+    name: "Floor cleaning",
+    tagline: "Floors that look cared for.",
+    description:
+      "One-time floor cleaning for hard floors in homes and commercial spaces, including tile, vinyl, and concrete.",
+    audience: ["Homes", "Businesses"],
+    included: [
+      "Sweeping and scrubbing",
+      "Tile and grout",
+      "Vinyl and concrete floors",
+      "Kitchens, entryways, and shops",
+      "Floors after renovation work",
+      "Edges and corners",
+    ],
+    flow: [
+      { title: "Tell us about the floors", text: "Type, size, and condition." },
+      { title: "Get your free quote", text: "A clear price before we start." },
+      { title: "Scrub and rinse", text: "Cleaned section by section." },
+      { title: "Finish and inspect", text: "We check the result with you." },
+    ],
+    icon: "tiles",
+    enabled: true,
+  },
+  {
+    slug: "maintenance-floor-cleaning",
+    chapter: "cleaning",
+    name: "Maintenance floor cleaning",
+    tagline: "Routine floor care between deep cleans.",
+    description:
+      "Scheduled floor cleaning for businesses, so busy floors stay clean and presentable all year.",
+    audience: ["Businesses", "Property managers"],
+    included: [
+      "Daily, weekly, or monthly schedules",
+      "Entrances and corridors",
+      "Shops, offices, and shared spaces",
+      "Consistent routine and timing",
+      "Deep-clean add-on when needed",
+    ],
+    flow: [
+      { title: "Floor walkthrough", text: "We look at the areas and traffic." },
+      { title: "Set a schedule", text: "Frequency, scope, and price." },
+      { title: "Routine cleaning", text: "The same team, on time." },
+      { title: "Review and adjust", text: "We keep the plan working for you." },
+    ],
+    icon: "scrubber",
+    enabled: true,
+  },
+  {
+    slug: "cleanup",
+    chapter: "site",
+    name: "Cleanup",
+    tagline: "We clear it so you can move on.",
+    description:
+      "Cleanup for properties and job sites: debris and leftover mess cleared away so the space is ready to use.",
+    audience: ["Homes", "Businesses"],
+    included: [
+      "Cleanup after construction and renovation",
+      "Debris and material clearing",
+      "Yard and property cleanup",
+      "Final sweep and wipe-down",
+      "One-time or repeat visits",
+    ],
+    flow: [
+      { title: "Tell us what needs clearing", text: "Location, size, and type of mess." },
+      { title: "Get your free quote", text: "A clear price before we start." },
+      { title: "Clear and clean", text: "Remove debris, then tidy up." },
+      { title: "Final check", text: "We confirm the space is ready." },
+    ],
+    icon: "debris",
+    enabled: true,
+  },
+  {
+    slug: "landscaping",
+    chapter: "site",
+    name: "Landscaping",
+    tagline: "Outdoor spaces that look cared for.",
+    description:
+      "Landscaping for yards and commercial properties, keeping outdoor areas neat and welcoming.",
+    audience: ["Homes", "Businesses"],
+    included: [
+      "Lawn and yard tidying",
+      "Planting beds and shrubs",
+      "Trimming and edging",
+      "Seasonal property cleanups",
+      "Entrances and shared outdoor areas",
+    ],
+    flow: [
+      { title: "Share your yard and goals", text: "What you have and what you want." },
+      { title: "Plan and quote", text: "Scope, timing, and price." },
+      { title: "Do the work", text: "Done step by step." },
+      { title: "Final walk-through", text: "We review the result with you." },
+    ],
+    icon: "leaf",
+    enabled: true,
+  },
+  {
+    slug: "renovation",
+    chapter: "build",
+    name: "Renovation",
+    tagline: "Plan it, build it, tidy it up.",
+    description:
+      "Renovation work for homes and commercial spaces, handled in stages with clear communication and a clean finish.",
+    audience: ["Homes", "Businesses"],
+    included: [
+      "Interior updates and refreshes",
+      "Repairs and finishing",
+      "Residential and commercial spaces",
+      "Scope and schedule agreed up front",
+      "Cleanup after the work",
+    ],
+    flow: [
+      { title: "Share your plans", text: "What you want to change." },
+      { title: "Look and quote", text: "We review the space and the scope." },
+      { title: "Work in stages", text: "Clear updates along the way." },
+      { title: "Walk-through and cleanup", text: "We hand over a tidy space." },
+    ],
+    icon: "hammer",
+    enabled: true,
+  },
+  {
+    slug: "demolition",
+    chapter: "build",
+    name: "Demolition",
+    tagline: "Careful removal, clean finish.",
+    description:
+      "Interior and light demolition to prepare a space for renovation, with debris cleared away afterwards.",
+    audience: ["Homes", "Businesses"],
+    included: [
+      "Removal of fixtures, flooring, and walls as agreed",
+      "Debris clearing",
+      "Site cleanup",
+      "Preparation for renovation",
+    ],
+    flow: [
+      { title: "Describe the space", text: "What needs to come out." },
+      { title: "Look and quote", text: "We review the space and the scope." },
+      { title: "Careful removal", text: "Planned and done step by step." },
+      { title: "Debris cleared", text: "The site is tidied and ready." },
+    ],
+    icon: "wall",
+    enabled: true,
+  },
+  {
+    slug: "snow-removal",
+    chapter: "site",
+    name: "Snow removal",
+    tagline: "Clear driveways, all winter.",
+    description:
+      "Snow removal for driveways, walkways, and parking lots, per visit or seasonal.",
+    audience: ["Homes", "Businesses"],
+    included: [
+      "Driveways",
+      "Walkways and steps",
+      "Parking lots",
+      "Building entrances",
+      "Ice control (salt or sand) on request",
+    ],
+    flow: [
+      { title: "Tell us the property", text: "Driveway or lot, and size." },
+      { title: "Choose per visit or seasonal", text: "We set up a plan with you." },
+      { title: "We clear it", text: "Snow cleared when it falls." },
+      { title: "Check and repeat", text: "We keep the plan on track." },
+    ],
+    icon: "snowflake",
+    enabled: false,
+  },
+];
 
-export const SNOW_REMOVAL: ServicePageContent = {
-  slug: "snow-removal",
-  path: "/services/snow-removal",
-  meta: {
-    title: "Snow Removal in Edmonton, AB",
-    description:
-      "Driveway, walkway, and parking lot snow removal in Edmonton, per visit or seasonal. Insured local team with free quotes. Get your quote today.",
-  },
-  schema: {
-    name: "Snow Removal",
-    serviceType: "Snow removal",
-  },
-  hero: {
-    eyebrow: "Snow removal",
-    title: "Snow removal in Edmonton",
-    lead: "Clear driveways, walkways, and lots so you can get in and out safely all winter. We serve homes and businesses across Edmonton, Alberta.",
-    scene: "snow",
-    sceneLabel: "Illustration of a house with a cleared driveway and falling snow",
-  },
-  included: {
-    title: "What's included",
-    lead: "We clear the areas you rely on to get in and out.",
-    // TODO(review): scope drafted from competitor research, client may adjust
-    groups: [
-      {
-        items: [
-          { label: "Driveways" },
-          { label: "Walkways and front steps" },
-          { label: "Parking lots" },
-          { label: "Building entrances and sidewalks" },
-          { label: "Ice control", detail: "Salt or sand on request." },
-        ],
-      },
-    ],
-  },
-  types: {
-    title: "Who it's for",
-    lead: "Snow removal for homes and businesses, set up the way you need it.",
-    // TODO(review): scope drafted from competitor research, client may adjust
-    cards: [
-      {
-        title: "Homes",
-        text: "Driveways, walkways, and steps.",
-        icon: "home",
-      },
-      {
-        title: "Businesses",
-        text: "Parking lots, entrances, and sidewalks.",
-        icon: "building",
-      },
-      {
-        title: "Service options",
-        text: "Per visit or seasonal, set up through your quote.",
-        icon: "calendar",
-      },
-    ],
-  },
-  faq: {
-    title: "Questions about snow removal",
-    items: SNOW_FAQ,
-  },
-  quoteService: "snow",
-};
+export function getEnabledServices(): readonly Service[] {
+  return SERVICES.filter((s) => s.enabled);
+}
+
+export function getServiceNumber(service: Service): string {
+  const enabled = getEnabledServices();
+  const index = enabled.findIndex((s) => s.slug === service.slug);
+  return String(index + 1).padStart(2, "0");
+}

@@ -1,13 +1,12 @@
 import { SITE } from "@/config/site";
 import { absoluteUrl } from "@/lib/contact-links";
+import { getEnabledServices } from "@/content/services";
 
 /** JSON-LD is plain JSON; this keeps the builders typed without a schema library. */
 export type JsonLdValue = string | number | boolean | null | JsonLdObject | ReadonlyArray<JsonLdValue>;
 export interface JsonLdObject {
   readonly [key: string]: JsonLdValue;
 }
-
-export const SERVICE_TYPES = ["Residential cleaning", "Commercial cleaning", "Snow removal"] as const;
 
 /** Edmonton, within Alberta, within Canada. Shared by every schema object. */
 function areaServed(): JsonLdObject {
@@ -39,7 +38,7 @@ export function localBusinessSchema(description: string): JsonLdObject {
     url: absoluteUrl("/"),
     description,
     areaServed: areaServed(),
-    serviceType: [...SERVICE_TYPES],
+    serviceType: getEnabledServices().map((s) => s.name),
   };
 
   if (!SITE.contactVerified) return base;

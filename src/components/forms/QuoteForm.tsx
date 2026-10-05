@@ -12,7 +12,7 @@ import {
   EMPTY_QUOTE_INPUT,
   firstInvalidField,
   isQuoteApiResponse,
-  SERVICE_OPTIONS,
+  getServiceOptions,
   validateQuote,
   validateQuoteField,
   type QuoteApiResponse,
@@ -66,6 +66,27 @@ export function QuoteForm({ defaultService, id, labelledBy, className }: QuoteFo
   useEffect(() => {
     if (status === "success") successHeadingRef.current?.focus();
   }, [status]);
+
+  useEffect(() => {
+    function handleGlobalClick(e: MouseEvent) {
+      const target = e.target as HTMLElement;
+      const trigger = target.closest("a[data-quote-service]");
+      if (trigger) {
+        const serviceSlug = trigger.getAttribute("data-quote-service");
+        if (serviceSlug) {
+          setValues((v) => ({ ...v, service: serviceSlug }));
+          setErrors((errs) => {
+            if (!errs.service) return errs;
+            const newErrs = { ...errs };
+            delete newErrs.service;
+            return newErrs;
+          });
+        }
+      }
+    }
+    document.addEventListener("click", handleGlobalClick);
+    return () => document.removeEventListener("click", handleGlobalClick);
+  }, []);
 
   const fieldId = (field: keyof QuoteInput) => `${prefix}-${field}`;
 
@@ -239,7 +260,7 @@ export function QuoteForm({ defaultService, id, labelledBy, className }: QuoteFo
               name="service"
               label="Service needed"
               placeholder="Choose a service"
-              options={SERVICE_OPTIONS}
+              options={getServiceOptions()}
               required
               value={values.service}
               error={errors.service}
