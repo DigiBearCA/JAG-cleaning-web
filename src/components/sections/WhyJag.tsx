@@ -16,11 +16,13 @@ export function WhyJag() {
       />
       <ul className="mt-10 grid gap-4 md:grid-cols-2">
         {WHY_JAAG.cards.map((card) => (
-          <Card as="li" key={card.title} className="flex flex-col gap-4">
-            <FeatureIcon surface="light">
-              <Icon name={card.icon} />
-            </FeatureIcon>
-            <h3 className="type-h3 text-primary">{card.title}</h3>
+          <Card as="li" key={card.title} className="flex flex-col items-center text-center gap-4">
+            <div className="flex flex-row items-center justify-center gap-3">
+              <FeatureIcon surface="light">
+                <Icon name={card.icon} />
+              </FeatureIcon>
+              <h3 className="type-h3 text-primary">{card.title}</h3>
+            </div>
             <p className="type-body text-ink">{card.text}</p>
           </Card>
         ))}
