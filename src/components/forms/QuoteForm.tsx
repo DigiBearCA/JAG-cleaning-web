@@ -290,7 +290,7 @@ export function QuoteForm({
               <TextAreaField
                 id={fieldId("message")}
                 name="message"
-                label="Anything else we should know? (optional)"
+                label="Anything to add? (optional)"
                 rows={1}
                 value={values.message}
                 error={errors.message}
