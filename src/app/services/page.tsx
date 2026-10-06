@@ -8,7 +8,7 @@ import {
 import { Hero } from "@/components/sections/services/Hero";
 import { ChapterBand } from "@/components/sections/services/ChapterBand";
 import { JobCard } from "@/components/sections/services/JobCard";
-import { EveryJobStrip } from "@/components/sections/services/EveryJobStrip";
+// import { EveryJobStrip } from "@/components/sections/services/EveryJobStrip";
 import { Section } from "@/components/ui/Section";
 
 import {
