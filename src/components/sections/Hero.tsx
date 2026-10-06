@@ -1,6 +1,9 @@
 import { WhatsAppIcon } from "@/components/icons";
 import { HeroIllustration } from "@/components/illustrations/HeroIllustration";
-import { IllustrationFrame, type IllustrationImage } from "@/components/illustrations/IllustrationFrame";
+import {
+  IllustrationFrame,
+  type IllustrationImage,
+} from "@/components/illustrations/IllustrationFrame";
 import { Button } from "@/components/ui/Button";
 import { Chip } from "@/components/ui/Chip";
 import { Section } from "@/components/ui/Section";
@@ -16,7 +19,11 @@ export interface HeroProps {
 /** Home hero: text left, illustration right on desktop; stacked on mobile. */
 export function Hero({ image }: HeroProps) {
   return (
-    <Section spacing="hero" labelledBy="hero-title" containerClassName="grid items-center gap-4 md:grid-cols-2 md:gap-12">
+    <Section
+      spacing="hero"
+      labelledBy="hero-title"
+      containerClassName="grid items-center gap-4 md:grid-cols-2 md:gap-12"
+    >
       <div className="flex animate-fade-up flex-col items-start gap-4">
         <Chip icon="mapPin">{HERO.eyebrow}</Chip>
         <div className="flex flex-col gap-4">
@@ -45,7 +52,10 @@ export function Hero({ image }: HeroProps) {
             </a>
           </p>
         </div>
-        <ul className="flex flex-wrap gap-2" aria-label="Why customers choose us">
+        <ul
+          className="flex flex-wrap gap-2"
+          aria-label="Why customers choose us"
+        >
           {HERO.trustChips.map((chip) => (
             <li key={chip}>
               <Chip icon="check">{chip}</Chip>

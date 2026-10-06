@@ -6,7 +6,13 @@ import { WhoWeServe } from "@/components/sections/WhoWeServe";
 import { Card, FeatureIcon } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { ABOUT_HERO, ABOUT_META, OUR_STORY, VALUES, WHAT_WE_DO } from "@/content/about";
+import {
+  ABOUT_HERO,
+  ABOUT_META,
+  OUR_STORY,
+  VALUES,
+  WHAT_WE_DO,
+} from "@/content/about";
 import { buildPageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -19,9 +25,17 @@ export const metadata: Metadata = buildPageMetadata({
 export default function AboutPage() {
   return (
     <>
-      <PageHero eyebrow={ABOUT_HERO.eyebrow} title={ABOUT_HERO.title} lead={ABOUT_HERO.lead} />
+      <PageHero
+        eyebrow={ABOUT_HERO.eyebrow}
+        title={ABOUT_HERO.title}
+        lead={ABOUT_HERO.lead}
+      />
 
-      <Section id="our-story" labelledBy="our-story-title" className="pt-0 md:pt-0">
+      <Section
+        id="our-story"
+        labelledBy="our-story-title"
+        className="pt-0 md:pt-0"
+      >
         <div className="flex max-w-prose flex-col gap-4">
           <SectionHeading id="our-story-title" title={OUR_STORY.title} />
           {OUR_STORY.paragraphs.map((paragraph) => (
@@ -33,7 +47,12 @@ export default function AboutPage() {
       </Section>
 
       <Section tone="alt" id="values" labelledBy="values-title">
-        <SectionHeading id="values-title" title={VALUES.title} align="center" tone="alt" />
+        <SectionHeading
+          id="values-title"
+          title={VALUES.title}
+          align="center"
+          tone="alt"
+        />
         <ul className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {VALUES.cards.map((card) => (
             <Card key={card.title} as="li" className="flex flex-col gap-4">
@@ -47,7 +66,12 @@ export default function AboutPage() {
         </ul>
       </Section>
 
-      <WhoWeServe tone="base" id="what-we-do" title={WHAT_WE_DO.title} lead={WHAT_WE_DO.lead} />
+      <WhoWeServe
+        tone="base"
+        id="what-we-do"
+        title={WHAT_WE_DO.title}
+        lead={WHAT_WE_DO.lead}
+      />
 
       <QuoteSection />
     </>

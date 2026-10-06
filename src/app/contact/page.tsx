@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import { QuoteForm } from "@/components/forms/QuoteForm";
 import { ContactDetails } from "@/components/sections/ContactDetails";
 import { Section } from "@/components/ui/Section";
-import { CONTACT_META, FORM_CARD_COPY, CONTACT_DETAILS } from "@/content/contact";
+import {
+  CONTACT_META,
+  FORM_CARD_COPY,
+  CONTACT_DETAILS,
+} from "@/content/contact";
 import { buildPageMetadata } from "@/lib/metadata";
 import { mapEmbedUrl, mapOpenUrl } from "@/lib/contact-links";
 import { ArrowUpRightIcon } from "@/components/icons";
@@ -32,7 +36,7 @@ export default function ContactPage() {
           <QuoteForm labelledBy="quote-form-title" />
         </div>
       </Section>
-      
+
       <div className="w-full relative">
         <iframe
           src={mapEmbedUrl()}

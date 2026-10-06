@@ -25,7 +25,10 @@ export function JobIndex() {
             </div>
             <div className="flex items-center gap-3">
               <Icon name={service.icon} className="text-ink-muted w-5 h-5" />
-              <Icon name="arrowRight" className="text-primary w-4 h-4 transition-transform group-hover:translate-x-1" />
+              <Icon
+                name="arrowRight"
+                className="text-primary w-4 h-4 transition-transform group-hover:translate-x-1"
+              />
             </div>
           </Link>
         ))}
@@ -33,4 +36,3 @@ export function JobIndex() {
     </div>
   );
 }
-

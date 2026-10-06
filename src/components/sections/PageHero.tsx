@@ -1,5 +1,8 @@
 import { HomeScene } from "@/components/illustrations/HomeScene";
-import { IllustrationFrame, type IllustrationImage } from "@/components/illustrations/IllustrationFrame";
+import {
+  IllustrationFrame,
+  type IllustrationImage,
+} from "@/components/illustrations/IllustrationFrame";
 import { OfficeScene } from "@/components/illustrations/OfficeScene";
 import { SnowScene } from "@/components/illustrations/SnowScene";
 import { Button } from "@/components/ui/Button";
@@ -21,7 +24,13 @@ export interface PageHeroProps {
   readonly showActions?: boolean;
 }
 
-function Scene({ scene, label }: { readonly scene: SceneName; readonly label?: string }) {
+function Scene({
+  scene,
+  label,
+}: {
+  readonly scene: SceneName;
+  readonly label?: string;
+}) {
   switch (scene) {
     case "home":
       return <HomeScene label={label} />;
@@ -33,12 +42,23 @@ function Scene({ scene, label }: { readonly scene: SceneName; readonly label?: s
 }
 
 /** Inner-page hero: eyebrow chip, H1, lead, actions, and an optional scene illustration. */
-export function PageHero({ eyebrow, title, lead, scene, sceneLabel, image, showActions = true }: PageHeroProps) {
+export function PageHero({
+  eyebrow,
+  title,
+  lead,
+  scene,
+  sceneLabel,
+  image,
+  showActions = true,
+}: PageHeroProps) {
   const hasVisual = scene !== undefined || image !== undefined;
   return (
     <Section
       labelledBy="page-title"
-      containerClassName={cx("grid items-center gap-10", hasVisual && "md:grid-cols-2 md:gap-12")}
+      containerClassName={cx(
+        "grid items-center gap-10",
+        hasVisual && "md:grid-cols-2 md:gap-12",
+      )}
     >
       <div className="flex animate-fade-up flex-col items-start gap-4">
         <Chip>{eyebrow}</Chip>

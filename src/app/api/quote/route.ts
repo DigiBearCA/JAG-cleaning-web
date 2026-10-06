@@ -1,6 +1,10 @@
 import { deliverQuote } from "@/lib/deliver-quote";
 import { checkRateLimit, clientIpFrom } from "@/lib/rate-limit";
-import { parseQuoteBody, validateQuote, type QuoteApiResponse } from "@/lib/quote-validation";
+import {
+  parseQuoteBody,
+  validateQuote,
+  type QuoteApiResponse,
+} from "@/lib/quote-validation";
 
 /** Largest request body we accept (10 KB). */
 const MAX_BODY_BYTES = 10 * 1024;
@@ -10,7 +14,11 @@ const RATE_LIMIT = { limit: 5, windowMs: 10 * 60 * 1000 } as const;
 
 const NO_STORE = { "Cache-Control": "no-store" } as const;
 
-function json(body: QuoteApiResponse, status: number, headers: Record<string, string> = {}): Response {
+function json(
+  body: QuoteApiResponse,
+  status: number,
+  headers: Record<string, string> = {},
+): Response {
   return Response.json(body, { status, headers: { ...NO_STORE, ...headers } });
 }
 
@@ -19,7 +27,10 @@ function json(body: QuoteApiResponse, status: number, headers: Record<string, st
  * Security: content-length can be missing (chunked) or false, so never buffer an unbounded body.
  * Returns null when the body is too large.
  */
-async function readBodyWithLimit(request: Request, limit: number): Promise<string | null> {
+async function readBodyWithLimit(
+  request: Request,
+  limit: number,
+): Promise<string | null> {
   if (!request.body) return "";
   const reader = request.body.getReader();
   const chunks: Uint8Array[] = [];
@@ -57,7 +68,10 @@ function isCrossSite(request: Request): boolean {
   } catch {
     return true;
   }
-  const hosts = [request.headers.get("host"), request.headers.get("x-forwarded-host")]
+  const hosts = [
+    request.headers.get("host"),
+    request.headers.get("x-forwarded-host"),
+  ]
     .flatMap((value) => (value ? value.split(",") : []))
     .map((value) => value.trim().toLowerCase());
   return !hosts.includes(originHost.toLowerCase());
@@ -85,7 +99,11 @@ export async function POST(request: Request): Promise<Response> {
   const rate = checkRateLimit(clientIpFrom(request.headers), RATE_LIMIT);
   if (!rate.allowed) {
     return json(
-      { ok: false, message: "You have sent a few requests in a short time. Please wait a few minutes and try again." },
+      {
+        ok: false,
+        message:
+          "You have sent a few requests in a short time. Please wait a few minutes and try again.",
+      },
       429,
       { "Retry-After": String(rate.retryAfterSeconds) },
     );
@@ -110,7 +128,10 @@ export async function POST(request: Request): Promise<Response> {
 
   const input = parseQuoteBody(parsed);
   if (!input) {
-    return json({ ok: false, message: "The request is missing form fields." }, 400);
+    return json(
+      { ok: false, message: "The request is missing form fields." },
+      400,
+    );
   }
 
   // Honeypot filled: almost certainly a bot. Pretend it worked and drop it.

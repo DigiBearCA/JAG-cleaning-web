@@ -16,7 +16,12 @@ export function HowItWorks({ tone = "base" }: HowItWorksProps) {
   const onAlt = tone === "alt";
   return (
     <Section tone={tone} id="how-it-works" labelledBy="how-it-works-title">
-      <SectionHeading id="how-it-works-title" title={HOW_IT_WORKS.title} align="center" tone={tone} />
+      <SectionHeading
+        id="how-it-works-title"
+        title={HOW_IT_WORKS.title}
+        align="center"
+        tone={tone}
+      />
       <ol className=" mt-10 grid  gap-8 md: md:grid-cols-3 md:gap-4">
         {HOW_IT_WORKS.steps.map((step, index) => {
           const last = index === HOW_IT_WORKS.steps.length - 1;
@@ -27,7 +32,8 @@ export function HowItWorks({ tone = "base" }: HowItWorksProps) {
                 "relative flex flex-col items-center text-center gap-4",
                 !last &&
                   "before:absolute before:top-14 before:-bottom-6 before:left-1/2 before:-translate-x-1/2 before:w-px md:before:top-6 md:before:right-auto md:before:bottom-auto md:before:left-[calc(50%+3rem)] md:before:h-px md:before:w-[calc(100%-6rem)] md:before:translate-x-0",
-                !last && (onAlt ? "before:bg-alt-heading/40" : "before:bg-line"),
+                !last &&
+                  (onAlt ? "before:bg-alt-heading/40" : "before:bg-line"),
               )}
             >
               <span
@@ -40,11 +46,23 @@ export function HowItWorks({ tone = "base" }: HowItWorksProps) {
                 {index + 1}
               </span>
               <div className="flex flex-col gap-1 pt-2 md:pt-0">
-                <h3 className={cx("type-h3", onAlt ? "text-alt-heading" : "text-primary")}>
+                <h3
+                  className={cx(
+                    "type-h3",
+                    onAlt ? "text-alt-heading" : "text-primary",
+                  )}
+                >
                   <span className="sr-only">Step {index + 1}: </span>
                   {step.title}
                 </h3>
-                <p className={cx("type-body", onAlt ? "text-alt-text" : "text-ink-muted")}>{step.text}</p>
+                <p
+                  className={cx(
+                    "type-body",
+                    onAlt ? "text-alt-text" : "text-ink-muted",
+                  )}
+                >
+                  {step.text}
+                </p>
               </div>
             </li>
           );

@@ -3,7 +3,13 @@ import { absoluteUrl } from "@/lib/contact-links";
 import { getEnabledServices } from "@/content/services";
 
 /** JSON-LD is plain JSON; this keeps the builders typed without a schema library. */
-export type JsonLdValue = string | number | boolean | null | JsonLdObject | ReadonlyArray<JsonLdValue>;
+export type JsonLdValue =
+  | string
+  | number
+  | boolean
+  | null
+  | JsonLdObject
+  | ReadonlyArray<JsonLdValue>;
 export interface JsonLdObject {
   readonly [key: string]: JsonLdValue;
 }
@@ -59,7 +65,12 @@ export interface ServiceSchemaInput {
 }
 
 /** Service page schema, with the provider referencing the business by name and URL. */
-export function serviceSchema({ name, serviceType, description, path }: ServiceSchemaInput): JsonLdObject {
+export function serviceSchema({
+  name,
+  serviceType,
+  description,
+  path,
+}: ServiceSchemaInput): JsonLdObject {
   return {
     "@context": "https://schema.org",
     "@type": "Service",

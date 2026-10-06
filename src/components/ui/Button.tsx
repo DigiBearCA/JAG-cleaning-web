@@ -48,7 +48,8 @@ const SOLID: Record<"accent" | "primary", string> = {
 
 const OUTLINE: Record<ButtonTone, string> = {
   onLight: "border-[1.5px] border-primary text-primary hover:bg-primary/8",
-  onAlt: "border-[1.5px] border-alt-outline text-alt-outline hover:bg-alt-outline/10",
+  onAlt:
+    "border-[1.5px] border-alt-outline text-alt-outline hover:bg-alt-outline/10",
   onDark: "border-[1.5px] border-on-dark text-on-dark hover:bg-on-dark/10",
 };
 
@@ -95,7 +96,9 @@ function ButtonContent({
   size,
   children,
 }: Pick<ButtonStyleProps, "icon" | "iconPosition" | "size" | "children">) {
-  const iconNode = icon ? <Icon name={icon} size={size === "bar" ? 18 : 20} className="shrink-0" /> : null;
+  const iconNode = icon ? (
+    <Icon name={icon} size={size === "bar" ? 18 : 20} className="shrink-0" />
+  ) : null;
   return (
     <>
       {iconPosition === "start" ? iconNode : null}
@@ -111,8 +114,25 @@ function ButtonContent({
  */
 export function Button(props: ButtonProps) {
   if (isLinkProps(props)) {
-    const { variant, tone, size, fullWidth, icon, iconPosition = "start", className, children, href, ...rest } = props;
-    const classes = buttonClasses({ variant, tone, size, fullWidth, className });
+    const {
+      variant,
+      tone,
+      size,
+      fullWidth,
+      icon,
+      iconPosition = "start",
+      className,
+      children,
+      href,
+      ...rest
+    } = props;
+    const classes = buttonClasses({
+      variant,
+      tone,
+      size,
+      fullWidth,
+      className,
+    });
     const content = (
       <ButtonContent icon={icon} iconPosition={iconPosition} size={size}>
         {children}
@@ -125,7 +145,9 @@ export function Button(props: ButtonProps) {
         </Link>
       );
     }
-    const externalProps = isExternalWeb(href) ? { target: "_blank", rel: "noopener noreferrer" } : {};
+    const externalProps = isExternalWeb(href)
+      ? { target: "_blank", rel: "noopener noreferrer" }
+      : {};
     return (
       <a href={href} className={classes} {...externalProps} {...rest}>
         {content}

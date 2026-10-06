@@ -11,7 +11,12 @@ export interface ChipProps {
 }
 
 /** Pill tag: chip colours, 14/22 medium, 4px by 12px padding, optional 16px icon. */
-export function Chip({ icon, surface = "base", className, children }: ChipProps) {
+export function Chip({
+  icon,
+  surface = "base",
+  className,
+  children,
+}: ChipProps) {
   return (
     <span
       className={cx(

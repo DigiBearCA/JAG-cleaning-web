@@ -8,7 +8,12 @@ import { WHY_JAAG } from "@/content/home";
 export function WhyJag() {
   return (
     <Section tone="alt" id="why-jag" labelledBy="why-jag-title">
-      <SectionHeading id="why-jag-title" title={WHY_JAAG.title} align="center" tone="alt" />
+      <SectionHeading
+        id="why-jag-title"
+        title={WHY_JAAG.title}
+        align="center"
+        tone="alt"
+      />
       <ul className="mt-10 grid gap-4 md:grid-cols-2">
         {WHY_JAAG.cards.map((card) => (
           <Card as="li" key={card.title} className="flex flex-col gap-4">

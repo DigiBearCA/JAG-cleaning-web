@@ -12,7 +12,11 @@ import { serviceSchema } from "@/lib/structured-data";
  * Shared service page: hero (bg), what's included (alt), types (bg), how it works (alt),
  * FAQ (bg), quote (bg with hairline). Alt and dark sections never touch.
  */
-export function ServicePageTemplate({ content }: { readonly content: ServicePageContent }) {
+export function ServicePageTemplate({
+  content,
+}: {
+  readonly content: ServicePageContent;
+}) {
   return (
     <>
       <JsonLd
@@ -45,7 +49,11 @@ export function ServicePageTemplate({ content }: { readonly content: ServicePage
         note={content.types.note}
       />
       <HowItWorks tone="alt" />
-      <FaqSection title={content.faq.title} lead={content.faq.lead} items={content.faq.items} />
+      <FaqSection
+        title={content.faq.title}
+        lead={content.faq.lead}
+        items={content.faq.items}
+      />
       <QuoteSection defaultService={content.quoteService} />
     </>
   );

@@ -22,7 +22,11 @@ export interface AccordionProps {
  * Panels animate open with the grid-rows technique (0fr to 1fr over 250ms). Collapsed panels
  * are inert so hidden text is skipped by keyboard and screen readers, but stays in the HTML.
  */
-export function Accordion({ items, headingLevel = "h3", className }: AccordionProps) {
+export function Accordion({
+  items,
+  headingLevel = "h3",
+  className,
+}: AccordionProps) {
   const baseId = useId();
   const firstId = items[0]?.id;
   const [openId, setOpenId] = useState<string | null>(firstId ?? null);
@@ -39,7 +43,10 @@ export function Accordion({ items, headingLevel = "h3", className }: AccordionPr
         const buttonId = `${baseId}-${item.id}-button`;
         const panelId = `${baseId}-${item.id}-panel`;
         return (
-          <div key={item.id} className="rounded-card border border-line bg-snow text-ink">
+          <div
+            key={item.id}
+            className="rounded-card border border-line bg-snow text-ink"
+          >
             <Heading className="m-0">
               <button
                 type="button"
@@ -66,7 +73,9 @@ export function Accordion({ items, headingLevel = "h3", className }: AccordionPr
               )}
             >
               <div className="overflow-hidden">
-                <p className="max-w-prose px-6 pb-6 type-body text-ink">{item.answer}</p>
+                <p className="max-w-prose px-6 pb-6 type-body text-ink">
+                  {item.answer}
+                </p>
               </div>
             </div>
           </div>

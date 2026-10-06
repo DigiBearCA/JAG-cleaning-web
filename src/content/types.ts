@@ -52,7 +52,10 @@ export interface ChipGroup {
 }
 
 export interface ServicePageContent {
-  readonly slug: "residential-cleaning" | "commercial-cleaning" | "snow-removal";
+  readonly slug:
+    | "residential-cleaning"
+    | "commercial-cleaning"
+    | "snow-removal";
   readonly path: string;
   readonly meta: {
     readonly title: string;
@@ -69,7 +72,9 @@ export interface ServicePageContent {
     readonly scene: SceneName;
     readonly sceneLabel: string;
   };
-  readonly included: SectionCopy & { readonly groups: ReadonlyArray<ChecklistGroup> };
+  readonly included: SectionCopy & {
+    readonly groups: ReadonlyArray<ChecklistGroup>;
+  };
   readonly types: SectionCopy & {
     readonly cards: ReadonlyArray<FeatureCard>;
     readonly extras?: ChipGroup;

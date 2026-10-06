@@ -20,7 +20,12 @@ export interface PageMetadataInput {
 }
 
 /** Per-page metadata: canonical URL, Open Graph (en_CA), and a large Twitter card. */
-export function buildPageMetadata({ title, description, path, absoluteTitle = false }: PageMetadataInput): Metadata {
+export function buildPageMetadata({
+  title,
+  description,
+  path,
+  absoluteTitle = false,
+}: PageMetadataInput): Metadata {
   const fullTitle = absoluteTitle ? title : TITLE_TEMPLATE.replace("%s", title);
   return {
     title: absoluteTitle ? { absolute: title } : title,

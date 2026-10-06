@@ -29,15 +29,24 @@ function prune(now: number, windowMs: number): void {
   }
 }
 
-export function checkRateLimit(key: string, options: RateLimitOptions, now: number = Date.now()): RateLimitResult {
+export function checkRateLimit(
+  key: string,
+  options: RateLimitOptions,
+  now: number = Date.now(),
+): RateLimitResult {
   if (hits.size > MAX_TRACKED_KEYS) prune(now, options.windowMs);
 
-  const recent = (hits.get(key) ?? []).filter((time) => now - time < options.windowMs);
+  const recent = (hits.get(key) ?? []).filter(
+    (time) => now - time < options.windowMs,
+  );
 
   if (recent.length >= options.limit) {
     hits.set(key, recent);
     const oldest = recent[0] ?? now;
-    const retryAfterSeconds = Math.max(1, Math.ceil((oldest + options.windowMs - now) / 1000));
+    const retryAfterSeconds = Math.max(
+      1,
+      Math.ceil((oldest + options.windowMs - now) / 1000),
+    );
     return { allowed: false, retryAfterSeconds };
   }
 

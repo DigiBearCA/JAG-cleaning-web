@@ -1,7 +1,11 @@
 import type { ReactNode, SVGProps } from "react";
 import { cx } from "@/lib/cx";
 
-export function SceneFrame({ children, className, ...props }: SVGProps<SVGSVGElement> & { children: ReactNode }) {
+export function SceneFrame({
+  children,
+  className,
+  ...props
+}: SVGProps<SVGSVGElement> & { children: ReactNode }) {
   return (
     <svg
       viewBox="0 0 400 300"
@@ -15,4 +19,3 @@ export function SceneFrame({ children, className, ...props }: SVGProps<SVGSVGEle
     </svg>
   );
 }
-

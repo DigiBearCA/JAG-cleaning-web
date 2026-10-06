@@ -28,10 +28,21 @@ export function WhoWeServe({
   const headingId = `${id}-title`;
   return (
     <Section tone={tone} id={id} labelledBy={headingId}>
-      <SectionHeading id={headingId} title={title} lead={lead} align="center" tone={tone} />
+      <SectionHeading
+        id={headingId}
+        title={title}
+        lead={lead}
+        align="center"
+        tone={tone}
+      />
       <ul className="mt-10 grid gap-4 lg:grid-cols-3">
         {cards.map((card) => (
-          <Card key={card.href} as="li" interactive className="flex flex-col items-center text-center gap-4">
+          <Card
+            key={card.href}
+            as="li"
+            interactive
+            className="flex flex-col items-center text-center gap-4"
+          >
             <div className="flex items-center gap-3">
               <FeatureIcon>
                 <Icon name={card.icon} />

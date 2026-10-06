@@ -17,7 +17,12 @@ export function StickyContactBar() {
       <Button href={telHref()} variant="outline" size="bar" icon="phone">
         Call
       </Button>
-      <Button href={whatsappHref()} variant="outline" size="bar" icon="whatsapp">
+      <Button
+        href={whatsappHref()}
+        variant="outline"
+        size="bar"
+        icon="whatsapp"
+      >
         WhatsApp
       </Button>
       <Button href={QUOTE_HREF} size="bar">

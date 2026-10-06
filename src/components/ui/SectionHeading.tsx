@@ -39,12 +39,28 @@ export function SectionHeading({
   const Heading = level;
   const centered = align === "center";
   return (
-    <div className={cx("flex flex-col gap-3", centered && "items-center text-center", className)}>
-      {eyebrow ? <p className={cx("type-eyebrow", HEADING_TONE[tone])}>{eyebrow}</p> : null}
-      <Heading id={id} className={cx(level === "h1" ? "type-h1" : "type-h2", HEADING_TONE[tone])}>
+    <div
+      className={cx(
+        "flex flex-col gap-3",
+        centered && "items-center text-center",
+        className,
+      )}
+    >
+      {eyebrow ? (
+        <p className={cx("type-eyebrow", HEADING_TONE[tone])}>{eyebrow}</p>
+      ) : null}
+      <Heading
+        id={id}
+        className={cx(
+          level === "h1" ? "type-h1" : "type-h2",
+          HEADING_TONE[tone],
+        )}
+      >
         {title}
       </Heading>
-      {lead ? <p className={cx("type-lead max-w-prose", LEAD_TONE[tone])}>{lead}</p> : null}
+      {lead ? (
+        <p className={cx("type-lead max-w-prose", LEAD_TONE[tone])}>{lead}</p>
+      ) : null}
     </div>
   );
 }

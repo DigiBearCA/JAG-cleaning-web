@@ -15,14 +15,14 @@ export interface LogoProps {
 export function Logo({ tone = "light", onClick, className }: LogoProps) {
   const onDark = tone === "dark";
   return (
-    <Link 
-      href="/" 
-      onClick={onClick} 
+    <Link
+      href="/"
+      onClick={onClick}
       className={cx(
         "inline-flex items-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring",
         onDark ? "text-on-dark" : "text-primary",
-        className
-      )} 
+        className,
+      )}
       aria-label={SITE.name}
     >
       <BrandLogo className="h-10 w-auto sm:h-12" />

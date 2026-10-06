@@ -7,10 +7,21 @@ import { mailtoHref, telHref, whatsappHref } from "@/lib/contact-links";
 const LINK_CLASSES =
   "font-medium text-primary underline-offset-4 transition duration-150 ease-brand hover:underline break-words";
 
-function DetailRow({ icon, label, children }: { readonly icon: IconName; readonly label: string; readonly children: ReactNode }) {
+function DetailRow({
+  icon,
+  label,
+  children,
+}: {
+  readonly icon: IconName;
+  readonly label: string;
+  readonly children: ReactNode;
+}) {
   return (
     <li className="flex items-start gap-4">
-      <span aria-hidden="true" className="inline-flex size-11 shrink-0 items-center justify-center rounded-pill bg-chip text-chip-fg">
+      <span
+        aria-hidden="true"
+        className="inline-flex size-11 shrink-0 items-center justify-center rounded-pill bg-chip text-chip-fg"
+      >
         <Icon name={icon} size={20} />
       </span>
       <div className="flex min-w-0 flex-col pt-0.5">
@@ -30,17 +41,27 @@ export function ContactDetails() {
         <h2 id="contact-details-title" className="type-h2 text-primary">
           {CONTACT_DETAILS.title}
         </h2>
-        <p className="max-w-prose type-body text-ink-muted">{CONTACT_DETAILS.intro}</p>
+        <p className="max-w-prose type-body text-ink-muted">
+          {CONTACT_DETAILS.intro}
+        </p>
       </div>
 
-      <ul className="flex flex-col gap-5" aria-labelledby="contact-details-title">
+      <ul
+        className="flex flex-col gap-5"
+        aria-labelledby="contact-details-title"
+      >
         <DetailRow icon="phone" label={labels.phone}>
           <a href={telHref()} className={LINK_CLASSES}>
             {SITE.phone.display}
           </a>
         </DetailRow>
         <DetailRow icon="whatsapp" label={labels.whatsapp}>
-          <a href={whatsappHref()} target="_blank" rel="noopener noreferrer" className={LINK_CLASSES}>
+          <a
+            href={whatsappHref()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={LINK_CLASSES}
+          >
             {labels.whatsappLink}
           </a>
         </DetailRow>
@@ -79,7 +100,6 @@ export function ContactDetails() {
           </li>
         </ul>
       </div> */}
-
     </div>
   );
 }

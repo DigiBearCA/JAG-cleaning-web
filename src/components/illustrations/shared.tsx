@@ -12,7 +12,12 @@ interface SvgFrameProps extends IllustrationProps {
 }
 
 /** Shared root: fills its (fixed aspect-ratio) frame and handles decorative vs labelled. */
-export function SvgFrame({ label, className, viewBox, children }: SvgFrameProps) {
+export function SvgFrame({
+  label,
+  className,
+  viewBox,
+  children,
+}: SvgFrameProps) {
   const labelled = typeof label === "string" && label.length > 0;
   return (
     <svg
@@ -30,7 +35,17 @@ export function SvgFrame({ label, className, viewBox, children }: SvgFrameProps)
 }
 
 /** Four-point sparkle centred on (cx, cy) with radius r. */
-export function Sparkle({ cx, cy, r, className }: { readonly cx: number; readonly cy: number; readonly r: number; readonly className: string }) {
+export function Sparkle({
+  cx,
+  cy,
+  r,
+  className,
+}: {
+  readonly cx: number;
+  readonly cy: number;
+  readonly r: number;
+  readonly className: string;
+}) {
   const k = r * 0.22;
   const d = `M${cx} ${cy - r}C${cx + k} ${cy - k} ${cx + k} ${cy - k} ${cx + r} ${cy}C${cx + k} ${cy + k} ${cx + k} ${cy + k} ${cx} ${cy + r}C${cx - k} ${cy + k} ${cx - k} ${cy + k} ${cx - r} ${cy}C${cx - k} ${cy - k} ${cx - k} ${cy - k} ${cx} ${cy - r}Z`;
   return <path d={d} className={className} />;
@@ -43,7 +58,13 @@ export interface SnowDot {
 }
 
 /** Falling snow as small circles. */
-export function Snowfall({ dots, className }: { readonly dots: ReadonlyArray<SnowDot>; readonly className: string }) {
+export function Snowfall({
+  dots,
+  className,
+}: {
+  readonly dots: ReadonlyArray<SnowDot>;
+  readonly className: string;
+}) {
   return (
     <g className={className}>
       {dots.map((dot) => (
@@ -99,7 +120,11 @@ export function gridWindows(
   const result: WindowRect[] = [];
   for (let row = 0; row < rows; row += 1) {
     for (let col = 0; col < cols; col += 1) {
-      result.push({ x: startX + col * stepX, y: startY + row * stepY, accent: accents.includes(`${col},${row}`) });
+      result.push({
+        x: startX + col * stepX,
+        y: startY + row * stepY,
+        accent: accents.includes(`${col},${row}`),
+      });
     }
   }
   return result;

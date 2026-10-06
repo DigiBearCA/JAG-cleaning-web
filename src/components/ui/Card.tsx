@@ -10,13 +10,19 @@ export interface CardProps {
 }
 
 /** White card, 24px radius, hairline border, 24px padding on mobile and 32px from 768px. */
-export function Card({ interactive = false, as = "div", className, children }: CardProps) {
+export function Card({
+  interactive = false,
+  as = "div",
+  className,
+  children,
+}: CardProps) {
   const Component = as;
   return (
     <Component
       className={cx(
         "relative rounded-card border border-line bg-white p-6 text-ink md:p-8",
-        interactive && "transition duration-150 ease-brand hover:-translate-y-0.5 hover:border-primary",
+        interactive &&
+          "transition duration-150 ease-brand hover:-translate-y-0.5 hover:border-primary",
         className,
       )}
     >

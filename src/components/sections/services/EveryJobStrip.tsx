@@ -15,7 +15,10 @@ export function EveryJobStrip() {
       <SectionHeading title="On every job" align="center" tone="dark" />
       <div className="mt-10 grid gap-4 md:grid-cols-3">
         {POINTS.map((point) => (
-          <div key={point.text} className="rounded-card bg-dark-card p-6 flex items-center gap-4 border border-on-dark/10">
+          <div
+            key={point.text}
+            className="rounded-card bg-dark-card p-6 flex items-center gap-4 border border-on-dark/10"
+          >
             <div className="flex items-center justify-center rounded-full bg-accent/10 p-3 text-accent shrink-0">
               <Icon name={point.icon} size={24} />
             </div>
@@ -26,4 +29,3 @@ export function EveryJobStrip() {
     </Section>
   );
 }
-

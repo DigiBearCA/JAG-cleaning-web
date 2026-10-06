@@ -23,9 +23,21 @@ const ASPECT: Record<IllustrationFrameProps["aspect"], string> = {
 };
 
 /** Rounded 32px panel with hidden overflow that holds an illustration or, later, a photo. */
-export function IllustrationFrame({ aspect, image, priority = false, className, children }: IllustrationFrameProps) {
+export function IllustrationFrame({
+  aspect,
+  image,
+  priority = false,
+  className,
+  children,
+}: IllustrationFrameProps) {
   return (
-    <div className={cx("relative w-full overflow-hidden rounded-panel bg-illus-sky", ASPECT[aspect], className)}>
+    <div
+      className={cx(
+        "relative w-full overflow-hidden rounded-panel bg-illus-sky",
+        ASPECT[aspect],
+        className,
+      )}
+    >
       {image ? (
         <Image
           src={image.src}

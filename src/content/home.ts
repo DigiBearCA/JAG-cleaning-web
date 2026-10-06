@@ -1,4 +1,9 @@
-import type { FeatureCard, LinkedFeatureCard, SectionCopy, Step } from "./types";
+import type {
+  FeatureCard,
+  LinkedFeatureCard,
+  SectionCopy,
+  Step,
+} from "./types";
 
 export const HOME_META = {
   title: "Contracting & Constructions in Edmonton, AB | JAAG",
@@ -14,11 +19,19 @@ export const HERO = {
   secondaryCta: "Call us",
   whatsappPrompt: "Prefer WhatsApp?",
   whatsappLink: "Message us",
-  trustChips: ["Free quotes", "Insured", "Edmonton-based", "Year-round service"],
-  illustrationLabel: "Illustration of a snow-covered house and office building on a winter day",
+  trustChips: [
+    "Free quotes",
+    "Insured",
+    "Edmonton-based",
+    "Year-round service",
+  ],
+  illustrationLabel:
+    "Illustration of a snow-covered house and office building on a winter day",
 } as const;
 
-export const WHO_WE_SERVE: SectionCopy & { readonly cards: ReadonlyArray<LinkedFeatureCard> } = {
+export const WHO_WE_SERVE: SectionCopy & {
+  readonly cards: ReadonlyArray<LinkedFeatureCard>;
+} = {
   title: "Who we serve",
   lead: "Cleaning inside, snow removal outside, one local team.",
   cards: [
@@ -49,16 +62,29 @@ export const WHO_WE_SERVE: SectionCopy & { readonly cards: ReadonlyArray<LinkedF
   ],
 };
 
-export const HOW_IT_WORKS: SectionCopy & { readonly steps: ReadonlyArray<Step> } = {
+export const HOW_IT_WORKS: SectionCopy & {
+  readonly steps: ReadonlyArray<Step>;
+} = {
   title: "How it works",
   steps: [
-    { title: "Tell us what you need", text: "Send a quick message or give us a call." },
-    { title: "Get your free quote", text: "We reply with a clear quote before any work starts." },
-    { title: "We take care of it", text: "Our team shows up and gets it done." },
+    {
+      title: "Tell us what you need",
+      text: "Send a quick message or give us a call.",
+    },
+    {
+      title: "Get your free quote",
+      text: "We reply with a clear quote before any work starts.",
+    },
+    {
+      title: "We take care of it",
+      text: "Our team shows up and gets it done.",
+    },
   ],
 };
 
-export const WHY_JAAG: SectionCopy & { readonly cards: ReadonlyArray<FeatureCard> } = {
+export const WHY_JAAG: SectionCopy & {
+  readonly cards: ReadonlyArray<FeatureCard>;
+} = {
   title: "Why JAAG",
   cards: [
     {
@@ -92,7 +118,8 @@ export const QUOTE_COPY = {
   title: "Get your free quote",
   lead: "Tell us what you need and we'll get back to you.",
   /** Shown under the lead. Only confirmed facts: free quotes, insured, own supplies. */
-  reassurance: "Quotes are free. We are insured and bring our own supplies and equipment.",
+  reassurance:
+    "Quotes are free. We are insured and bring our own supplies and equipment.",
   callLabel: "Call",
   whatsappLabel: "Message us on WhatsApp",
 } as const;

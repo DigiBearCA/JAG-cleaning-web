@@ -31,7 +31,8 @@
   --color-illus-detail: var(--illus-detail);
   --color-illus-ground: var(--illus-ground);
   --font-heading: var(--font-fraunces), Georgia, "Times New Roman", serif;
-  --font-body: var(--font-dm-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body:
+    var(--font-dm-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 /* Fixed values */
@@ -45,8 +46,14 @@
   --animate-fade-up: fade-up 400ms var(--ease-brand) both;
 
   @keyframes fade-up {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
@@ -56,56 +63,160 @@
   --animate-menu-in: menu-in 150ms var(--ease-brand) both;
 
   @keyframes menu-in {
-    from { opacity: 0; transform: translateY(-4px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
 /* Type scale: values switch at 768px, the type-* utilities read them */
 :root {
-  --fs-h1: 36px; --lh-h1: 42px;
-  --fs-h2: 28px; --lh-h2: 34px;
-  --fs-h3: 22px; --lh-h3: 30px;
+  --fs-h1: 36px;
+  --lh-h1: 42px;
+  --fs-h2: 28px;
+  --lh-h2: 34px;
+  --fs-h3: 22px;
+  --lh-h3: 30px;
 }
 @media (min-width: 768px) {
   :root {
-    --fs-h1: 48px; --lh-h1: 56px;
-    --fs-h2: 36px; --lh-h2: 44px;
-    --fs-h3: 24px; --lh-h3: 32px;
+    --fs-h1: 48px;
+    --lh-h1: 56px;
+    --fs-h2: 36px;
+    --lh-h2: 44px;
+    --fs-h3: 24px;
+    --lh-h3: 32px;
   }
 }
 
-@utility type-h1 { font-family: var(--font-heading); font-weight: 500; font-size: var(--fs-h1); line-height: var(--lh-h1); letter-spacing: -0.01em; text-wrap: balance; }
-@utility type-h2 { font-family: var(--font-heading); font-weight: 500; font-size: var(--fs-h2); line-height: var(--lh-h2); letter-spacing: -0.01em; text-wrap: balance; }
-@utility type-h3 { font-family: var(--font-heading); font-weight: 500; font-size: var(--fs-h3); line-height: var(--lh-h3); letter-spacing: -0.01em; }
-@utility type-h4 { font-family: var(--font-heading); font-weight: 500; font-size: 20px; line-height: 28px; }
-@utility type-lead { font-family: var(--font-body); font-size: 18px; line-height: 28px; text-wrap: pretty; }
-@utility type-body { font-family: var(--font-body); font-size: 16px; line-height: 26px; text-wrap: pretty; }
-@utility type-small { font-family: var(--font-body); font-size: 14px; line-height: 22px; }
-@utility type-caption { font-family: var(--font-body); font-size: 12px; line-height: 18px; }
-@utility type-button { font-family: var(--font-body); font-weight: 500; font-size: 16px; line-height: 24px; }
+@utility type-h1 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: var(--fs-h1);
+  line-height: var(--lh-h1);
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+@utility type-h2 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: var(--fs-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+@utility type-h3 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
+  letter-spacing: -0.01em;
+}
+@utility type-h4 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+}
+@utility type-lead {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 28px;
+  text-wrap: pretty;
+}
+@utility type-body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 26px;
+  text-wrap: pretty;
+}
+@utility type-small {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 22px;
+}
+@utility type-caption {
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 18px;
+}
+@utility type-button {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
 
 /* Component type styles named in DESIGN.md §3 and §8 that sit outside the core scale (wordmark, eyebrow, menu links, dropdown titles). Kept as utilities so components never size text ad hoc. */
-@utility type-wordmark { font-family: var(--font-heading); font-weight: 500; font-size: 26px; line-height: 28px; letter-spacing: 0.04em; }
-@utility type-eyebrow { font-family: var(--font-body); font-weight: 500; font-size: 14px; line-height: 22px; letter-spacing: 0.04em; text-transform: uppercase; }
-@utility type-menu-link { font-family: var(--font-heading); font-weight: 500; font-size: 28px; line-height: 36px; letter-spacing: -0.01em; }
-@utility type-menu-title { font-family: var(--font-heading); font-weight: 500; font-size: 18px; line-height: 26px; }
+@utility type-wordmark {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 28px;
+  letter-spacing: 0.04em;
+}
+@utility type-eyebrow {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+@utility type-menu-link {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 36px;
+  letter-spacing: -0.01em;
+}
+@utility type-menu-title {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 26px;
+}
 
 @layer base {
-  html { scroll-padding-top: 5.5rem; scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 26px; }
-  :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+  html {
+    scroll-padding-top: 5.5rem;
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 26px;
+  }
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
 
   /* Why: DESIGN.md §11 asks for an --accent focus ring on dark backgrounds; one descendant rule covers every control in dark sections and the footer. */
-  .surface-dark :focus-visible { outline-color: var(--accent); }
+  .surface-dark :focus-visible {
+    outline-color: var(--accent);
+  }
 
   /* Why: the mobile menu (client) and the sticky bar (server) are separate components; :has() hides the bar and locks page scroll while the menu is open without extra JS. */
-  body:has([data-mobile-menu-open]) { overflow: hidden; }
-  body:has([data-mobile-menu-open]) [data-sticky-bar] { display: none; }
+  body:has([data-mobile-menu-open]) {
+    overflow: hidden;
+  }
+  body:has([data-mobile-menu-open]) [data-sticky-bar] {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, ::before, ::after {
+  *,
+  ::before,
+  ::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

@@ -7,7 +7,13 @@ import { CloseIcon, MenuIcon, PhoneIcon } from "@/components/icons";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SITE } from "@/config/site";
-import { HOME_LINK, SERVICES_LINK, NAV_AFTER_SERVICES, QUOTE_HREF, type NavLink } from "@/content/navigation";
+import {
+  HOME_LINK,
+  SERVICES_LINK,
+  NAV_AFTER_SERVICES,
+  QUOTE_HREF,
+  type NavLink,
+} from "@/content/navigation";
 import { telHref } from "@/lib/contact-links";
 import { cx } from "@/lib/cx";
 import { Logo } from "./Logo";
@@ -15,7 +21,13 @@ import { MobileMenu } from "./MobileMenu";
 
 const MOBILE_MENU_ID = "mobile-menu";
 
-function DesktopNavLink({ link, pathname }: { readonly link: NavLink; readonly pathname: string }) {
+function DesktopNavLink({
+  link,
+  pathname,
+}: {
+  readonly link: NavLink;
+  readonly pathname: string;
+}) {
   const active = pathname === link.href;
   return (
     <Link
@@ -23,7 +35,9 @@ function DesktopNavLink({ link, pathname }: { readonly link: NavLink; readonly p
       aria-current={active ? "page" : undefined}
       className={cx(
         "inline-flex min-h-11 items-center px-3 py-2 type-button transition duration-150 ease-brand hover:text-primary",
-        active ? "text-primary underline decoration-accent decoration-2 underline-offset-6" : "text-ink",
+        active
+          ? "text-primary underline decoration-accent decoration-2 underline-offset-6"
+          : "text-ink",
       )}
     >
       {link.label}
@@ -62,7 +76,10 @@ export function Header() {
       <Container className="flex h-16 items-center justify-between gap-4 md:h-18">
         <Logo onClick={closeMenu} />
 
-        <nav aria-label="Main" className="hidden lg:block absolute left-1/2 -translate-x-1/2">
+        <nav
+          aria-label="Main"
+          className="hidden lg:block absolute left-1/2 -translate-x-1/2"
+        >
           <ul className="flex items-center gap-1">
             <li>
               <DesktopNavLink link={HOME_LINK} pathname={pathname} />
@@ -114,7 +131,12 @@ export function Header() {
       </Container>
 
       {menuOpen ? (
-        <MobileMenu id={MOBILE_MENU_ID} pathname={pathname} onNavigate={closeMenu} onDismiss={dismissMenu} />
+        <MobileMenu
+          id={MOBILE_MENU_ID}
+          pathname={pathname}
+          onNavigate={closeMenu}
+          onDismiss={dismissMenu}
+        />
       ) : null}
     </header>
   );

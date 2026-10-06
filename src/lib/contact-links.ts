@@ -12,7 +12,9 @@ export function mailtoHref(subject?: string): string {
 }
 
 /** WhatsApp click-to-chat link with a pre-filled message. */
-export function whatsappHref(message: string = SITE.whatsapp.defaultMessage): string {
+export function whatsappHref(
+  message: string = SITE.whatsapp.defaultMessage,
+): string {
   return `https://wa.me/${SITE.whatsapp.number}?text=${encodeURIComponent(message)}`;
 }
 

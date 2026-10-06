@@ -42,6 +42,8 @@ next-env.d.ts
 
 # Local skills reference
 SKILLS.md
+AGENTS.md
+CLAUDE.md
 AGENT_PROMPT.md
 DESIGN.md
-!.env.example
+.env.example

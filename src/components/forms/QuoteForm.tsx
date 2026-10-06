@@ -36,13 +36,22 @@ export interface QuoteFormProps {
 
 const MESSAGES = {
   fixFields: "Please check the highlighted fields and try again.",
-  network: "We could not send your request. Check your connection and try again.",
-  tooMany: "You have sent a few requests in a short time. Please wait a few minutes and try again.",
-  generic: "We could not send your request just now. Please try again in a minute.",
+  network:
+    "We could not send your request. Check your connection and try again.",
+  tooMany:
+    "You have sent a few requests in a short time. Please wait a few minutes and try again.",
+  generic:
+    "We could not send your request just now. Please try again in a minute.",
 } as const;
 
 function messageFor(status: number, body: QuoteApiResponse | null): string {
-  if (body && !body.ok && typeof body.message === "string" && body.message.length > 0) return body.message;
+  if (
+    body &&
+    !body.ok &&
+    typeof body.message === "string" &&
+    body.message.length > 0
+  )
+    return body.message;
   if (status === 429) return MESSAGES.tooMany;
   return MESSAGES.generic;
 }
@@ -52,9 +61,17 @@ function messageFor(status: number, body: QuoteApiResponse | null): string {
  * same rules as the server, posts JSON to /api/quote, and handles idle, submitting,
  * success, and error states. Entered values are kept on error.
  */
-export function QuoteForm({ defaultService, id, labelledBy, className }: QuoteFormProps) {
+export function QuoteForm({
+  defaultService,
+  id,
+  labelledBy,
+  className,
+}: QuoteFormProps) {
   const prefix = useId();
-  const [values, setValues] = useState<QuoteInput>({ ...EMPTY_QUOTE_INPUT, service: defaultService ?? "" });
+  const [values, setValues] = useState<QuoteInput>({
+    ...EMPTY_QUOTE_INPUT,
+    service: defaultService ?? "",
+  });
   const [errors, setErrors] = useState<QuoteErrors>({});
   const [status, setStatus] = useState<FormStatus>("idle");
   const [formMessage, setFormMessage] = useState("");
@@ -114,13 +131,19 @@ export function QuoteForm({ defaultService, id, labelledBy, className }: QuoteFo
     }
     setValues((current) => ({ ...current, [field]: value }));
     if (field !== "company" && errors[field] !== undefined) {
-      setErrors((current) => ({ ...current, [field]: validateQuoteField(field, value) }));
+      setErrors((current) => ({
+        ...current,
+        [field]: validateQuoteField(field, value),
+      }));
     }
   }
 
   function handleBlur(field: QuoteField) {
     if (!attempted) return;
-    setErrors((current) => ({ ...current, [field]: validateQuoteField(field, values[field]) }));
+    setErrors((current) => ({
+      ...current,
+      [field]: validateQuoteField(field, values[field]),
+    }));
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -146,7 +169,10 @@ export function QuoteForm({ defaultService, id, labelledBy, className }: QuoteFo
     try {
       const response = await fetch("/api/quote", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         body: JSON.stringify(values),
       });
       const raw: unknown = await response.json().catch(() => null);
@@ -157,7 +183,12 @@ export function QuoteForm({ defaultService, id, labelledBy, className }: QuoteFo
         return;
       }
 
-      if (body && !body.ok && body.errors && Object.keys(body.errors).length > 0) {
+      if (
+        body &&
+        !body.ok &&
+        body.errors &&
+        Object.keys(body.errors).length > 0
+      ) {
         setErrors(body.errors);
         setStatus("error");
         setFormMessage(MESSAGES.fixFields);
@@ -179,14 +210,26 @@ export function QuoteForm({ defaultService, id, labelledBy, className }: QuoteFo
   const submitting = status === "submitting";
 
   return (
-    <div id={id} className={cx("rounded-card border border-line bg-snow p-6 text-ink md:p-8", className)}>
+    <div
+      id={id}
+      className={cx(
+        "rounded-card border border-line bg-snow p-6 text-ink md:p-8",
+        className,
+      )}
+    >
       {status === "success" ? (
         <div className="flex flex-col gap-4">
-          <h3 ref={successHeadingRef} tabIndex={-1} className="type-h3 text-primary">
+          <h3
+            ref={successHeadingRef}
+            tabIndex={-1}
+            className="type-h3 text-primary"
+          >
             Thanks, we have your request.
           </h3>
           <p className="type-body text-ink">
-            {SITE.responseTime ?? "We will get back to you soon with your free quote."} If it is urgent, call or message us.
+            {SITE.responseTime ??
+              "We will get back to you soon with your free quote."}{" "}
+            If it is urgent, call or message us.
           </p>
           <div className="flex flex-wrap gap-3">
             <Button href={telHref()} variant="primary" icon="phone">
@@ -251,7 +294,9 @@ export function QuoteForm({ defaultService, id, labelledBy, className }: QuoteFo
                 rows={1}
                 value={values.message}
                 error={errors.message}
-                onChange={(event) => handleChange("message", event.target.value)}
+                onChange={(event) =>
+                  handleChange("message", event.target.value)
+                }
                 onBlur={() => handleBlur("message")}
               />
             </div>
@@ -284,34 +329,39 @@ export function QuoteForm({ defaultService, id, labelledBy, className }: QuoteFo
           </div>
 
           <div>
-  <div aria-live="polite" aria-atomic="true">
-    {status === "error" && formMessage ? (
-      <div className="mb-4 flex flex-col gap-1 rounded-card border-[1.5px] border-danger bg-bg px-6 py-4">
-        <p className="type-small font-medium text-danger">{formMessage}</p>
-        <p className="type-small text-ink">
-          You can also{" "}
-          <a href={telHref()} className="font-medium text-primary underline underline-offset-4">
-            call {SITE.phone.display}
-          </a>{" "}
-          or{" "}
-          <a
-            href={whatsappHref()}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-primary underline underline-offset-4"
-          >
-            message us on WhatsApp
-          </a>
-          .
-        </p>
-      </div>
-    ) : null}
-  </div>
+            <div aria-live="polite" aria-atomic="true">
+              {status === "error" && formMessage ? (
+                <div className="mb-4 flex flex-col gap-1 rounded-card border-[1.5px] border-danger bg-bg px-6 py-4">
+                  <p className="type-small font-medium text-danger">
+                    {formMessage}
+                  </p>
+                  <p className="type-small text-ink">
+                    You can also{" "}
+                    <a
+                      href={telHref()}
+                      className="font-medium text-primary underline underline-offset-4"
+                    >
+                      call {SITE.phone.display}
+                    </a>{" "}
+                    or{" "}
+                    <a
+                      href={whatsappHref()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium text-primary underline underline-offset-4"
+                    >
+                      message us on WhatsApp
+                    </a>
+                    .
+                  </p>
+                </div>
+              ) : null}
+            </div>
 
-  <Button type="submit" fullWidth loading={submitting}>
-    {submitting ? "Sending..." : "Get my free quote"}
-  </Button>
-</div>
+            <Button type="submit" fullWidth loading={submitting}>
+              {submitting ? "Sending..." : "Get my free quote"}
+            </Button>
+          </div>
         </form>
       )}
     </div>

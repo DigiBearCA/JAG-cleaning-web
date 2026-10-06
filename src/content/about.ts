@@ -12,7 +12,9 @@ export const ABOUT_HERO = {
   lead: "A local Edmonton team for cleaning inside and snow removal outside, through every season.",
 } as const;
 
-export const OUR_STORY: SectionCopy & { readonly paragraphs: ReadonlyArray<string> } = {
+export const OUR_STORY: SectionCopy & {
+  readonly paragraphs: ReadonlyArray<string>;
+} = {
   title: "Our story",
   // TODO(client): owner story and photo
   paragraphs: [
@@ -22,7 +24,9 @@ export const OUR_STORY: SectionCopy & { readonly paragraphs: ReadonlyArray<strin
   ],
 };
 
-export const VALUES: SectionCopy & { readonly cards: ReadonlyArray<FeatureCard> } = {
+export const VALUES: SectionCopy & {
+  readonly cards: ReadonlyArray<FeatureCard>;
+} = {
   title: "What we stand for",
   cards: [
     {

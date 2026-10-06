@@ -43,7 +43,10 @@ export interface Service {
   readonly enabled: boolean;
 }
 
-export const CHAPTERS: Record<ChapterId, { title: string; description: string }> = {
+export const CHAPTERS: Record<
+  ChapterId,
+  { title: string; description: string }
+> = {
   cleaning: {
     title: "Cleaning",
     description: "Homes and workplaces, kept fresh.",
@@ -78,8 +81,14 @@ export const SERVICES: readonly Service[] = [
     ],
     flow: [
       { title: "Tell us about your home", text: "Size, rooms, and how often." },
-      { title: "Get your free quote", text: "A clear price before work starts." },
-      { title: "We clean", text: "Our team brings the supplies and equipment." },
+      {
+        title: "Get your free quote",
+        text: "A clear price before work starts.",
+      },
+      {
+        title: "We clean",
+        text: "Our team brings the supplies and equipment.",
+      },
       { title: "Final walk-through", text: "We check the details with you." },
     ],
     icon: "home",
@@ -105,7 +114,10 @@ export const SERVICES: readonly Service[] = [
       { title: "Walkthrough", text: "We look at your space and needs." },
       { title: "Plan and quote", text: "Frequency, scope, and price." },
       { title: "Scheduled cleaning", text: "Daily, weekly, or after hours." },
-      { title: "Ongoing check-ins", text: "We adjust the plan as needs change." },
+      {
+        title: "Ongoing check-ins",
+        text: "We adjust the plan as needs change.",
+      },
     ],
     icon: "briefcase",
     enabled: true,
@@ -126,9 +138,15 @@ export const SERVICES: readonly Service[] = [
       "Move-out carpet cleans",
     ],
     flow: [
-      { title: "Tell us the areas", text: "Rooms, carpet type, and any stains." },
+      {
+        title: "Tell us the areas",
+        text: "Rooms, carpet type, and any stains.",
+      },
       { title: "Get your free quote", text: "A clear price before we start." },
-      { title: "Treat and deep clean", text: "Extra attention on stains and traffic lanes." },
+      {
+        title: "Treat and deep clean",
+        text: "Extra attention on stains and traffic lanes.",
+      },
       { title: "Final check", text: "We review the result with you." },
     ],
     icon: "rug",
@@ -199,7 +217,10 @@ export const SERVICES: readonly Service[] = [
       "One-time or repeat visits",
     ],
     flow: [
-      { title: "Tell us what needs clearing", text: "Location, size, and type of mess." },
+      {
+        title: "Tell us what needs clearing",
+        text: "Location, size, and type of mess.",
+      },
       { title: "Get your free quote", text: "A clear price before we start." },
       { title: "Clear and clean", text: "Remove debris, then tidy up." },
       { title: "Final check", text: "We confirm the space is ready." },
@@ -223,7 +244,10 @@ export const SERVICES: readonly Service[] = [
       "Entrances and shared outdoor areas",
     ],
     flow: [
-      { title: "Share your yard and goals", text: "What you have and what you want." },
+      {
+        title: "Share your yard and goals",
+        text: "What you have and what you want.",
+      },
       { title: "Plan and quote", text: "Scope, timing, and price." },
       { title: "Do the work", text: "Done step by step." },
       { title: "Final walk-through", text: "We review the result with you." },
@@ -295,7 +319,10 @@ export const SERVICES: readonly Service[] = [
     ],
     flow: [
       { title: "Tell us the property", text: "Driveway or lot, and size." },
-      { title: "Choose per visit or seasonal", text: "We set up a plan with you." },
+      {
+        title: "Choose per visit or seasonal",
+        text: "We set up a plan with you.",
+      },
       { title: "We clear it", text: "Snow cleared when it falls." },
       { title: "Check and repeat", text: "We keep the plan on track." },
     ],

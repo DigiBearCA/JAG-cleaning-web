@@ -31,7 +31,9 @@ export const metadata: Metadata = {
   },
   description: HOME_META.description,
   applicationName: SITE.name,
-  robots: SITE.indexable ? { index: true, follow: true } : { index: false, follow: false },
+  robots: SITE.indexable
+    ? { index: true, follow: true }
+    : { index: false, follow: false },
   openGraph: {
     type: "website",
     locale: "en_CA",
@@ -57,7 +59,11 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en-CA" data-palette={SITE.palette} className={`${fraunces.variable} ${dmSans.variable}`}>
+    <html
+      lang="en-CA"
+      data-palette={SITE.palette}
+      className={`${fraunces.variable} ${dmSans.variable}`}
+    >
       <body className="flex min-h-dvh flex-col pb-[calc(4.5rem+env(safe-area-inset-bottom))] antialiased md:pb-0">
         <SkipLink />
         <Header />

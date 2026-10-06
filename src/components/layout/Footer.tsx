@@ -1,6 +1,11 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { FacebookIcon, Icon, InstagramIcon, type IconName } from "@/components/icons";
+import {
+  FacebookIcon,
+  Icon,
+  InstagramIcon,
+  type IconName,
+} from "@/components/icons";
 import { Container } from "@/components/ui/Container";
 import { SITE } from "@/config/site";
 import { FOOTER_COMPANY, FOOTER_LEGAL } from "@/content/navigation";
@@ -14,7 +19,13 @@ const LINK_CLASSES =
 /** Computed once at build time; the footer is statically rendered. */
 const YEAR = new Date().getFullYear();
 
-function FooterColumn({ title, children }: { readonly title: string; readonly children: ReactNode }) {
+function FooterColumn({
+  title,
+  children,
+}: {
+  readonly title: string;
+  readonly children: ReactNode;
+}) {
   return (
     <div className="flex flex-col gap-3">
       <h2 className="type-h4 text-on-dark">{title}</h2>
@@ -23,11 +34,23 @@ function FooterColumn({ title, children }: { readonly title: string; readonly ch
   );
 }
 
-function ContactLink({ href, icon, children }: { readonly href: string; readonly icon: IconName; readonly children: ReactNode }) {
+function ContactLink({
+  href,
+  icon,
+  children,
+}: {
+  readonly href: string;
+  readonly icon: IconName;
+  readonly children: ReactNode;
+}) {
   const external = href.startsWith("https://");
   return (
     <li>
-      <a href={href} className={LINK_CLASSES} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
+      <a
+        href={href}
+        className={LINK_CLASSES}
+        {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      >
         <Icon name={icon} size={18} className="shrink-0" />
         <span className="break-all">{children}</span>
       </a>
@@ -47,7 +70,8 @@ export function Footer() {
           <div className="flex flex-col gap-3">
             <Logo tone="dark" className="self-start" />
             <p className="max-w-xs type-small text-on-dark-muted">
-              {SITE.descriptor} in Edmonton, Alberta. Free quotes from an insured local team.
+              {SITE.descriptor} in Edmonton, Alberta. Free quotes from an
+              insured local team.
             </p>
           </div>
 

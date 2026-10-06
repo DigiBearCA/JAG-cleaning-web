@@ -25,14 +25,23 @@ export function QuoteSection({ defaultService }: QuoteSectionProps) {
       containerClassName="grid items-start gap-10 lg:grid-cols-[35fr_65fr] lg:gap-12"
     >
       <div className="flex flex-col gap-4">
-        <SectionHeading id="quote-title" title={QUOTE_COPY.title} lead={QUOTE_COPY.lead} />
-        <p className="max-w-prose type-body text-ink-muted">{QUOTE_COPY.reassurance}</p>
+        <SectionHeading
+          id="quote-title"
+          title={QUOTE_COPY.title}
+          lead={QUOTE_COPY.lead}
+        />
+        <p className="max-w-prose type-body text-ink-muted">
+          {QUOTE_COPY.reassurance}
+        </p>
         <div className="flex flex-col items-start gap-4">
           <a
             href={telHref()}
             className="inline-flex min-h-11 items-center gap-3 type-h4 text-primary underline-offset-4 transition duration-150 ease-brand hover:underline"
           >
-            <span aria-hidden="true" className="inline-flex size-11 items-center justify-center rounded-pill bg-primary text-on-primary">
+            <span
+              aria-hidden="true"
+              className="inline-flex size-11 items-center justify-center rounded-pill bg-primary text-on-primary"
+            >
               <PhoneIcon size={20} />
             </span>
             <span>

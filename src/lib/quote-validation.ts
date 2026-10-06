@@ -47,7 +47,13 @@ export interface QuoteData {
 export type QuoteField = "name" | "phone" | "email" | "service" | "message";
 
 /** Field order, used to focus the first invalid field. */
-export const QUOTE_FIELDS: ReadonlyArray<QuoteField> = ["name", "phone", "email", "service", "message"];
+export const QUOTE_FIELDS: ReadonlyArray<QuoteField> = [
+  "name",
+  "phone",
+  "email",
+  "service",
+  "message",
+];
 
 export type QuoteErrors = Partial<Record<QuoteField, string>>;
 
@@ -58,7 +64,11 @@ export type QuoteValidationResult =
 /** Response body returned by POST /api/quote. */
 export type QuoteApiResponse =
   | { readonly ok: true }
-  | { readonly ok: false; readonly errors?: QuoteErrors; readonly message?: string };
+  | {
+      readonly ok: false;
+      readonly errors?: QuoteErrors;
+      readonly message?: string;
+    };
 
 export const EMPTY_QUOTE_INPUT: QuoteInput = {
   name: "",
@@ -94,21 +104,30 @@ function cleanLine(value: string): string {
 }
 
 /** Returns an error message for one field, or undefined when the value is valid. */
-export function validateQuoteField(field: QuoteField, rawValue: string): string | undefined {
+export function validateQuoteField(
+  field: QuoteField,
+  rawValue: string,
+): string | undefined {
   switch (field) {
     case "name": {
       const value = cleanLine(rawValue);
       if (value.length === 0) return "Enter your name.";
-      if (value.length < QUOTE_LIMITS.nameMin) return `Your name needs at least ${QUOTE_LIMITS.nameMin} characters.`;
-      if (value.length > QUOTE_LIMITS.nameMax) return `Keep your name to ${QUOTE_LIMITS.nameMax} characters or fewer.`;
+      if (value.length < QUOTE_LIMITS.nameMin)
+        return `Your name needs at least ${QUOTE_LIMITS.nameMin} characters.`;
+      if (value.length > QUOTE_LIMITS.nameMax)
+        return `Keep your name to ${QUOTE_LIMITS.nameMax} characters or fewer.`;
       return undefined;
     }
     case "phone": {
       const value = rawValue.trim();
       if (value.length === 0) return "Enter your phone number.";
-      if (value.length > QUOTE_LIMITS.phoneMax) return `Keep your phone number to ${QUOTE_LIMITS.phoneMax} characters or fewer.`;
+      if (value.length > QUOTE_LIMITS.phoneMax)
+        return `Keep your phone number to ${QUOTE_LIMITS.phoneMax} characters or fewer.`;
       const digits = phoneDigits(value);
-      if (!DIGITS_ONLY.test(digits) || digits.length < QUOTE_LIMITS.phoneMinDigits) {
+      if (
+        !DIGITS_ONLY.test(digits) ||
+        digits.length < QUOTE_LIMITS.phoneMinDigits
+      ) {
         return `Enter a phone number with at least ${QUOTE_LIMITS.phoneMinDigits} digits, for example 780 555 0123.`;
       }
       return undefined;
@@ -116,13 +135,15 @@ export function validateQuoteField(field: QuoteField, rawValue: string): string 
     case "email": {
       const value = cleanLine(rawValue);
       if (value.length === 0) return undefined; // Optional
-      if (value.length > QUOTE_LIMITS.emailMax) return `Keep your email to ${QUOTE_LIMITS.emailMax} characters or fewer.`;
+      if (value.length > QUOTE_LIMITS.emailMax)
+        return `Keep your email to ${QUOTE_LIMITS.emailMax} characters or fewer.`;
       if (!EMAIL_REGEX.test(value)) return "Enter a valid email address.";
       return undefined;
     }
     case "service": {
       if (rawValue.length === 0) return "Choose the service you need.";
-      if (!isServiceValue(rawValue)) return "Choose one of the listed services.";
+      if (!isServiceValue(rawValue))
+        return "Choose one of the listed services.";
       return undefined;
     }
     case "message": {
@@ -169,7 +190,11 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 }
 
 /** Reads an optional string property, capping its length so oversized values cannot grow. */
-function readString(record: Record<string, unknown>, key: string, max: number): string | null {
+function readString(
+  record: Record<string, unknown>,
+  key: string,
+  max: number,
+): string | null {
   const value = record[key];
   if (value === undefined || value === null) return "";
   if (typeof value !== "string") return null;
@@ -189,7 +214,14 @@ export function parseQuoteBody(body: unknown): QuoteInput | null {
   const service = readString(body, "service", 20);
   const message = readString(body, "message", QUOTE_LIMITS.messageMax * 2);
   const company = readString(body, "company", QUOTE_LIMITS.honeypotMax);
-  if (name === null || phone === null || email === null || service === null || message === null || company === null) {
+  if (
+    name === null ||
+    phone === null ||
+    email === null ||
+    service === null ||
+    message === null ||
+    company === null
+  ) {
     return null;
   }
   return { name, phone, email, service, message, company };
@@ -204,7 +236,11 @@ export function isQuoteApiResponse(value: unknown): value is QuoteApiResponse {
   if (errors !== undefined) {
     if (!isRecord(errors)) return false;
     for (const [key, entry] of Object.entries(errors)) {
-      if (!QUOTE_FIELDS.some((field) => field === key) || typeof entry !== "string") return false;
+      if (
+        !QUOTE_FIELDS.some((field) => field === key) ||
+        typeof entry !== "string"
+      )
+        return false;
     }
   }
   return true;

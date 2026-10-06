@@ -2,10 +2,15 @@
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import { } from "@/components/icons";
+import {} from "@/components/icons";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { HOME_LINK, NAV_AFTER_SERVICES, QUOTE_HREF, SERVICES_LINK } from "@/content/navigation";
+import {
+  HOME_LINK,
+  NAV_AFTER_SERVICES,
+  QUOTE_HREF,
+  SERVICES_LINK,
+} from "@/content/navigation";
 import { telHref, whatsappHref } from "@/lib/contact-links";
 import { cx } from "@/lib/cx";
 
@@ -26,8 +31,12 @@ const LINK_CLASSES =
  * While it is in the DOM, globals.css locks page scroll and hides the sticky contact bar
  * through the [data-mobile-menu-open] hook.
  */
-export function MobileMenu({ id, pathname, onNavigate, onDismiss }: MobileMenuProps) {
-  
+export function MobileMenu({
+  id,
+  pathname,
+  onNavigate,
+  onDismiss,
+}: MobileMenuProps) {
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
@@ -43,7 +52,12 @@ export function MobileMenu({ id, pathname, onNavigate, onDismiss }: MobileMenuPr
   }, [onDismiss]);
 
   const linkState = (href: string) =>
-    pathname === href ? { "aria-current": "page" as const, className: cx(LINK_CLASSES, "text-primary") } : { className: cx(LINK_CLASSES, "text-ink") };
+    pathname === href
+      ? {
+          "aria-current": "page" as const,
+          className: cx(LINK_CLASSES, "text-primary"),
+        }
+      : { className: cx(LINK_CLASSES, "text-ink") };
 
   return (
     <div
@@ -55,18 +69,31 @@ export function MobileMenu({ id, pathname, onNavigate, onDismiss }: MobileMenuPr
         <nav aria-label="Mobile">
           <ul className="flex flex-col">
             <li>
-              <Link ref={firstLinkRef} href={HOME_LINK.href} onClick={onNavigate} {...linkState(HOME_LINK.href)}>
+              <Link
+                ref={firstLinkRef}
+                href={HOME_LINK.href}
+                onClick={onNavigate}
+                {...linkState(HOME_LINK.href)}
+              >
                 {HOME_LINK.label}
               </Link>
             </li>
             <li>
-              <Link href={SERVICES_LINK.href} onClick={onNavigate} {...linkState(SERVICES_LINK.href)}>
+              <Link
+                href={SERVICES_LINK.href}
+                onClick={onNavigate}
+                {...linkState(SERVICES_LINK.href)}
+              >
                 {SERVICES_LINK.label}
               </Link>
             </li>
             {NAV_AFTER_SERVICES.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} onClick={onNavigate} {...linkState(item.href)}>
+                <Link
+                  href={item.href}
+                  onClick={onNavigate}
+                  {...linkState(item.href)}
+                >
                   {item.label}
                 </Link>
               </li>
@@ -82,7 +109,12 @@ export function MobileMenu({ id, pathname, onNavigate, onDismiss }: MobileMenuPr
             <Button href={telHref()} variant="outline" icon="phone" fullWidth>
               Call
             </Button>
-            <Button href={whatsappHref()} variant="outline" icon="whatsapp" fullWidth>
+            <Button
+              href={whatsappHref()}
+              variant="outline"
+              icon="whatsapp"
+              fullWidth
+            >
               WhatsApp
             </Button>
           </div>

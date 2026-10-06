@@ -27,12 +27,18 @@ export const PRIVACY_POLICY: LegalDocument = {
     "How JAAG Contracting & Constructions collects, uses, and protects the information you share through our quote form, and how to ask us to remove it.",
   lastUpdated: "2026-10-05",
   intro:
-    "JAAG Contracting & Constructions (\"JAAG\", \"we\", \"us\") provides cleaning and snow removal in Edmonton, Alberta. This policy explains, in plain language, what information we collect through this website and what we do with it.",
+    'JAAG Contracting & Constructions ("JAAG", "we", "us") provides cleaning and snow removal in Edmonton, Alberta. This policy explains, in plain language, what information we collect through this website and what we do with it.',
   sections: [
     {
       heading: "What we collect",
       paragraphs: ["When you use our quote form, we collect:"],
-      list: ["Your name", "Your phone number", "Your email address (if provided)", "The service you need", "Any message you choose to add"],
+      list: [
+        "Your name",
+        "Your phone number",
+        "Your email address (if provided)",
+        "The service you need",
+        "Any message you choose to add",
+      ],
       after: [
         "If you call, email, or message us on WhatsApp, we receive the details you share in that conversation.",
         "This website does not use advertising or analytics cookies. The map on our Contact page is provided by Google Maps, which may collect information under Google's own privacy policy.",
@@ -66,7 +72,9 @@ export const PRIVACY_POLICY: LegalDocument = {
     },
     {
       heading: "Changes to this policy",
-      paragraphs: ["We may update this policy from time to time. The date at the top of this page shows when it last changed."],
+      paragraphs: [
+        "We may update this policy from time to time. The date at the top of this page shows when it last changed.",
+      ],
     },
   ],
 };
@@ -78,7 +86,7 @@ export const TERMS: LegalDocument = {
     "The terms that apply when you request a quote or book cleaning or snow removal with JAAG Contracting & Constructions in Edmonton, Alberta.",
   lastUpdated: "2026-10-05",
   intro:
-    "These terms apply when you use this website or request a quote or service from JAAG Contracting & Constructions (\"JAAG\", \"we\", \"us\") in Edmonton, Alberta. By booking a service, you agree to them.",
+    'These terms apply when you use this website or request a quote or service from JAAG Contracting & Constructions ("JAAG", "we", "us") in Edmonton, Alberta. By booking a service, you agree to them.',
   sections: [
     {
       heading: "Quotes",
@@ -119,7 +127,9 @@ export const TERMS: LegalDocument = {
     },
     {
       heading: "Governing law",
-      paragraphs: ["These terms are governed by the laws of the Province of Alberta and the federal laws of Canada that apply there."],
+      paragraphs: [
+        "These terms are governed by the laws of the Province of Alberta and the federal laws of Canada that apply there.",
+      ],
     },
     {
       heading: "Questions",

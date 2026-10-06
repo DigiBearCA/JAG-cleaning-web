@@ -23,12 +23,18 @@ import { serviceLabel, type QuoteData } from "@/lib/quote-validation";
 const EMAILJS_ENDPOINT = "https://api.emailjs.com/api/v1.0/email/send";
 const REQUEST_TIMEOUT_MS = 10_000;
 
-export const NOT_CONFIGURED_MESSAGE = "Quote requests are not set up yet. Please call or message us on WhatsApp.";
-export const DELIVERY_FAILED_MESSAGE = "We could not send your request just now. Please try again in a minute, or call or message us on WhatsApp.";
+export const NOT_CONFIGURED_MESSAGE =
+  "Quote requests are not set up yet. Please call or message us on WhatsApp.";
+export const DELIVERY_FAILED_MESSAGE =
+  "We could not send your request just now. Please try again in a minute, or call or message us on WhatsApp.";
 
 export type DeliveryResult =
   | { readonly ok: true }
-  | { readonly ok: false; readonly status: 502 | 503; readonly message: string };
+  | {
+      readonly ok: false;
+      readonly status: 502 | 503;
+      readonly message: string;
+    };
 
 interface EmailJsConfig {
   readonly serviceId: string;
@@ -59,15 +65,20 @@ export async function deliverQuote(data: QuoteData): Promise<DeliveryResult> {
 
   if (!config) {
     if (process.env.NODE_ENV !== "production") {
-      console.info("[quote] EmailJS is not configured. Development submission:", {
-        name: data.name,
-        phone: data.phone,
-        service: serviceLabel(data.service),
-        message: data.message,
-      });
+      console.info(
+        "[quote] EmailJS is not configured. Development submission:",
+        {
+          name: data.name,
+          phone: data.phone,
+          service: serviceLabel(data.service),
+          message: data.message,
+        },
+      );
       return { ok: true };
     }
-    console.error("[quote] EmailJS environment variables are missing in production.");
+    console.error(
+      "[quote] EmailJS environment variables are missing in production.",
+    );
     return { ok: false, status: 503, message: NOT_CONFIGURED_MESSAGE };
   }
 
@@ -98,9 +109,15 @@ export async function deliverQuote(data: QuoteData): Promise<DeliveryResult> {
 
     const body = await response.text().catch(() => "");
     if (response.status === 429) {
-      console.warn("[quote] EmailJS rate limit hit (temporary).", body.slice(0, 500));
+      console.warn(
+        "[quote] EmailJS rate limit hit (temporary).",
+        body.slice(0, 500),
+      );
     } else {
-      console.error(`[quote] EmailJS responded with ${response.status}.`, body.slice(0, 500));
+      console.error(
+        `[quote] EmailJS responded with ${response.status}.`,
+        body.slice(0, 500),
+      );
     }
     return { ok: false, status: 502, message: DELIVERY_FAILED_MESSAGE };
   } catch (error: unknown) {

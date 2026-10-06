@@ -4,27 +4,32 @@ export const HOME_FAQ: ReadonlyArray<FaqItem> = [
   {
     id: "quote-cost",
     question: "How much does a quote cost?",
-    answer: "Nothing. Quotes are free. Send us a message or call, and we will get back to you with a clear quote.",
+    answer:
+      "Nothing. Quotes are free. Send us a message or call, and we will get back to you with a clear quote.",
   },
   {
     id: "supplies",
     question: "Do you bring your own supplies?",
-    answer: "Yes. We bring our own cleaning supplies and equipment. If you prefer particular products, just let us know.",
+    answer:
+      "Yes. We bring our own cleaning supplies and equipment. If you prefer particular products, just let us know.",
   },
   {
     id: "insured",
     question: "Are you insured?",
-    answer: "Yes, JAAG is insured. If you need details for your property or building, ask when you request your quote.",
+    answer:
+      "Yes, JAAG is insured. If you need details for your property or building, ask when you request your quote.",
   },
   {
     id: "areas",
     question: "Which areas do you serve?",
-    answer: "We currently serve Edmonton. If you are just outside the city, send us a message and we will let you know if we can help.",
+    answer:
+      "We currently serve Edmonton. If you are just outside the city, send us a message and we will let you know if we can help.",
   },
   {
     id: "one-time-or-recurring",
     question: "Can I book one-time or recurring service?",
-    answer: "Both. Book a single visit or set up a regular schedule that suits you.",
+    answer:
+      "Both. Book a single visit or set up a regular schedule that suits you.",
   },
 ];
 
@@ -37,7 +42,8 @@ export const RESIDENTIAL_FAQ: ReadonlyArray<FaqItem> = [
   {
     id: "home-prep",
     question: "What should I do before you arrive?",
-    answer: "Put away personal items and valuables so we can clean every surface.",
+    answer:
+      "Put away personal items and valuables so we can clean every surface.",
   },
   {
     id: "home-extras",
@@ -50,7 +56,8 @@ export const COMMERCIAL_FAQ: ReadonlyArray<FaqItem> = [
   {
     id: "commercial-frequency",
     question: "How often can you clean?",
-    answer: "Daily, weekly, or a custom schedule. We agree it with you in your quote.",
+    answer:
+      "Daily, weekly, or a custom schedule. We agree it with you in your quote.",
   },
   {
     id: "commercial-after-hours",
@@ -78,6 +85,7 @@ export const SNOW_FAQ: ReadonlyArray<FaqItem> = [
   {
     id: "snow-trigger",
     question: "How much snow before you come?",
-    answer: "We agree the trigger with you in your quote, so you know what to expect.",
+    answer:
+      "We agree the trigger with you in your quote, so you know what to expect.",
   },
 ];

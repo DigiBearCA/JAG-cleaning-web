@@ -21,12 +21,31 @@ export interface CardGridSectionProps {
 }
 
 /** Grid of white feature cards on the base background, with optional chips and note. */
-export function CardGridSection({ id = "types", eyebrow, title, lead, cards, extras, note, columns = 3 }: CardGridSectionProps) {
+export function CardGridSection({
+  id = "types",
+  eyebrow,
+  title,
+  lead,
+  cards,
+  extras,
+  note,
+  columns = 3,
+}: CardGridSectionProps) {
   const headingId = `${id}-title`;
   return (
     <Section id={id} labelledBy={headingId}>
-      <SectionHeading id={headingId} eyebrow={eyebrow} title={title} lead={lead} />
-      <ul className={cx("mt-10 grid gap-4 md:grid-cols-2", columns === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3")}>
+      <SectionHeading
+        id={headingId}
+        eyebrow={eyebrow}
+        title={title}
+        lead={lead}
+      />
+      <ul
+        className={cx(
+          "mt-10 grid gap-4 md:grid-cols-2",
+          columns === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3",
+        )}
+      >
         {cards.map((card) => (
           <Card key={card.title} as="li" className="flex flex-col gap-4">
             <FeatureIcon>
