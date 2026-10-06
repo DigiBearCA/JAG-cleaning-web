@@ -11,7 +11,7 @@ export function ChapterBand({ id, range }: ChapterBandProps) {
   const chapter = CHAPTERS[id];
 
   return (
-    <Section tone="alt" className="py-16 md:py-24">
+    <Section tone="alt" className="!py-4 !md:py-4">
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
         <div className="flex-1">
           <h2 className="type-h2 text-alt-heading mb-4">{chapter.title}</h2>

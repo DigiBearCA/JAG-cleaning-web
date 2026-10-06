@@ -3,7 +3,7 @@ import { JobIndex } from "./JobIndex";
 
 export function Hero() {
   return (
-    <Section tone="base" spacing="hero" className="pb-0 md:pb-0">
+    <Section tone="base" spacing="hero" className="pb-4 md:pb-6">
       <div className="grid grid-cols-1 lg:grid-cols-[30fr_70fr] gap-4 lg:gap-6 items-center">
         <div className="animate-fade-up">
           <h1 className="type-h1 mb-4 md:mb-6 text-primary">Services</h1>
