@@ -103,7 +103,7 @@ export function JobCard({
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-3 border-t border-line">
+        <div className="flex flex-row items-center justify-between gap-4 md:gap-6 pt-3 border-t border-line">
           <Button
             variant="accent"
             href="#quote"
