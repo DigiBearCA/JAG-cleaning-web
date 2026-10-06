@@ -8,8 +8,8 @@ import { WHY_JAAG } from "@/content/home";
 export function WhyJag() {
   return (
     <Section tone="alt" id="why-jag" labelledBy="why-jag-title">
-      <div className="grid grid-cols-1 lg:grid-cols-[70fr_30fr] gap-12 lg:gap-16 items-center">
-        <ul className="order-last lg:order-first grid gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-1 md:grid-cols-[70fr_30fr] gap-4 md:gap-6 items-center">
+        <ul className="order-last md:order-first grid gap-4 sm:grid-cols-2">
           {WHY_JAAG.cards.map((card) => (
             <Card as="li" key={card.title} className="flex flex-col items-center text-center gap-4">
               <div className="flex flex-row items-center justify-center gap-3">

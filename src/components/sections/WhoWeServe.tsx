@@ -35,7 +35,7 @@ export function WhoWeServe({
         align="center"
         tone={tone}
       />
-      <ul className="mt-10 grid gap-4 lg:grid-cols-3">
+      <ul className="mt-10 grid gap-4 sm:grid-cols-3">
         {cards.map((card) => (
           <Card
             key={card.href}
