@@ -29,9 +29,9 @@ export function HowItWorks({ tone = "base" }: HowItWorksProps) {
             <li
               key={step.title}
               className={cx(
-                "relative flex flex-col items-center text-center gap-4",
+                "relative flex flex-row md:flex-col items-start md:items-center text-left md:text-center gap-6 md:gap-4",
                 !last &&
-                  "before:absolute before:top-14 before:-bottom-6 before:left-1/2 before:-translate-x-1/2 before:w-px md:before:top-6 md:before:right-auto md:before:bottom-auto md:before:left-[calc(50%+3rem)] md:before:h-px md:before:w-[calc(100%-6rem)] md:before:translate-x-0",
+                  "before:absolute before:top-14 before:-bottom-8 before:left-6 before:-translate-x-1/2 before:w-px md:before:top-6 md:before:right-auto md:before:bottom-auto md:before:left-[calc(50%+3rem)] md:before:h-px md:before:w-[calc(100%-6rem)] md:before:translate-x-0",
                 !last &&
                   (onAlt ? "before:bg-alt-heading/40" : "before:bg-line"),
               )}
