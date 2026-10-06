@@ -77,7 +77,7 @@ export default function ServicesPage() {
         return (
           <div key={chapterId}>
             <ChapterBand id={chapterId} range={range} />
-            <Section tone="base" className="py-16 md:py-24">
+            <Section tone="base" className="py-4!">
               {chapterServices.map((service, idx) => (
                 <JobCard
                   key={service.slug}

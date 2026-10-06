@@ -45,21 +45,21 @@ export function JobCard({
         </div>
 
         <div
-          className={`w-full md:w-7/12 p-8 md:p-12 flex flex-col justify-center ${contentOrder}`}
+          className={`w-full md:w-7/12 p-4 md:p-6 pb-0 flex flex-col justify-center ${contentOrder}`}
         >
-          <div className="mb-6 flex items-center gap-4">
+          <div className="mb-4 flex items-center gap-4">
             <div className="w-12 h-12 rounded-full bg-alt flex items-center justify-center text-alt-heading">
               <Icon name={service.icon} className="w-6 h-6" />
             </div>
             <h3 className="type-h3 text-ink">{service.name}</h3>
           </div>
 
-          <p className="type-lead text-ink font-medium mb-4">
+          {/* <p className="type-lead text-ink font-medium mb-4">
             {service.tagline}
-          </p>
-          <p className="type-body text-ink-muted mb-8">{service.description}</p>
+          </p> */}
+          <p className="type-body text-ink-muted mb-6">{service.description}</p>
 
-          <div className="bg-alt p-6 rounded-card mt-auto">
+          <div className="bg-alt p-4 md:p-6 rounded-card mt-auto">
             <h4 className="type-eyebrow text-alt-heading mb-4">Included</h4>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {service.included.map((item, i) => (
@@ -78,10 +78,10 @@ export function JobCard({
 
       <Divider />
 
-      <div className="p-8 md:p-12 pt-6">
-        <h4 className="type-eyebrow text-ink mb-8">How it works</h4>
+      <div className="p-4 md:p-6 pt-0!">
+        <h4 className="type-eyebrow text-ink mb-4">How it works</h4>
 
-        <div className="relative mb-12">
+        <div className="relative mb-3">
           <div className="hidden md:block absolute top-6 left-6 right-6 h-0.5 bg-line" />
           <div className="md:hidden absolute top-6 bottom-6 left-6 w-0.5 bg-line" />
 
@@ -103,7 +103,7 @@ export function JobCard({
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-6 border-t border-line">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-3 border-t border-line">
           <Button
             variant="accent"
             href="#quote"
@@ -116,7 +116,8 @@ export function JobCard({
             className="type-button text-ink-muted hover:text-ink transition-colors flex items-center gap-2"
           >
             <Icon name="arrowRight" className="w-4 h-4 rotate-180" />
-            Back to all services
+            <span className="md:hidden">Back</span>
+            <span className="hidden md:inline">Back to all services</span>
           </a>
         </div>
       </div>
