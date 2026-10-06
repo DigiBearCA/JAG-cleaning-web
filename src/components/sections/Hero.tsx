@@ -4,6 +4,7 @@ import {
   IllustrationFrame,
   type IllustrationImage,
 } from "@/components/illustrations/IllustrationFrame";
+import { HeroCarousel } from "./HeroCarousel";
 import { Button } from "@/components/ui/Button";
 import { Chip } from "@/components/ui/Chip";
 import { Section } from "@/components/ui/Section";
@@ -22,7 +23,7 @@ export function Hero({ image }: HeroProps) {
     <Section
       spacing="hero"
       labelledBy="hero-title"
-      containerClassName="grid items-center gap-4 md:grid-cols-2 md:gap-12"
+      containerClassName="grid items-center gap-4 md:grid-cols-2 md:gap-6"
     >
       <div className="flex animate-fade-up flex-col items-start gap-4">
         <Chip icon="mapPin">{HERO.eyebrow}</Chip>
@@ -65,9 +66,13 @@ export function Hero({ image }: HeroProps) {
       </div>
 
       <div className="animate-fade-up [animation-delay:60ms]">
-        <IllustrationFrame aspect="hero" image={image} priority>
-          <HeroIllustration label={HERO.illustrationLabel} />
-        </IllustrationFrame>
+        {image ? (
+          <IllustrationFrame aspect="hero" image={image} priority>
+            <HeroIllustration label={HERO.illustrationLabel} />
+          </IllustrationFrame>
+        ) : (
+          <HeroCarousel />
+        )}
       </div>
     </Section>
   );

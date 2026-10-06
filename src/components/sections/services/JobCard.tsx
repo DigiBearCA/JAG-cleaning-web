@@ -38,7 +38,9 @@ export function JobCard({
         <div
           className={`w-full md:w-5/12 relative bg-alt ${illusOrder} flex items-stretch`}
         >
-          <div className="w-full h-full object-cover">{illustration}</div>
+          <div className="w-full h-full min-h-70 md:min-h-0 relative">
+            {illustration}
+          </div>
           <div className="absolute top-6 left-6 bg-white/90 backdrop-blur px-4 py-2 rounded-pill shadow-sm">
             <span className="type-eyebrow text-alt-heading">Job {number}</span>
           </div>

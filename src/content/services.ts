@@ -256,6 +256,33 @@ export const SERVICES: readonly Service[] = [
     enabled: true,
   },
   {
+    slug: "snow-removal",
+    chapter: "site",
+    name: "Snow removal",
+    tagline: "Clear driveways, all winter.",
+    description:
+      "Snow removal for driveways, walkways, and parking lots, per visit or seasonal.",
+    audience: ["Homes", "Businesses"],
+    included: [
+      "Driveways",
+      "Walkways and steps",
+      "Parking lots",
+      "Building entrances",
+      "Ice control (salt or sand) on request",
+    ],
+    flow: [
+      { title: "Tell us the property", text: "Driveway or lot, and size." },
+      {
+        title: "Choose per visit or seasonal",
+        text: "We set up a plan with you.",
+      },
+      { title: "We clear it", text: "Snow cleared when it falls." },
+      { title: "Check and repeat", text: "We keep the plan on track." },
+    ],
+    icon: "snowflake",
+    enabled: true,
+  },
+  {
     slug: "renovation",
     chapter: "build",
     name: "Renovation",
@@ -300,33 +327,6 @@ export const SERVICES: readonly Service[] = [
       { title: "Debris cleared", text: "The site is tidied and ready." },
     ],
     icon: "wall",
-    enabled: true,
-  },
-  {
-    slug: "snow-removal",
-    chapter: "site",
-    name: "Snow removal",
-    tagline: "Clear driveways, all winter.",
-    description:
-      "Snow removal for driveways, walkways, and parking lots, per visit or seasonal.",
-    audience: ["Homes", "Businesses"],
-    included: [
-      "Driveways",
-      "Walkways and steps",
-      "Parking lots",
-      "Building entrances",
-      "Ice control (salt or sand) on request",
-    ],
-    flow: [
-      { title: "Tell us the property", text: "Driveway or lot, and size." },
-      {
-        title: "Choose per visit or seasonal",
-        text: "We set up a plan with you.",
-      },
-      { title: "We clear it", text: "Snow cleared when it falls." },
-      { title: "Check and repeat", text: "We keep the plan on track." },
-    ],
-    icon: "snowflake",
     enabled: true,
   },
 ];
