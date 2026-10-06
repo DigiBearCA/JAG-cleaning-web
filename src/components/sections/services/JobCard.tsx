@@ -104,6 +104,14 @@ export function JobCard({
         </div>
 
         <div className="flex flex-row items-center justify-between gap-4 md:gap-6 pt-3 border-t border-line">
+          <a
+            href="#"
+            className="flex h-12 items-center justify-center gap-2 rounded-pill bg-alt px-5 md:px-7 type-button text-alt-heading transition-colors hover:bg-alt/80"
+          >
+            <Icon name="arrowRight" className="h-4 w-4 rotate-180" />
+            <span className="md:hidden">Back</span>
+            <span className="hidden md:inline">Back to all services</span>
+          </a>
           <Button
             variant="accent"
             href="#quote"
@@ -111,14 +119,6 @@ export function JobCard({
           >
             Get a free quote
           </Button>
-          <a
-            href="#"
-            className="type-button text-ink-muted hover:text-ink transition-colors flex items-center gap-2"
-          >
-            <Icon name="arrowRight" className="w-4 h-4 rotate-180" />
-            <span className="md:hidden">Back</span>
-            <span className="hidden md:inline">Back to all services</span>
-          </a>
         </div>
       </div>
     </div>
