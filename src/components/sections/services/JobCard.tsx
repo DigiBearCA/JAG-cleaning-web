@@ -32,7 +32,7 @@ export function JobCard({
   return (
     <div
       id={service.slug}
-      className="bg-white rounded-panel overflow-hidden shadow-sm flex flex-col mb-16 md:mb-24 last:mb-0"
+      className="bg-white rounded-panel overflow-hidden shadow-sm flex flex-col mb-4 last:mb-0"
     >
       <div className="flex flex-col md:flex-row">
         <div

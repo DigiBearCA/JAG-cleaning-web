@@ -96,7 +96,7 @@ export default function ServicesPage() {
         );
       })}
 
-      <EveryJobStrip />
+      {/* <EveryJobStrip /> */}
       <QuoteSection />
     </main>
   );
