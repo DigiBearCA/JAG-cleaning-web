@@ -86,6 +86,7 @@ export const WHY_JAAG: SectionCopy & {
   readonly cards: ReadonlyArray<FeatureCard>;
 } = {
   title: "Why JAAG",
+  lead: "We bring professionalism, consistency, and care to every job site. Our team handles the details so you don't have to.",
   cards: [
     {
       title: "Reliable schedule",
