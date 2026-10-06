@@ -327,7 +327,7 @@ export const SERVICES: readonly Service[] = [
       { title: "Check and repeat", text: "We keep the plan on track." },
     ],
     icon: "snowflake",
-    enabled: false,
+    enabled: true,
   },
 ];
 
