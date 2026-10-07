@@ -63,11 +63,58 @@ const SOCIAL_CLASSES =
 
 /** Dark footer, square edges. Four columns on desktop, stacked on mobile. */
 export function Footer() {
+  const contactContent = (
+    <div className="flex flex-col gap-2">
+      <h2 className="type-h4 text-on-dark">Contact</h2>
+      <ul className="flex flex-col">
+        <ContactLink href={telHref()} icon="phone">
+          {SITE.phone.display}
+        </ContactLink>
+        <ContactLink href={mailtoHref()} icon="mail">
+          {SITE.email}
+        </ContactLink>
+        <ContactLink href={whatsappHref()} icon="whatsapp">
+          WhatsApp
+        </ContactLink>
+      </ul>
+    </div>
+  );
+
+  const socialContent = (
+    <div className="flex flex-col gap-2">
+      <h2 className="type-h4 text-on-dark">Social</h2>
+      <ul className="flex gap-2">
+        <li>
+          <a
+            href={SITE.social.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${SITE.shortName} on Instagram`}
+            className={SOCIAL_CLASSES}
+          >
+            <InstagramIcon size={20} />
+          </a>
+        </li>
+        <li>
+          <a
+            href={SITE.social.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${SITE.shortName} on Facebook`}
+            className={SOCIAL_CLASSES}
+          >
+            <FacebookIcon size={20} />
+          </a>
+        </li>
+      </ul>
+    </div>
+  );
+
   return (
     <footer className="surface-dark bg-dark text-on-dark">
       <Container className="pt-4 md:pt-6 pb-1">
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-          <div className="flex flex-col gap-6 col-start-1 md:col-auto">
+          <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-2">
               <Logo tone="dark" className="self-start" />
               <p className="max-w-xs type-small text-on-dark-muted">
@@ -85,9 +132,13 @@ export function Footer() {
                 </li>
               ))}
             </FooterColumn>
+
+            <div className="md:hidden">
+              {contactContent}
+            </div>
           </div>
 
-          <div className="col-start-2 md:col-auto md:row-auto">
+          <div className="flex flex-col gap-6">
             <FooterColumn title="Services">
               {getEnabledServices().map((item) => (
                 <li key={item.slug}>
@@ -100,50 +151,15 @@ export function Footer() {
                 </li>
               ))}
             </FooterColumn>
+
+            <div className="md:hidden">
+              {socialContent}
+            </div>
           </div>
 
-          <div className="contents md:flex md:flex-col md:gap-2">
-            <div className="flex flex-col gap-2 col-start-1 md:col-auto">
-              <h2 className="type-h4 text-on-dark">Contact</h2>
-              <ul className="flex flex-col">
-                <ContactLink href={telHref()} icon="phone">
-                  {SITE.phone.display}
-                </ContactLink>
-                <ContactLink href={mailtoHref()} icon="mail">
-                  {SITE.email}
-                </ContactLink>
-                <ContactLink href={whatsappHref()} icon="whatsapp">
-                  WhatsApp
-                </ContactLink>
-              </ul>
-            </div>
-            <div className="flex flex-col gap-2 col-start-2 md:col-auto md:pt-2">
-              <h2 className="type-h4 text-on-dark">Social</h2>
-              <ul className="flex gap-2">
-                <li>
-                  <a
-                    href={SITE.social.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${SITE.shortName} on Instagram`}
-                    className={SOCIAL_CLASSES}
-                  >
-                    <InstagramIcon size={20} />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={SITE.social.facebook}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${SITE.shortName} on Facebook`}
-                    className={SOCIAL_CLASSES}
-                  >
-                    <FacebookIcon size={20} />
-                  </a>
-                </li>
-              </ul>
-            </div>
+          <div className="hidden md:flex flex-col gap-6">
+            {contactContent}
+            {socialContent}
           </div>
         </div>
 

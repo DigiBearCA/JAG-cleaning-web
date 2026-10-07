@@ -99,7 +99,7 @@ export const WHY_JAAG: SectionCopy & {
       icon: "shield",
     },
     {
-      title: "Year-round service",
+      title: "Open all year",
       text: "Cleaning indoors, snow removal outdoors. One team through every season.",
       icon: "calendar",
     },

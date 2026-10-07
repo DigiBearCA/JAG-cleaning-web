@@ -78,7 +78,7 @@ export function Header() {
 
         <nav
           aria-label="Main"
-          className="hidden lg:block absolute left-1/2 -translate-x-1/2"
+          className="hidden sm:block absolute left-1/2 -translate-x-1/2"
         >
           <ul className="flex items-center gap-1">
             <li>
@@ -95,27 +95,27 @@ export function Header() {
           </ul>
         </nav>
 
-        <div className="hidden items-center gap-4 lg:flex">
+        <div className="flex items-center gap-2 md:gap-4">
           <a
             href={telHref()}
-            className="inline-flex min-h-11 items-center gap-2 type-button text-primary underline-offset-4 transition duration-150 ease-brand hover:underline"
+            className="hidden lg:inline-flex min-h-11 items-center gap-2 type-button text-primary underline-offset-4 transition duration-150 ease-brand hover:underline"
           >
             <PhoneIcon size={20} />
             {SITE.phone.display}
           </a>
-          <Button href={QUOTE_HREF} size="sm">
-            Get a Quote
-          </Button>
-        </div>
-
-        <div className="flex items-center gap-2 lg:hidden">
           <a
             href={telHref()}
             aria-label={`Call ${SITE.phone.display}`}
-            className="inline-flex size-11 items-center justify-center rounded-pill border-[1.5px] border-primary text-primary transition duration-150 ease-brand hover:bg-primary/8 active:scale-98"
+            className="inline-flex lg:hidden size-11 items-center justify-center rounded-pill border-[1.5px] border-primary text-primary transition duration-150 ease-brand hover:bg-primary/8 active:scale-98"
           >
             <PhoneIcon size={20} />
           </a>
+          <div className="hidden sm:flex">
+            <Button href={QUOTE_HREF} size="sm">
+              Get a Quote
+            </Button>
+          </div>
+
           <button
             ref={toggleRef}
             type="button"
@@ -123,7 +123,7 @@ export function Header() {
             aria-controls={menuOpen ? MOBILE_MENU_ID : undefined}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             onClick={() => setMenuOpen((value) => !value)}
-            className="inline-flex size-11 cursor-pointer items-center justify-center rounded-pill bg-primary text-on-primary transition duration-150 ease-brand hover:bg-primary-hover active:scale-98"
+            className="inline-flex sm:hidden size-11 cursor-pointer items-center justify-center rounded-pill bg-primary text-on-primary transition duration-150 ease-brand hover:bg-primary-hover active:scale-98"
           >
             {menuOpen ? <CloseIcon size={22} /> : <MenuIcon size={22} />}
           </button>
