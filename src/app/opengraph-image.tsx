@@ -6,11 +6,17 @@ import { SITE } from "@/config/site";
  * Colours are palette A: bg #F7F9FA, primary #12403A, accent #F2A93B, ink #1F2B2E, alt-bg #D8ECEE.
  */
 
+import { BrandLogo } from "@/components/icons/BrandLogo";
+
 export const alt = `${SITE.name}, serving ${SITE.serviceArea}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function Image() {
+export default async function Image() {
+  const dmSansData = await fetch(
+    new URL("https://fonts.gstatic.com/s/dmsans/v17/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAkJxhTWfxZGI.woff")
+  ).then((res) => res.arrayBuffer());
+
   return new ImageResponse(
     <div
       style={{
@@ -22,60 +28,11 @@ export default function Image() {
         backgroundColor: "#F7F9FA",
         padding: "72px 80px",
         color: "#1F2B2E",
+        fontFamily: '"DM Sans"',
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            width: 72,
-            height: 72,
-            borderRadius: 20,
-            backgroundColor: "#12403A",
-            color: "#F7F9FA",
-            fontSize: 44,
-            fontWeight: 700,
-          }}
-        >
-          J
-        </div>
-        <div
-          style={{
-            display: "flex",
-            fontSize: 30,
-            color: "#12403A",
-            letterSpacing: 1,
-          }}
-        >
-          {SITE.descriptor}
-        </div>
-      </div>
-
-      <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-        <div
-          style={{
-            display: "flex",
-            fontSize: 168,
-            fontWeight: 700,
-            lineHeight: 1,
-            letterSpacing: -4,
-            color: "#12403A",
-          }}
-        >
-          {SITE.shortName}
-        </div>
-        <div
-          style={{
-            display: "flex",
-            fontSize: 52,
-            lineHeight: 1.2,
-            maxWidth: 900,
-          }}
-        >
-          Cleaning &amp; Snow Removal in Edmonton, AB
-        </div>
+      <div style={{ display: "flex", flex: 1, alignItems: "center" }}>
+        <BrandLogo style={{ width: 650, color: "#12403A" }} />
       </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
@@ -105,10 +62,20 @@ export default function Image() {
             marginLeft: 8,
           }}
         >
-          Free quotes · Insured · We bring our own supplies
+          Free quotes · Insured · Edmonton-based · Year-round service
         </div>
       </div>
     </div>,
-    size,
+    {
+      ...size,
+      fonts: [
+        {
+          name: "DM Sans",
+          data: dmSansData,
+          style: "normal",
+          weight: 500,
+        },
+      ],
+    },
   );
 }
