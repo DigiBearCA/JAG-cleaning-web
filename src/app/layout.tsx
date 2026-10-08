@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Sans, Fraunces } from "next/font/google";
+import { DM_Sans, Newsreader } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { SkipLink } from "@/components/layout/SkipLink";
@@ -9,8 +9,8 @@ import { HOME_META } from "@/content/home";
 import { THEME_COLOR, TITLE_TEMPLATE } from "@/lib/metadata";
 import "./globals.css";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
   subsets: ["latin"],
   weight: "500",
   display: "swap",
@@ -62,7 +62,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en-CA"
       data-palette={SITE.palette}
-      className={`${fraunces.variable} ${dmSans.variable}`}
+      className={`${newsreader.variable} ${dmSans.variable}`}
     >
       <body className="flex min-h-dvh flex-col pb-[calc(4.5rem+env(safe-area-inset-bottom))] antialiased md:pb-0">
         <SkipLink />

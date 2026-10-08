@@ -30,7 +30,7 @@
   --color-illus-body: var(--illus-body);
   --color-illus-detail: var(--illus-detail);
   --color-illus-ground: var(--illus-ground);
-  --font-heading: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-heading: var(--font-newsreader), Georgia, "Times New Roman", serif;
   --font-body:
     var(--font-dm-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
 }
