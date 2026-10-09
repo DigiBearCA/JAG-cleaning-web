@@ -160,6 +160,11 @@ export const HOME_FAQ_COPY: SectionCopy = {
 export const QUOTE_COPY = {
   title: "Get your free quote",
   lead: "Tell us what you need and we'll get back to you.",
+  /** Longer lead for the image-backed version on the home page. */
+  imageLead:
+    "Tell us what you need and we'll get back to you with a clear, free quote. You can also call or message us on WhatsApp any time, because we are open 24 hours a day, 7 days a week.",
+  /** Check pills in the image-backed version. Only confirmed facts. */
+  pills: ["Free quote", "Insured", "Open 24/7"],
   /** Shown under the lead. Only confirmed facts: free quotes, insured, own supplies. */
   reassurance:
     "Quotes are free. We are insured and bring our own supplies and equipment.",

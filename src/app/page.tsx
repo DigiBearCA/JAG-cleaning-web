@@ -6,6 +6,7 @@ import { HowItWorks } from "@/components/sections/HowItWorks";
 import { QuoteSection } from "@/components/sections/QuoteSection";
 import { WhoWeServe } from "@/components/sections/WhoWeServe";
 import { WhyJag } from "@/components/sections/WhyJag";
+import { IMAGES } from "@/config/images";
 import { HOME_FAQ } from "@/content/faq";
 import { HOME_FAQ_COPY, HOME_META } from "@/content/home";
 import { buildPageMetadata } from "@/lib/metadata";
@@ -18,7 +19,7 @@ export const metadata: Metadata = buildPageMetadata({
   absoluteTitle: true,
 });
 
-/** Section order and backgrounds: bg, alt, bg, dark, bg, bg (quote), dark footer. */
+/** Section order and backgrounds: bg, alt, bg, dark, bg, image-backed dark quote, dark footer. */
 export default function HomePage() {
   return (
     <>
@@ -28,7 +29,7 @@ export default function HomePage() {
       <HowItWorks showPrep />
       <WhyJag />
       <FaqSection title={HOME_FAQ_COPY.title} items={HOME_FAQ} />
-      <QuoteSection />
+      <QuoteSection backgroundImage={IMAGES.contactBackground} />
     </>
   );
 }
