@@ -1,7 +1,9 @@
+import { SITE } from "@/config/site";
+
 export const CONTACT_META = {
-  title: "Contact JAAG: Free Quotes in Edmonton, AB",
+  title: `Contact ${SITE.shortName}: Free Quotes in Edmonton, AB`,
   description:
-    "Contact JAAG for a free quote on home cleaning, commercial cleaning, or snow removal in Edmonton, Alberta. Call, send a WhatsApp message, or use our form.",
+    `Contact ${SITE.shortName} for a free quote on home cleaning, commercial cleaning, or snow removal in Edmonton, Alberta. Call, send a WhatsApp message, or use our form.`,
 } as const;
 
 export const CONTACT_HERO = {

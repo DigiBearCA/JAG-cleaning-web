@@ -15,7 +15,7 @@ export interface QuoteSectionProps {
   readonly defaultService?: ServiceValue;
   /**
    * Decorative photo behind the section (home page only). When set, the section reads as a
-   * dark section: flat `bg-dark/75` overlay, on-dark text, and check pills. When unset the
+   * dark section: flat `bg-dark/85` overlay (raised from /75 so --on-dark-muted text passes 4.5:1 even over a white pixel), on-dark text, and check pills. When unset the
    * section looks exactly as before.
    */
   readonly backgroundImage?: ImageSlot;
@@ -54,7 +54,7 @@ export function QuoteSection({
             sizes="100vw"
             className="-z-10 object-cover"
           />
-          <div aria-hidden="true" className="absolute inset-0 -z-10 bg-dark/75" />
+          <div aria-hidden="true" className="absolute inset-0 -z-10 bg-dark/85" />
         </>
       ) : null}
       {/* surface-dark gives the left column accent focus rings; the white form card keeps the default primary ring. */}
