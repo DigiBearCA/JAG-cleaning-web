@@ -39,7 +39,7 @@ export function QuoteSection({
       labelledBy="quote-title"
       // Image variant: the bottom hairline separates this dark band from the dark footer.
       className={cx(
-        onImage && "relative isolate overflow-hidden border-b border-on-dark/15",
+        onImage && "relative isolate overflow-hidden",
       )}
       containerClassName="grid items-start gap-10 lg:grid-cols-[35fr_65fr] lg:gap-12"
     >

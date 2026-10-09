@@ -72,7 +72,7 @@ export function Hero() {
         </ul>
       </div>
 
-      <div className="w-full animate-fade-up [animation-delay:60ms] lg:-ml-[5%] lg:w-[55%]">
+      <div className="w-full animate-fade-up [animation-delay:60ms] lg:ml-[-5%] lg:w-[55%]">
         <div className="relative aspect-4/3 w-full overflow-hidden rounded-panel bg-illus-sky lg:aspect-5/4 lg:rounded-l-none lg:hero-feather">
           {IMAGES.hero.map((image, index) => {
             const isBase = index === 0;

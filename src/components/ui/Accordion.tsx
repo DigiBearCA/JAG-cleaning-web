@@ -45,7 +45,10 @@ export function Accordion({
         return (
           <div
             key={item.id}
-            className="rounded-card border border-line bg-snow text-ink"
+            className={cx(
+              "rounded-card border border-line text-ink transition-colors duration-150 ease-brand",
+              open ? "bg-alt" : "bg-snow"
+            )}
           >
             <Heading className="m-0">
               <button

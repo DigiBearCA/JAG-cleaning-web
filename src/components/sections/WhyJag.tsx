@@ -17,8 +17,8 @@ const WHY_IMAGE_SIZES =
 export function WhyJag() {
   return (
     <Section tone="dark" id="why-jag" labelledBy="why-jag-title">
-      <div className="grid gap-10 lg:grid-cols-[2fr_3fr] lg:gap-12">
-        <div className="flex flex-col gap-8 lg:sticky lg:top-28 lg:self-start">
+      <div className="grid gap-4 lg:grid-cols-[2fr_3fr] lg:gap-6">
+        <div className="flex flex-col gap-4 lg:sticky lg:top-28 lg:self-start">
           <SectionHeading
             id="why-jag-title"
             title={WHY_JAAG.title}
@@ -51,17 +51,17 @@ export function WhyJag() {
           {WHY_JAAG.cards.map((card, index) => (
             <li
               key={card.title}
-              className="flex flex-col gap-4 rounded-card bg-dark-card p-6 md:p-8"
+              className="flex flex-col gap-0 rounded-card bg-dark-card p-4"
             >
               <div className="flex items-center justify-between gap-4">
                 <FeatureIcon surface="dark">
-                  <Icon name={card.icon} />
+                  <Icon name={card.icon} size={32} />
                 </FeatureIcon>
                 <span aria-hidden="true" className="type-h3 text-on-dark-muted">
                   {String(index + 1).padStart(2, "0")}
                 </span>
               </div>
-              <h3 className="type-h3 text-on-dark">{card.title}</h3>
+              <h3 className="type-h3 text-on-dark mb-2">{card.title}</h3>
               <p className="type-body text-on-dark-muted">{card.text}</p>
             </li>
           ))}
