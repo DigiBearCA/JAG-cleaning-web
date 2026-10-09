@@ -1,22 +1,14 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowRightIcon, CheckIcon } from "@/components/icons";
+import { ArrowRightIcon } from "@/components/icons";
 import { Chip } from "@/components/ui/Chip";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { IMAGES } from "@/config/images";
-import { WHO_WE_SERVE } from "@/content/home";
+import { WHO_WE_SERVE, AUDIENCES } from "@/content/home";
+import { AudienceArt } from "@/components/illustrations/audience/AudienceArt";
 
-/** One column (capped at 576px) below 1024px, three columns from 1024px. */
-const CARD_IMAGE_SIZES =
-  "(min-width: 1600px) 510px, (min-width: 1024px) 33vw, (min-width: 640px) 576px, 100vw";
-
-/**
- * Three image cards. Each card is a single link target: the "Learn more" link is stretched
- * over the card and completed with visually hidden text. On hover the photo zooms 4% and
- * the card lifts 2px.
- */
 export function WhoWeServe() {
+  const enabledAudiences = AUDIENCES.filter((a) => a.enabled);
+
   return (
     <Section tone="alt" id="who-we-serve" labelledBy="who-we-serve-title">
       <SectionHeading
@@ -26,56 +18,68 @@ export function WhoWeServe() {
         align="center"
         tone="alt"
       />
-      <ul className="mx-auto mt-10 grid max-w-xl gap-6 lg:max-w-none lg:grid-cols-3">
-        {WHO_WE_SERVE.cards.map((card, index) => {
-          const image = IMAGES.whoWeServe[card.image];
+      <ul className="mx-auto mt-12 grid max-w-xl gap-6 sm:max-w-none sm:grid-cols-2 lg:grid-cols-3">
+        {enabledAudiences.map((card) => {
           return (
             <li
-              key={card.href}
-              className="group relative flex flex-col overflow-hidden rounded-card border border-line bg-white text-ink transition duration-150 ease-brand hover:-translate-y-0.5 hover:border-primary"
+              key={card.id}
+              className="group relative flex flex-col gap-6 rounded-card border border-line bg-white p-6 sm:p-8 transition-all duration-150 ease-brand hover:-translate-y-0.5 hover:border-primary"
             >
-              <div className="relative aspect-16/10 overflow-hidden">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  placeholder="blur"
-                  sizes={CARD_IMAGE_SIZES}
-                  className="object-cover transition-transform duration-300 ease-brand group-hover:scale-104"
-                />
-                <span aria-hidden="true" className="absolute top-4 left-4">
-                  <Chip>{String(index + 1).padStart(2, "0")}</Chip>
-                </span>
+              <div className="absolute top-6 right-6 sm:top-8 sm:right-8 z-10">
+                <Chip>{card.category}</Chip>
               </div>
-              <div className="flex flex-1 flex-col gap-4 p-6 md:p-8">
-                <h3 className="type-h3 text-primary">{card.title}</h3>
-                <p className="type-body text-ink">{card.text}</p>
-                <div className="flex flex-col gap-2">
-                  <p className="type-small font-medium text-ink-muted">
-                    {WHO_WE_SERVE.popularForLabel}
-                  </p>
-                  <ul className="flex flex-col gap-2">
-                    {card.popularFor.map((item) => (
-                      <li key={item} className="flex items-center gap-2 type-body text-ink">
-                        <CheckIcon size={20} className="shrink-0 text-primary" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+
+              <div className="flex flex-row sm:flex-col gap-6">
+                <div className="shrink-0 w-24 h-24 sm:w-32 sm:h-32">
+                  <AudienceArt
+                    art={card.art}
+                    className="w-full h-full transition-transform duration-300 ease-brand group-hover:-translate-y-1 group-hover:-rotate-2"
+                  />
                 </div>
-                <Link
-                  href={card.href}
-                  className="mt-auto inline-flex min-h-11 items-center gap-2 self-start type-button text-primary underline-offset-4 transition duration-150 ease-brand group-hover:underline after:absolute after:inset-0 after:rounded-card focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-2 focus-visible:after:outline-primary focus-visible:after:outline-solid"
-                >
-                  {card.linkLabel}
-                  <span className="sr-only"> {card.linkHiddenText}</span>
-                  <ArrowRightIcon size={20} />
-                </Link>
+                <div className="flex flex-1 flex-col gap-4">
+                  <h3 className="type-h3 text-primary pr-20 sm:pr-0">{card.title}</h3>
+                  <p className="type-body text-ink">{card.description}</p>
+                </div>
               </div>
+
+              <div className="flex flex-col gap-3 mt-auto">
+                <p className="type-small font-medium text-ink-muted">
+                  {WHO_WE_SERVE.popularForLabel}
+                </p>
+                <ul className="flex flex-wrap gap-2">
+                  {card.popularFor.map((item) => (
+                    <li key={item}>
+                      <Chip>{item}</Chip>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <Link
+                href={card.href}
+                className="mt-2 inline-flex min-h-11 items-center gap-2 self-start type-button text-primary underline-offset-4 transition duration-150 ease-brand group-hover:underline after:absolute after:inset-0 after:rounded-card focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-2 focus-visible:after:outline-primary focus-visible:after:outline-solid"
+              >
+                {card.linkLabel}
+                <span className="sr-only"> {card.title}</span>
+                <ArrowRightIcon size={20} />
+              </Link>
             </li>
           );
         })}
       </ul>
+      <div className="mt-12 text-center">
+        <p className="type-body text-ink">
+          Don&apos;t see your situation? Tell us what you need and we&apos;ll let you know if we can help.
+        </p>
+        <div className="mt-4">
+          <Link
+            href="#quote"
+            className="inline-flex h-8 items-center justify-center rounded-pill bg-accent px-4 type-small font-medium text-on-accent transition hover:bg-accent-hover"
+          >
+            Get a free quote
+          </Link>
+        </div>
+      </div>
     </Section>
   );
 }
