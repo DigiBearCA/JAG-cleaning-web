@@ -15,14 +15,6 @@ export interface FeatureCard {
   readonly icon: IconName;
 }
 
-export interface LinkedFeatureCard extends FeatureCard {
-  readonly href: string;
-  /** Visible link text, for example "Learn more". */
-  readonly linkLabel: string;
-  /** Visually hidden text that completes the link, for example "about home cleaning". */
-  readonly linkHiddenText: string;
-}
-
 export interface Step {
   readonly title: string;
   readonly text: string;

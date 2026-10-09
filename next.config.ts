@@ -22,7 +22,10 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: "/:path*", headers: SECURITY_HEADERS }];
   },
-
+  // The About page was removed (the client is not providing one); keep old links working.
+  async redirects() {
+    return [{ source: "/about", destination: "/", permanent: true }];
+  },
 };
 
 export default nextConfig;

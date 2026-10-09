@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRightIcon, CheckIcon } from "@/components/icons";
 import { Chip } from "@/components/ui/Chip";
-import { Section, type SectionTone } from "@/components/ui/Section";
+import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { IMAGES } from "@/config/images";
 import { WHO_WE_SERVE } from "@/content/home";
@@ -11,33 +11,20 @@ import { WHO_WE_SERVE } from "@/content/home";
 const CARD_IMAGE_SIZES =
   "(min-width: 1600px) 510px, (min-width: 1024px) 33vw, (min-width: 640px) 576px, 100vw";
 
-export interface WhoWeServeProps {
-  readonly tone?: SectionTone;
-  readonly id?: string;
-  readonly title?: string;
-  readonly lead?: string;
-}
-
 /**
  * Three image cards. Each card is a single link target: the "Learn more" link is stretched
  * over the card and completed with visually hidden text. On hover the photo zooms 4% and
  * the card lifts 2px.
  */
-export function WhoWeServe({
-  tone = "alt",
-  id = "who-we-serve",
-  title = WHO_WE_SERVE.title,
-  lead = WHO_WE_SERVE.lead,
-}: WhoWeServeProps) {
-  const headingId = `${id}-title`;
+export function WhoWeServe() {
   return (
-    <Section tone={tone} id={id} labelledBy={headingId}>
+    <Section tone="alt" id="who-we-serve" labelledBy="who-we-serve-title">
       <SectionHeading
-        id={headingId}
-        title={title}
-        lead={lead}
+        id="who-we-serve-title"
+        title={WHO_WE_SERVE.title}
+        lead={WHO_WE_SERVE.lead}
         align="center"
-        tone={tone}
+        tone="alt"
       />
       <ul className="mx-auto mt-10 grid max-w-xl gap-6 lg:max-w-none lg:grid-cols-3">
         {WHO_WE_SERVE.cards.map((card, index) => {
