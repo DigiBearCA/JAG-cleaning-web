@@ -1,29 +1,30 @@
 import type { SVGProps } from "react";
-import { ArtTile } from "./ArtTile";
 
 export function WinterArt(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 128 128" aria-hidden="true" focusable="false" {...props}>
-      <ArtTile>
-        {/* Mound of snow */}
-        <path d="M24 106 Q44 76 74 96 Q90 106 104 106 Z" className="fill-illus-body" />
+      {/* Ground shadow */}
+      <ellipse cx="64" cy="116" rx="52" ry="8" className="fill-illus-ground opacity-40" />
 
-        {/* Snow shovel */}
-        {/* Shovel blade */}
-        <rect x="54" y="66" width="24" height="24" rx="4" transform="rotate(-15 66 78)" className="fill-illus-detail" />
-        {/* Shovel shaft */}
-        <rect x="63" y="36" width="6" height="40" rx="2" transform="rotate(-15 66 56)" className="fill-illus-detail" />
-        {/* Shovel handle (accent) */}
-        <rect x="56" y="28" width="20" height="8" rx="4" transform="rotate(-15 66 32)" className="fill-accent" />
+      {/* Mound of Snow */}
+      <path d="M20 114 Q48 74 88 100 Q106 114 116 114 Z" className="fill-illus-body" />
 
-        {/* Snowflake */}
-        <g transform="translate(36, 44)">
-          <rect x="-2" y="-12" width="4" height="24" rx="2" className="fill-illus-detail" />
-          <rect x="-2" y="-12" width="4" height="24" rx="2" transform="rotate(60)" className="fill-illus-detail" />
-          <rect x="-2" y="-12" width="4" height="24" rx="2" transform="rotate(120)" className="fill-illus-detail" />
-        </g>
-      </ArtTile>
+      {/* Snow Shovel */}
+      <g transform="translate(10, -4)">
+        {/* Shovel Blade */}
+        <rect x="52" y="70" width="36" height="36" rx="4" transform="rotate(-15 70 88)" className="fill-illus-detail" />
+        {/* Shovel Shaft */}
+        <rect x="66" y="24" width="8" height="52" rx="2" transform="rotate(-15 70 50)" className="fill-illus-detail" />
+        {/* Shovel Handle */}
+        <rect x="54" y="16" width="32" height="12" rx="4" transform="rotate(-15 70 22)" className="fill-accent" />
+      </g>
+
+      {/* Large Snowflake */}
+      <g transform="translate(36, 44)">
+        <rect x="-3" y="-18" width="6" height="36" rx="3" className="fill-illus-detail" />
+        <rect x="-3" y="-18" width="6" height="36" rx="3" transform="rotate(60)" className="fill-illus-detail" />
+        <rect x="-3" y="-18" width="6" height="36" rx="3" transform="rotate(120)" className="fill-illus-detail" />
+      </g>
     </svg>
   );
 }
-

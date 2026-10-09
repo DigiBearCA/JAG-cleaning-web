@@ -1,39 +1,44 @@
 import type { SVGProps } from "react";
-import { ArtTile } from "./ArtTile";
 
 export function ManagerArt(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 128 128" aria-hidden="true" focusable="false" {...props}>
-      <ArtTile>
-        {/* Small building silhouette behind */}
-        <rect x="70" y="46" width="30" height="60" rx="4" className="fill-illus-body" />
-        <rect x="76" y="56" width="6" height="8" rx="2" className="fill-illus-detail" />
-        <rect x="88" y="56" width="6" height="8" rx="2" className="fill-illus-detail" />
-        <rect x="76" y="70" width="6" height="8" rx="2" className="fill-illus-detail" />
-        <rect x="88" y="70" width="6" height="8" rx="2" className="fill-illus-detail" />
+      {/* Ground shadow */}
+      <ellipse cx="64" cy="116" rx="44" ry="8" className="fill-illus-ground opacity-40" />
 
-        {/* Large key */}
-        {/* Key head */}
-        <circle cx="46" cy="46" r="16" className="fill-illus-detail" />
-        <circle cx="46" cy="46" r="6" className="fill-illus-body" />
-        {/* Key shaft */}
-        <rect x="42" y="56" width="8" height="40" rx="2" className="fill-illus-detail" />
-        {/* Key teeth */}
-        <rect x="50" y="76" width="12" height="8" rx="2" className="fill-illus-detail" />
-        <rect x="50" y="88" width="12" height="8" rx="2" className="fill-illus-detail" />
+      {/* Building Silhouette Background */}
+      <rect x="76" y="36" width="36" height="80" rx="4" className="fill-illus-body" />
+      <rect x="84" y="52" width="8" height="8" rx="2" className="fill-illus-detail" />
+      <rect x="96" y="52" width="8" height="8" rx="2" className="fill-illus-detail" />
+      <rect x="84" y="68" width="8" height="8" rx="2" className="fill-illus-detail" />
+      <rect x="96" y="68" width="8" height="8" rx="2" className="fill-illus-detail" />
+      <rect x="84" y="84" width="8" height="8" rx="2" className="fill-illus-detail" />
+      <rect x="96" y="84" width="8" height="8" rx="2" className="fill-illus-detail" />
 
-        {/* Hanging tag (accent) */}
-        <path d="M54 26 L76 26 L86 40 L76 54 L54 54 Z" className="fill-accent" />
-        <circle cx="60" cy="40" r="3" className="fill-alt" />
-        {/* Tag string */}
-        <path d="M52 32 Q46 26 46 30" fill="none" strokeWidth="2" className="stroke-illus-detail" />
-        {/* Check mark inside tag */}
-        <path d="M64 40 L68 44 L78 34" fill="none" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="stroke-illus-body" />
+      {/* Large Key */}
+      <g transform="translate(-10, 0)">
+        {/* Key Head */}
+        <circle cx="56" cy="46" r="22" className="fill-illus-detail" />
+        <circle cx="56" cy="46" r="8" className="fill-illus-body" />
+        {/* Key Shaft */}
+        <rect x="50" y="60" width="12" height="52" rx="4" className="fill-illus-detail" />
+        {/* Key Teeth */}
+        <rect x="62" y="84" width="16" height="10" rx="2" className="fill-illus-detail" />
+        <rect x="62" y="100" width="16" height="10" rx="2" className="fill-illus-detail" />
+      </g>
 
-        {/* Sparkle */}
-        <path d="M26 36 Q26 28 18 28 Q26 28 26 20 Q26 28 34 28 Q26 28 26 36 Z" className="fill-illus-detail" />
-      </ArtTile>
+      {/* Hanging Tag */}
+      <path d="M60 20 L90 20 L102 36 L90 52 L60 52 Z" className="fill-accent" />
+      <circle cx="68" cy="36" r="4" className="fill-illus-body" />
+      
+      {/* Tag String */}
+      <path d="M56 26 Q46 16 46 36" fill="none" strokeWidth="2.5" className="stroke-illus-detail" />
+      
+      {/* Check Mark inside Tag */}
+      <path d="M74 36 L80 42 L92 28" fill="none" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" className="stroke-illus-body" />
+
+      {/* Sparkle */}
+      <path d="M26 40 Q26 30 16 30 Q26 30 26 20 Q26 30 36 30 Q26 30 26 40 Z" className="fill-accent" />
     </svg>
   );
 }
-

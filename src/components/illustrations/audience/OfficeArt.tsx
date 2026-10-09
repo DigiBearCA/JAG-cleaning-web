@@ -1,34 +1,41 @@
 import type { SVGProps } from "react";
-import { ArtTile } from "./ArtTile";
 
 export function OfficeArt(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 128 128" aria-hidden="true" focusable="false" {...props}>
-      <ArtTile>
-        {/* Wide low building */}
-        <rect x="24" y="56" width="80" height="50" rx="4" className="fill-illus-body" />
-        
-        {/* Flat roof line */}
-        <rect x="20" y="52" width="88" height="6" rx="2" className="fill-illus-detail" />
-        
-        {/* Glass entrance */}
-        <rect x="52" y="70" width="24" height="36" rx="2" className="fill-illus-detail" />
-        <rect x="56" y="74" width="16" height="28" rx="2" className="fill-illus-body" />
+      {/* Ground shadow */}
+      <ellipse cx="64" cy="116" rx="52" ry="8" className="fill-illus-ground opacity-40" />
 
-        {/* Windows */}
-        <rect x="32" y="70" width="12" height="12" rx="2" className="fill-illus-detail" />
-        <rect x="84" y="70" width="12" height="12" rx="2" className="fill-accent" /> {/* Lit window */}
-        <rect x="32" y="86" width="12" height="12" rx="2" className="fill-illus-detail" />
-        <rect x="84" y="86" width="12" height="12" rx="2" className="fill-illus-detail" />
+      {/* Office Building Base */}
+      <rect x="20" y="56" width="88" height="60" rx="4" className="fill-illus-body" />
+      
+      {/* Roof detail */}
+      <rect x="16" y="50" width="96" height="8" rx="2" className="fill-illus-detail" />
+      <rect x="24" y="44" width="80" height="6" rx="2" className="fill-illus-detail opacity-50" />
 
-        {/* Plant by the door */}
-        <path d="M42 106 Q46 96 48 106 Z" className="fill-illus-detail" />
-        <rect x="42" y="100" width="8" height="6" rx="2" className="fill-illus-detail" />
+      {/* Main Glass Entrance */}
+      <rect x="52" y="70" width="24" height="46" rx="2" className="fill-illus-detail" />
+      <rect x="56" y="74" width="16" height="42" rx="2" className="fill-illus-body opacity-80" />
+      <rect x="63" y="74" width="2" height="42" className="fill-illus-detail" /> {/* Door split */}
 
-        {/* Sparkle */}
-        <path d="M90 36 Q90 28 82 28 Q90 28 90 20 Q90 28 98 28 Q90 28 90 36 Z" className="fill-illus-detail" />
-      </ArtTile>
+      {/* Left Windows */}
+      <rect x="28" y="70" width="14" height="14" rx="2" className="fill-illus-detail" />
+      <rect x="28" y="92" width="14" height="14" rx="2" className="fill-illus-detail" />
+
+      {/* Right Windows */}
+      <rect x="86" y="70" width="14" height="14" rx="2" className="fill-accent" /> {/* Lit window */}
+      <rect x="86" y="92" width="14" height="14" rx="2" className="fill-illus-detail" />
+
+      {/* Plant Pot Left */}
+      <rect x="42" y="106" width="8" height="10" rx="2" className="fill-illus-detail" />
+      <path d="M42 106 Q46 92 50 106 Z" className="fill-illus-detail" />
+
+      {/* Plant Pot Right */}
+      <rect x="78" y="106" width="8" height="10" rx="2" className="fill-illus-detail" />
+      <path d="M78 106 Q82 92 86 106 Z" className="fill-illus-detail" />
+
+      {/* Sparkle */}
+      <path d="M102 36 Q102 26 92 26 Q102 26 102 16 Q102 26 112 26 Q102 26 102 36 Z" className="fill-accent" />
     </svg>
   );
 }
-

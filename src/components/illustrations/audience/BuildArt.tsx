@@ -1,31 +1,32 @@
 import type { SVGProps } from "react";
-import { ArtTile } from "./ArtTile";
 
 export function BuildArt(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 128 128" aria-hidden="true" focusable="false" {...props}>
-      <ArtTile>
-        {/* Small plank stack */}
-        <rect x="28" y="96" width="48" height="6" rx="2" className="fill-illus-body" />
-        <rect x="34" y="88" width="40" height="6" rx="2" className="fill-illus-body" />
-        <rect x="40" y="80" width="32" height="6" rx="2" className="fill-illus-body" />
+      {/* Ground shadow */}
+      <ellipse cx="64" cy="116" rx="52" ry="8" className="fill-illus-ground opacity-40" />
 
-        {/* Crossed hammer */}
+      {/* Stack of Planks */}
+      <rect x="24" y="104" width="64" height="8" rx="2" className="fill-illus-body" />
+      <rect x="32" y="92" width="56" height="8" rx="2" className="fill-illus-body" />
+      <rect x="28" y="80" width="48" height="8" rx="2" className="fill-illus-body" />
+
+      {/* Construction Hammer */}
+      <g transform="translate(16, 0)">
         {/* Handle */}
-        <rect x="76" y="60" width="8" height="40" rx="4" transform="rotate(30 80 80)" className="fill-illus-detail" />
+        <rect x="70" y="44" width="12" height="60" rx="4" transform="rotate(25 76 74)" className="fill-illus-detail" />
         {/* Head */}
-        <rect x="66" y="52" width="24" height="12" rx="4" transform="rotate(30 78 58)" className="fill-illus-body" />
+        <rect x="56" y="36" width="36" height="16" rx="4" transform="rotate(25 74 44)" className="fill-illus-body" />
+      </g>
 
-        {/* Hard hat (accent) */}
-        <path d="M40 76 Q40 50 64 50 Q88 50 88 76 Z" className="fill-accent" />
-        <rect x="36" y="74" width="56" height="6" rx="3" className="fill-accent" />
-        {/* Hat ridge */}
-        <rect x="60" y="50" width="8" height="26" rx="4" className="fill-illus-body opacity-30" />
+      {/* Hard Hat */}
+      <path d="M34 80 Q34 44 64 44 Q94 44 94 80 Z" className="fill-accent" />
+      <rect x="26" y="76" width="76" height="8" rx="4" className="fill-accent" />
+      {/* Hat Ridge */}
+      <rect x="58" y="44" width="12" height="34" rx="4" className="fill-illus-body opacity-30" />
 
-        {/* Sparkle */}
-        <path d="M96 40 Q96 32 88 32 Q96 32 96 24 Q96 32 104 32 Q96 32 96 40 Z" className="fill-illus-detail" />
-      </ArtTile>
+      {/* Sparkle */}
+      <path d="M104 36 Q104 26 94 26 Q104 26 104 16 Q104 26 114 26 Q104 26 104 36 Z" className="fill-illus-detail" />
     </svg>
   );
 }
-
