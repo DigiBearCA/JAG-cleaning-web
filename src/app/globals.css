@@ -185,7 +185,6 @@
 @layer base {
   html {
     scroll-padding-top: 5.5rem;
-    scroll-behavior: smooth;
   }
   body {
     background: var(--bg);

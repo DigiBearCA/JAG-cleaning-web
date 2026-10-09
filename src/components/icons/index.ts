@@ -34,3 +34,5 @@ export {
   WallIcon,
   WhatsAppIcon,
 } from "./icons";
+export { ServicesIcon } from "./icons";
+export { ContactIcon } from "./icons";

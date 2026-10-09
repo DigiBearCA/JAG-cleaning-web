@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import {} from "@/components/icons";
+import { HomeIcon, ServicesIcon, ContactIcon } from "@/components/icons";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import {
@@ -75,7 +75,10 @@ export function MobileMenu({
                 onClick={onNavigate}
                 {...linkState(HOME_LINK.href)}
               >
-                {HOME_LINK.label}
+                <span className="flex items-center gap-2">
+                  <HomeIcon size={20} />
+                  {HOME_LINK.label}
+                </span>
               </Link>
             </li>
             <li>
@@ -84,7 +87,10 @@ export function MobileMenu({
                 onClick={onNavigate}
                 {...linkState(SERVICES_LINK.href)}
               >
-                {SERVICES_LINK.label}
+                <span className="flex items-center gap-2">
+                  <ServicesIcon size={20} />
+                  {SERVICES_LINK.label}
+                </span>
               </Link>
             </li>
             {NAV_AFTER_SERVICES.map((item) => (
@@ -94,7 +100,10 @@ export function MobileMenu({
                   onClick={onNavigate}
                   {...linkState(item.href)}
                 >
-                  {item.label}
+                  <span className="flex items-center gap-2">
+                    {item.href === "/contact" && <ContactIcon size={20} />}
+                    {item.label}
+                  </span>
                 </Link>
               </li>
             ))}

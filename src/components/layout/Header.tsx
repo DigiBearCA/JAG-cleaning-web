@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
-import { CloseIcon, MenuIcon, PhoneIcon } from "@/components/icons";
+import { CloseIcon, MenuIcon, PhoneIcon, HomeIcon, ServicesIcon, ContactIcon } from "@/components/icons";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SITE } from "@/config/site";
@@ -24,9 +24,11 @@ const MOBILE_MENU_ID = "mobile-menu";
 function DesktopNavLink({
   link,
   pathname,
+  icon,
 }: {
   readonly link: NavLink;
   readonly pathname: string;
+  readonly icon?: React.ReactNode;
 }) {
   const active = pathname === link.href;
   return (
@@ -40,6 +42,7 @@ function DesktopNavLink({
           : "text-ink",
       )}
     >
+      {icon && <span className="mr-1.5 flex items-center">{icon}</span>}
       {link.label}
     </Link>
   );
@@ -82,14 +85,18 @@ export function Header() {
         >
           <ul className="flex items-center gap-1">
             <li>
-              <DesktopNavLink link={HOME_LINK} pathname={pathname} />
+              <DesktopNavLink link={HOME_LINK} pathname={pathname} icon={<HomeIcon size={18} />} />
             </li>
             <li>
-              <DesktopNavLink link={SERVICES_LINK} pathname={pathname} />
+              <DesktopNavLink link={SERVICES_LINK} pathname={pathname} icon={<ServicesIcon size={18} />} />
             </li>
             {NAV_AFTER_SERVICES.map((link) => (
               <li key={link.href}>
-                <DesktopNavLink link={link} pathname={pathname} />
+                <DesktopNavLink 
+                  link={link} 
+                  pathname={pathname} 
+                  icon={link.href === "/contact" ? <ContactIcon size={18} /> : undefined}
+                />
               </li>
             ))}
           </ul>

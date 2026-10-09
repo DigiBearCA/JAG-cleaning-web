@@ -289,3 +289,100 @@ export function WallIcon(props: IconProps) {
     </IconBase>
   );
 }
+export function ContactIcon({ size = 24, ...rest }: IconProps) {
+  return (
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      viewBox="0 0 1254 1254" 
+      width={size} 
+      height={size}
+      fill="none"
+      {...rest}
+    >
+      <path fill="none" stroke="currentColor" strokeWidth="24" strokeLinecap="round" strokeLinejoin="round" d="M150 150 C180 140 215 150 245 175 L370 285 C410 320 405 375 370 410 C340 440 300 465 288 490 C280 510 292 540 330 600 C400 700 500 780 600 835 C625 848 650 850 660 835 C675 810 690 760 710 740 C740 715 800 720 845 745 L935 830 C985 880 985 940 950 985 C900 1050 830 1090 740 1088 C600 1085 440 980 280 820 C140 680 40 520 33 390 C33 300 80 210 130 165 Z"/>
+      
+      <g fill="none" stroke="currentColor" strokeWidth="24" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M528 282 H670 Q695 282 695 304 Q695 325 672 325 H528 Z"/>
+        <path d="M528 345 H625 Q638 345 638 357 Q638 370 625 370 H528 Z"/>
+        <path d="M528 380 H600 Q620 380 624 410 L636 466 H676 Q706 470 706 505 V605 Q706 648 665 648 H565 Q528 645 528 600 Z"/>
+      </g>
+      <g stroke="currentColor" strokeLinecap="round" fill="none">
+        <line x1="732" y1="302" x2="765" y2="302" strokeWidth="24"/>
+        <line x1="673" y1="348" x2="694" y2="398" strokeWidth="24"/>
+      </g>
+      
+      <text x="820" y="630" fill="none" stroke="currentColor" strokeWidth="12" fontSize="180" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }} fontWeight="bold">24</text>
+    </svg>
+  );
+}
+
+export function ServicesIcon({ size = 24, ...rest }: IconProps) {
+  return (
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      viewBox="0 0 1254 1254" 
+      width={size} 
+      height={size}
+      fill="none"
+      {...rest}
+    >
+      <g fill="none" stroke="currentColor" strokeWidth="27" strokeLinecap="round" strokeLinejoin="round">
+        {/* Cap */}
+        <path d="M413 110 Q607 20 802 110 L803 262 Q607 190 413 262 Z"/>
+        <path d="M421 270 V296 M795 270 V296"/>
+    
+        {/* Ears with curl */}
+        <path d="M437 361 C430 342 412 332 400 352 C390 372 398 405 420 428 L447 442"/>
+        <path d="M778 361 C785 342 803 332 815 352 C825 372 817 405 795 428 L768 442"/>
+    
+        {/* Face / jaw */}
+        <path d="M440 452 C446 545 518 617 607 617 C696 617 769 545 775 452"/>
+    
+        {/* Mask top edge */}
+        <path d="M440 443 Q607 432 775 443"/>
+    
+        {/* Mask side lines */}
+        <path d="M497 470 L484 558"/>
+        <path d="M718 470 L731 558"/>
+        {/* Mask chin */}
+        <path d="M524 578 Q607 610 691 578"/>
+    
+        {/* Collars */}
+        <path d="M462 612 L466 712 L540 677"/>
+        <path d="M745 612 L741 712 L670 677"/>
+    
+        {/* Shoulders / arms */}
+        <path d="M445 632 Q360 660 318 748"/>
+        <path d="M762 635 Q890 680 930 822"/>
+    
+        {/* Center placket */}
+        <path d="M605 738 V1098"/>
+    
+        {/* Pocket */}
+        <path d="M396 832 H528 V948 L462 1003 L396 955 Z"/>
+    
+        {/* Spray bottle: nozzle head */}
+        <path d="M103 539 H274 V675"/>
+        <path d="M103 539 V588 H165"/>
+        <path d="M150 539 V588"/>
+        <path d="M165 590 C165 640 172 665 195 688"/>
+        <path d="M288 572 C320 580 330 600 330 630 V672"/>
+    
+        {/* Spray bottle: hand */}
+        <rect x="174" y="690" width="130" height="228" rx="44"/>
+        <path d="M247 752 H292 M247 806 H292 M247 862 H292"/>
+    
+        {/* Spray bottle: body */}
+        <path d="M205 928 L172 985 C148 1030 146 1070 148 1100 H346 C350 1070 346 1030 322 985 L270 928"/>
+        <path d="M148 1062 H346"/>
+    
+        {/* Squeegee */}
+        <path d="M812 492 H1175"/>
+        <path d="M805 542 H1178 V595 H1150 L995 708 L842 595 H805 Z"/>
+        <path d="M995 708 V858"/>
+        <path d="M925 920 C925 880 955 862 995 862 C1035 862 1060 880 1060 920 V1040 C1060 1080 1035 1100 995 1100 C955 1100 925 1080 925 1040 Z"/>
+        <path d="M940 928 H985 M940 985 H985 M940 1040 H985"/>
+      </g>
+    </svg>
+  );
+}
