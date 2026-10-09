@@ -25,7 +25,7 @@ export function Logo({ tone = "light", onClick, className }: LogoProps) {
       )}
       aria-label={SITE.name}
     >
-      <BrandLogo className="h-10 w-auto sm:h-12" />
+      <BrandLogo className="h-10 w-auto sm:h-12" tone={tone} />
     </Link>
   );
 }

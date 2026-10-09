@@ -110,7 +110,7 @@ export function Header() {
           >
             <PhoneIcon size={20} />
           </a>
-          <div className="hidden sm:flex">
+          <div className="hidden md:flex">
             <Button href={QUOTE_HREF} size="sm">
               Get a Quote
             </Button>

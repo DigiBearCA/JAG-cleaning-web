@@ -1,4 +1,4 @@
-import { ImageResponse } from "next/og";
+﻿import { ImageResponse } from "next/og";
 import { SITE } from "@/config/site";
 
 /*
@@ -62,7 +62,7 @@ export default async function Image() {
             marginLeft: 8,
           }}
         >
-          Free quotes · Insured · Edmonton-based · Year-round service
+          Free quotes • Insured • Edmonton-based • Year-round service
         </div>
       </div>
     </div>,
