@@ -3,9 +3,6 @@ import hero1 from "@/images/hero-1.webp";
 import hero2 from "@/images/hero-2.webp";
 import hero3 from "@/images/hero-3.webp";
 import maintenanceFloor from "@/images/maintenance-floor-cleaning.webp";
-import officeCleaning from "@/images/office-cleaning.webp";
-import residentialCleaning from "@/images/residential-cleanings.webp";
-import snowRemoval from "@/images/snow-removal.webp";
 
 /**
  * Every photo used on the home and contact pages, in one place.
@@ -21,11 +18,6 @@ export interface ImageSlot {
 export interface SiteImages {
   /** The three rotating hero images. The first is the static base layer and the LCP image. */
   readonly hero: readonly [ImageSlot, ImageSlot, ImageSlot];
-  readonly whoWeServe: {
-    readonly homes: ImageSlot;
-    readonly businesses: ImageSlot;
-    readonly snow: ImageSlot;
-  };
   readonly whyJag: ImageSlot;
   /** Decorative background behind the home page quote section. */
   readonly contactBackground: ImageSlot;
@@ -49,20 +41,6 @@ export const IMAGES: SiteImages = {
       alt: "A worker in a hard hat holding a tablet in a freshly finished, empty room",
     },
   ],
-  whoWeServe: {
-    homes: {
-      src: residentialCleaning,
-      alt: "A tidy living room with a white sofa, a wooden coffee table, and a spray bottle and cloth",
-    },
-    businesses: {
-      src: officeCleaning,
-      alt: "A bright, empty office with wooden desks and a cleaning caddy holding spray bottles and a cloth",
-    },
-    snow: {
-      src: snowRemoval,
-      alt: "A cleared, salted driveway between high snowbanks, with a snow shovel leaning near the front door",
-    },
-  },
   whyJag: {
     src: maintenanceFloor,
     alt: "A bright, clean building corridor with a floor scrubber and a yellow wet-floor sign",
