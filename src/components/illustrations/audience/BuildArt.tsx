@@ -3,32 +3,30 @@ import type { SVGProps } from "react";
 export function BuildArt(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 128 128" aria-hidden="true" focusable="false" {...props}>
-      <rect x="16" y="112" width="96" height="4" className="fill-primary" />
-      
-      {/* Crane Structure Background */}
-      <rect x="24" y="24" width="8" height="88" className="fill-primary" />
-      <path d="M24 50 L32 40 L24 30 Z" className="fill-illus-detail" />
-      <path d="M24 70 L32 60 L24 50 Z" className="fill-illus-detail" />
-      <path d="M24 90 L32 80 L24 70 Z" className="fill-illus-detail" />
-      
-      {/* Crane arm */}
-      <rect x="24" y="24" width="72" height="8" className="fill-primary" />
-      
-      {/* Hook line & block */}
-      <rect x="80" y="32" width="2" height="40" className="fill-illus-detail" />
-      <rect x="76" y="72" width="10" height="8" className="fill-primary" />
-      <path d="M80 80 Q86 88 76 90" fill="none" strokeWidth="4" strokeLinecap="round" stroke="currentColor" className="text-primary" />
+      {/* Ground shadow */}
+      <ellipse cx="64" cy="116" rx="52" ry="8" className="fill-illus-ground opacity-40" />
 
-      {/* Large Hard Hat in Foreground */}
+      {/* Stack of Planks */}
+      <rect x="24" y="104" width="64" height="8" rx="2" className="fill-illus-body" />
+      <rect x="32" y="92" width="56" height="8" rx="2" className="fill-illus-body" />
+      <rect x="28" y="80" width="48" height="8" rx="2" className="fill-illus-body" />
+
+      {/* Construction Hammer */}
       <g transform="translate(16, 0)">
-        <path d="M30 112 Q30 76 60 76 Q90 76 90 112 Z" className="fill-accent" />
-        <rect x="20" y="104" width="80" height="8" rx="4" className="fill-accent" />
-        {/* Hat detail ridge */}
-        <path d="M60 76 Q64 88 64 112 H56 Q56 88 60 76 Z" className="fill-white opacity-30" />
+        {/* Handle */}
+        <rect x="70" y="44" width="12" height="60" rx="4" transform="rotate(25 76 74)" className="fill-illus-detail" />
+        {/* Head */}
+        <rect x="56" y="36" width="36" height="16" rx="4" transform="rotate(25 74 44)" className="fill-illus-body" />
       </g>
 
+      {/* Hard Hat */}
+      <path d="M34 80 Q34 44 64 44 Q94 44 94 80 Z" className="fill-accent" />
+      <rect x="26" y="76" width="76" height="8" rx="4" className="fill-accent" />
+      {/* Hat Ridge */}
+      <rect x="58" y="44" width="12" height="34" rx="4" className="fill-illus-body opacity-30" />
+
       {/* Sparkle */}
-      <path d="M104 36 Q104 28 96 28 Q104 28 104 20 Q104 28 112 28 Q104 28 104 36 Z" className="fill-accent" />
+      <path d="M104 36 Q104 26 94 26 Q104 26 104 16 Q104 26 114 26 Q104 26 104 36 Z" className="fill-illus-detail" />
     </svg>
   );
 }

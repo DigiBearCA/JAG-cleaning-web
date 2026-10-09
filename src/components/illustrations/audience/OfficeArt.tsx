@@ -3,42 +3,39 @@ import type { SVGProps } from "react";
 export function OfficeArt(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 128 128" aria-hidden="true" focusable="false" {...props}>
-      <rect x="16" y="112" width="96" height="4" className="fill-primary" />
-      
-      {/* Modern angled facade geometry */}
-      <path d="M24 112 L36 40 L104 40 L112 112 Z" className="fill-primary" />
-      
-      {/* Left structural column */}
-      <path d="M24 112 L36 40 L46 40 L36 112 Z" className="fill-illus-detail" />
-      {/* Right structural column */}
-      <path d="M112 112 L104 40 L94 40 L100 112 Z" className="fill-illus-detail" />
-      
-      {/* Glass windows background */}
-      <path d="M46 40 L94 40 L100 112 L36 112 Z" className="fill-accent opacity-20" />
-      
-      {/* Heavy Window frames */}
-      <path d="M42 64 L96 64" stroke="currentColor" strokeWidth="4" className="text-white" />
-      <path d="M39 88 L98 88" stroke="currentColor" strokeWidth="4" className="text-white" />
-      <path d="M70 40 L70 112" stroke="currentColor" strokeWidth="4" className="text-white" />
+      {/* Ground shadow */}
+      <ellipse cx="64" cy="116" rx="52" ry="8" className="fill-illus-ground opacity-40" />
 
-      {/* Accent glow inside office */}
-      <path d="M72 66 L95 66 L96 86 L72 86 Z" className="fill-accent" />
-      <rect x="76" y="74" width="14" height="6" rx="2" className="fill-white" />
-
-      {/* Entrance Box */}
-      <rect x="54" y="96" width="32" height="16" className="fill-white" />
-      <rect x="58" y="100" width="10" height="12" className="fill-primary" />
-      <rect x="72" y="100" width="10" height="12" className="fill-primary" />
-
-      {/* Planter Left */}
-      <circle cx="28" cy="104" r="12" className="fill-illus-detail" />
-      <circle cx="28" cy="104" r="6" className="fill-primary" />
+      {/* Office Building Base */}
+      <rect x="20" y="56" width="88" height="60" rx="4" className="fill-illus-body" />
       
-      {/* Planter Right */}
-      <circle cx="108" cy="104" r="12" className="fill-illus-detail" />
-      <circle cx="108" cy="104" r="6" className="fill-primary" />
+      {/* Roof detail */}
+      <rect x="16" y="50" width="96" height="8" rx="2" className="fill-illus-detail" />
+      <rect x="24" y="44" width="80" height="6" rx="2" className="fill-illus-detail opacity-50" />
 
-      <path d="M96 24 Q96 16 88 16 Q96 16 96 8 Q96 16 104 16 Q96 16 96 24 Z" className="fill-accent" />
+      {/* Main Glass Entrance */}
+      <rect x="52" y="70" width="24" height="46" rx="2" className="fill-illus-detail" />
+      <rect x="56" y="74" width="16" height="42" rx="2" className="fill-illus-body opacity-80" />
+      <rect x="63" y="74" width="2" height="42" className="fill-illus-detail" /> {/* Door split */}
+
+      {/* Left Windows */}
+      <rect x="28" y="70" width="14" height="14" rx="2" className="fill-illus-detail" />
+      <rect x="28" y="92" width="14" height="14" rx="2" className="fill-illus-detail" />
+
+      {/* Right Windows */}
+      <rect x="86" y="70" width="14" height="14" rx="2" className="fill-accent" /> {/* Lit window */}
+      <rect x="86" y="92" width="14" height="14" rx="2" className="fill-illus-detail" />
+
+      {/* Plant Pot Left */}
+      <rect x="42" y="106" width="8" height="10" rx="2" className="fill-illus-detail" />
+      <path d="M42 106 Q46 92 50 106 Z" className="fill-illus-detail" />
+
+      {/* Plant Pot Right */}
+      <rect x="78" y="106" width="8" height="10" rx="2" className="fill-illus-detail" />
+      <path d="M78 106 Q82 92 86 106 Z" className="fill-illus-detail" />
+
+      {/* Sparkle */}
+      <path d="M102 36 Q102 26 92 26 Q102 26 102 16 Q102 26 112 26 Q102 26 102 36 Z" className="fill-accent" />
     </svg>
   );
 }

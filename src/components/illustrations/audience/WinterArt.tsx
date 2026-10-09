@@ -3,36 +3,28 @@ import type { SVGProps } from "react";
 export function WinterArt(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 128 128" aria-hidden="true" focusable="false" {...props}>
-      {/* Ground / Snow bank */}
-      <path d="M16 114 Q48 74 88 100 Q106 114 116 114 Z" className="fill-illus-body" />
-      <path d="M50 114 Q80 90 116 114 Z" className="fill-illus-detail" />
-      
-      {/* Heavy Snow Shovel / Plow */}
-      <g transform="translate(10, 0)">
-        {/* Shaft */}
-        <rect x="72" y="24" width="8" height="70" rx="2" transform="rotate(-30 76 59)" className="fill-primary" />
-        
-        {/* Handle */}
-        <path d="M96 28 L108 8 L116 12 L104 32 Z" className="fill-primary" />
-        <rect x="94" y="6" width="32" height="8" rx="4" transform="rotate(-30 110 10)" className="fill-accent" />
-        
-        {/* Blade */}
-        <path d="M28 64 Q44 76 36 96 L76 104 Q84 84 68 72 Z" className="fill-accent" />
-        <path d="M36 96 L76 104 L72 108 L32 100 Z" className="fill-primary" />
+      {/* Ground shadow */}
+      <ellipse cx="64" cy="116" rx="52" ry="8" className="fill-illus-ground opacity-40" />
+
+      {/* Mound of Snow */}
+      <path d="M20 114 Q48 74 88 100 Q106 114 116 114 Z" className="fill-illus-body" />
+
+      {/* Snow Shovel */}
+      <g transform="translate(10, -4)">
+        {/* Shovel Blade */}
+        <rect x="52" y="70" width="36" height="36" rx="4" transform="rotate(-15 70 88)" className="fill-illus-detail" />
+        {/* Shovel Shaft */}
+        <rect x="66" y="24" width="8" height="52" rx="2" transform="rotate(-15 70 50)" className="fill-illus-detail" />
+        {/* Shovel Handle */}
+        <rect x="54" y="16" width="32" height="12" rx="4" transform="rotate(-15 70 22)" className="fill-accent" />
       </g>
 
-      {/* Heavy geometric Snowflake */}
-      <g transform="translate(36, 40)">
-        <rect x="-4" y="-16" width="8" height="32" rx="2" className="fill-primary" />
-        <rect x="-4" y="-16" width="8" height="32" rx="2" transform="rotate(60)" className="fill-primary" />
-        <rect x="-4" y="-16" width="8" height="32" rx="2" transform="rotate(120)" className="fill-primary" />
-        {/* Center hole */}
-        <circle cx="0" cy="0" r="4" className="fill-white" />
+      {/* Large Snowflake */}
+      <g transform="translate(36, 44)">
+        <rect x="-3" y="-18" width="6" height="36" rx="3" className="fill-illus-detail" />
+        <rect x="-3" y="-18" width="6" height="36" rx="3" transform="rotate(60)" className="fill-illus-detail" />
+        <rect x="-3" y="-18" width="6" height="36" rx="3" transform="rotate(120)" className="fill-illus-detail" />
       </g>
-
-      {/* Ice crystals */}
-      <path d="M16 80 L24 72 L32 80 Z" className="fill-primary opacity-20" />
-      <path d="M88 64 L96 52 L104 64 Z" className="fill-primary opacity-20" />
     </svg>
   );
 }
