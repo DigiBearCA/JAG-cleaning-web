@@ -4,7 +4,7 @@ export function BuildArt(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 128 128" aria-hidden="true" focusable="false" {...props}>
       {/* Ground shadow */}
-      <ellipse cx="64" cy="116" rx="52" ry="8" className="fill-illus-ground opacity-40" />
+      <ellipse cx="64" cy="116" rx="52" ry="8" className="fill-primary opacity-10" />
 
       {/* Stack of Planks */}
       <rect x="24" y="104" width="64" height="8" rx="2" className="fill-illus-body" />
@@ -14,7 +14,7 @@ export function BuildArt(props: SVGProps<SVGSVGElement>) {
       {/* Construction Hammer */}
       <g transform="translate(16, 0)">
         {/* Handle */}
-        <rect x="70" y="44" width="12" height="60" rx="4" transform="rotate(25 76 74)" className="fill-illus-detail" />
+        <rect x="70" y="44" width="12" height="60" rx="4" transform="rotate(25 76 74)" className="fill-illus-sky" />
         {/* Head */}
         <rect x="56" y="36" width="36" height="16" rx="4" transform="rotate(25 74 44)" className="fill-illus-body" />
       </g>
@@ -26,7 +26,7 @@ export function BuildArt(props: SVGProps<SVGSVGElement>) {
       <rect x="58" y="44" width="12" height="34" rx="4" className="fill-illus-body opacity-30" />
 
       {/* Sparkle */}
-      <path d="M104 36 Q104 26 94 26 Q104 26 104 16 Q104 26 114 26 Q104 26 104 36 Z" className="fill-illus-detail" />
+      <path d="M104 36 Q104 26 94 26 Q104 26 104 16 Q104 26 114 26 Q104 26 104 36 Z" className="fill-illus-sky" />
     </svg>
   );
 }

@@ -4,24 +4,24 @@ export function ApartmentArt(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 128 128" aria-hidden="true" focusable="false" {...props}>
       {/* Ground shadow */}
-      <ellipse cx="64" cy="116" rx="44" ry="8" className="fill-illus-ground opacity-40" />
+      <ellipse cx="64" cy="116" rx="44" ry="8" className="fill-primary opacity-10" />
 
       {/* Background Building */}
       <rect x="64" y="24" width="40" height="92" rx="2" className="fill-illus-body" />
       {/* Roof detail */}
-      <rect x="60" y="20" width="48" height="6" rx="2" className="fill-illus-detail" />
+      <rect x="60" y="20" width="48" height="6" rx="2" className="fill-illus-sky" />
       {/* Balconies */}
-      <rect x="62" y="44" width="20" height="4" rx="2" className="fill-illus-detail" />
-      <rect x="62" y="68" width="20" height="4" rx="2" className="fill-illus-detail" />
-      <rect x="62" y="92" width="20" height="4" rx="2" className="fill-illus-detail" />
+      <rect x="62" y="44" width="20" height="4" rx="2" className="fill-illus-sky" />
+      <rect x="62" y="68" width="20" height="4" rx="2" className="fill-illus-sky" />
+      <rect x="62" y="92" width="20" height="4" rx="2" className="fill-illus-sky" />
 
       {/* Accent Window in Background Building */}
       <rect x="88" y="36" width="10" height="12" rx="2" className="fill-accent" />
-      <rect x="88" y="60" width="10" height="12" rx="2" className="fill-illus-detail" />
-      <rect x="88" y="84" width="10" height="12" rx="2" className="fill-illus-detail" />
+      <rect x="88" y="60" width="10" height="12" rx="2" className="fill-illus-sky" />
+      <rect x="88" y="84" width="10" height="12" rx="2" className="fill-illus-sky" />
 
       {/* Foreground Building */}
-      <rect x="28" y="48" width="48" height="68" rx="2" className="fill-illus-detail" />
+      <rect x="28" y="48" width="48" height="68" rx="2" className="fill-illus-sky" />
       {/* Roof detail */}
       <rect x="24" y="44" width="56" height="6" rx="2" className="fill-illus-body" />
       
