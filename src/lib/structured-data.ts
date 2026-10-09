@@ -33,7 +33,7 @@ function areaServed(): JsonLdObject {
 
 /**
  * Home page LocalBusiness. JAG is a service-area business, so no street address is included.
- * Phone, email, and social profiles are only added once SITE.contactVerified is true.
+ * Phone, email, social profiles, and opening hours are only added once SITE.contactVerified is true.
  */
 export function localBusinessSchema(description: string): JsonLdObject {
   const base: JsonLdObject = {
@@ -54,6 +54,21 @@ export function localBusinessSchema(description: string): JsonLdObject {
     telephone: SITE.phone.e164,
     email: SITE.email,
     sameAs: [SITE.social.instagram, SITE.social.facebook],
+    // Open 24/7 (SITE.hours). 23:59 is the schema.org convention for "until midnight".
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
+      opens: "00:00",
+      closes: "23:59",
+    },
   };
 }
 

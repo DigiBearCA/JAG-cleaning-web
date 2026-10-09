@@ -24,6 +24,16 @@ export const CONTACT_DETAILS = {
     address: "Address",
     social: "Follow us",
   },
+  /** Short checklist under the contact details. */
+  include: {
+    title: "What to include in your message",
+    items: [
+      "The type of space (home, office, or driveway)",
+      "Its rough size or number of rooms",
+      "Your preferred day and time",
+      "Any special requests",
+    ],
+  },
   mapTitle: "Map of our area in Edmonton, Alberta",
   mapLink: "Open in Google Maps",
 } as const;

@@ -116,12 +116,12 @@ export const WHY_JAAG: SectionCopy & {
   title: `Why ${SITE.shortName}`,
   lead: "We bring professionalism, consistency, and care to every job site, and we keep things simple: a clear quote, a team that shows up, and work that is checked before we leave. You deal with one local company from the first call to the final walk-through, and our team handles the details so you don't have to.",
   badges: {
-    hours: "Open 24/7",
+    hours: SITE.hoursShort,
     quotes: "Free quotes",
   },
   cards: [
     {
-      title: "Open 24/7",
+      title: SITE.hoursShort,
       text: "Call or message us whenever it suits you, any day of the week. We are open 24 hours a day, 7 days a week, with cleaning indoors and snow removal outdoors through every season.",
       icon: "clock",
     },
@@ -164,7 +164,7 @@ export const QUOTE_COPY = {
   imageLead:
     "Tell us what you need and we'll get back to you with a clear, free quote. You can also call or message us on WhatsApp any time, because we are open 24 hours a day, 7 days a week.",
   /** Check pills in the image-backed version. Only confirmed facts. */
-  pills: ["Free quote", "Insured", "Open 24/7"],
+  pills: ["Free quote", "Insured", SITE.hoursShort],
   /** Shown under the lead. Only confirmed facts: free quotes, insured, own supplies. */
   reassurance:
     "Quotes are free. We are insured and bring our own supplies and equipment.",

@@ -27,8 +27,10 @@ export interface SiteConfig {
     readonly defaultMessage: string;
   };
   readonly email: string;
-  /** Opening hours line. Hidden everywhere when null. */
-  readonly hours: string | null;
+  /** Opening hours line (Contact page, footer, JSON-LD). */
+  readonly hours: string;
+  /** Short form for pills and badges. */
+  readonly hoursShort: string;
   readonly social: {
     readonly instagram: string;
     readonly facebook: string;
@@ -61,7 +63,9 @@ export const SITE: SiteConfig = {
     defaultMessage: "Hi JAAG, I'd like a quote.",
   },
   email: "Joga.singh801@icloud.com",
-  hours: null, // TODO(client): opening hours line, for example "Monday to Saturday, 8 am to 6 pm"
+  // TODO(client): confirm the 24/7 wording, since it promises availability at all hours
+  hours: "Open 24 hours a day, 7 days a week",
+  hoursShort: "Open 24/7",
   social: {
     instagram: "https://www.instagram.com/your-handle", // TODO(client): Instagram profile URL
     facebook: "https://www.facebook.com/your-page", // TODO(client): Facebook page URL

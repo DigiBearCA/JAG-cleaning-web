@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Icon, type IconName } from "@/components/icons";
+import { CheckIcon, Icon, type IconName } from "@/components/icons";
 import { SITE } from "@/config/site";
 import { CONTACT_DETAILS } from "@/content/contact";
 import { mailtoHref, telHref, whatsappHref } from "@/lib/contact-links";
@@ -70,11 +70,9 @@ export function ContactDetails() {
             {SITE.email}
           </a>
         </DetailRow>
-        {SITE.hours ? (
-          <DetailRow icon="clock" label={labels.hours}>
-            {SITE.hours}
-          </DetailRow>
-        ) : null}
+        <DetailRow icon="clock" label={labels.hours}>
+          {SITE.hours}
+        </DetailRow>
         <DetailRow icon="mapPin" label={labels.area}>
           {labels.areaText}
         </DetailRow>
@@ -84,6 +82,18 @@ export function ContactDetails() {
           </DetailRow>
         ) : null}
       </ul>
+
+      <div className="flex flex-col gap-3 rounded-card border border-line bg-white p-6 text-ink">
+        <h3 className="type-h4 text-primary">{CONTACT_DETAILS.include.title}</h3>
+        <ul className="flex flex-col gap-2">
+          {CONTACT_DETAILS.include.items.map((item) => (
+            <li key={item} className="flex items-start gap-3 type-body text-ink">
+              <CheckIcon size={20} className="mt-0.75 shrink-0 text-primary" />
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
 
       {/* <div className="flex flex-col gap-3">
         <h3 className="type-small font-medium text-ink">{labels.social}</h3>

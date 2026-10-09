@@ -76,6 +76,10 @@ export function Footer() {
         <ContactLink href={whatsappHref()} icon="whatsapp">
           WhatsApp
         </ContactLink>
+        <li className="inline-flex items-center gap-2 type-small text-on-dark-muted">
+          <Icon name="clock" size={18} className="shrink-0" />
+          <span>{SITE.hours}</span>
+        </li>
       </ul>
     </div>
   );
