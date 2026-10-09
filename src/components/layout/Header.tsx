@@ -18,6 +18,7 @@ import { telHref } from "@/lib/contact-links";
 import { cx } from "@/lib/cx";
 import { Logo } from "./Logo";
 import { MobileMenu } from "./MobileMenu";
+import { useAutoHideHeader } from "./useAutoHideHeader";
 
 const MOBILE_MENU_ID = "mobile-menu";
 
@@ -58,6 +59,8 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [lastPath, setLastPath] = useState(pathname);
   const toggleRef = useRef<HTMLButtonElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
+  const hidden = useAutoHideHeader(headerRef, menuOpen);
 
   // Close the mobile menu on route change (state adjusted during render, no effect needed).
   if (pathname !== lastPath) {
@@ -75,7 +78,13 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-bg">
+    <header
+      ref={headerRef}
+      className={cx(
+        "sticky top-0 z-50 border-b border-line bg-bg transition-transform duration-300 ease-brand",
+        hidden && "-translate-y-full",
+      )}
+    >
       <Container className="flex h-16 items-center justify-between gap-4 md:h-18">
         <Logo onClick={closeMenu} />
 
