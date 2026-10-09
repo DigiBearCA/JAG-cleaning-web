@@ -14,7 +14,7 @@ export const HOME_META = {
 export const HERO = {
   eyebrow: "Serving Edmonton",
   title: "Clean homes & businesses, Clear driveways all winter.",
-  lead: "Reliable cleaning for homes and businesses, and snow removal when winter hits.",
+  lead: "Reliable cleaning for homes and businesses, and snow removal when winter hits. One local team, our own supplies and equipment, and a free quote before any work begins.",
   primaryCta: "Get a Free Quote",
   secondaryCta: "Call us",
   whatsappPrompt: "Prefer WhatsApp?",
@@ -25,8 +25,6 @@ export const HERO = {
     "Edmonton-based",
     "Year-round service",
   ],
-  illustrationLabel:
-    "Illustration of a snow-covered house and office building on a winter day",
 } as const;
 
 export const WHO_WE_SERVE: SectionCopy & {

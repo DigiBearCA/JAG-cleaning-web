@@ -74,6 +74,42 @@
   }
 }
 
+/* Home hero rotation. Why: CSS-only crossfade, no JS timers. Image 1 is the static base layer;
+   images 2 and 3 use this 18s loop with animation-delay 6s and 12s, so each photo leads for
+   about 6s. Each layer fades in over ~0.7s and fades out only after the next layer has fully
+   covered it, so the base never ghosts through mid-fade. Reduced motion hides layers 2 and 3. */
+@theme {
+  --animate-hero-fade: hero-fade 18s linear infinite both;
+
+  @keyframes hero-fade {
+    0% {
+      opacity: 0;
+    }
+    4% {
+      opacity: 1;
+    }
+    37.5% {
+      opacity: 1;
+    }
+    41.7% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}
+
+/* Hero image feather (desktop only, applied as lg:hero-feather). Why: the hero text overlaps
+   the image by 5% of the container; a mask (not a coloured gradient or blur overlay) fades the
+   photo's left edge to transparent so it melts into whatever the page background is, on both
+   palettes, and the overlapped text stays readable. #000 here is mask alpha, not a colour.
+   This is the single gradient exception documented in DESIGN.md §4. */
+@utility hero-feather {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 28%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 28%);
+}
+
 /* Type scale: values switch at 768px, the type-* utilities read them */
 :root {
   --fs-h1: 36px;

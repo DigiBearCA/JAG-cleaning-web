@@ -69,3 +69,4 @@ export const IMAGES: SiteImages = {
   },
   contactBackground: HERO_KITCHEN,
 };
+
