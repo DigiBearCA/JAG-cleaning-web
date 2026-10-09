@@ -1,3 +1,4 @@
+import { CheckIcon } from "@/components/icons";
 import { Section, type SectionTone } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { HOW_IT_WORKS } from "@/content/home";
@@ -5,6 +6,8 @@ import { cx } from "@/lib/cx";
 
 export interface HowItWorksProps {
   readonly tone?: Extract<SectionTone, "base" | "alt">;
+  /** Show the "What to have ready for your quote" card under the steps (home page only). */
+  readonly showPrep?: boolean;
 }
 
 /**
@@ -12,7 +15,7 @@ export interface HowItWorksProps {
  * Numbers sit in chip-coloured circles; on alt sections the chip colour equals the section
  * background, so the circles switch to white to stay visible.
  */
-export function HowItWorks({ tone = "base" }: HowItWorksProps) {
+export function HowItWorks({ tone = "base", showPrep = false }: HowItWorksProps) {
   const onAlt = tone === "alt";
   return (
     <Section tone={tone} id="how-it-works" labelledBy="how-it-works-title">
@@ -68,6 +71,20 @@ export function HowItWorks({ tone = "base" }: HowItWorksProps) {
           );
         })}
       </ol>
+      {showPrep ? (
+        <div className="mx-auto mt-12 flex max-w-3xl flex-col gap-4 rounded-card border border-line bg-white p-6 text-ink md:p-8">
+          <h3 className="type-h3 text-primary">{HOW_IT_WORKS.prep.title}</h3>
+          <ul className="grid gap-4 md:grid-cols-2">
+            {HOW_IT_WORKS.prep.items.map((item) => (
+              <li key={item} className="flex items-start gap-3 type-body text-ink">
+                <CheckIcon size={20} className="mt-0.75 shrink-0 text-primary" />
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p className="type-body text-ink-muted">{HOW_IT_WORKS.prep.note}</p>
+        </div>
+      ) : null}
     </Section>
   );
 }

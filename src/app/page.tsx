@@ -25,7 +25,7 @@ export default function HomePage() {
       <JsonLd data={localBusinessSchema(HOME_META.description)} />
       <Hero />
       <WhoWeServe />
-      <HowItWorks />
+      <HowItWorks showPrep />
       <WhyJag />
       <FaqSection title={HOME_FAQ_COPY.title} items={HOME_FAQ} />
       <QuoteSection />

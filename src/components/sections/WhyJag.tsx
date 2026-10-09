@@ -1,38 +1,71 @@
-import { Icon } from "@/components/icons";
-import { Card, FeatureIcon } from "@/components/ui/Card";
+import Image from "next/image";
+import { ClockIcon, Icon } from "@/components/icons";
+import { FeatureIcon } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { IMAGES } from "@/config/images";
 import { WHY_JAAG } from "@/content/home";
 
-/** Alt section with a 2x2 grid of white cards. */
+/** The intro column is 2/5 of the container from 1024px, full width below. */
+const WHY_IMAGE_SIZES =
+  "(min-width: 1600px) 620px, (min-width: 1024px) 40vw, 100vw";
+
+/**
+ * Dark section, split layout. Left: heading, paragraph, and a framed photo with two badge
+ * pills, sticky on desktop while the right column scrolls. Right: six numbered dark cards.
+ */
 export function WhyJag() {
   return (
-    <Section tone="alt" id="why-jag" labelledBy="why-jag-title">
-      <div className="grid grid-cols-1 md:grid-cols-[70fr_30fr] gap-4 md:gap-6 items-center">
-        <ul className="order-last md:order-first grid gap-4 sm:grid-cols-2">
-          {WHY_JAAG.cards.map((card) => (
-            <Card as="li" key={card.title} className="flex flex-col items-center text-center gap-4">
-              <div className="flex flex-row items-center justify-center gap-3">
-                <FeatureIcon surface="light">
-                  <Icon name={card.icon} />
-                </FeatureIcon>
-                <h3 className="type-h3 text-primary">{card.title}</h3>
-              </div>
-              <p className="type-body text-ink">{card.text}</p>
-            </Card>
-          ))}
-        </ul>
-
-        <div className="order-first lg:order-last">
+    <Section tone="dark" id="why-jag" labelledBy="why-jag-title">
+      <div className="grid gap-10 lg:grid-cols-[2fr_3fr] lg:gap-12">
+        <div className="flex flex-col gap-8 lg:sticky lg:top-28 lg:self-start">
           <SectionHeading
             id="why-jag-title"
             title={WHY_JAAG.title}
             lead={WHY_JAAG.lead}
             align="left"
-            tone="alt"
-            className="items-center text-center lg:items-start lg:text-left"
+            tone="dark"
           />
+          <div className="relative aspect-4/3 overflow-hidden rounded-panel bg-dark-card">
+            <Image
+              src={IMAGES.whyJag.src}
+              alt={IMAGES.whyJag.alt}
+              fill
+              placeholder="blur"
+              sizes={WHY_IMAGE_SIZES}
+              className="object-cover"
+            />
+            <ul className="absolute bottom-4 left-4 flex flex-wrap gap-2">
+              <li className="inline-flex items-center gap-1.5 rounded-pill bg-accent px-3 py-1 type-small font-medium text-on-accent">
+                <ClockIcon size={16} className="shrink-0" />
+                {WHY_JAAG.badges.hours}
+              </li>
+              <li className="inline-flex items-center rounded-pill bg-white px-3 py-1 type-small font-medium text-primary">
+                {WHY_JAAG.badges.quotes}
+              </li>
+            </ul>
+          </div>
         </div>
+
+        <ol className="grid gap-4 md:grid-cols-2">
+          {WHY_JAAG.cards.map((card, index) => (
+            <li
+              key={card.title}
+              className="flex flex-col gap-4 rounded-card bg-dark-card p-6 md:p-8"
+            >
+              <div className="flex items-center justify-between gap-4">
+                <FeatureIcon surface="dark">
+                  <Icon name={card.icon} />
+                </FeatureIcon>
+                <span aria-hidden="true" className="type-h3 text-on-dark-muted">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+              </div>
+              <h3 className="type-h3 text-on-dark">{card.title}</h3>
+              <p className="type-body text-on-dark-muted">{card.text}</p>
+            </li>
+          ))}
+        </ol>
       </div>
     </Section>
   );
