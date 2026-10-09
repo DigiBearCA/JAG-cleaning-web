@@ -3,39 +3,47 @@ import type { SVGProps } from "react";
 export function ApartmentArt(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 128 128" aria-hidden="true" focusable="false" {...props}>
-      {/* Ground shadow */}
-      <ellipse cx="64" cy="116" rx="44" ry="8" className="fill-illus-ground opacity-40" />
+      {/* Background anchor */}
+      <rect x="16" y="112" width="96" height="4" className="fill-primary" />
 
-      {/* Background Building */}
-      <rect x="64" y="24" width="40" height="92" rx="2" className="fill-illus-body" />
-      {/* Roof detail */}
-      <rect x="60" y="20" width="48" height="6" rx="2" className="fill-illus-detail" />
-      {/* Balconies */}
-      <rect x="62" y="44" width="20" height="4" rx="2" className="fill-illus-detail" />
-      <rect x="62" y="68" width="20" height="4" rx="2" className="fill-illus-detail" />
-      <rect x="62" y="92" width="20" height="4" rx="2" className="fill-illus-detail" />
-
-      {/* Accent Window in Background Building */}
-      <rect x="88" y="36" width="10" height="12" rx="2" className="fill-accent" />
-      <rect x="88" y="60" width="10" height="12" rx="2" className="fill-illus-detail" />
-      <rect x="88" y="84" width="10" height="12" rx="2" className="fill-illus-detail" />
-
-      {/* Foreground Building */}
-      <rect x="28" y="48" width="48" height="68" rx="2" className="fill-illus-detail" />
-      {/* Roof detail */}
-      <rect x="24" y="44" width="56" height="6" rx="2" className="fill-illus-body" />
+      {/* Tall Building (Background) */}
+      <rect x="56" y="24" width="48" height="88" className="fill-illus-detail" />
+      {/* Shadow block for depth */}
+      <rect x="88" y="24" width="16" height="88" className="fill-primary opacity-20" />
       
-      {/* Foreground Windows */}
-      <rect x="36" y="60" width="10" height="12" rx="2" className="fill-illus-body" />
-      <rect x="56" y="60" width="10" height="12" rx="2" className="fill-illus-body" />
-      <rect x="36" y="80" width="10" height="12" rx="2" className="fill-illus-body" />
-      <rect x="56" y="80" width="10" height="12" rx="2" className="fill-illus-body" />
+      {/* Window Grid for Tall Building */}
+      <g className="fill-primary">
+        <rect x="64" y="32" width="6" height="8" rx="1" />
+        <rect x="76" y="32" width="6" height="8" rx="1" />
+        <rect x="64" y="46" width="6" height="8" rx="1" />
+        <rect x="76" y="46" width="6" height="8" rx="1" />
+        <rect x="64" y="60" width="6" height="8" rx="1" />
+        <rect x="76" y="60" width="6" height="8" rx="1" />
+        <rect x="64" y="74" width="6" height="8" rx="1" />
+        <rect x="76" y="74" width="6" height="8" rx="1" />
+        <rect x="64" y="88" width="6" height="8" rx="1" />
+        <rect x="76" y="88" width="6" height="8" rx="1" />
+      </g>
       
-      {/* Door */}
-      <rect x="42" y="100" width="20" height="16" rx="2" className="fill-illus-body" />
+      {/* Short Building (Foreground) */}
+      <rect x="24" y="56" width="48" height="56" className="fill-primary" />
+      {/* Roof trim */}
+      <rect x="20" y="52" width="56" height="6" className="fill-accent" />
+      
+      {/* Foreground building bright windows */}
+      <rect x="32" y="66" width="12" height="16" rx="1" className="fill-accent" />
+      <rect x="34" y="68" width="4" height="12" className="fill-white" />
+      
+      <rect x="52" y="66" width="12" height="16" rx="1" className="fill-illus-detail" />
+      <rect x="32" y="88" width="12" height="16" rx="1" className="fill-illus-detail" />
+      <rect x="52" y="88" width="12" height="16" rx="1" className="fill-white opacity-20" />
+
+      {/* Main Entrance Door */}
+      <rect x="40" y="104" width="16" height="8" className="fill-white" />
+      <rect x="42" y="104" width="12" height="8" className="fill-primary" />
 
       {/* Sparkle */}
-      <path d="M52 24 Q52 16 44 16 Q52 16 52 8 Q52 16 60 16 Q52 16 52 24 Z" className="fill-accent" />
+      <path d="M104 24 Q104 16 96 16 Q104 16 104 8 Q104 16 112 16 Q104 16 104 24 Z" className="fill-accent" />
     </svg>
   );
 }
