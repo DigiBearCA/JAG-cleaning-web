@@ -40,3 +40,4 @@ export function ArtTile({ children }: { readonly children: ReactNode }) {
     </>
   );
 }
+

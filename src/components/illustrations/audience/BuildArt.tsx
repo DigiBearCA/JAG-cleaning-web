@@ -28,3 +28,4 @@ export function BuildArt(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+

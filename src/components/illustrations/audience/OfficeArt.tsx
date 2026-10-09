@@ -31,3 +31,4 @@ export function OfficeArt(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+

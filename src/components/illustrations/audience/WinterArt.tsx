@@ -26,3 +26,4 @@ export function WinterArt(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+

@@ -36,3 +36,4 @@ export function ManagerArt(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+

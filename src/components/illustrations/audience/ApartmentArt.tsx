@@ -32,3 +32,4 @@ export function ApartmentArt(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
