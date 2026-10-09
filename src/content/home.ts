@@ -2,7 +2,7 @@ import { SITE } from "@/config/site";
 import type {
   FeatureCard,
   SectionCopy,
-  ServeCard,
+  Audience,
   Step,
 } from "./types";
 
@@ -30,44 +30,83 @@ export const HERO = {
 export const WHO_WE_SERVE: SectionCopy & {
   readonly lead: string;
   readonly popularForLabel: string;
-  readonly cards: readonly [ServeCard, ServeCard, ServeCard];
 } = {
   title: "Who we serve",
   lead: "Cleaning inside, snow removal outside, one local team. Whether it's your home, your workplace, or your driveway, we handle the job from the first call to the final check, so pick the area closest to what you need and we'll take it from there.",
   popularForLabel: "Popular for",
-  cards: [
-    {
-      title: "Homes",
-      // TODO(review): drafted from research, client to confirm (property types and plan frequencies)
-      text: "Regular or one-time cleaning for houses, condos, and apartments. We bring our own supplies and equipment, so there is nothing for you to buy or set up. Choose a weekly, bi-weekly, or monthly plan, or book a single deep clean or a move-in and move-out clean.",
-      image: "homes",
-      popularFor: ["Recurring cleaning", "Deep cleans", "Move-in and move-out"],
-      href: "/services#residential-cleaning",
-      linkLabel: "Learn more",
-      linkHiddenText: "about home cleaning",
-    },
-    {
-      title: "Businesses",
-      // TODO(review): drafted from research, client to confirm (apartment common areas)
-      text: "Cleaning for offices and shared spaces, arranged around your working hours. We can clean after hours or on weekends so your team never has to work around us. Offices, apartment building common areas, and post-construction cleanup are all covered.",
-      image: "businesses",
-      popularFor: ["Offices", "Common areas", "Post-construction cleanup"],
-      href: "/services#office-cleaning",
-      linkLabel: "Learn more",
-      linkHiddenText: "about commercial cleaning",
-    },
-    {
-      title: "Snow Removal",
-      // TODO(review): drafted from research, client to confirm (per-visit and seasonal plans)
-      text: "Clear driveways, walkways, and parking lots all winter, so you can get in and out safely. Choose a per-visit or seasonal plan and we'll set it up with you in your quote. Ice control with salt or sand is available on request.",
-      image: "snow",
-      popularFor: ["Driveways", "Parking lots", "Seasonal plans"],
-      href: "/services",
-      linkLabel: "Learn more",
-      linkHiddenText: "about snow removal",
-    },
-  ],
 };
+
+// TODO(review): scope drafted from research and the client's list of work, client to confirm
+export const AUDIENCES: ReadonlyArray<Audience> = [
+  {
+    id: "homeowners",
+    category: "Homes",
+    title: "Homeowners",
+    description: "Regular or one-time cleaning for houses, done with our own supplies and equipment. Pick a weekly, bi-weekly, or monthly plan, or book a deep clean when the house needs a full reset.",
+    popularFor: ["Recurring cleans", "Deep cleans", "Move-out cleans"],
+    href: "/services#residential-cleaning",
+    linkLabel: "Learn more",
+    art: "home",
+    enabled: true,
+  },
+  {
+    id: "apartments",
+    category: "Homes",
+    title: "Apartments and condos",
+    description: "Cleaning sized for smaller spaces, from a quick refresh to a full move-in or move-out clean. We work around your building and your schedule.",
+    popularFor: ["Move-in cleans", "Move-out cleans", "One-time cleans"],
+    href: "/services#residential-cleaning",
+    linkLabel: "Learn more",
+    art: "apartment",
+    enabled: true,
+  },
+  {
+    id: "offices",
+    category: "Business",
+    title: "Offices and businesses",
+    description: "Cleaning for offices and shared workspaces, arranged around your working hours. We can clean after hours or on weekends, so your team never has to work around us.",
+    popularFor: ["Offices", "After-hours cleaning", "Regular schedules"],
+    href: "/services#commercial-cleaning",
+    linkLabel: "Learn more",
+    art: "office",
+    enabled: true,
+  },
+  {
+    id: "managers",
+    category: "Business",
+    title: "Property managers",
+    description: "One reliable team for lobbies, hallways, and common areas across your buildings. Agree on a schedule once and we keep to it, with a clear quote up front.",
+    popularFor: ["Common areas", "Buildings", "Scheduled visits"],
+    href: "/services#commercial-cleaning",
+    linkLabel: "Learn more",
+    art: "manager",
+    enabled: true,
+  },
+  {
+    id: "build",
+    category: "Build",
+    title: "Renovation and building sites",
+    // TODO(client): confirm scope for build and demolition work
+    description: "Cleanup and renovation support for homes and job sites, from clearing debris to a tidy finish that is ready for the next step. Tell us what stage your project is at and we'll quote the right help.",
+    popularFor: ["Site cleanup", "Renovation", "Demolition"],
+    href: "#quote",
+    linkLabel: "Ask for a quote",
+    art: "build",
+    enabled: true,
+  },
+  {
+    id: "winter",
+    category: "Winter",
+    title: "Winter property care",
+    // TODO(client): confirm snow removal is still offered; set enabled to false to hide this card
+    description: "Clear driveways, walkways, and parking lots all winter. Choose a per-visit or seasonal plan and we'll set it up with you in your quote. Ice control with salt or sand is available on request.",
+    popularFor: ["Driveways", "Parking lots", "Seasonal plans"],
+    href: "/services",
+    linkLabel: "Learn more",
+    art: "winter",
+    enabled: true,
+  },
+];
 
 export const HOW_IT_WORKS: SectionCopy & {
   readonly steps: ReadonlyArray<Step>;

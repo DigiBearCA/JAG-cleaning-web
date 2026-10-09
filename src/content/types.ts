@@ -20,17 +20,17 @@ export interface Step {
   readonly text: string;
 }
 
-/** Home "Who we serve" image card. `image` is a key into IMAGES.whoWeServe. */
-export interface ServeCard {
+/** Home "Who we serve" audience card. */
+export interface Audience {
+  readonly id: string;
+  readonly category: "Homes" | "Business" | "Build" | "Winter";
   readonly title: string;
-  readonly text: string;
-  readonly image: "homes" | "businesses" | "snow";
+  readonly description: string;
   readonly popularFor: readonly [string, string, string];
   readonly href: string;
-  /** Visible link text, for example "Learn more". */
   readonly linkLabel: string;
-  /** Visually hidden text that completes the link, for example "about home cleaning". */
-  readonly linkHiddenText: string;
+  readonly art: "home" | "apartment" | "office" | "manager" | "build" | "winter";
+  readonly enabled: boolean;
 }
 
 export interface FaqItem {
