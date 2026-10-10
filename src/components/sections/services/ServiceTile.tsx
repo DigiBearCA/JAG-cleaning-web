@@ -96,13 +96,13 @@ export function ServiceTile({
               aria-haspopup="dialog"
               aria-label={`Learn more about ${service.name}`}
               onClick={openDialog}
-              className="inline-flex h-10 items-center gap-2 rounded-pill border border-primary px-5 type-button text-primary transition duration-150 ease-brand after:absolute after:inset-0 after:content-[''] focus:outline-hidden cursor-pointer"
+              className="inline-flex h-9 sm:h-10 items-center justify-center gap-1.5 sm:gap-2 rounded-pill border border-primary px-3 sm:px-4 md:px-5 type-small sm:type-button text-primary whitespace-nowrap transition duration-150 ease-brand after:absolute after:inset-0 after:content-[''] focus:outline-hidden cursor-pointer"
             >
               <span>Learn more</span>
               <Icon
                 name="arrowRight"
-                size={16}
-                className="transition-transform duration-150 ease-brand group-hover:translate-x-1"
+                size={14}
+                className="transition-transform duration-150 ease-brand group-hover:translate-x-1 shrink-0 sm:size-4"
               />
             </button>
           </div>
