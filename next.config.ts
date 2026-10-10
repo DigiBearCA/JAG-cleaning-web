@@ -24,7 +24,24 @@ const nextConfig: NextConfig = {
   },
   // The About page was removed (the client is not providing one); keep old links working.
   async redirects() {
-    return [{ source: "/about", destination: "/", permanent: true }];
+    return [
+      { source: "/about", destination: "/", permanent: true },
+      {
+        source: "/services/residential-cleaning",
+        destination: "/services#residential-cleaning",
+        permanent: true,
+      },
+      {
+        source: "/services/commercial-cleaning",
+        destination: "/services#office-cleaning",
+        permanent: true,
+      },
+      {
+        source: "/services/snow-removal",
+        destination: "/services",
+        permanent: true,
+      },
+    ];
   },
 };
 

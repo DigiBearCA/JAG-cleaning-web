@@ -37,6 +37,8 @@ export const PRIVACY_POLICY: LegalDocument = {
         "Your phone number",
         "Your email address (if provided)",
         "The service you need",
+        "The postal code where service is needed",
+        "Your preferred date and time",
         "Any message you choose to add",
       ],
       after: [

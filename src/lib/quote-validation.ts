@@ -19,6 +19,8 @@ export const QUOTE_LIMITS = {
   phoneMinDigits: 10,
   phoneMax: 30,
   emailMax: 200,
+  postalCodeMax: 10,
+  preferredDateTimeMax: 50,
   messageMax: 1000,
   /** Hard cap for the honeypot value we bother reading. */
   honeypotMax: 200,
@@ -30,6 +32,8 @@ export interface QuoteInput {
   readonly phone: string;
   readonly email: string;
   readonly service: string;
+  readonly postalCode: string;
+  readonly preferredDateTime: string;
   readonly message: string;
   /** Honeypot. Real visitors never see or fill this. */
   readonly company: string;
@@ -41,10 +45,19 @@ export interface QuoteData {
   readonly phone: string;
   readonly email: string;
   readonly service: ServiceValue;
+  readonly postalCode: string;
+  readonly preferredDateTime: string;
   readonly message: string;
 }
 
-export type QuoteField = "name" | "phone" | "email" | "service" | "message";
+export type QuoteField =
+  | "name"
+  | "phone"
+  | "email"
+  | "service"
+  | "postalCode"
+  | "preferredDateTime"
+  | "message";
 
 /** Field order, used to focus the first invalid field. */
 export const QUOTE_FIELDS: ReadonlyArray<QuoteField> = [
@@ -52,6 +65,8 @@ export const QUOTE_FIELDS: ReadonlyArray<QuoteField> = [
   "phone",
   "email",
   "service",
+  "postalCode",
+  "preferredDateTime",
   "message",
 ];
 
@@ -75,6 +90,8 @@ export const EMPTY_QUOTE_INPUT: QuoteInput = {
   phone: "",
   email: "",
   service: "",
+  postalCode: "",
+  preferredDateTime: "",
   message: "",
   company: "",
 };
@@ -82,6 +99,19 @@ export const EMPTY_QUOTE_INPUT: QuoteInput = {
 const PHONE_STRIP = /[\s\-()]/g;
 const DIGITS_ONLY = /^\d+$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const CANADIAN_POSTAL_REGEX = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;
+
+export function formatPostalCodeInput(raw: string): string {
+  const clean = raw.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 6);
+  if (clean.length > 3) {
+    return `${clean.slice(0, 3)} ${clean.slice(3)}`;
+  }
+  return clean;
+}
+
+export function formatPostalCode(raw: string): string {
+  return formatPostalCodeInput(raw);
+}
 
 export function isServiceValue(value: string): value is ServiceValue {
   return getServiceOptions().some((option) => option.value === value);
@@ -146,6 +176,29 @@ export function validateQuoteField(
         return "Choose one of the listed services.";
       return undefined;
     }
+    case "postalCode": {
+      const clean = rawValue.toUpperCase().replace(/[^A-Z0-9]/g, "");
+      if (clean.length === 0) return "Enter your postal code.";
+      if (clean.length < 6)
+        return "Postal code must be 6 characters (for example T5J 2R7).";
+      if (!CANADIAN_POSTAL_REGEX.test(rawValue)) {
+        return "Enter a valid postal code, for example T5J 2R7.";
+      }
+      return undefined;
+    }
+    case "preferredDateTime": {
+      const value = rawValue.trim();
+      if (value.length === 0) return "Select your preferred date and time.";
+      if (value.length > QUOTE_LIMITS.preferredDateTimeMax) {
+        return "Date and time selection is too long.";
+      }
+      const clean = value.replace(/\s+at\s+/i, " ");
+      const date = new Date(clean);
+      if (Number.isNaN(date.getTime())) {
+        return "Enter a valid date and time.";
+      }
+      return undefined;
+    }
     case "message": {
       if (rawValue.trim().length > QUOTE_LIMITS.messageMax) {
         return `Keep your message to ${QUOTE_LIMITS.messageMax} characters or fewer.`;
@@ -175,6 +228,8 @@ export function validateQuote(input: QuoteInput): QuoteValidationResult {
       phone: input.phone.trim(),
       email: cleanLine(input.email),
       service,
+      postalCode: formatPostalCode(input.postalCode),
+      preferredDateTime: input.preferredDateTime.trim(),
       message: input.message.trim(),
     },
   };
@@ -211,7 +266,17 @@ export function parseQuoteBody(body: unknown): QuoteInput | null {
   const name = readString(body, "name", QUOTE_LIMITS.nameMax * 2);
   const phone = readString(body, "phone", QUOTE_LIMITS.phoneMax);
   const email = readString(body, "email", QUOTE_LIMITS.emailMax * 2);
-  const service = readString(body, "service", 20);
+  const service = readString(body, "service", 50);
+  const postalCode = readString(
+    body,
+    "postalCode",
+    QUOTE_LIMITS.postalCodeMax * 2,
+  );
+  const preferredDateTime = readString(
+    body,
+    "preferredDateTime",
+    QUOTE_LIMITS.preferredDateTimeMax * 2,
+  );
   const message = readString(body, "message", QUOTE_LIMITS.messageMax * 2);
   const company = readString(body, "company", QUOTE_LIMITS.honeypotMax);
   if (
@@ -219,12 +284,23 @@ export function parseQuoteBody(body: unknown): QuoteInput | null {
     phone === null ||
     email === null ||
     service === null ||
+    postalCode === null ||
+    preferredDateTime === null ||
     message === null ||
     company === null
   ) {
     return null;
   }
-  return { name, phone, email, service, message, company };
+  return {
+    name,
+    phone,
+    email,
+    service,
+    postalCode,
+    preferredDateTime,
+    message,
+    company,
+  };
 }
 
 /** Type guard for the API response, used by the client. */

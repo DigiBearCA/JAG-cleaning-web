@@ -41,10 +41,15 @@ yarn-error.log*
 next-env.d.ts
 
 # Local skills reference
+*.md
 SKILLS.md
 AGENTS.md
 CLAUDE.md
 AGENT_PROMPT.md
 DESIGN.md
 MOTION_PROMPT.md
+SERVICES_GRID_PROMPT.md
+SERVICES_PAGE_PROMPT.md
+WHO_WE_SERVE_PROMPT.md
+
 .env.example

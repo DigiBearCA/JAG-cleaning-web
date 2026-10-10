@@ -22,7 +22,7 @@ export function TextAreaField({ id, label, error, rows, ...rest }: TextAreaField
           placeholder=" "
           aria-invalid={hasError || undefined}
           aria-describedby={hasError ? fieldErrorId(id) : undefined}
-          className={cx(CONTROL_BASE, "peer h-full min-h-[112px] resize-y rounded-[24px] px-6 py-4", controlBorderClass(hasError))}
+          className={cx(CONTROL_BASE, "peer h-full min-h-28 resize-y rounded-[24px] px-6 pt-5 pb-4", controlBorderClass(hasError))}
           {...rest}
         />
         <label

@@ -102,3 +102,28 @@ export function serviceSchema({
     areaServed: areaServed(),
   };
 }
+
+/** Services page schema: ItemList of Service objects for every enabled service. */
+export function servicesPageSchema(): JsonLdObject {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: getEnabledServices().map((service, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Service",
+        name: service.name,
+        description: service.description,
+        url: absoluteUrl(`/services#${service.slug}`),
+        provider: {
+          "@type": "LocalBusiness",
+          "@id": absoluteUrl("/#business"),
+          name: SITE.name,
+          url: absoluteUrl("/"),
+        },
+        areaServed: areaServed(),
+      },
+    })),
+  };
+}

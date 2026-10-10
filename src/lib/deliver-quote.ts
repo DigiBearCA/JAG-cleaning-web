@@ -52,6 +52,20 @@ function readConfig(): EmailJsConfig | null {
   return { serviceId, templateId, publicKey, privateKey };
 }
 
+function formatPreferredDateTime(raw: string): string {
+  if (!raw) return "";
+  const d = new Date(raw.replace(/\s+at\s+/i, " "));
+  if (Number.isNaN(d.getTime())) return raw;
+  return d.toLocaleString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  });
+}
+
 function submittedAt(): string {
   return new Date().toLocaleString("en-CA", {
     timeZone: "America/Edmonton",
@@ -71,6 +85,8 @@ export async function deliverQuote(data: QuoteData): Promise<DeliveryResult> {
           name: data.name,
           phone: data.phone,
           service: serviceLabel(data.service),
+          postalCode: data.postalCode,
+          preferredDateTime: data.preferredDateTime,
           message: data.message,
         },
       );
@@ -91,6 +107,8 @@ export async function deliverQuote(data: QuoteData): Promise<DeliveryResult> {
       name: data.name,
       phone: data.phone,
       service_label: serviceLabel(data.service),
+      postal_code: data.postalCode,
+      preferred_date_time: formatPreferredDateTime(data.preferredDateTime),
       message: data.message.length > 0 ? data.message : "(no message)",
       submitted_at: submittedAt(),
     },

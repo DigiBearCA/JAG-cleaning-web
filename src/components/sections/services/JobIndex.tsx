@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Icon } from "@/components/icons";
 import { getEnabledServices, getServiceNumber } from "@/content/services";
 
@@ -10,7 +9,7 @@ export function JobIndex() {
       {/* <h2 className="type-eyebrow text-alt-heading mb-6">Service Index</h2> */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {services.map((service) => (
-          <Link
+          <a
             key={service.slug}
             href={`#${service.slug}`}
             className="group flex items-center justify-between rounded-card bg-bg p-4 transition duration-150 ease-brand hover:scale-[1.02] shadow-sm hover:shadow-md"
@@ -30,7 +29,7 @@ export function JobIndex() {
                 className="text-primary w-4 h-4 transition-transform group-hover:translate-x-1"
               />
             </div>
-          </Link>
+          </a>
         ))}
       </div>
     </div>

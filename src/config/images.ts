@@ -3,6 +3,16 @@ import hero1 from "@/images/hero-1.webp";
 import hero2 from "@/images/hero-2.webp";
 import hero3 from "@/images/hero-3.webp";
 import maintenanceFloor from "@/images/maintenance-floor-cleaning.webp";
+import residentialCleanings from "@/images/residential-cleanings.webp";
+import officeCleaning from "@/images/office-cleaning.webp";
+import carpetCleaning from "@/images/carpet-cleaning.webp";
+import floorCleaning from "@/images/floor-cleaning.webp";
+import cleanupImg from "@/images/cleanup.webp";
+import landscapingImg from "@/images/landscaping.webp";
+import renovationImg from "@/images/renovation.webp";
+import demolitionImg from "@/images/demolition.webp";
+import snowRemoval from "@/images/snow-removal.webp";
+import type { ServiceSlug } from "@/content/services";
 
 /**
  * Every photo used on the home and contact pages, in one place.
@@ -21,6 +31,8 @@ export interface SiteImages {
   readonly whyJag: ImageSlot;
   /** Decorative background behind the home page quote section. */
   readonly contactBackground: ImageSlot;
+  /** Service card photos for the card grid. */
+  readonly services: Record<ServiceSlug, ImageSlot>;
 }
 
 const HERO_KITCHEN: ImageSlot = {
@@ -28,7 +40,6 @@ const HERO_KITCHEN: ImageSlot = {
   alt: "A cleaner in a green polo shirt wiping a white kitchen counter in a bright, open-plan home",
 };
 
-// TODO(client): swap in real photos, one line per slot
 export const IMAGES: SiteImages = {
   hero: [
     HERO_KITCHEN,
@@ -46,5 +57,47 @@ export const IMAGES: SiteImages = {
     alt: "A bright, clean building corridor with a floor scrubber and a yellow wet-floor sign",
   },
   contactBackground: HERO_KITCHEN,
+  // TODO(client): swap in real photos, one line per slot
+  services: {
+    "residential-cleaning": {
+      src: residentialCleanings,
+      alt: "A bright, clean modern living room after residential cleaning",
+    },
+    "office-cleaning": {
+      src: officeCleaning,
+      alt: "A tidy modern office workspace with desks and chairs",
+    },
+    "carpet-cleaning": {
+      src: carpetCleaning,
+      alt: "Deep-cleaned carpet texture in a residential room",
+    },
+    "floor-cleaning": {
+      src: floorCleaning,
+      alt: "Clean, polished hard surface flooring with reflection",
+    },
+    "maintenance-floor-cleaning": {
+      src: maintenanceFloor,
+      alt: "A commercial corridor being maintained with clean floor surfaces",
+    },
+    cleanup: {
+      src: cleanupImg,
+      alt: "Site cleanup with cleared debris and tidy surroundings",
+    },
+    landscaping: {
+      src: landscapingImg,
+      alt: "Neatly maintained outdoor lawn and landscaping",
+    },
+    renovation: {
+      src: renovationImg,
+      alt: "An interior renovation project underway with clean finish",
+    },
+    demolition: {
+      src: demolitionImg,
+      alt: "Careful interior demolition preparing a space for renovation",
+    },
+    "snow-removal": {
+      src: snowRemoval,
+      alt: "A driveway and walkway cleared of winter snow",
+    },
+  },
 };
-

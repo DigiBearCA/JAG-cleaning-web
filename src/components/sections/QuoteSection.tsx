@@ -5,7 +5,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import type { ImageSlot } from "@/config/images";
+import { IMAGES, type ImageSlot } from "@/config/images";
 import { SITE } from "@/config/site";
 import { QUOTE_COPY } from "@/content/home";
 import { telHref, whatsappHref } from "@/lib/contact-links";
@@ -15,23 +15,20 @@ import type { ServiceValue } from "@/lib/quote-validation";
 export interface QuoteSectionProps {
   readonly defaultService?: ServiceValue;
   /**
-   * Decorative photo behind the section (home page only). When set, the section reads as a
-   * dark section: flat `bg-dark/85` overlay (raised from /75 so --on-dark-muted text passes 4.5:1 even over a white pixel), on-dark text, and check pills. When unset the
-   * section looks exactly as before.
+   * Decorative photo behind the section. Defaults to IMAGES.contactBackground across all pages.
    */
   readonly backgroundImage?: ImageSlot;
 }
 
 /**
- * Quote section (id "quote"). Default: base background with a hairline top border, never alt.
- * With `backgroundImage`: image-backed and dark, so it must follow a base section and sit
- * only next to base sections or the footer (DESIGN.md §2.4).
- * Left: heading, phone link, and WhatsApp button (reveals first).
+ * Quote section (id "quote").
+ * Image-backed and dark by default, matching the home page quotation section across all pages.
+ * Left: heading, lead, reassurance, phone link, WhatsApp button, and check pills.
  * Right: the white form card (reveals 0.15s later).
  */
 export function QuoteSection({
   defaultService,
-  backgroundImage,
+  backgroundImage = IMAGES.contactBackground,
 }: QuoteSectionProps) {
   const onImage = backgroundImage !== undefined;
   return (
@@ -68,11 +65,14 @@ export function QuoteSection({
             lead={onImage ? QUOTE_COPY.imageLead : QUOTE_COPY.lead}
             tone={onImage ? "dark" : "base"}
           />
-          {onImage ? null : (
-            <p className="max-w-prose type-body text-ink-muted">
-              {QUOTE_COPY.reassurance}
-            </p>
-          )}
+          <p
+            className={cx(
+              "max-w-prose type-body",
+              onImage ? "text-on-dark-muted" : "text-ink-muted",
+            )}
+          >
+            {QUOTE_COPY.reassurance}
+          </p>
           <div className="flex flex-col items-start gap-4">
             <a
               href={telHref()}
@@ -104,19 +104,25 @@ export function QuoteSection({
               {QUOTE_COPY.whatsappLabel}
             </Button>
           </div>
-          {onImage ? (
-            <ul className="flex flex-wrap gap-2" aria-label="Why customers choose us">
-              {QUOTE_COPY.pills.map((pill) => (
-                <li
-                  key={pill}
-                  className="inline-flex items-center gap-1.5 rounded-pill bg-dark-card px-3 py-1 type-small font-medium text-on-dark"
-                >
-                  <CheckIcon size={16} className="shrink-0 text-accent" />
-                  {pill}
-                </li>
-              ))}
-            </ul>
-          ) : null}
+          <ul className="flex flex-wrap gap-2" aria-label="Why customers choose us">
+            {QUOTE_COPY.pills.map((pill) => (
+              <li
+                key={pill}
+                className={cx(
+                  "inline-flex items-center gap-1.5 rounded-pill px-3 py-1 type-small font-medium",
+                  onImage
+                    ? "bg-dark-card text-on-dark"
+                    : "bg-chip text-chip-fg",
+                )}
+              >
+                <CheckIcon
+                  size={16}
+                  className={cx("shrink-0", onImage ? "text-accent" : "text-primary")}
+                />
+                {pill}
+              </li>
+            ))}
+          </ul>
         </div>
       </Reveal>
 

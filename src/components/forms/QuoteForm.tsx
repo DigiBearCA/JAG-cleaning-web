@@ -4,6 +4,7 @@ import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { m } from "motion/react";
 import { AnimatedCheck } from "@/components/motion/AnimatedCheck";
 import { Button } from "@/components/ui/Button";
+import { DateTimePickerField } from "@/components/ui/fields/DateTimePickerField";
 import { SelectField } from "@/components/ui/fields/SelectField";
 import { TextAreaField } from "@/components/ui/fields/TextAreaField";
 import { TextField } from "@/components/ui/fields/TextField";
@@ -16,6 +17,7 @@ const ease = [...EASE] as [number, number, number, number];
 import {
   EMPTY_QUOTE_INPUT,
   firstInvalidField,
+  formatPostalCodeInput,
   isQuoteApiResponse,
   getServiceOptions,
   validateQuote,
@@ -133,6 +135,8 @@ export function QuoteForm({
   function handleChange(field: keyof QuoteInput, value: string) {
     if (field === "phone") {
       value = formatPhone(value);
+    } else if (field === "postalCode") {
+      value = formatPostalCodeInput(value);
     }
     setValues((current) => ({ ...current, [field]: value }));
     if (field !== "company" && errors[field] !== undefined) {
@@ -299,20 +303,6 @@ export function QuoteForm({
               onChange={(event) => handleChange("email", event.target.value)}
               onBlur={() => handleBlur("email")}
             />
-            <div className="flex flex-col md:row-span-2 md:min-h-0 md:*:h-full md:[&_textarea]:h-full md:[&_textarea]:min-h-0 md:[&_textarea]:resize-none [&_textarea]:min-h-28">
-              <TextAreaField
-                id={fieldId("message")}
-                name="message"
-                label="Anything to add? (optional)"
-                rows={1}
-                value={values.message}
-                error={errors.message}
-                onChange={(event) =>
-                  handleChange("message", event.target.value)
-                }
-                onBlur={() => handleBlur("message")}
-              />
-            </div>
             <SelectField
               id={fieldId("service")}
               name="service"
@@ -325,6 +315,42 @@ export function QuoteForm({
               onChange={(event) => handleChange("service", event.target.value)}
               onBlur={() => handleBlur("service")}
             />
+            <TextField
+              id={fieldId("postalCode")}
+              name="postalCode"
+              label="Postal code"
+              autoComplete="postal-code"
+              maxLength={7}
+              required
+              value={values.postalCode}
+              error={errors.postalCode}
+              onChange={(event) => handleChange("postalCode", event.target.value)}
+              onBlur={() => handleBlur("postalCode")}
+            />
+            <DateTimePickerField
+              id={fieldId("preferredDateTime")}
+              name="preferredDateTime"
+              label="Preferred date & time"
+              required
+              value={values.preferredDateTime}
+              error={errors.preferredDateTime}
+              onChange={(val) => handleChange("preferredDateTime", val)}
+              onBlur={() => handleBlur("preferredDateTime")}
+            />
+            <div className="md:col-span-2">
+              <TextAreaField
+                id={fieldId("message")}
+                name="message"
+                label="Anything to add? (optional)"
+                rows={2}
+                value={values.message}
+                error={errors.message}
+                onChange={(event) =>
+                  handleChange("message", event.target.value)
+                }
+                onBlur={() => handleBlur("message")}
+              />
+            </div>
           </div>
 
           {/* Honeypot: hidden from view, the tab order, and the accessibility tree. */}

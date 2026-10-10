@@ -253,6 +253,31 @@
   body:has([data-mobile-menu-open]) [data-sticky-bar] {
     display: none;
   }
+
+  /* Why: Native <dialog> does not lock background scrolling automatically; CSS :has() locks page scroll while any modal dialog is open without JS side-effects. */
+  body:has(dialog[open]) {
+    overflow: hidden;
+  }
+}
+
+/* Service ticket dialog backdrop and entrance animation */
+dialog::backdrop {
+  background: color-mix(in srgb, var(--dark-bg) 60%, transparent);
+}
+
+@keyframes dialog-open {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+dialog[open] {
+  animation: dialog-open 200ms var(--ease-brand) both;
 }
 
 /* Why: the intro overlay must be hidden immediately for returning visitors (sessionStorage flag)
