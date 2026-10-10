@@ -37,7 +37,7 @@ export const CONTACT_DETAILS = {
     ],
   },
   mapTitle: "Map of our area in Edmonton, Alberta",
-  mapLink: "Open in Google Maps",
+  mapLink: "Open in Maps",
 } as const;
 
 export const FORM_CARD_COPY = {

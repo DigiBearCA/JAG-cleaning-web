@@ -71,7 +71,7 @@ export default function ContactPage() {
               rel="noopener noreferrer"
               className="inline-flex min-h-11 items-center gap-2 rounded-full bg-white px-6 py-2 type-button text-primary shadow-sm transition duration-150 ease-brand hover:scale-[1.02]"
             >
-              <span>Open in Google Maps</span>
+              <span>Open in Maps</span>
               <ArrowUpRightIcon size={16} />
             </a>
           </div>
