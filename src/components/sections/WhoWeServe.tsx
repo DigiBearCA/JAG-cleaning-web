@@ -4,7 +4,7 @@ import { Chip } from "@/components/ui/Chip";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { WHO_WE_SERVE, AUDIENCES } from "@/content/home";
-import { AudienceArt } from "@/components/illustrations/audience/AudienceArt";
+import { AUDIENCE_ART } from "@/components/illustrations/audience/AudienceArt";
 
 export function WhoWeServe() {
   const enabledAudiences = AUDIENCES.filter((a) => a.enabled);
@@ -20,17 +20,16 @@ export function WhoWeServe() {
       />
       <ul className="mx-auto mt-12 grid max-w-xl gap-6 sm:max-w-none sm:grid-cols-2 lg:grid-cols-3">
         {enabledAudiences.map((card) => {
+          const Art = AUDIENCE_ART[card.art];
+          
           return (
             <li
               key={card.id}
               className="group relative flex flex-col gap-5 rounded-card border border-line bg-white p-5 sm:p-6 transition-all duration-150 ease-brand hover:-translate-y-0.5 hover:border-primary"
             >
               <div className="flex items-start justify-between">
-                <div className="shrink-0 w-16 h-16 sm:w-20 sm:h-20">
-                  <AudienceArt
-                    art={card.art}
-                    className="w-full h-full transition-transform duration-300 ease-brand group-hover:-translate-y-1 group-hover:scale-105"
-                  />
+                <div className="shrink-0 h-20 w-20 sm:h-28 sm:w-28 lg:h-32 lg:w-32 mb-4">
+                  <Art className="h-full w-full group-hover:translate-y-[-4px] group-hover:-rotate-2 transition-transform duration-200 ease-brand" />
                 </div>
                 <Chip>{card.category}</Chip>
               </div>

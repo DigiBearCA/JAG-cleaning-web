@@ -1,5 +1,6 @@
 import type { IconName } from "@/components/icons";
 import type { ServiceValue } from "@/lib/quote-validation";
+import type { AudienceArtId } from "@/components/illustrations/audience/AudienceArt";
 
 /** Shared shapes for the typed copy in src/content. */
 
@@ -29,7 +30,7 @@ export interface Audience {
   readonly popularFor: readonly [string, string, string];
   readonly href: string;
   readonly linkLabel: string;
-  readonly art: "home" | "apartment" | "office" | "manager" | "build" | "winter";
+  readonly art: AudienceArtId;
   readonly enabled: boolean;
 }
 

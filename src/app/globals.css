@@ -30,6 +30,13 @@
   --color-illus-body: var(--illus-body);
   --color-illus-detail: var(--illus-detail);
   --color-illus-ground: var(--illus-ground);
+  --color-art-dark: var(--art-dark);
+  --color-art-mid: var(--art-mid);
+  --color-art-soft: var(--art-soft);
+  --color-art-tint: var(--art-tint);
+  --color-art-accent: var(--art-accent);
+  --color-art-deep: var(--art-deep);
+  --color-art-paper: var(--art-paper);
   --font-heading: var(--font-newsreader), Georgia, "Times New Roman", serif;
   --font-body:
     var(--font-dm-sans), system-ui, -apple-system, "Segoe UI", sans-serif;

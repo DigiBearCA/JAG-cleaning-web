@@ -61,6 +61,28 @@
   --illus-ground: #f7f9fa;
 }
 
+/* Audience illustration colours (used by AudienceArt.tsx). Palette A is the default. */
+:root,
+[data-palette="a"] {
+  --art-dark: #12403A;
+  --art-mid: #2F7A6E;
+  --art-soft: #A9D2CC;
+  --art-tint: #D8ECEE;
+  --art-accent: #F2A93B;
+  --art-deep: #D98A1F;
+  --art-paper: #FFFFFF;
+}
+
+[data-palette="b"] {
+  --art-dark: #2B3A1F;
+  --art-mid: #0A4E68;
+  --art-soft: #8FBCCB;
+  --art-tint: #D9E9EE;
+  --art-accent: #F2A93B;
+  --art-deep: #D98A1F;
+  --art-paper: #FFFFFF;
+}
+
 /* Derived (put after both palette blocks; they resolve per palette) */
 :root {
   --line: color-mix(in srgb, var(--ink) 14%, transparent);
