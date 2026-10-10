@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ClockIcon, Icon } from "@/components/icons";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { FeatureIcon } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -18,38 +19,41 @@ export function WhyJag() {
   return (
     <Section tone="dark" id="why-jag" labelledBy="why-jag-title">
       <div className="grid gap-4 lg:grid-cols-[2fr_3fr] lg:gap-6">
-        <div className="flex flex-col gap-4 lg:sticky lg:top-28 lg:self-start">
-          <SectionHeading
-            id="why-jag-title"
-            title={WHY_JAAG.title}
-            lead={WHY_JAAG.lead}
-            align="left"
-            tone="dark"
-          />
-          <div className="relative aspect-4/3 overflow-hidden rounded-panel bg-dark-card">
-            <Image
-              src={IMAGES.whyJag.src}
-              alt={IMAGES.whyJag.alt}
-              fill
-              placeholder="blur"
-              sizes={WHY_IMAGE_SIZES}
-              className="object-cover"
+        <Reveal>
+          <div className="flex flex-col gap-4 lg:sticky lg:top-28 lg:self-start">
+            <SectionHeading
+              id="why-jag-title"
+              title={WHY_JAAG.title}
+              lead={WHY_JAAG.lead}
+              align="left"
+              tone="dark"
             />
-            <ul className="absolute bottom-4 left-4 flex flex-wrap gap-2">
-              <li className="inline-flex items-center gap-1.5 rounded-pill bg-accent px-3 py-1 type-small font-medium text-on-accent">
-                <ClockIcon size={16} className="shrink-0" />
-                {WHY_JAAG.badges.hours}
-              </li>
-              <li className="inline-flex items-center rounded-pill bg-white px-3 py-1 type-small font-medium text-primary">
-                {WHY_JAAG.badges.quotes}
-              </li>
-            </ul>
+            <div className="relative aspect-4/3 overflow-hidden rounded-panel bg-dark-card">
+              <Image
+                src={IMAGES.whyJag.src}
+                alt={IMAGES.whyJag.alt}
+                fill
+                placeholder="blur"
+                sizes={WHY_IMAGE_SIZES}
+                className="object-cover"
+              />
+              <ul className="absolute bottom-4 left-4 flex flex-wrap gap-2">
+                <li className="inline-flex items-center gap-1.5 rounded-pill bg-accent px-3 py-1 type-small font-medium text-on-accent">
+                  <ClockIcon size={16} className="shrink-0" />
+                  {WHY_JAAG.badges.hours}
+                </li>
+                <li className="inline-flex items-center rounded-pill bg-white px-3 py-1 type-small font-medium text-primary">
+                  {WHY_JAAG.badges.quotes}
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
+        </Reveal>
 
-        <ol className="grid gap-4 md:grid-cols-2">
+        <RevealGroup as="ol" className="grid gap-4 md:grid-cols-2">
           {WHY_JAAG.cards.map((card, index) => (
-            <li
+            <RevealItem
+              as="li"
               key={card.title}
               className="flex flex-col gap-0 rounded-card bg-dark-card p-4"
             >
@@ -63,9 +67,9 @@ export function WhyJag() {
               </div>
               <h3 className="type-h3 text-on-dark mb-2">{card.title}</h3>
               <p className="type-body text-on-dark-muted">{card.text}</p>
-            </li>
+            </RevealItem>
           ))}
-        </ol>
+        </RevealGroup>
       </div>
     </Section>
   );

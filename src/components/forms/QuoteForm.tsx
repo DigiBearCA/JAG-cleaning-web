@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
+import { m } from "motion/react";
+import { AnimatedCheck } from "@/components/motion/AnimatedCheck";
 import { Button } from "@/components/ui/Button";
 import { SelectField } from "@/components/ui/fields/SelectField";
 import { TextAreaField } from "@/components/ui/fields/TextAreaField";
@@ -8,6 +10,9 @@ import { TextField } from "@/components/ui/fields/TextField";
 import { SITE } from "@/config/site";
 import { telHref, whatsappHref } from "@/lib/contact-links";
 import { cx } from "@/lib/cx";
+import { DURATION, EASE } from "@/lib/motion";
+
+const ease = [...EASE] as [number, number, number, number];
 import {
   EMPTY_QUOTE_INPUT,
   firstInvalidField,
@@ -218,7 +223,15 @@ export function QuoteForm({
       )}
     >
       {status === "success" ? (
-        <div className="flex flex-col gap-4">
+        <m.div
+          className="flex flex-col gap-4"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: DURATION.base, ease }}
+        >
+          <div className="flex justify-start">
+            <AnimatedCheck />
+          </div>
           <h3
             ref={successHeadingRef}
             tabIndex={-1}
@@ -239,7 +252,7 @@ export function QuoteForm({
               WhatsApp
             </Button>
           </div>
-        </div>
+        </m.div>
       ) : (
         <form
           ref={formRef}

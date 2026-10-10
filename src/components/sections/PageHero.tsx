@@ -5,6 +5,11 @@ import {
 } from "@/components/illustrations/IllustrationFrame";
 import { OfficeScene } from "@/components/illustrations/OfficeScene";
 import { SnowScene } from "@/components/illustrations/SnowScene";
+import {
+  HeroImageReveal,
+  HeroItem,
+  SplitWords,
+} from "@/components/motion/HeroReveal";
 import { Button } from "@/components/ui/Button";
 import { Chip } from "@/components/ui/Chip";
 import { Section } from "@/components/ui/Section";
@@ -60,30 +65,42 @@ export function PageHero({
         hasVisual && "md:grid-cols-2 md:gap-12",
       )}
     >
-      <div className="flex animate-fade-up flex-col items-start gap-4">
-        <Chip>{eyebrow}</Chip>
+      <div className="flex flex-col items-start gap-4">
+        <HeroItem delay={0}>
+          <Chip>{eyebrow}</Chip>
+        </HeroItem>
+
         <div className="flex flex-col gap-4">
-          <h1 id="page-title" className="type-h1 text-primary">
-            {title}
-          </h1>
-          <p className="max-w-prose type-lead text-ink-muted">{lead}</p>
+          <SplitWords
+            id="page-title"
+            text={title}
+            className="type-h1 text-primary"
+            delay={0.08}
+            stagger={0.06}
+          />
+          <HeroItem delay={0.35}>
+            <p className="max-w-prose type-lead text-ink-muted">{lead}</p>
+          </HeroItem>
         </div>
+
         {showActions ? (
-          <div className="flex flex-wrap gap-3">
-            <Button href={QUOTE_ANCHOR}>Get a Free Quote</Button>
-            <Button href={telHref()} variant="outline" icon="phone">
-              Call us
-            </Button>
-          </div>
+          <HeroItem delay={0.5} scaleIn>
+            <div className="flex flex-wrap gap-3">
+              <Button href={QUOTE_ANCHOR}>Get a Free Quote</Button>
+              <Button href={telHref()} variant="outline" icon="phone">
+                Call us
+              </Button>
+            </div>
+          </HeroItem>
         ) : null}
       </div>
 
       {hasVisual ? (
-        <div className="animate-fade-up [animation-delay:60ms]">
+        <HeroImageReveal delay={0.2}>
           <IllustrationFrame aspect="scene" image={image} priority>
             {scene ? <Scene scene={scene} label={sceneLabel} /> : null}
           </IllustrationFrame>
-        </div>
+        </HeroImageReveal>
       ) : null}
     </Section>
   );

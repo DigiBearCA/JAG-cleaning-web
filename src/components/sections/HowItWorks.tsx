@@ -1,4 +1,6 @@
 import { CheckIcon } from "@/components/icons";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
+import { StepLine } from "@/components/motion/StepLine";
 import { Section, type SectionTone } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { HOW_IT_WORKS } from "@/content/home";
@@ -17,28 +19,27 @@ export interface HowItWorksProps {
  */
 export function HowItWorks({ tone = "base", showPrep = false }: HowItWorksProps) {
   const onAlt = tone === "alt";
+
   return (
     <Section tone={tone} id="how-it-works" labelledBy="how-it-works-title">
-      <SectionHeading
-        id="how-it-works-title"
-        title={HOW_IT_WORKS.title}
-        align="center"
-        tone={tone}
-      />
-      <ol className="mt-6 grid gap-8 md: md:grid-cols-3 md:gap-4">
+      <Reveal>
+        <SectionHeading
+          id="how-it-works-title"
+          title={HOW_IT_WORKS.title}
+          align="center"
+          tone={tone}
+        />
+      </Reveal>
+      <RevealGroup as="ol" className="mt-6 grid gap-8 md:grid-cols-3 md:gap-4">
         {HOW_IT_WORKS.steps.map((step, index) => {
           const last = index === HOW_IT_WORKS.steps.length - 1;
           return (
-            <li
+            <RevealItem
+              as="li"
               key={step.title}
-              className={cx(
-                "relative flex flex-row md:flex-col items-start md:items-center text-left md:text-center gap-6 md:gap-4",
-                !last &&
-                  "before:absolute before:top-14 before:-bottom-8 before:left-6 before:-translate-x-1/2 before:w-px md:before:top-6 md:before:right-auto md:before:bottom-auto md:before:left-[calc(50%+3rem)] md:before:h-px md:before:w-[calc(100%-6rem)] md:before:translate-x-0",
-                !last &&
-                  (onAlt ? "before:bg-alt-heading/40" : "before:bg-line"),
-              )}
+              className="relative flex flex-row md:flex-col items-start md:items-center text-left md:text-center gap-6 md:gap-4"
             >
+              {!last && <StepLine onAlt={onAlt} />}
               <span
                 aria-hidden="true"
                 className={cx(
@@ -67,12 +68,12 @@ export function HowItWorks({ tone = "base", showPrep = false }: HowItWorksProps)
                   {step.text}
                 </p>
               </div>
-            </li>
+            </RevealItem>
           );
         })}
-      </ol>
+      </RevealGroup>
       {showPrep ? (
-        <div className="mx-auto mt-6 flex max-w-3xl flex-col gap-4 rounded-card border border-line bg-white p-4 text-ink">
+        <Reveal className="mx-auto mt-6 flex max-w-3xl flex-col gap-4 rounded-card border border-line bg-white p-4 text-ink">
           <h3 className="type-h3 text-primary text-center">{HOW_IT_WORKS.prep.title}</h3>
           <ul className="grid gap-4 md:grid-cols-2">
             {HOW_IT_WORKS.prep.items.map((item) => (
@@ -83,7 +84,7 @@ export function HowItWorks({ tone = "base", showPrep = false }: HowItWorksProps)
             ))}
           </ul>
           <p className="type-body text-ink-muted text-center">{HOW_IT_WORKS.prep.note}</p>
-        </div>
+        </Reveal>
       ) : null}
     </Section>
   );

@@ -6,6 +6,7 @@ import {
   InstagramIcon,
   type IconName,
 } from "@/components/icons";
+import { Reveal } from "@/components/motion/Reveal";
 import { Container } from "@/components/ui/Container";
 import { SITE } from "@/config/site";
 import { FOOTER_COMPANY, FOOTER_LEGAL } from "@/content/navigation";
@@ -115,7 +116,7 @@ export function Footer() {
   );
 
   return (
-    <footer className="surface-dark bg-dark text-on-dark">
+    <Reveal as="footer" y={0} className="surface-dark bg-dark text-on-dark">
       <Container className="pt-4 md:pt-6 pb-1">
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
           <div className="flex flex-col gap-6">
@@ -182,6 +183,6 @@ export function Footer() {
           </ul>
         </div>
       </Container>
-    </footer>
+    </Reveal>
   );
 }

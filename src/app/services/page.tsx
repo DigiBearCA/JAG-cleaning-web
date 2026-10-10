@@ -6,6 +6,7 @@ import {
   type ChapterId,
 } from "@/content/services";
 import { Hero } from "@/components/sections/services/Hero";
+import { Reveal } from "@/components/motion/Reveal";
 import { ChapterBand } from "@/components/sections/services/ChapterBand";
 import { JobCard } from "@/components/sections/services/JobCard";
 // import { EveryJobStrip } from "@/components/sections/services/EveryJobStrip";
@@ -49,13 +50,12 @@ export default function ServicesPage() {
   const orderedChapters: ChapterId[] = ["cleaning", "site", "build"];
 
   return (
-    <main id="main" className="overflow-x-hidden">
+    <div className="overflow-x-hidden">
       <Hero />
 
       {orderedChapters.map((chapterId) => {
         const chapterServices = services.filter((s) => s.chapter === chapterId);
         if (chapterServices.length === 0) return null;
-
 
         const firstService = chapterServices[0];
         const lastService = chapterServices[chapterServices.length - 1];
@@ -68,20 +68,23 @@ export default function ServicesPage() {
 
         return (
           <div key={chapterId}>
-            <ChapterBand id={chapterId} range={range} />
+            <Reveal>
+              <ChapterBand id={chapterId} range={range} />
+            </Reveal>
             <Section tone="base" className="py-4!">
               {chapterServices.map((service, idx) => (
-                <JobCard
-                  key={service.slug}
-                  service={service}
-                  number={getServiceNumber(service)}
-                  illustration={
-                    SCENES[service.slug] || (
-                      <div className="w-full h-full bg-alt-outline/10" />
-                    )
-                  }
-                  isEven={idx % 2 !== 0}
-                />
+                <Reveal key={service.slug}>
+                  <JobCard
+                    service={service}
+                    number={getServiceNumber(service)}
+                    illustration={
+                      SCENES[service.slug] || (
+                        <div className="w-full h-full bg-alt-outline/10" />
+                      )
+                    }
+                    isEven={idx % 2 !== 0}
+                  />
+                </Reveal>
               ))}
             </Section>
           </div>
@@ -90,6 +93,6 @@ export default function ServicesPage() {
 
       {/* <EveryJobStrip /> */}
       <QuoteSection />
-    </main>
+    </div>
   );
 }

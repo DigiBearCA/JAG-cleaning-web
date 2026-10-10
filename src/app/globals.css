@@ -255,6 +255,20 @@
   }
 }
 
+/* Why: the intro overlay must be hidden immediately for returning visitors (sessionStorage flag)
+   and for reduced-motion users, without any flash. The inline head script sets data-intro="skip"
+   before first paint. The failsafe keyframe ensures the overlay auto-hides after 3.5s if JS fails. */
+html[data-intro="skip"] #intro { display: none; }
+@keyframes intro-failsafe { to { visibility: hidden; pointer-events: none; } }
+#intro { animation: intro-failsafe 0.01s linear 3.5s forwards; }
+@media (prefers-reduced-motion: reduce) { #intro { display: none; } }
+
+/* Why: elements with data-reveal must be visible without JS (noscript style resets them).
+   This gives them an initial hidden state for Motion to animate from. */
+[data-reveal] {
+  will-change: auto;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   ::before,

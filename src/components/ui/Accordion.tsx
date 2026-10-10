@@ -2,6 +2,7 @@
 
 import { useId, useState } from "react";
 import { MinusIcon, PlusIcon } from "@/components/icons";
+import { RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { cx } from "@/lib/cx";
 
 export interface AccordionItem {
@@ -19,6 +20,7 @@ export interface AccordionProps {
 
 /**
  * FAQ accordion. Each row is a white card; the first item starts open.
+ * Rows stagger fade up with y: 12 and stagger: 0.05.
  * Panels animate open with the grid-rows technique (0fr to 1fr over 250ms). Collapsed panels
  * are inert so hidden text is skipped by keyboard and screen readers, but stays in the HTML.
  */
@@ -37,14 +39,15 @@ export function Accordion({
   }
 
   return (
-    <div className={cx("flex flex-col gap-4", className)}>
+    <RevealGroup stagger={0.05} className={cx("flex flex-col gap-4", className)}>
       {items.map((item) => {
         const open = openId === item.id;
         const buttonId = `${baseId}-${item.id}-button`;
         const panelId = `${baseId}-${item.id}-panel`;
         return (
-          <div
+          <RevealItem
             key={item.id}
+            y={12}
             className={cx(
               "rounded-card border border-line text-ink transition-colors duration-150 ease-brand",
               open ? "bg-alt" : "bg-snow"
@@ -81,9 +84,9 @@ export function Accordion({
                 </p>
               </div>
             </div>
-          </div>
+          </RevealItem>
         );
       })}
-    </div>
+    </RevealGroup>
   );
 }

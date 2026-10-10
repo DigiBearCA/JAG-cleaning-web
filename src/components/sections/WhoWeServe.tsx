@@ -1,29 +1,36 @@
 import Link from "next/link";
 import { ArrowRightIcon } from "@/components/icons";
+import { AUDIENCE_ART } from "@/components/illustrations/audience/AudienceArt";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { Chip } from "@/components/ui/Chip";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { WHO_WE_SERVE, AUDIENCES } from "@/content/home";
-import { AUDIENCE_ART } from "@/components/illustrations/audience/AudienceArt";
+import { AUDIENCES, WHO_WE_SERVE } from "@/content/home";
 
 export function WhoWeServe() {
   const enabledAudiences = AUDIENCES.filter((a) => a.enabled);
 
   return (
     <Section tone="alt" id="who-we-serve" labelledBy="who-we-serve-title">
-      <SectionHeading
-        id="who-we-serve-title"
-        title={WHO_WE_SERVE.title}
-        lead={WHO_WE_SERVE.lead}
-        align="center"
-        tone="alt"
-      />
-      <ul className="mx-auto mt-4 md:mt-6 grid max-w-xl gap-4 sm:max-w-none sm:grid-cols-2 md:grid-cols-3">
+      <Reveal>
+        <SectionHeading
+          id="who-we-serve-title"
+          title={WHO_WE_SERVE.title}
+          lead={WHO_WE_SERVE.lead}
+          align="center"
+          tone="alt"
+        />
+      </Reveal>
+      <RevealGroup
+        as="ul"
+        className="mx-auto mt-4 md:mt-6 grid max-w-xl gap-4 sm:max-w-none sm:grid-cols-2 md:grid-cols-3"
+      >
         {enabledAudiences.map((card) => {
           const Art = AUDIENCE_ART[card.art];
-          
+
           return (
-            <li
+            <RevealItem
+              as="li"
               key={card.id}
               className="group relative flex flex-col gap-0 rounded-card border border-line bg-white p-4 transition-all duration-150 ease-brand hover:-translate-y-0.5 hover:border-primary"
             >
@@ -63,11 +70,11 @@ export function WhoWeServe() {
                 <span className="sr-only"> {card.title}</span>
                 <ArrowRightIcon size={18} />
               </Link>
-            </li>
+            </RevealItem>
           );
         })}
-      </ul>
-      <div className="mt-6 text-center">
+      </RevealGroup>
+      <Reveal className="mt-6 text-center">
         <p className="type-body text-ink">
           Don&apos;t see your situation? Tell us what you need and we&apos;ll let you know if we can help.
         </p>
@@ -79,7 +86,7 @@ export function WhoWeServe() {
             Get a free quote
           </Link>
         </div>
-      </div>
+      </Reveal>
     </Section>
   );
 }
