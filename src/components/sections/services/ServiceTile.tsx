@@ -68,7 +68,7 @@ export function ServiceTile({
       {/* Container query layout: stacked on narrow cards (<448px), horizontal on wide cards (>=448px) */}
       <div className="flex flex-col @md:flex-row gap-4 @md:gap-6 p-4 @md:p-6 h-full">
         {/* Service photo frame */}
-        <div className="relative overflow-hidden rounded-menu shrink-0 aspect-[4/3] @xs:aspect-[16/10] @md:aspect-auto @md:w-[45%] @md:min-h-48">
+        <div className="relative overflow-hidden rounded-menu shrink-0 aspect-4/3 @xs:aspect-16/10 @md:aspect-auto @md:w-[45%] @md:min-h-48">
           <Image
             src={imageSlot.src}
             alt={imageSlot.alt}
@@ -120,7 +120,7 @@ export function ServiceTile({
           e.preventDefault();
           closeDialog();
         }}
-        className="m-auto w-[calc(100vw-1.5rem)] max-w-[960px] max-h-[calc(100dvh-1.5rem)] md:max-h-[calc(100dvh-3rem)] rounded-panel bg-white text-ink shadow-float overflow-y-auto p-0 border-0 outline-hidden relative"
+        className="fixed inset-0 m-auto z-50 w-[calc(100vw-1.5rem)] max-w-240 max-h-[calc(100dvh-1.5rem)] md:max-h-[calc(100dvh-3rem)] rounded-panel bg-white text-ink shadow-float overflow-y-auto p-0 border-0 outline-hidden"
       >
         {/* Round 44px close button is first focusable element */}
         <button

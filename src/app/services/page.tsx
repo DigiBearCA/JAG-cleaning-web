@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { QuoteSection } from "@/components/sections/QuoteSection";
 import { ChapterGrid } from "@/components/sections/services/ChapterGrid";
-import { EveryJobStrip } from "@/components/sections/services/EveryJobStrip";
+// import { EveryJobStrip } from "@/components/sections/services/EveryJobStrip";
 import { Hero } from "@/components/sections/services/Hero";
 import type { ChapterId } from "@/content/services";
 import { servicesPageSchema } from "@/lib/structured-data";
@@ -25,7 +25,7 @@ export default function ServicesPage() {
         <ChapterGrid key={chapterId} chapterId={chapterId} />
       ))}
 
-      <EveryJobStrip />
+      {/* <EveryJobStrip /> */}
       <QuoteSection />
     </main>
   );

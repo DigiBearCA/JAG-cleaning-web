@@ -28,7 +28,7 @@ export function TextField({ id, label, error, type = "text", floatLabel, ...rest
           className={cx(
             CONTROL_BASE,
             "peer h-12 rounded-pill px-6",
-            type === "datetime-local" && "[color-scheme:light] [&::-webkit-calendar-picker-indicator]:cursor-pointer",
+            type === "datetime-local" && "scheme-light [&::-webkit-calendar-picker-indicator]:cursor-pointer",
             controlBorderClass(hasError)
           )}
         />

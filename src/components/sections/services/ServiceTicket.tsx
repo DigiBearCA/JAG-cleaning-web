@@ -18,16 +18,16 @@ export function ServiceTicket({ service, number }: ServiceTicketProps) {
     <div className="flex flex-col md:flex-row w-full bg-white text-ink relative overflow-hidden">
       {/* Mobile top strip (below 768px) */}
       <div className="md:hidden bg-alt py-2 px-3 pr-12 flex flex-wrap items-center gap-1.5 shrink-0">
-        <span className="type-small font-bold px-2 py-0.5 rounded-pill bg-alt-heading text-alt-bg leading-none">
+        <span className="type-small font-semibold px-2 py-0.5 rounded-pill border border-alt-heading/25 bg-alt-heading/10 text-alt-heading leading-none">
           Job {number}
         </span>
-        <span className="type-small font-medium px-2 py-0.5 rounded-pill border border-alt-heading/20 text-alt-heading leading-none">
+        <span className="type-small font-medium px-2 py-0.5 rounded-pill border border-alt-heading/20 bg-alt-heading/10 text-alt-heading leading-none">
           {chapter.title}
         </span>
         {service.audience.map((aud) => (
           <span
             key={aud}
-            className="type-small font-medium px-2 py-0.5 rounded-pill bg-alt-heading/10 text-alt-heading leading-none"
+            className="type-small font-medium px-2 py-0.5 rounded-pill border border-alt-heading/20 bg-alt-heading/10 text-alt-heading leading-none"
           >
             {aud}
           </span>

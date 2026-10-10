@@ -263,6 +263,7 @@
 /* Service ticket dialog backdrop and entrance animation */
 dialog::backdrop {
   background: color-mix(in srgb, var(--dark-bg) 60%, transparent);
+  backdrop-filter: blur(2px);
 }
 
 @keyframes dialog-open {
@@ -277,6 +278,9 @@ dialog::backdrop {
 }
 
 dialog[open] {
+  position: fixed;
+  inset: 0;
+  margin: auto;
   animation: dialog-open 200ms var(--ease-brand) both;
 }
 
