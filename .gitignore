@@ -46,4 +46,5 @@ AGENTS.md
 CLAUDE.md
 AGENT_PROMPT.md
 DESIGN.md
+MOTION_PROMPT.md
 .env.example
