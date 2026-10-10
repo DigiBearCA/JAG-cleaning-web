@@ -25,7 +25,7 @@ import demolitionImg from "@/images/demolition.webp";
 import snowImg from "@/images/snow-removal.webp";
 
 export const metadata: Metadata = {
-  title: "Services | JAAG",
+  title: "Cleaning, Snow Removal & Contracting Services",
   description:
     "Residential and commercial cleaning, plus snow removal in Edmonton, AB. See our full list of services.",
 };

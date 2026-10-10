@@ -25,7 +25,7 @@ export function HowItWorks({ tone = "base", showPrep = false }: HowItWorksProps)
         align="center"
         tone={tone}
       />
-      <ol className=" mt-10 grid  gap-8 md: md:grid-cols-3 md:gap-4">
+      <ol className="mt-6 grid gap-8 md: md:grid-cols-3 md:gap-4">
         {HOW_IT_WORKS.steps.map((step, index) => {
           const last = index === HOW_IT_WORKS.steps.length - 1;
           return (
@@ -72,8 +72,8 @@ export function HowItWorks({ tone = "base", showPrep = false }: HowItWorksProps)
         })}
       </ol>
       {showPrep ? (
-        <div className="mx-auto mt-12 flex max-w-3xl flex-col gap-4 rounded-card border border-line bg-white p-6 text-ink md:p-8">
-          <h3 className="type-h3 text-primary">{HOW_IT_WORKS.prep.title}</h3>
+        <div className="mx-auto mt-6 flex max-w-3xl flex-col gap-4 rounded-card border border-line bg-white p-4 text-ink">
+          <h3 className="type-h3 text-primary text-center">{HOW_IT_WORKS.prep.title}</h3>
           <ul className="grid gap-4 md:grid-cols-2">
             {HOW_IT_WORKS.prep.items.map((item) => (
               <li key={item} className="flex items-start gap-3 type-body text-ink">
@@ -82,7 +82,7 @@ export function HowItWorks({ tone = "base", showPrep = false }: HowItWorksProps)
               </li>
             ))}
           </ul>
-          <p className="type-body text-ink-muted">{HOW_IT_WORKS.prep.note}</p>
+          <p className="type-body text-ink-muted text-center">{HOW_IT_WORKS.prep.note}</p>
         </div>
       ) : null}
     </Section>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SITE } from "@/config/site";
 
-export const TITLE_TEMPLATE = `%s | ${SITE.name}`;
+export const TITLE_TEMPLATE = `%s | ${SITE.shortName}`;
 
 /**
  * Browser UI colour for the viewport export. Meta tags cannot read CSS variables, so this

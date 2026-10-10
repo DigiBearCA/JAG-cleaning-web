@@ -15,6 +15,7 @@ export const metadata: Metadata = buildPageMetadata({
   title: CONTACT_META.title,
   description: CONTACT_META.description,
   path: "/contact",
+  absoluteTitle: true,
 });
 
 export default function ContactPage() {

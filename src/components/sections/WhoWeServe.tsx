@@ -18,18 +18,18 @@ export function WhoWeServe() {
         align="center"
         tone="alt"
       />
-      <ul className="mx-auto mt-12 grid max-w-xl gap-6 sm:max-w-none sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="mx-auto mt-4 md:mt-6 grid max-w-xl gap-4 sm:max-w-none sm:grid-cols-2 md:grid-cols-3">
         {enabledAudiences.map((card) => {
           const Art = AUDIENCE_ART[card.art];
           
           return (
             <li
               key={card.id}
-              className="group relative flex flex-col gap-5 rounded-card border border-line bg-white p-5 sm:p-6 transition-all duration-150 ease-brand hover:-translate-y-0.5 hover:border-primary"
+              className="group relative flex flex-col gap-0 rounded-card border border-line bg-white p-4 transition-all duration-150 ease-brand hover:-translate-y-0.5 hover:border-primary"
             >
               <div className="flex items-start justify-between">
                 <div className="shrink-0 h-20 w-20 sm:h-28 sm:w-28 lg:h-32 lg:w-32 mb-4">
-                  <Art className="h-full w-full group-hover:translate-y-[-4px] group-hover:-rotate-2 transition-transform duration-200 ease-brand" />
+                  <Art className="h-full w-full group-hover:-translate-y-1 group-hover:-rotate-2 transition-transform duration-200 ease-brand" />
                 </div>
                 <Chip>{card.category}</Chip>
               </div>
@@ -67,7 +67,7 @@ export function WhoWeServe() {
           );
         })}
       </ul>
-      <div className="mt-12 text-center">
+      <div className="mt-6 text-center">
         <p className="type-body text-ink">
           Don&apos;t see your situation? Tell us what you need and we&apos;ll let you know if we can help.
         </p>
