@@ -91,7 +91,7 @@ export function DateTimePickerField({
           className={cx(
             CONTROL_BASE,
             "peer h-12 rounded-pill px-6 cursor-pointer",
-            isFloating && "[color-scheme:light] pr-10 [&::-webkit-calendar-picker-indicator]:cursor-pointer",
+            isFloating && "scheme-light pr-10 [&::-webkit-calendar-picker-indicator]:cursor-pointer",
             controlBorderClass(hasError),
             isFocused && "border-primary",
           )}
