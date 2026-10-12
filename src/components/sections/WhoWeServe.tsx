@@ -5,16 +5,18 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { Chip } from "@/components/ui/Chip";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { getCardSpans } from "@/components/sections/services/spans";
+import { cx } from "@/lib/cx";
 import { AUDIENCES, WHO_WE_SERVE } from "@/content/home";
 
 export function WhoWeServe() {
   const enabledAudiences = AUDIENCES.filter((a) => a.enabled);
 
   return (
-    <Section tone="alt" id="who-we-serve" labelledBy="who-we-serve-title">
+    <Section tone="alt" id="who-we-work-with" labelledBy="who-we-work-with-title">
       <Reveal>
         <SectionHeading
-          id="who-we-serve-title"
+          id="who-we-work-with-title"
           title={WHO_WE_SERVE.title}
           lead={WHO_WE_SERVE.lead}
           align="center"
@@ -23,16 +25,20 @@ export function WhoWeServe() {
       </Reveal>
       <RevealGroup
         as="ul"
-        className="mx-auto mt-4 md:mt-6 grid max-w-xl gap-4 sm:max-w-none sm:grid-cols-2 md:grid-cols-3"
+        className="mx-auto mt-4 md:mt-6 grid grid-cols-2 md:grid-cols-6 gap-4"
       >
-        {enabledAudiences.map((card) => {
+        {enabledAudiences.map((card, index) => {
           const Art = AUDIENCE_ART[card.art];
+          const spanClasses = getCardSpans(enabledAudiences.length, index);
 
           return (
             <RevealItem
               as="li"
               key={card.id}
-              className="group relative flex flex-col gap-0 rounded-card border border-line bg-white p-4 transition-all duration-150 ease-brand hover:-translate-y-0.5 hover:border-primary"
+              className={cx(
+                "group relative flex flex-col gap-0 rounded-card border border-line bg-white p-4 transition-all duration-150 ease-brand hover:-translate-y-0.5 hover:border-primary",
+                spanClasses,
+              )}
             >
               <div className="flex items-start justify-between">
                 <div className="shrink-0 h-20 w-20 sm:h-28 sm:w-28 lg:h-32 lg:w-32 mb-4">

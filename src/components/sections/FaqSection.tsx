@@ -43,7 +43,7 @@ export function FaqSection({ title, lead, items }: FaqSectionProps) {
                   </span>
                   <div className="flex flex-col">
                     <span className="type-small font-medium text-alt-text">Trusted & Insured</span>
-                    <span className="type-body text-alt-text">{SITE.shortName} is fully insured for your peace of mind.</span>
+                    <span className="type-body text-alt-text">{SITE.shortName} is insured for your peace of mind.</span>
                   </div>
                 </li>
               </ul>

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check:language": "node scripts/check-language.mjs"
   },
   "dependencies": {
     "motion": "^14.1.0",

@@ -23,7 +23,7 @@ export const HOME_FAQ: ReadonlyArray<FaqItem> = [
     id: "areas",
     question: "Which areas do you serve?",
     answer:
-      "We currently serve Edmonton, for homes and businesses alike. If you are just outside the city, send us a message and we will let you know if we can help.",
+      "We currently serve Edmonton, for offices, buildings, and commercial properties alike. If you are just outside the city, send us a message and we will let you know if we can help.",
   },
   {
     id: "one-time-or-recurring",
@@ -50,10 +50,23 @@ export const HOME_FAQ: ReadonlyArray<FaqItem> = [
       "Yes. Tell us everything you need in the form and we will quote it together, so you only have one conversation.",
   },
   {
-    id: "need-to-be-home",
-    question: "Do I need to be home?",
+    id: "need-to-be-present",
+    question: "Do I need to be there while you clean?",
     answer:
-      "Not always. We can arrange access that works for you, and we will agree on it before the visit.",
+      "Not always. We can arrange access that works for you, including after hours, and we will agree on it before the first visit.",
+  },
+  {
+    id: "after-hours",
+    // TODO(review): confirm evening/weekend availability
+    question: "Can you clean after hours or on weekends?",
+    answer:
+      "Yes. We can arrange evening and weekend cleaning so your team and customers are never disturbed.",
+  },
+  {
+    id: "apartment-buildings",
+    question: "Do you clean apartment and condo buildings?",
+    answer:
+      "Yes. We clean common areas and individual units, including move-in and move-out cleans.",
   },
   {
     id: "reschedule",
@@ -66,18 +79,18 @@ export const HOME_FAQ: ReadonlyArray<FaqItem> = [
 
 export const RESIDENTIAL_FAQ: ReadonlyArray<FaqItem> = [
   {
-    id: "home-access",
-    question: "Do I need to be home?",
-    answer: "No. We can arrange access that works for you.",
+    id: "access",
+    question: "Do I need to be there while you clean?",
+    answer: "Not always. We can arrange access that works for you.",
   },
   {
-    id: "home-prep",
+    id: "prep",
     question: "What should I do before you arrive?",
     answer:
       "Put away personal items and valuables so we can clean every surface.",
   },
   {
-    id: "home-extras",
+    id: "extras",
     question: "Can I add extras?",
     answer: "Yes, tell us when you request your quote.",
   },

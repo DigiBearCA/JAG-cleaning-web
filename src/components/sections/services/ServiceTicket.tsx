@@ -141,65 +141,46 @@ export function ServiceTicket({ service, number }: ServiceTicketProps) {
               How it works
             </h3>
 
-            {/* Desktop: horizontal 4-stop line */}
-            <div className="hidden md:block relative">
+            {/* Unified responsive flow: 2x2 grid on mobile, horizontal 4-stop line on desktop */}
+            <div className="relative">
               <div
                 aria-hidden="true"
-                className="absolute top-4.5 left-5 right-5 h-0.5 bg-line"
+                className="hidden md:block absolute top-4.5 left-5 right-5 h-0.5 bg-line"
               />
-              <ol className="relative grid grid-cols-4 gap-3">
+              <ol className="relative grid grid-cols-2 md:grid-cols-4 gap-x-2.5 gap-y-1.5 md:gap-3">
                 {service.flow.map((step, idx) => {
                   const isLast = idx === service.flow.length - 1;
                   return (
-                    <li key={step.title} className="flex flex-col items-start">
+                    <li
+                      key={step.title}
+                      className="flex items-start gap-1.5 md:flex-col md:items-start md:gap-0"
+                    >
                       <div
-                        className={`size-9 rounded-full flex items-center justify-center type-small font-semibold relative z-10 shrink-0 ${
+                        className={`rounded-full flex items-center justify-center type-small font-semibold shrink-0 relative z-10 size-6 mt-0.5 md:size-9 md:mt-0 ${
                           isLast
                             ? "bg-accent text-on-accent"
                             : "bg-chip text-chip-fg"
                         }`}
                       >
-                        {isLast ? <Icon name="check" size={18} /> : idx + 1}
+                        {isLast ? (
+                          <Icon name="check" size={16} className="size-3.5 md:size-4.5" />
+                        ) : (
+                          idx + 1
+                        )}
                       </div>
-                      <div className="type-small font-medium text-ink mt-1.5 leading-snug">
-                        {step.title}
-                      </div>
-                      <div className="type-small text-ink-muted mt-0.5 leading-snug">
-                        {step.text}
+                      <div className="min-w-0 md:min-w-full">
+                        <div className="type-small font-medium text-ink leading-tight md:leading-snug md:mt-1.5">
+                          {step.title}
+                        </div>
+                        <div className="type-small text-ink-muted leading-tight md:leading-snug mt-0.5 line-clamp-2 md:line-clamp-none">
+                          {step.text}
+                        </div>
                       </div>
                     </li>
                   );
                 })}
               </ol>
             </div>
-
-            {/* Mobile: 2x2 grid */}
-            <ol className="md:hidden grid grid-cols-2 gap-x-2.5 gap-y-1.5">
-              {service.flow.map((step, idx) => {
-                const isLast = idx === service.flow.length - 1;
-                return (
-                  <li key={step.title} className="flex items-start gap-1.5">
-                    <div
-                      className={`size-6 rounded-full flex items-center justify-center type-small font-semibold shrink-0 mt-0.5 ${
-                        isLast
-                          ? "bg-accent text-on-accent"
-                          : "bg-chip text-chip-fg"
-                      }`}
-                    >
-                      {isLast ? <Icon name="check" size={14} /> : idx + 1}
-                    </div>
-                    <div className="min-w-0">
-                      <div className="type-small font-medium text-ink leading-tight">
-                        {step.title}
-                      </div>
-                      <div className="type-small text-ink-muted leading-tight mt-0.5 line-clamp-2">
-                        {step.text}
-                      </div>
-                    </div>
-                  </li>
-                );
-              })}
-            </ol>
           </div>
         </div>
 

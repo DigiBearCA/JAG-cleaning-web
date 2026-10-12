@@ -27,7 +27,7 @@ export default function ContactPage() {
       <Section
         labelledBy="contact-details-title"
         className="relative isolate overflow-hidden"
-        containerClassName="grid items-start gap-10 lg:grid-cols-[35fr_65fr] lg:gap-12"
+        containerClassName="grid items-start gap-4 lg:grid-cols-[35fr_65fr] lg:gap-6"
       >
         <Image
           src={IMAGES.contactBackground.src}

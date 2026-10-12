@@ -1,4 +1,5 @@
 import type { SVGProps } from "react";
+import { SITE } from "@/config/site";
 
 export interface BrandLogoProps extends SVGProps<SVGSVGElement> {
   readonly tone?: "light" | "dark";
@@ -16,7 +17,7 @@ export function BrandLogo({ tone = "light", ...props }: BrandLogoProps) {
       width="100%"
       height="100%"
       role="img"
-      aria-label="JAAG Contracting & Constructions"
+      aria-label={SITE.name}
       {...props}
     >
       <g transform="translate(0 -74.3)">

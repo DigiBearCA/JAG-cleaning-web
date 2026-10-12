@@ -55,8 +55,8 @@ export function ContactDetails({ tone = "base" }: ContactDetailsProps) {
   );
 
   return (
-    <div className={cx("flex flex-col gap-8", isDark && "surface-dark")}>
-      <div className="flex flex-col gap-3">
+    <div className={cx("flex flex-col gap-4 md:gap-6", isDark && "surface-dark")}>
+      <div className="flex flex-col gap-2">
         <h2
           id="contact-details-title"
           className={cx("type-h2", isDark ? "text-on-dark" : "text-primary")}
@@ -105,7 +105,7 @@ export function ContactDetails({ tone = "base" }: ContactDetailsProps) {
         ) : null}
       </ul>
 
-      <div
+      {/* <div
         className={cx(
           "flex flex-col gap-3 rounded-card border p-6",
           isDark
@@ -130,7 +130,7 @@ export function ContactDetails({ tone = "base" }: ContactDetailsProps) {
             </li>
           ))}
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import type { StaticImageData } from "next/image";
-import hero1 from "@/images/hero-1.webp";
 import hero2 from "@/images/hero-2.webp";
 import hero3 from "@/images/hero-3.webp";
 import maintenanceFloor from "@/images/maintenance-floor-cleaning.webp";
@@ -35,14 +34,12 @@ export interface SiteImages {
   readonly services: Record<ServiceSlug, ImageSlot>;
 }
 
-const HERO_KITCHEN: ImageSlot = {
-  src: hero1,
-  alt: "A cleaner in a green polo shirt wiping a white kitchen counter in a bright, open-plan home",
-};
-
 export const IMAGES: SiteImages = {
   hero: [
-    HERO_KITCHEN,
+    {
+      src: officeCleaning,
+      alt: "A tidy modern office workspace with desks and chairs",
+    },
     {
       src: hero2,
       alt: "A cleaner using a squeegee and cloth on a glass partition in a bright office",
@@ -56,12 +53,15 @@ export const IMAGES: SiteImages = {
     src: maintenanceFloor,
     alt: "A bright, clean building corridor with a floor scrubber and a yellow wet-floor sign",
   },
-  contactBackground: HERO_KITCHEN,
+  contactBackground: {
+    src: maintenanceFloor,
+    alt: "A bright commercial building corridor with polished flooring",
+  },
   // TODO(client): swap in real photos, one line per slot
   services: {
     "residential-cleaning": {
       src: residentialCleanings,
-      alt: "A bright, clean modern living room after residential cleaning",
+      alt: "A bright, clean modern apartment living room after cleaning",
     },
     "office-cleaning": {
       src: officeCleaning,
@@ -69,7 +69,7 @@ export const IMAGES: SiteImages = {
     },
     "carpet-cleaning": {
       src: carpetCleaning,
-      alt: "Deep-cleaned carpet texture in a residential room",
+      alt: "Deep-cleaned commercial carpet texture in an office room",
     },
     "floor-cleaning": {
       src: floorCleaning,
@@ -97,7 +97,7 @@ export const IMAGES: SiteImages = {
     },
     "snow-removal": {
       src: snowRemoval,
-      alt: "A driveway and walkway cleared of winter snow",
+      alt: "A parking lot, walkway, and building entrance cleared of winter snow",
     },
   },
 };

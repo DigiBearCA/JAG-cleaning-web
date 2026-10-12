@@ -1,17 +1,17 @@
 export type ServiceSlug =
-  | "residential-cleaning"
   | "office-cleaning"
+  | "maintenance-floor-cleaning"
   | "carpet-cleaning"
   | "floor-cleaning"
-  | "maintenance-floor-cleaning"
+  | "residential-cleaning"
   | "cleanup"
   | "landscaping"
+  | "snow-removal"
   | "renovation"
-  | "demolition"
-  | "snow-removal";
+  | "demolition";
 
 export type ChapterId = "cleaning" | "site" | "build";
-export type Audience = "Homes" | "Businesses" | "Property managers";
+export type Audience = "Businesses" | "Property managers" | "Apartments and condos";
 
 export interface FlowStep {
   readonly title: string;
@@ -49,7 +49,7 @@ export const CHAPTERS: Record<
 > = {
   cleaning: {
     title: "Cleaning",
-    description: "Homes and workplaces, kept fresh.",
+    description: "Offices and buildings, kept fresh.",
   },
   site: {
     title: "Site and outdoors",
@@ -63,37 +63,6 @@ export const CHAPTERS: Record<
 
 // TODO(review): scope and flows drafted from research, client to confirm
 export const SERVICES: readonly Service[] = [
-  {
-    slug: "residential-cleaning",
-    chapter: "cleaning",
-    name: "Residential cleaning",
-    tagline: "Fresh homes, on your schedule.",
-    description:
-      "Regular or one-time cleaning for houses, condos, and apartments. Tell us what you need and we take care of it, with our own supplies and equipment.",
-    audience: ["Homes"],
-    included: [
-      "Kitchen and bathrooms",
-      "Bedrooms and living areas",
-      "Floors vacuumed and mopped",
-      "Dusting and surfaces",
-      "Move-in and move-out cleans",
-      "Add-ons like inside oven or fridge on request",
-    ],
-    flow: [
-      { title: "Tell us about your home", text: "Size, rooms, and how often." },
-      {
-        title: "Get your free quote",
-        text: "A clear price before work starts.",
-      },
-      {
-        title: "We clean",
-        text: "Our team brings the supplies and equipment.",
-      },
-      { title: "Final walk-through", text: "We check the details with you." },
-    ],
-    icon: "home",
-    enabled: true,
-  },
   {
     slug: "office-cleaning",
     chapter: "cleaning",
@@ -123,13 +92,37 @@ export const SERVICES: readonly Service[] = [
     enabled: true,
   },
   {
+    slug: "maintenance-floor-cleaning",
+    chapter: "cleaning",
+    name: "Maintenance floor cleaning",
+    tagline: "Routine floor care between deep cleans.",
+    description:
+      "Scheduled floor cleaning for businesses, so busy floors stay clean and presentable all year.",
+    audience: ["Businesses", "Property managers"],
+    included: [
+      "Daily, weekly, or monthly schedules",
+      "Entrances and corridors",
+      "Shops, offices, and shared spaces",
+      "Consistent routine and timing",
+      "Deep-clean add-on when needed",
+    ],
+    flow: [
+      { title: "Floor walkthrough", text: "We look at the areas and traffic." },
+      { title: "Set a schedule", text: "Frequency, scope, and price." },
+      { title: "Routine cleaning", text: "The same team, on time." },
+      { title: "Review and adjust", text: "We keep the plan working for you." },
+    ],
+    icon: "scrubber",
+    enabled: true,
+  },
+  {
     slug: "carpet-cleaning",
     chapter: "cleaning",
     name: "Carpet cleaning",
     tagline: "Deep-cleaned carpets, ready to use.",
     description:
-      "Deep carpet cleaning for homes and businesses, focused on high-traffic areas, spots, and stains.",
-    audience: ["Homes", "Businesses"],
+      "Deep carpet cleaning for commercial spaces and buildings, focused on high-traffic areas, spots, and stains.",
+    audience: ["Businesses", "Property managers", "Apartments and condos"],
     included: [
       "Rooms, stairs, and hallways",
       "Spot and stain treatment",
@@ -158,8 +151,8 @@ export const SERVICES: readonly Service[] = [
     name: "Floor cleaning",
     tagline: "Floors that look cared for.",
     description:
-      "One-time floor cleaning for hard floors in homes and commercial spaces, including tile, vinyl, and concrete.",
-    audience: ["Homes", "Businesses"],
+      "One-time floor cleaning for hard floors in commercial spaces and buildings, including tile, vinyl, and concrete.",
+    audience: ["Businesses", "Property managers"],
     included: [
       "Sweeping and scrubbing",
       "Tile and grout",
@@ -178,27 +171,34 @@ export const SERVICES: readonly Service[] = [
     enabled: true,
   },
   {
-    slug: "maintenance-floor-cleaning",
+    slug: "residential-cleaning",
     chapter: "cleaning",
-    name: "Maintenance floor cleaning",
-    tagline: "Routine floor care between deep cleans.",
+    name: "Apartment and condo cleaning",
+    tagline: "Fresh apartments, on your schedule.",
     description:
-      "Scheduled floor cleaning for businesses, so busy floors stay clean and presentable all year.",
-    audience: ["Businesses", "Property managers"],
+      "Regular or one-time cleaning for apartments and condos, from a single unit to move-in and move-out cleans. Tell us what you need and we take care of it, with our own supplies and equipment.",
+    audience: ["Apartments and condos"],
     included: [
-      "Daily, weekly, or monthly schedules",
-      "Entrances and corridors",
-      "Shops, offices, and shared spaces",
-      "Consistent routine and timing",
-      "Deep-clean add-on when needed",
+      "Kitchens and bathrooms",
+      "Bedrooms and living areas",
+      "Floors vacuumed and mopped",
+      "Dusting and surfaces",
+      "Move-in and move-out cleans",
+      "Add-ons like inside oven or fridge on request",
     ],
     flow: [
-      { title: "Floor walkthrough", text: "We look at the areas and traffic." },
-      { title: "Set a schedule", text: "Frequency, scope, and price." },
-      { title: "Routine cleaning", text: "The same team, on time." },
-      { title: "Review and adjust", text: "We keep the plan working for you." },
+      { title: "Tell us about your unit", text: "Size, rooms, and how often." },
+      {
+        title: "Get your free quote",
+        text: "A clear price before work starts.",
+      },
+      {
+        title: "We clean",
+        text: "Our team brings the supplies and equipment.",
+      },
+      { title: "Final walk-through", text: "We check the details with you." },
     ],
-    icon: "scrubber",
+    icon: "home",
     enabled: true,
   },
   {
@@ -207,12 +207,12 @@ export const SERVICES: readonly Service[] = [
     name: "Cleanup",
     tagline: "We clear it so you can move on.",
     description:
-      "Cleanup for properties and job sites: debris and leftover mess cleared away so the space is ready to use.",
-    audience: ["Homes", "Businesses"],
+      "Cleanup for commercial properties and job sites: debris and leftover mess cleared away so the space is ready to use.",
+    audience: ["Businesses", "Property managers"],
     included: [
       "Cleanup after construction and renovation",
       "Debris and material clearing",
-      "Yard and property cleanup",
+      "Commercial grounds and property cleanup",
       "Final sweep and wipe-down",
       "One-time or repeat visits",
     ],
@@ -234,10 +234,10 @@ export const SERVICES: readonly Service[] = [
     name: "Landscaping",
     tagline: "Outdoor spaces that look cared for.",
     description:
-      "Landscaping for yards and commercial properties, keeping outdoor areas neat and welcoming.",
-    audience: ["Homes", "Businesses"],
+      "Landscaping for commercial properties and building grounds, keeping outdoor areas neat and welcoming.",
+    audience: ["Businesses", "Property managers"],
     included: [
-      "Lawn and yard tidying",
+      "Lawn and grounds tidying",
       "Planting beds and shrubs",
       "Trimming and edging",
       "Seasonal property cleanups",
@@ -245,7 +245,7 @@ export const SERVICES: readonly Service[] = [
     ],
     flow: [
       {
-        title: "Share your yard and goals",
+        title: "Share your grounds and goals",
         text: "What you have and what you want.",
       },
       { title: "Plan and quote", text: "Scope, timing, and price." },
@@ -259,19 +259,19 @@ export const SERVICES: readonly Service[] = [
     slug: "snow-removal",
     chapter: "site",
     name: "Snow removal",
-    tagline: "Clear driveways, all winter.",
+    tagline: "Clear lots and entrances, all winter.",
     description:
-      "Snow removal for driveways, walkways, and parking lots, per visit or seasonal.",
-    audience: ["Homes", "Businesses"],
+      "Snow removal for parking lots, entrances, walkways, and driveways, per visit or seasonal.",
+    audience: ["Businesses", "Property managers"],
     included: [
-      "Driveways",
-      "Walkways and steps",
       "Parking lots",
       "Building entrances",
+      "Walkways and steps",
+      "Driveways",
       "Ice control (salt or sand) on request",
     ],
     flow: [
-      { title: "Tell us the property", text: "Driveway or lot, and size." },
+      { title: "Tell us the property", text: "Parking lot or driveway, and size." },
       {
         title: "Choose per visit or seasonal",
         text: "We set up a plan with you.",
@@ -288,12 +288,12 @@ export const SERVICES: readonly Service[] = [
     name: "Renovation",
     tagline: "Plan it, build it, tidy it up.",
     description:
-      "Renovation work for homes and commercial spaces, handled in stages with clear communication and a clean finish.",
-    audience: ["Homes", "Businesses"],
+      "Renovation work for commercial properties and buildings, handled in stages with clear communication and a clean finish.",
+    audience: ["Businesses", "Property managers"],
     included: [
       "Interior updates and refreshes",
       "Repairs and finishing",
-      "Residential and commercial spaces",
+      "Commercial and building spaces",
       "Scope and schedule agreed up front",
       "Cleanup after the work",
     ],
@@ -313,7 +313,7 @@ export const SERVICES: readonly Service[] = [
     tagline: "Careful removal, clean finish.",
     description:
       "Interior and light demolition to prepare a space for renovation, with debris cleared away afterwards.",
-    audience: ["Homes", "Businesses"],
+    audience: ["Businesses", "Property managers"],
     included: [
       "Removal of fixtures, flooring, and walls as agreed",
       "Debris clearing",

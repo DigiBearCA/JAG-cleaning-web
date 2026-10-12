@@ -318,10 +318,9 @@ export function QuoteForm({
             <TextField
               id={fieldId("postalCode")}
               name="postalCode"
-              label="Postal code"
+              label="Postal code (optional)"
               autoComplete="postal-code"
               maxLength={7}
-              required
               value={values.postalCode}
               error={errors.postalCode}
               onChange={(event) => handleChange("postalCode", event.target.value)}
@@ -330,8 +329,7 @@ export function QuoteForm({
             <DateTimePickerField
               id={fieldId("preferredDateTime")}
               name="preferredDateTime"
-              label="Preferred date & time"
-              required
+              label="Preferred date & time (optional)"
               value={values.preferredDateTime}
               error={errors.preferredDateTime}
               onChange={(val) => handleChange("preferredDateTime", val)}

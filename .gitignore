@@ -51,5 +51,12 @@ MOTION_PROMPT.md
 SERVICES_GRID_PROMPT.md
 SERVICES_PAGE_PROMPT.md
 WHO_WE_SERVE_PROMPT.md
+COMMERCIAL_REPOSITION_PROMPT.md
+
+# Temporary and test output
+scratch/
+output/
+.playwright-cli/
 
 .env.example
+

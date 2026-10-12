@@ -297,6 +297,7 @@ export function ContactIcon({ size = 24, ...rest }: IconProps) {
       width={size} 
       height={size}
       fill="none"
+      aria-hidden={rest["aria-label"] ? undefined : true}
       {...rest}
     >
       <path fill="none" stroke="currentColor" strokeWidth="24" strokeLinecap="round" strokeLinejoin="round" d="M150 150 C180 140 215 150 245 175 L370 285 C410 320 405 375 370 410 C340 440 300 465 288 490 C280 510 292 540 330 600 C400 700 500 780 600 835 C625 848 650 850 660 835 C675 810 690 760 710 740 C740 715 800 720 845 745 L935 830 C985 880 985 940 950 985 C900 1050 830 1090 740 1088 C600 1085 440 980 280 820 C140 680 40 520 33 390 C33 300 80 210 130 165 Z"/>
@@ -310,8 +311,6 @@ export function ContactIcon({ size = 24, ...rest }: IconProps) {
         <line x1="732" y1="302" x2="765" y2="302" strokeWidth="24"/>
         <line x1="673" y1="348" x2="694" y2="398" strokeWidth="24"/>
       </g>
-      
-      <text x="820" y="630" fill="none" stroke="currentColor" strokeWidth="12" fontSize="180" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }} fontWeight="bold">24</text>
     </svg>
   );
 }

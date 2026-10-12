@@ -177,18 +177,19 @@ export function validateQuoteField(
       return undefined;
     }
     case "postalCode": {
-      const clean = rawValue.toUpperCase().replace(/[^A-Z0-9]/g, "");
-      if (clean.length === 0) return "Enter your postal code.";
+      const trimmed = rawValue.trim();
+      if (trimmed.length === 0) return undefined; // Optional
+      const clean = trimmed.toUpperCase().replace(/[^A-Z0-9]/g, "");
       if (clean.length < 6)
         return "Postal code must be 6 characters (for example T5J 2R7).";
-      if (!CANADIAN_POSTAL_REGEX.test(rawValue)) {
+      if (!CANADIAN_POSTAL_REGEX.test(trimmed)) {
         return "Enter a valid postal code, for example T5J 2R7.";
       }
       return undefined;
     }
     case "preferredDateTime": {
       const value = rawValue.trim();
-      if (value.length === 0) return "Select your preferred date and time.";
+      if (value.length === 0) return undefined; // Optional
       if (value.length > QUOTE_LIMITS.preferredDateTimeMax) {
         return "Date and time selection is too long.";
       }

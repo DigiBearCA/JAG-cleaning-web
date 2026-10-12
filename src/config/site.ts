@@ -34,7 +34,7 @@ export interface SiteConfig {
   readonly social: {
     readonly instagram: string;
     readonly facebook: string;
-  };
+  } | null;
   readonly address: {
     readonly line: string;
     readonly mapQuery: string;
@@ -48,8 +48,8 @@ export interface SiteConfig {
 export const SITE: SiteConfig = {
   name: "JAAG CONTRACTING & CONSTRUCTIONS",
   shortName: "JAAG",
-  descriptor: "Contracting & Constructions",
-  url: "https://jaag-cleaning-web.vercel.app/", // TODO(client): real domain, no trailing slash
+  descriptor: "Commercial Cleaning & Contracting", // TODO(client): confirm the public-facing descriptor
+  url: "https://jaag-cleaning-web.vercel.app", // TODO(client): real domain, no trailing slash
   palette: "a", // Switch to "b" here only.
   indexable: true, // TODO(client): set to true at launch, after every placeholder is replaced
   contactVerified: true, // TODO(client): set to true once phone, email, and social links below are real
@@ -66,10 +66,7 @@ export const SITE: SiteConfig = {
   // TODO(client): confirm the 24/7 wording, since it promises availability at all hours
   hours: "Open 24 hours a day, 7 days a week",
   hoursShort: "Open 24/7",
-  social: {
-    instagram: "https://www.instagram.com/your-handle", // TODO(client): Instagram profile URL
-    facebook: "https://www.facebook.com/your-page", // TODO(client): Facebook page URL
-  },
+  social: null, // Hidden until real URLs are configured. TODO(client): set real social links e.g. { instagram: "...", facebook: "..." }
   address: {
     line: "13208 Sherbrooke AVE NW, Edmonton, AB, T5L4G3",
     mapQuery: "13208 Sherbrooke AVE NW, Edmonton, AB, T5L4G3",

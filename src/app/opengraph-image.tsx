@@ -1,4 +1,4 @@
-﻿import { ImageResponse } from "next/og";
+import { ImageResponse } from "next/og";
 import { SITE } from "@/config/site";
 
 /*
@@ -8,7 +8,7 @@ import { SITE } from "@/config/site";
 
 import { BrandLogo } from "@/components/icons/BrandLogo";
 
-export const alt = `${SITE.name}, serving ${SITE.serviceArea}`;
+export const alt = `Commercial Cleaning in Edmonton, AB | ${SITE.shortName}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -62,7 +62,7 @@ export default async function Image() {
             marginLeft: 8,
           }}
         >
-          Free quotes • Insured • Edmonton-based • Year-round service
+          Commercial Cleaning in Edmonton, AB
         </div>
       </div>
     </div>,

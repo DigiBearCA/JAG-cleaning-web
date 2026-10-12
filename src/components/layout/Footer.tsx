@@ -85,35 +85,38 @@ export function Footer() {
     </div>
   );
 
-  const socialContent = (
-    <div className="flex flex-col gap-2">
-      <h2 className="type-h4 text-on-dark">Social</h2>
-      <ul className="flex gap-2">
-        <li>
-          <a
-            href={SITE.social.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${SITE.shortName} on Instagram`}
-            className={SOCIAL_CLASSES}
-          >
-            <InstagramIcon size={20} />
-          </a>
-        </li>
-        <li>
-          <a
-            href={SITE.social.facebook}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${SITE.shortName} on Facebook`}
-            className={SOCIAL_CLASSES}
-          >
-            <FacebookIcon size={20} />
-          </a>
-        </li>
-      </ul>
-    </div>
-  );
+  const socialContent =
+    SITE.social &&
+    !SITE.social.instagram.includes("your-handle") &&
+    !SITE.social.facebook.includes("your-page") ? (
+      <div className="flex flex-col gap-2">
+        <h2 className="type-h4 text-on-dark">Social</h2>
+        <ul className="flex gap-2">
+          <li>
+            <a
+              href={SITE.social.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${SITE.shortName} on Instagram`}
+              className={SOCIAL_CLASSES}
+            >
+              <InstagramIcon size={20} />
+            </a>
+          </li>
+          <li>
+            <a
+              href={SITE.social.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${SITE.shortName} on Facebook`}
+              className={SOCIAL_CLASSES}
+            >
+              <FacebookIcon size={20} />
+            </a>
+          </li>
+        </ul>
+      </div>
+    ) : null;
 
   return (
     <Reveal as="footer" y={0} className="surface-dark bg-dark text-on-dark">
@@ -123,8 +126,8 @@ export function Footer() {
             <div className="flex flex-col gap-2">
               <Logo tone="dark" className="self-start" />
               <p className="max-w-xs type-small text-on-dark-muted">
-                {SITE.descriptor} in Edmonton, Alberta. Free quotes from an
-                insured local team.
+                Commercial cleaning and contracting in Edmonton, Alberta. Free
+                quotes from an insured local team.
               </p>
             </div>
 
@@ -137,10 +140,6 @@ export function Footer() {
                 </li>
               ))}
             </FooterColumn>
-
-            <div className="md:hidden">
-              {contactContent}
-            </div>
           </div>
 
           <div className="flex flex-col gap-6">
@@ -156,13 +155,9 @@ export function Footer() {
                 </li>
               ))}
             </FooterColumn>
-
-            <div className="md:hidden">
-              {socialContent}
-            </div>
           </div>
 
-          <div className="hidden md:flex flex-col gap-6">
+          <div className="col-span-2 md:col-span-1 flex flex-col sm:flex-row md:flex-col gap-6">
             {contactContent}
             {socialContent}
           </div>

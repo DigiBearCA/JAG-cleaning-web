@@ -121,7 +121,7 @@ export function Header() {
           </a>
           <a
             href={telHref()}
-            aria-label={`Call ${SITE.phone.display}`}
+            aria-label={`Call ${SITE.shortName}`}
             className="inline-flex lg:hidden size-11 items-center justify-center rounded-pill border-[1.5px] border-primary text-primary transition duration-150 ease-brand hover:bg-primary/8 active:scale-98"
           >
             <PhoneIcon size={20} />

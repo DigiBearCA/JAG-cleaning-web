@@ -24,7 +24,7 @@ export interface Step {
 /** Home "Who we serve" audience card. */
 export interface Audience {
   readonly id: string;
-  readonly category: "Homes" | "Business" | "Build" | "Winter";
+  readonly category: "Business" | "Buildings" | "Apartments" | "Build" | "Winter";
   readonly title: string;
   readonly description: string;
   readonly popularFor: readonly [string, string, string];

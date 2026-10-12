@@ -38,11 +38,20 @@ export function buildPageMetadata({
       url: path,
       title: fullTitle,
       description,
+      images: [
+        {
+          url: "/opengraph-image",
+          width: 1200,
+          height: 630,
+          alt: `Commercial Cleaning in Edmonton, AB | ${SITE.shortName}`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
       description,
+      images: ["/opengraph-image"],
     },
   };
 }

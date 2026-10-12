@@ -2,14 +2,13 @@ import { SITE } from "@/config/site";
 
 export const CONTACT_META = {
   title: `Contact ${SITE.shortName}: Free Quotes in Edmonton, AB`,
-  description:
-    `Contact ${SITE.shortName} for a free quote on home cleaning, commercial cleaning, or snow removal in Edmonton, Alberta. Call, send a WhatsApp message, or use our form.`,
+  description: `Contact ${SITE.shortName} for a free quote on commercial cleaning, floor care, renovation, or snow removal in Edmonton, AB. Call, send a WhatsApp message, or use our form.`,
 } as const;
 
 export const CONTACT_HERO = {
   eyebrow: "Contact",
   title: "Contact us",
-  lead: "Tell us what you need and we'll get back to you. We serve homes and businesses across Edmonton, Alberta.",
+  lead: "Tell us what you need and we'll get back to you. We serve businesses, offices, and buildings across Edmonton, Alberta.",
 } as const;
 
 export const CONTACT_DETAILS = {
@@ -30,10 +29,10 @@ export const CONTACT_DETAILS = {
   include: {
     title: "What to include in your message",
     items: [
-      "The type of space (home, office, or driveway)",
-      "Its rough size or number of rooms",
-      "Your preferred day and time",
-      "Any special requests",
+      "Type of space (office, building, or parking lot)",
+      "Rough size or number of floors",
+      "Your preferred days and times",
+      "Any problem areas or special requests",
     ],
   },
   mapTitle: "Map of our area in Edmonton, Alberta",
@@ -47,7 +46,7 @@ export const FORM_CARD_COPY = {
 
 export const NOT_FOUND_COPY = {
   title: "We couldn't find that page",
-  lead: "The page may have moved, or the link may be out of date. Head back home or get in touch and we'll help.",
-  home: "Back to home",
+  lead: "The page may have moved, or the link may be out of date. Head back to the main page or get in touch and we'll help.",
+  home: "Home",
   contact: "Contact us",
 } as const;

@@ -53,7 +53,13 @@ export function localBusinessSchema(description: string): JsonLdObject {
     ...base,
     telephone: SITE.phone.e164,
     email: SITE.email,
-    sameAs: [SITE.social.instagram, SITE.social.facebook],
+    ...(SITE.social
+      ? {
+          sameAs: [SITE.social.instagram, SITE.social.facebook].filter(
+            (url): url is string => Boolean(url),
+          ),
+        }
+      : {}),
     // Open 24/7 (SITE.hours). 23:59 is the schema.org convention for "until midnight".
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
