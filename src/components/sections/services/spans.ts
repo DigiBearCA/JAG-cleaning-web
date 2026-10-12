@@ -10,11 +10,11 @@
  *     - r === 1: last card spans 6 (full row)
  *     - r === 2: last 2 cards span 3 each (half row each)
  */
-export function getCardSpans(count: number, index: number): string {
-  // Mobile span (2-column layout)
-  const isLastMobile = count % 2 === 1 && index === count - 1;
-  const mobileClass = isLastMobile ? "col-span-2" : "col-span-1";
-
+export function getCardSpans(
+  count: number,
+  index: number,
+  mobileCols: 1 | 2 = 2,
+): string {
   // Desktop span (6-column layout representing 3 columns)
   const remainder = count % 3;
   let desktopClass = "md:col-span-2";
@@ -24,6 +24,16 @@ export function getCardSpans(count: number, index: number): string {
   } else if (remainder === 2 && index >= count - 2) {
     desktopClass = "md:col-span-3";
   }
+
+  if (mobileCols === 1) {
+    const isLastSm = count % 2 === 1 && index === count - 1;
+    const smClass = isLastSm ? "sm:col-span-2" : "sm:col-span-1";
+    return `col-span-1 ${smClass} ${desktopClass}`;
+  }
+
+  // Mobile span (2-column layout)
+  const isLastMobile = count % 2 === 1 && index === count - 1;
+  const mobileClass = isLastMobile ? "col-span-2" : "col-span-1";
 
   return `${mobileClass} ${desktopClass}`;
 }
