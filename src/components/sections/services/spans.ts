@@ -15,6 +15,21 @@ export function getCardSpans(
   index: number,
   mobileCols: 1 | 2 = 2,
 ): string {
+  if (mobileCols === 1) {
+    const isLastSm = count % 2 === 1 && index === count - 1;
+    const smClass = isLastSm ? "sm:col-span-2" : "sm:col-span-1";
+
+    const remainder = count % 3;
+    let lgClass = "lg:col-span-2";
+    if (remainder === 1 && index === count - 1) {
+      lgClass = "lg:col-span-6";
+    } else if (remainder === 2 && index >= count - 2) {
+      lgClass = "lg:col-span-3";
+    }
+
+    return `col-span-1 ${smClass} ${lgClass}`;
+  }
+
   // Desktop span (6-column layout representing 3 columns)
   const remainder = count % 3;
   let desktopClass = "md:col-span-2";
@@ -23,12 +38,6 @@ export function getCardSpans(
     desktopClass = "md:col-span-6";
   } else if (remainder === 2 && index >= count - 2) {
     desktopClass = "md:col-span-3";
-  }
-
-  if (mobileCols === 1) {
-    const isLastSm = count % 2 === 1 && index === count - 1;
-    const smClass = isLastSm ? "sm:col-span-2" : "sm:col-span-1";
-    return `col-span-1 ${smClass} ${desktopClass}`;
   }
 
   // Mobile span (2-column layout)

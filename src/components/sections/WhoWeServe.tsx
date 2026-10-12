@@ -30,7 +30,7 @@ export function WhoWeServe() {
       </Reveal>
       <RevealGroup
         as="ul"
-        className="mx-auto mt-4 md:mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-4"
+        className="mx-auto mt-4 md:mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4"
       >
         {enabledAudiences.map((card, index) => {
           const Art = AUDIENCE_ART[card.art];
