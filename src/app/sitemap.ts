@@ -1,26 +1,11 @@
 import type { MetadataRoute } from "next";
 import { absoluteUrl } from "@/lib/contact-links";
 
-/** Update when page content changes meaningfully. */
-const LAST_MODIFIED = new Date("2026-10-05");
+/** Every indexable route. Service details live as sections of /services (one URL). */
+const ROUTES = ["/", "/services", "/contact", "/privacy-policy", "/terms"];
 
-const ROUTES: ReadonlyArray<{
-  readonly path: string;
-  readonly priority: number;
-  readonly changeFrequency: "monthly" | "yearly";
-}> = [
-  { path: "/", priority: 1, changeFrequency: "monthly" },
-  { path: "/services", priority: 0.9, changeFrequency: "monthly" },
-  { path: "/contact", priority: 0.8, changeFrequency: "yearly" },
-  { path: "/privacy-policy", priority: 0.2, changeFrequency: "yearly" },
-  { path: "/terms", priority: 0.2, changeFrequency: "yearly" },
-];
-
+// No lastModified, changeFrequency, or priority: Google ignores the last two, and a
+// hard-coded date would claim changes that never happened.
 export default function sitemap(): MetadataRoute.Sitemap {
-  return ROUTES.map((route) => ({
-    url: absoluteUrl(route.path),
-    lastModified: LAST_MODIFIED,
-    changeFrequency: route.changeFrequency,
-    priority: route.priority,
-  }));
+  return ROUTES.map((path) => ({ url: absoluteUrl(path) }));
 }

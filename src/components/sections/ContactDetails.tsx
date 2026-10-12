@@ -46,7 +46,7 @@ export interface ContactDetailsProps {
 
 /** Contact details list. Supports base (light) and dark tones. */
 export function ContactDetails({ tone = "base" }: ContactDetailsProps) {
-  const { labels } = CONTACT_DETAILS;
+  const { labels, businessDetails } = CONTACT_DETAILS;
   const isDark = tone === "dark";
 
   const linkClasses = cx(
@@ -57,12 +57,12 @@ export function ContactDetails({ tone = "base" }: ContactDetailsProps) {
   return (
     <div className={cx("flex flex-col gap-4 md:gap-6", isDark && "surface-dark")}>
       <div className="flex flex-col gap-2">
-        <h2
+        <h1
           id="contact-details-title"
           className={cx("type-h2", isDark ? "text-on-dark" : "text-primary")}
         >
           {CONTACT_DETAILS.title}
-        </h2>
+        </h1>
         <p className={cx("max-w-prose type-body", isDark ? "text-on-dark-muted" : "text-ink-muted")}>
           {CONTACT_DETAILS.intro}
         </p>
@@ -104,6 +104,33 @@ export function ContactDetails({ tone = "base" }: ContactDetailsProps) {
           </DetailRow>
         ) : null}
       </ul>
+
+      <div
+        className={cx(
+          "flex flex-col gap-3 rounded-card border p-6 type-body",
+          isDark
+            ? "border-on-dark/15 bg-dark-card text-on-dark"
+            : "border-line bg-white text-ink",
+        )}
+      >
+        <h3 className={cx("type-h4", isDark ? "text-on-dark" : "text-primary")}>
+          {businessDetails.title}
+        </h3>
+        <dl className="flex flex-col gap-3">
+          {[
+            [businessDetails.name, SITE.name],
+            [businessDetails.what, businessDetails.whatText],
+            [businessDetails.area, SITE.serviceCities.join(", ")],
+          ].map(([term, value]) => (
+            <div key={term}>
+              <dt className={cx("type-small", isDark ? "text-on-dark-muted" : "text-ink-muted")}>
+                {term}
+              </dt>
+              <dd>{value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
 
       {/* <div
         className={cx(

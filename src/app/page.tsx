@@ -10,7 +10,7 @@ import { IMAGES } from "@/config/images";
 import { HOME_FAQ } from "@/content/faq";
 import { HOME_FAQ_COPY, HOME_META } from "@/content/home";
 import { buildPageMetadata } from "@/lib/metadata";
-import { localBusinessSchema } from "@/lib/structured-data";
+import { pageGraph } from "@/lib/structured-data";
 
 export const metadata: Metadata = buildPageMetadata({
   title: HOME_META.title,
@@ -23,7 +23,13 @@ export const metadata: Metadata = buildPageMetadata({
 export default function HomePage() {
   return (
     <>
-      <JsonLd data={localBusinessSchema(HOME_META.description)} />
+      <JsonLd
+        data={pageGraph({
+          path: "/",
+          name: HOME_META.title,
+          description: HOME_META.description,
+        })}
+      />
       <Hero />
       <WhoWeServe />
       <HowItWorks showPrep />

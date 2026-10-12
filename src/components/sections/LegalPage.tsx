@@ -2,6 +2,8 @@ import { Container } from "@/components/ui/Container";
 import { SITE } from "@/config/site";
 import type { LegalDocument } from "@/content/legal";
 import { mailtoHref, telHref } from "@/lib/contact-links";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { pageGraph } from "@/lib/structured-data";
 
 const DATE_FORMAT = new Intl.DateTimeFormat("en-CA", {
   dateStyle: "long",
@@ -19,6 +21,13 @@ const LINK_CLASSES =
 export function LegalPage({ document }: { readonly document: LegalDocument }) {
   return (
     <Container className="py-12 md:py-16">
+      <JsonLd
+        data={pageGraph({
+          path: document.path,
+          name: document.title,
+          description: document.metaDescription,
+        })}
+      />
       <article className=" flex  flex-col gap-10">
         <header className="flex flex-col gap-3">
           <h1 className="type-h1 text-primary">{document.title}</h1>

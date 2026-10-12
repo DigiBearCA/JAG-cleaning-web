@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowUpRightIcon } from "@/components/icons";
 import { QuoteForm } from "@/components/forms/QuoteForm";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Reveal } from "@/components/motion/Reveal";
 import { ContactDetails } from "@/components/sections/ContactDetails";
 import { Section } from "@/components/ui/Section";
@@ -13,6 +14,7 @@ import {
 } from "@/content/contact";
 import { mapEmbedUrl, mapOpenUrl } from "@/lib/contact-links";
 import { buildPageMetadata } from "@/lib/metadata";
+import { pageGraph } from "@/lib/structured-data";
 
 export const metadata: Metadata = buildPageMetadata({
   title: CONTACT_META.title,
@@ -24,6 +26,14 @@ export const metadata: Metadata = buildPageMetadata({
 export default function ContactPage() {
   return (
     <>
+      <JsonLd
+        data={pageGraph({
+          path: "/contact",
+          name: CONTACT_META.title,
+          description: CONTACT_META.description,
+          type: "ContactPage",
+        })}
+      />
       <Section
         labelledBy="contact-details-title"
         className="relative isolate overflow-hidden"

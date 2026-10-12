@@ -17,6 +17,13 @@ export interface SiteConfig {
   /** While false, JSON-LD omits phone, email, and social profiles. */
   readonly contactVerified: boolean;
   readonly serviceArea: string;
+  /** Cities served, shown on the Contact page and used as areaServed in the structured data. */
+  readonly serviceCities: ReadonlyArray<string>;
+  /** Search Console and Bing Webmaster Tools verification tokens. Empty = not emitted. */
+  readonly verification: {
+    readonly google: string;
+    readonly bing: string;
+  };
   readonly phone: {
     readonly display: string;
     readonly e164: string;
@@ -51,12 +58,24 @@ export const SITE: SiteConfig = {
   descriptor: "Commercial Cleaning & Contracting", // TODO(client): confirm the public-facing descriptor
   url: "https://jaag-cleaning-web.vercel.app", // TODO(client): real domain, no trailing slash
   palette: "a", // Switch to "b" here only.
-  indexable: true, // TODO(client): set to true at launch, after every placeholder is replaced
-  contactVerified: true, // TODO(client): set to true once phone, email, and social links below are real
+  indexable: true,
+  contactVerified: true,
   serviceArea: "Edmonton, Alberta",
+  // TODO(client): confirm every city here is one you actually serve.
+  serviceCities: [
+    "Edmonton",
+    "St. Albert",
+    "Sherwood Park",
+    "Spruce Grove",
+    "Leduc",
+    "Beaumont",
+    "Fort Saskatchewan",
+  ],
+  // TODO(client): paste the tokens from Google Search Console and Bing Webmaster Tools.
+  verification: { google: "", bing: "" },
   phone: {
-    display: "(236) 632-7696", // TODO(client): real phone number as it should appear on the page
-    e164: "+12366327696", // TODO(client): same number in E.164 format for tel: links
+    display: "(236) 632-7696",
+    e164: "+12366327696",
   },
   whatsapp: {
     number: "12366327696", // WhatsApp number, country code first, digits only

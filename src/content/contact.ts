@@ -37,6 +37,15 @@ export const CONTACT_DETAILS = {
   },
   mapTitle: "Map of our area in Edmonton, Alberta",
   mapLink: "Open in Maps",
+  /** Plain facts block; keeps visible text in step with the structured data. */
+  businessDetails: {
+    title: "Business details",
+    name: "Business name",
+    what: "What we do",
+    whatText:
+      "Commercial cleaning, floor and carpet care, apartment cleaning, cleanup, landscaping, snow removal, renovation, and demolition.",
+    area: "Areas we serve",
+  },
 } as const;
 
 export const FORM_CARD_COPY = {

@@ -6,12 +6,15 @@ import { ChapterGrid } from "@/components/sections/services/ChapterGrid";
 import { Hero } from "@/components/sections/services/Hero";
 import type { ChapterId } from "@/content/services";
 import { buildPageMetadata } from "@/lib/metadata";
-import { servicesPageSchema } from "@/lib/structured-data";
+import { pageGraph } from "@/lib/structured-data";
+
+const TITLE = "Commercial Cleaning & Contracting Services in Edmonton, AB";
+const DESCRIPTION =
+  "Office and building cleaning, floor and carpet care, apartment cleaning, cleanup, landscaping, snow removal, renovation, demolition in Edmonton. Free quotes.";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Commercial Cleaning & Contracting Services in Edmonton, AB",
-  description:
-    "Office and building cleaning, floor and carpet care, apartment cleaning, cleanup, landscaping, snow removal, renovation, demolition in Edmonton. Free quotes.",
+  title: TITLE,
+  description: DESCRIPTION,
   path: "/services",
   absoluteTitle: true,
 });
@@ -21,7 +24,9 @@ const ORDERED_CHAPTERS: readonly ChapterId[] = ["cleaning", "site", "build"];
 export default function ServicesPage() {
   return (
     <main id="main" className="overflow-x-hidden">
-      <JsonLd data={servicesPageSchema()} />
+      <JsonLd
+        data={pageGraph({ path: "/services", name: TITLE, description: DESCRIPTION })}
+      />
       <Hero />
 
       {ORDERED_CHAPTERS.map((chapterId) => (

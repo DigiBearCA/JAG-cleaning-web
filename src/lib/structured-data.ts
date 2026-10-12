@@ -1,6 +1,9 @@
 import { SITE } from "@/config/site";
-import { absoluteUrl } from "@/lib/contact-links";
+import { IMAGES } from "@/config/images";
+import { HOME_FAQ } from "@/content/faq";
+import { HOME_META } from "@/content/home";
 import { getEnabledServices } from "@/content/services";
+import { absoluteUrl } from "@/lib/contact-links";
 
 /** JSON-LD is plain JSON; this keeps the builders typed without a schema library. */
 export type JsonLdValue =
@@ -14,122 +17,151 @@ export interface JsonLdObject {
   readonly [key: string]: JsonLdValue;
 }
 
-/** Edmonton, within Alberta, within Canada. Shared by every schema object. */
-function areaServed(): JsonLdObject {
-  return {
+const BUSINESS_ID = absoluteUrl("/#business");
+const WEBSITE_ID = absoluteUrl("/#website");
+const ref = (id: string): JsonLdObject => ({ "@id": id });
+
+/** Every served city, inside Alberta. Mirrors the list shown on the Contact page. */
+const areaServed = (): JsonLdValue =>
+  SITE.serviceCities.map((name) => ({
     "@type": "City",
-    name: "Edmonton",
-    containedInPlace: {
-      "@type": "AdministrativeArea",
-      name: "Alberta",
-      containedInPlace: {
-        "@type": "Country",
-        name: "Canada",
-        identifier: "CA",
-      },
-    },
+    name,
+    containedInPlace: { "@type": "AdministrativeArea", name: "Alberta" },
+  }));
+
+/** Placeholder profile URLs are shown on the site but never claimed as sameAs. */
+const realSocialUrls = (): string[] =>
+  SITE.social
+    ? [SITE.social.instagram, SITE.social.facebook].filter(
+        (url) => !url.includes("your-"),
+      )
+    : [];
+
+/**
+ * The business. HomeAndConstructionBusiness is a LocalBusiness subtype, so it covers both.
+ * Service-area business: no street address. Contact facts and hours only once verified.
+ */
+function business(): JsonLdObject {
+  const sameAs = realSocialUrls();
+  return {
+    "@type": "HomeAndConstructionBusiness",
+    "@id": BUSINESS_ID,
+    name: SITE.name,
+    alternateName: SITE.shortName,
+    url: absoluteUrl("/"),
+    description: HOME_META.description,
+    image: absoluteUrl(IMAGES.hero[0].src.src),
+    areaServed: areaServed(),
+    knowsAbout: getEnabledServices().map((s) => s.name),
+    ...(SITE.contactVerified
+      ? {
+          telephone: SITE.phone.e164,
+          email: SITE.email,
+          // Open 24/7 (SITE.hours). 23:59 is the schema.org convention for "until midnight".
+          openingHoursSpecification: {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday",
+            ],
+            opens: "00:00",
+            closes: "23:59",
+          },
+          ...(sameAs.length > 0 ? { sameAs } : {}),
+        }
+      : {}),
   };
+}
+
+function services(): JsonLdObject[] {
+  return getEnabledServices().map((s) => ({
+    "@type": "Service",
+    "@id": absoluteUrl(`/services#${s.slug}`),
+    name: s.name,
+    serviceType: s.name,
+    description: s.description,
+    url: absoluteUrl(`/services#${s.slug}`),
+    provider: ref(BUSINESS_ID),
+    areaServed: areaServed(),
+  }));
+}
+
+/** Only the FAQ items rendered on the home page. */
+function homeFaq(pageId: string): JsonLdObject {
+  return {
+    "@type": "FAQPage",
+    "@id": `${pageId}#faq`,
+    isPartOf: ref(pageId),
+    mainEntity: HOME_FAQ.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
+}
+
+export interface PageGraphInput {
+  /** Site path starting with "/". */
+  readonly path: string;
+  readonly name: string;
+  readonly description: string;
+  readonly type?: "WebPage" | "ContactPage";
 }
 
 /**
- * Home page LocalBusiness. JAG is a service-area business, so no street address is included.
- * Phone, email, social profiles, and opening hours are only added once SITE.contactVerified is true.
+ * One connected @graph per page: business, website, the page, a breadcrumb on inner pages,
+ * services on /services, and the FAQ on the home page.
  */
-export function localBusinessSchema(description: string): JsonLdObject {
-  const base: JsonLdObject = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": absoluteUrl("/#business"),
-    name: SITE.name,
-    url: absoluteUrl("/"),
-    description,
-    areaServed: areaServed(),
-    serviceType: getEnabledServices().map((s) => s.name),
-  };
-
-  if (!SITE.contactVerified) return base;
-
-  return {
-    ...base,
-    telephone: SITE.phone.e164,
-    email: SITE.email,
-    ...(SITE.social
-      ? {
-          sameAs: [SITE.social.instagram, SITE.social.facebook].filter(
-            (url): url is string => Boolean(url),
-          ),
-        }
-      : {}),
-    // Open 24/7 (SITE.hours). 23:59 is the schema.org convention for "until midnight".
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
-      ],
-      opens: "00:00",
-      closes: "23:59",
-    },
-  };
-}
-
-export interface ServiceSchemaInput {
-  readonly name: string;
-  readonly serviceType: string;
-  readonly description: string;
-  readonly path: string;
-}
-
-/** Service page schema, with the provider referencing the business by name and URL. */
-export function serviceSchema({
-  name,
-  serviceType,
-  description,
+export function pageGraph({
   path,
-}: ServiceSchemaInput): JsonLdObject {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name,
-    serviceType,
-    description,
-    url: absoluteUrl(path),
-    provider: {
-      "@type": "LocalBusiness",
-      "@id": absoluteUrl("/#business"),
+  name,
+  description,
+  type = "WebPage",
+}: PageGraphInput): JsonLdObject {
+  const url = absoluteUrl(path);
+  const pageId = `${url}#webpage`;
+  const isHome = path === "/";
+
+  const graph: JsonLdObject[] = [
+    business(),
+    {
+      "@type": "WebSite",
+      "@id": WEBSITE_ID,
       name: SITE.name,
       url: absoluteUrl("/"),
+      inLanguage: "en-CA",
+      publisher: ref(BUSINESS_ID),
     },
-    areaServed: areaServed(),
-  };
-}
+    {
+      "@type": type,
+      "@id": pageId,
+      url,
+      name,
+      description,
+      inLanguage: "en-CA",
+      isPartOf: ref(WEBSITE_ID),
+      about: ref(BUSINESS_ID),
+      ...(isHome ? {} : { breadcrumb: ref(`${url}#breadcrumb`) }),
+    },
+  ];
 
-/** Services page schema: ItemList of Service objects for every enabled service. */
-export function servicesPageSchema(): JsonLdObject {
-  return {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    itemListElement: getEnabledServices().map((service, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      item: {
-        "@type": "Service",
-        name: service.name,
-        description: service.description,
-        url: absoluteUrl(`/services#${service.slug}`),
-        provider: {
-          "@type": "LocalBusiness",
-          "@id": absoluteUrl("/#business"),
-          name: SITE.name,
-          url: absoluteUrl("/"),
-        },
-        areaServed: areaServed(),
-      },
-    })),
-  };
+  if (!isHome) {
+    graph.push({
+      "@type": "BreadcrumbList",
+      "@id": `${url}#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+        { "@type": "ListItem", position: 2, name, item: url },
+      ],
+    });
+  }
+  if (path === "/services") graph.push(...services());
+  if (isHome) graph.push(homeFaq(pageId));
+
+  return { "@context": "https://schema.org", "@graph": graph };
 }

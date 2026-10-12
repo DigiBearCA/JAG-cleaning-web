@@ -35,8 +35,27 @@ export const metadata: Metadata = {
   description: HOME_META.description,
   applicationName: SITE.name,
   robots: SITE.indexable
-    ? { index: true, follow: true }
+    ? {
+        index: true,
+        follow: true,
+        "max-snippet": -1,
+        "max-image-preview": "large",
+        "max-video-preview": -1,
+        googleBot: {
+          index: true,
+          follow: true,
+          "max-snippet": -1,
+          "max-image-preview": "large",
+          "max-video-preview": -1,
+        },
+      }
     : { index: false, follow: false },
+  verification: {
+    ...(SITE.verification.google ? { google: SITE.verification.google } : {}),
+    ...(SITE.verification.bing
+      ? { other: { "msvalidate.01": SITE.verification.bing } }
+      : {}),
+  },
   openGraph: {
     type: "website",
     locale: "en_CA",
