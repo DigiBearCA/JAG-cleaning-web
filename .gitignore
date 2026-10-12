@@ -62,3 +62,4 @@ scripts/check-language.mjs
 
 .env.example
 
+test-next-config.ts
