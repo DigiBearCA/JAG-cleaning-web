@@ -42,6 +42,7 @@ next-env.d.ts
 
 # Local skills reference
 *.md
+!README.md
 SKILLS.md
 AGENTS.md
 CLAUDE.md
@@ -53,10 +54,11 @@ SERVICES_PAGE_PROMPT.md
 WHO_WE_SERVE_PROMPT.md
 COMMERCIAL_REPOSITION_PROMPT.md
 
-# Temporary and test output
+# Temporary and test output (local-only checks too)
 scratch/
 output/
 .playwright-cli/
+scripts/check-language.mjs
 
 .env.example
 
