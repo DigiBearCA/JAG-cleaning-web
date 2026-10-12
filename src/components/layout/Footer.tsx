@@ -85,10 +85,7 @@ export function Footer() {
     </div>
   );
 
-  const socialContent =
-    SITE.social &&
-    !SITE.social.instagram.includes("your-handle") &&
-    !SITE.social.facebook.includes("your-page") ? (
+  const socialContent = SITE.social ? (
       <div className="flex flex-col gap-2">
         <h2 className="type-h4 text-on-dark">Social</h2>
         <ul className="flex gap-2">

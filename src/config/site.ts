@@ -66,7 +66,12 @@ export const SITE: SiteConfig = {
   // TODO(client): confirm the 24/7 wording, since it promises availability at all hours
   hours: "Open 24 hours a day, 7 days a week",
   hoursShort: "Open 24/7",
-  social: null, // Hidden until real URLs are configured. TODO(client): set real social links e.g. { instagram: "...", facebook: "..." }
+  // TODO(client): replace with the real profile URLs. Placeholders are shown on the site
+  // but kept out of the structured data (sameAs) until they change.
+  social: {
+    instagram: "https://www.instagram.com/your-handle",
+    facebook: "https://www.facebook.com/your-page",
+  },
   address: {
     line: "13208 Sherbrooke AVE NW, Edmonton, AB, T5L4G3",
     mapQuery: "13208 Sherbrooke AVE NW, Edmonton, AB, T5L4G3",
