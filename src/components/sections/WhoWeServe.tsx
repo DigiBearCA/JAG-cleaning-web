@@ -8,6 +8,11 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { getCardSpans } from "@/components/sections/services/spans";
 import { cx } from "@/lib/cx";
 import { AUDIENCES, WHO_WE_SERVE } from "@/content/home";
+import {
+  AudienceCardTilt,
+  AudienceCardIcon,
+  AudienceCardTitle,
+} from "./AudienceCardTilt";
 
 export function WhoWeServe() {
   const enabledAudiences = AUDIENCES.filter((a) => a.enabled);
@@ -35,47 +40,48 @@ export function WhoWeServe() {
             <RevealItem
               as="li"
               key={card.id}
-              className={cx(
-                "group relative flex flex-col gap-0 rounded-card border border-line bg-white p-4 transition-all duration-150 ease-brand hover:-translate-y-0.5 hover:border-primary",
-                spanClasses,
-              )}
+              className={cx("flex", spanClasses)}
             >
-              <div className="flex items-start justify-between">
-                <div className="shrink-0 h-20 w-20 sm:h-28 sm:w-28 lg:h-32 lg:w-32 mb-4">
-                  <Art className="h-full w-full group-hover:-translate-y-1 group-hover:-rotate-2 transition-transform duration-200 ease-brand" />
+              <AudienceCardTilt className="w-full">
+                <div className="flex items-start justify-between">
+                  <AudienceCardIcon className="shrink-0 h-20 w-20 sm:h-28 sm:w-28 lg:h-32 lg:w-32 mb-4 pointer-events-none">
+                    <Art className="h-full w-full" />
+                  </AudienceCardIcon>
+                  <Chip>{card.category}</Chip>
                 </div>
-                <Chip>{card.category}</Chip>
-              </div>
 
-              <div className="flex flex-col gap-2">
-                <h3 className="type-h4 text-primary">{card.title}</h3>
-                <p className="type-small text-ink">{card.description}</p>
-              </div>
+                <div className="flex flex-col gap-2">
+                  <AudienceCardTitle className="type-h4 text-primary pointer-events-none">
+                    {card.title}
+                  </AudienceCardTitle>
+                  <p className="type-small text-ink">{card.description}</p>
+                </div>
 
-              <div className="flex flex-col gap-2 mt-auto pt-2">
-                <p className="type-caption font-medium text-ink-muted uppercase tracking-wider">
-                  {WHO_WE_SERVE.popularForLabel}
-                </p>
-                <ul className="flex flex-wrap gap-1.5">
-                  {card.popularFor.map((item) => (
-                    <li
-                      key={item}
-                      className="inline-flex items-center rounded bg-alt px-2 py-1 type-caption font-medium text-ink"
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                <div className="flex flex-col gap-2 mt-auto pt-2">
+                  <p className="type-caption font-medium text-ink-muted uppercase tracking-wider">
+                    {WHO_WE_SERVE.popularForLabel}
+                  </p>
+                  <ul className="flex flex-wrap gap-1.5">
+                    {card.popularFor.map((item) => (
+                      <li
+                        key={item}
+                        className="inline-flex items-center rounded bg-alt px-2 py-1 type-caption font-medium text-ink"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-              <Link
-                href={card.href}
-                className="mt-1 inline-flex min-h-10 items-center gap-2 self-start type-button text-primary underline-offset-4 transition duration-150 ease-brand group-hover:underline after:absolute after:inset-0 after:rounded-card focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-2 focus-visible:after:outline-primary focus-visible:after:outline-solid"
-              >
-                {card.linkLabel}
-                <span className="sr-only"> {card.title}</span>
-                <ArrowRightIcon size={18} />
-              </Link>
+                <Link
+                  href={card.href}
+                  className="mt-1 inline-flex min-h-10 items-center gap-2 self-start type-button text-primary underline-offset-4 transition duration-150 ease-brand group-hover:underline after:absolute after:inset-0 after:rounded-card focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-2 focus-visible:after:outline-primary focus-visible:after:outline-solid"
+                >
+                  {card.linkLabel}
+                  <span className="sr-only"> {card.title}</span>
+                  <ArrowRightIcon size={18} />
+                </Link>
+              </AudienceCardTilt>
             </RevealItem>
           );
         })}
