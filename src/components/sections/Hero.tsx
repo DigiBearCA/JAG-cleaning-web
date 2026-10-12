@@ -41,7 +41,7 @@ export function Hero() {
     <Section
       spacing="hero"
       labelledBy="hero-title"
-      containerClassName="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-0"
+      containerClassName="flex flex-col gap-6 lg:flex-row lg:items-stretch lg:gap-0"
     >
       <div className="relative z-10 flex flex-col items-start gap-4 lg:w-1/2 lg:pr-6">
         {/* 0.00s: eyebrow chip */}
@@ -103,9 +103,15 @@ export function Hero() {
         </HeroGroup>
       </div>
 
-      {/* 0.20s: hero image clip-path + scale reveal */}
-      <HeroImageReveal delay={0.2} className="w-full lg:ml-[-5%] lg:w-[55%]">
-        <div className="relative aspect-4/3 w-full overflow-hidden rounded-panel bg-illus-sky lg:aspect-5/4 lg:rounded-l-none lg:hero-feather">
+      {/* 0.20s: hero image clip-path + scale reveal.
+          From 1024px the image box is absolutely positioned inside the stretched column,
+          so it adds no height of its own and always matches the text column (pure CSS,
+          updates instantly on resize and orientation change). */}
+      <HeroImageReveal
+        delay={0.2}
+        className="w-full lg:relative lg:ml-[-5%] lg:w-[55%]"
+      >
+        <div className="relative aspect-4/3 w-full overflow-hidden rounded-panel bg-illus-sky lg:absolute lg:inset-0 lg:aspect-auto lg:rounded-l-none lg:hero-feather">
           {IMAGES.hero.map((image, index) => {
             const isBase = index === 0;
             return (
@@ -119,7 +125,7 @@ export function Hero() {
                 placeholder={isBase ? "blur" : "empty"}
                 quality={85}
                 sizes={HERO_IMAGE_SIZES}
-                className={cx("object-cover", ROTATION_CLASSES[index])}
+                className={cx("object-cover object-top", ROTATION_CLASSES[index])}
               />
             );
           })}
