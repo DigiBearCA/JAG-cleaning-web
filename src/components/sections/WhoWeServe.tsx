@@ -5,7 +5,10 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { Chip } from "@/components/ui/Chip";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { getCardSpans } from "@/components/sections/services/spans";
+import {
+  CARD_GRID_CLASS,
+  getCardGridSpans,
+} from "@/components/sections/services/spans";
 import { cx } from "@/lib/cx";
 import { AUDIENCES, WHO_WE_SERVE } from "@/content/home";
 import {
@@ -30,11 +33,11 @@ export function WhoWeServe() {
       </Reveal>
       <RevealGroup
         as="ul"
-        className="mx-auto mt-4 md:mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4"
+        className={cx("mx-auto mt-4 md:mt-6 gap-4", CARD_GRID_CLASS)}
       >
         {enabledAudiences.map((card, index) => {
           const Art = AUDIENCE_ART[card.art];
-          const spanClasses = getCardSpans(enabledAudiences.length, index, 1);
+          const spanClasses = getCardGridSpans(enabledAudiences.length, index);
 
           return (
             <RevealItem

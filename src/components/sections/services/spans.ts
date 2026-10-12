@@ -1,49 +1,38 @@
 /**
- * Pure helper to compute responsive grid column span classes for the services card grid.
- * Grid definition: `grid-cols-2 md:grid-cols-6`
+ * Balanced card-grid helpers. Each grid class constant is paired with a span
+ * helper; always use them together so columns and spans stay in sync.
  *
- * Rules:
- * - Mobile (2 columns): span is 2 only for the last card when count is odd, otherwise 1.
- * - Desktop (6 columns, representing a 3-column layout):
- *   - Normal cards: span 2 (2/6 = 1/3 row)
- *   - Balanced last row: remainder r = count % 3. When r !== 0, the last r cards span 6 / r:
- *     - r === 1: last card spans 6 (full row)
- *     - r === 2: last 2 cards span 3 each (half row each)
+ * All class strings are written out in full so Tailwind can detect them.
  */
-export function getCardSpans(
-  count: number,
-  index: number,
-  mobileCols: 1 | 2 = 2,
-): string {
-  if (mobileCols === 1) {
-    const isLastSm = count % 2 === 1 && index === count - 1;
-    const smClass = isLastSm ? "sm:col-span-2" : "sm:col-span-1";
 
-    const remainder = count % 3;
-    let lgClass = "lg:col-span-2";
-    if (remainder === 1 && index === count - 1) {
-      lgClass = "lg:col-span-6";
-    } else if (remainder === 2 && index >= count - 2) {
-      lgClass = "lg:col-span-3";
-    }
-
-    return `col-span-1 ${smClass} ${lgClass}`;
-  }
-
-  // Desktop span (6-column layout representing 3 columns)
-  const remainder = count % 3;
-  let desktopClass = "md:col-span-2";
-
-  if (remainder === 1 && index === count - 1) {
-    desktopClass = "md:col-span-6";
-  } else if (remainder === 2 && index >= count - 2) {
-    desktopClass = "md:col-span-3";
-  }
-
-  // Mobile span (2-column layout)
-  const isLastMobile = count % 2 === 1 && index === count - 1;
-  const mobileClass = isLastMobile ? "col-span-2" : "col-span-1";
-
-  return `${mobileClass} ${desktopClass}`;
+/** Services chapter grid (`grid-cols-2 md:grid-cols-6`): 2 columns on mobile, 3 from md. */
+export function getCardSpans(count: number, index: number): string {
+  const isLast = index === count - 1;
+  const mobile = count % 2 === 1 && isLast ? "col-span-2" : "col-span-1";
+  return `${mobile} ${desktopSpan(count, index)}`;
 }
 
+/**
+ * Card grid: 1 column below sm, 2 columns from sm, 3 columns from md
+ * (6 tracks so a short last row can stretch to full width).
+ */
+export const CARD_GRID_CLASS = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6";
+
+/**
+ * - xs: every card is one full-width column.
+ * - sm: odd count, the last card spans both columns.
+ * - md: cards span 2 of 6 tracks; a last row of 1 card spans all 6,
+ *   a last row of 2 cards spans 3 each.
+ */
+export function getCardGridSpans(count: number, index: number): string {
+  const isLast = index === count - 1;
+  const sm = count % 2 === 1 && isLast ? "sm:col-span-2" : "sm:col-span-1";
+  return `${sm} ${desktopSpan(count, index)}`;
+}
+
+function desktopSpan(count: number, index: number): string {
+  const remainder = count % 3;
+  if (remainder === 1 && index === count - 1) return "md:col-span-6";
+  if (remainder === 2 && index >= count - 2) return "md:col-span-3";
+  return "md:col-span-2";
+}

@@ -6,6 +6,11 @@ import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { IMAGES } from "@/config/images";
 import { WHY_JAAG } from "@/content/home";
+import {
+  CARD_GRID_CLASS,
+  getCardGridSpans,
+} from "@/components/sections/services/spans";
+import { cx } from "@/lib/cx";
 
 /** The intro column is 2/5 of the container from 1024px, full width below. */
 const WHY_IMAGE_SIZES =
@@ -50,12 +55,15 @@ export function WhyJag() {
           </div>
         </Reveal>
 
-        <RevealGroup as="ol" className="grid gap-4 md:grid-cols-2">
+        <RevealGroup as="ol" className={cx("gap-4", CARD_GRID_CLASS)}>
           {WHY_JAAG.cards.map((card, index) => (
             <RevealItem
               as="li"
               key={card.title}
-              className="flex flex-col gap-0 rounded-card bg-dark-card p-4"
+              className={cx(
+                "flex flex-col gap-0 rounded-card bg-dark-card p-4",
+                getCardGridSpans(WHY_JAAG.cards.length, index),
+              )}
             >
               <div className="flex items-center justify-between gap-4">
                 <FeatureIcon surface="dark">
