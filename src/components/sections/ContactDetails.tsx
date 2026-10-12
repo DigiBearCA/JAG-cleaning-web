@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { CheckIcon, Icon, type IconName } from "@/components/icons";
+import { Icon, type IconName } from "@/components/icons";
 import { SITE } from "@/config/site";
 import { CONTACT_DETAILS } from "@/content/contact";
 import { mailtoHref, telHref, whatsappHref } from "@/lib/contact-links";
